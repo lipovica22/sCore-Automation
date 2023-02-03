@@ -16,7 +16,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 
-public class baseTest {
+public class BaseTest {
     DriverManager driverManager;
     WebDriver driver;
     String path = "src/results/screenshots/";
@@ -29,7 +29,6 @@ public class baseTest {
 
     public void quit(){
         driverManager.quitDriver();
-
     }
 
     public void openApp(String env) throws Exception {
