@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+
+<suite name="sCoreRS" >
+
+    <parameter name="browser" value="CHROME"/>
+
+    <test name="Login">
+        <!--<parameter name="username" value="sCoreAgent"></parameter>
+        <parameter name="password" value="OvoJ3Test"></parameter>
+
+        <parameter name="username" value="sCoreBOC"></parameter>
+        <parameter name="password" value="OvoJ3Test"></parameter>
+
+        <parameter name="username" value="sCoreUW"></parameter>
+        <parameter name="password" value="OvoJ3Test"></parameter>
+
+        <parameter name="username" value="dkerkez"></parameter>
+        <parameter name="password" value="OvoJ3Test"></parameter>
+
+        <parameter name="username" value="pkrasic"></parameter>
+        <parameter name="password" value="OvoJ3Test"></parameter>-->
+
+        <classes>
+            <class name="tests.sCoreRS"/>
+        </classes>
+
+    </test>
+
+</suite>
