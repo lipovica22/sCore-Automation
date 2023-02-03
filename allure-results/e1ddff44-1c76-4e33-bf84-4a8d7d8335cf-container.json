@@ -1,0 +1,1 @@
+{"uuid":"e1ddff44-1c76-4e33-bf84-4a8d7d8335cf","name":"tests.sCoreRS.setup","children":["efaa59da-d4f0-41b5-aedd-967b61fbc22a"],"description":"","befores":[{"name":"setup","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1675156871359,"stop":1675156874378}],"afters":[],"links":[],"start":1675156871358,"stop":1675156874379}

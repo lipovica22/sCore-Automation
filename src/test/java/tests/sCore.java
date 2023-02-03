@@ -32,9 +32,12 @@ public class sCore {
     }
 
     @AfterMethod
-    public void tearDown () throws IOException {
+    @Parameters({"quit"})
+    public void tearDown (String quit) throws IOException {
         takeScreenshot("slika"+System.currentTimeMillis());
-        browser.quit();
+        if(quit.equalsIgnoreCase("Yes")) {
+            browser.quit();
+        }
     }
 
     @Test(enabled = false)

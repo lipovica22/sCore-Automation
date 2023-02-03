@@ -6,6 +6,7 @@
 <suite name="sCoreRS" >
 
     <parameter name="browser" value="CHROME"/>
+    <parameter name="quit" value="yes"/>
 
     <test name="Login">
         <!--<parameter name="username" value="sCoreAgent"></parameter>
