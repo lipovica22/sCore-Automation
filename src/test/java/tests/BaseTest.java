@@ -2,9 +2,7 @@ package tests;
 
 import io.qameta.allure.Allure;
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import seleniumCore.DriverManager;
 import seleniumCore.DriverManagerFactory;
 
@@ -14,16 +12,17 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
     DriverManager driverManager;
-    WebDriver driver;
+    public WebDriver driver;
     String path = "src/results/screenshots/";
 
     public void initialization(String type) throws Exception {
         driverManager =  DriverManagerFactory.getDriverManager(type);
-        driver=driverManager.getDriver();
+        driver = driverManager.getDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
@@ -32,15 +31,29 @@ public class BaseTest {
     }
 
     public void openApp(String env) throws Exception {
-        env = env.toLowerCase();
+        //env = env.toLowerCase();
         switch (env) {
             case "DEVELOPMENT": {
                 driver.get("0");
             }
             break;
 
-            case "TEST": {
+            case "TEST_BA": {
+                driver.get("https://t-unba-iis.uniqa.ba/pos/BosniaAndHerzegovina/NoAD");
+            }
+            break;
+
+            case "TEST_RS": {
                 driver.get("https://t-score.uniqa.rs/POS/Serbia/NoAD");
+            }
+            break;
+
+            case "TEST_MNE": {
+                driver.get("https://mne-test-iis2.stech.loc/POS/Montenegro/NoAD");
+            }
+            break;
+            case "TEST_HR": {
+                driver.get("https://aasv098.uniqa.hr/POS/Croatia/NoAD/");
             }
             break;
 
@@ -53,7 +66,7 @@ public class BaseTest {
             }
             break;
             default:
-                driver.get("https://t-score.uniqa.rs/POS/Serbia/NoAD");
+                //driver.get("https://t-score.uniqa.rs/POS/Serbia/NoAD");
         }
     }
     public void takeScreenshot(String fileName) throws IOException {
@@ -66,6 +79,22 @@ public class BaseTest {
         Path filePath = Paths.get(path +fileName+".png");
         InputStream is = Files.newInputStream(filePath);
         Allure.addAttachment(desc,is);
+    }
+    public void click(WebElement element)
+    {
+        try
+        {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+            element.click();
+        }
+        catch (NotFoundException ex)
+        {
+            throw new NotFoundException("Control Click Issue.", ex);
+        }
+        catch (ElementClickInterceptedException ex)
+        {
+            throw new ElementClickInterceptedException("Control Click Issue.", ex);
+        }
     }
 }
 

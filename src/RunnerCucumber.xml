@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+
+<suite name="login" thread-count="1" data-provider-thread-count="1">
+
+    <parameter name="browser" value="CHROME"/>
+    <parameter name="quit" value="yes"/>
+    <parameter name="env" value="TEST_RS"/>
+
+    <test name="RS-Life">
+
+        <classes>
+            <class name="runners.Runner"/>
+        </classes>
+
+    </test>
+
+</suite>

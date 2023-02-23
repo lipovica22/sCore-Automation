@@ -28,7 +28,9 @@ public class sCore {
         //System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver108.exe");
         //System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver0320.exe");
         browser.manage().window().maximize();
-        browser.get("https://t-score.uniqa.rs/POS/Serbia/NoAD");
+        //browser.get("https://t-score.uniqa.rs/POS/Serbia/NoAD");
+
+        browser.get( "https://t-unba-iis.uniqa.ba/pos/BosniaAndHerzegovina/NoAD");
     }
 
     @AfterMethod
