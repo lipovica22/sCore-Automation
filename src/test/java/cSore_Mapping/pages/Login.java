@@ -21,18 +21,23 @@ public class Login extends BasePage {
     @FindBy (xpath="//button[contains(text(),'Prijava')]")
     WebElement Submit;
 
+    @FindBy (id="userFullName")
+    WebElement LoggedUser;
 
 
-    public void setUsername(String username) throws Exception {
+    public void setUsername(String username)  {
         Username.sendKeys(username);
     }
 
-    public void setPassword(String password) throws Exception {
+    public void setPassword(String password)  {
         Password.sendKeys(password);
     }
-    public void clickSubmit() throws Exception {
+    public void clickSubmit()  {
         Submit.click();
     }
-
+    public String LoggedUser() {
+        String user = LoggedUser.getText();
+      return user;
+    }
 
 }

@@ -1,8 +1,11 @@
 package tests;
 
+import cSore_Mapping.tabs.General;
 import io.qameta.allure.Allure;
+import io.qameta.allure.Attachment;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.Select;
 import seleniumCore.DriverManager;
 import seleniumCore.DriverManagerFactory;
 
@@ -69,6 +72,7 @@ public class BaseTest {
                 //driver.get("https://t-score.uniqa.rs/POS/Serbia/NoAD");
         }
     }
+
     public void takeScreenshot(String fileName) throws IOException {
         File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(file, new File(path +fileName+".png"));
@@ -96,6 +100,50 @@ public class BaseTest {
             throw new ElementClickInterceptedException("Control Click Issue.", ex);
         }
     }
+
+    public void selectOption (String sel_option, WebElement element) {
+
+        //element = driver.findElement(By.cssSelector("option"));
+        boolean isClicked = false;
+        element.click();
+        Select dropdown = new Select(element);
+        List<WebElement> optionsToSelect = dropdown.getOptions();
+
+        for (WebElement option : optionsToSelect) {
+            if (option.getText().equals(sel_option)) {
+                option.click();
+                isClicked = true;
+                break;
+            }
+        }
+    }
+    public void selectOptionAC (String value, String sel_option, WebElement element) {
+
+        boolean isClicked = false;
+        element.click();
+        element.sendKeys(value);
+
+        //Select dropdown = new Select(list);
+        List<WebElement> optionsToSelect = driver.findElements(By.className("ui-menu-item"));
+
+        for (WebElement option : optionsToSelect) {
+            if (option.getText().equals(sel_option)) {
+                option.click();
+                isClicked = true;
+                break;
+            }
+        }
+    }
+    public void selectOption1 (String sel_option, WebElement element) {
+        Select dropdown = new Select(element);
+        dropdown.selectByVisibleText(sel_option);
+    }
+
 }
+
+
+
+
+
 
 

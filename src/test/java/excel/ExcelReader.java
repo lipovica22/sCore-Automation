@@ -16,6 +16,8 @@ public class ExcelReader {
         Sheet sheet = workbook.getSheet(sheetName);
 
         int lastColNum = sheet.getRow(0).getLastCellNum();
+        int lastRow = sheet.getLastRowNum();
+
         Map<String,String>data=new HashMap<>();
 
         for (int i=0;i< lastColNum;i++){

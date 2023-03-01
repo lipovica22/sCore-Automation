@@ -1,74 +1,178 @@
 package cSore_Mapping.tabs;
 
+import cSore_Mapping.pages.LifeProductSelection;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import cSore_Mapping.pages.BasePage;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+
+import java.util.List;
 
 public class General extends BasePage {
 
 
     public General(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
-    @FindBy (css="input[class='spinner_year_3 input lift center ui-spinner-input']")
+    @FindBy(css = "input[class='spinner_year_3 input lift center ui-spinner-input']")
     WebElement Trajanje;
-    @FindBy (css="div[id='1']>div[class='answer']>label:nth-child(2)")
+    @FindBy(id = "ContentPlaceHolder1_Kol29_uc_idWucPlaces_tbStates")
     WebElement Drzava;
-    @FindBy (css="div[id='2']>div[class='answer']>label:nth-child(1)")
+    @FindBy(id = "ContentPlaceHolder1_Kol29_uc_idWucPlaces_tbPlaces")
     WebElement Mesto;
-    @FindBy (css="div[id='2']>div[class='answer']>label:nth-child(2)")
+    @FindBy(id = "Kol24")
     WebElement Dinamika;
-    @FindBy (css="label>input.questionRadio_2[value='1']")
+    @FindBy(id = "Kol22")
     WebElement Valuta;
-    @FindBy (css="label>input.questionRadio_2[value='2']")
+    @FindBy(id = "Kol23")
     WebElement ValutnaKlauzula;
-    @FindBy (css="label>input.questionRadio_3[value='1']")
+    @FindBy(id = "Kol21")
     WebElement MetodPlacanja;
-    @FindBy (css="input.questionRadio_3[value='2']")
+    @FindBy(id = "Kol30")
     WebElement Banka;
-    @FindBy (css="input.questionRadio_4[value='1']")
+    @FindBy(id = "li_Kol14_90")
     WebElement Indeksacija;
-    @FindBy (css="input.questionRadio_4[value='2']")
+    @FindBy(id = "Kol62")
     WebElement VrednostIndeksa;
-
-
+    @FindBy(id = "Kol17")
+    WebElement ClientInfo;
 
     public void setTrajanje(String trajanje) throws Exception {
-        Trajanje.clear();
-        Trajanje.sendKeys(trajanje);
+        if(!trajanje.equals("Doživotno")) {
+            Trajanje.clear();
+            Trajanje.sendKeys(trajanje);
+        }
+
     }
+
     public void setDrzava(String drzava) throws Exception {
         Drzava.sendKeys(drzava);
     }
+
     public void setMesto(String mesto) throws Exception {
         Mesto.sendKeys(mesto);
     }
-    public void selectDinamika(String dinamika) throws Exception {
-        Dinamika.sendKeys(dinamika);
+
+    public void selectDinamika(String sel_option) throws Exception {
+        boolean isClicked = false;
+        Dinamika.click();
+        Select dropdown = new Select(Dinamika);
+        List<WebElement> optionsToSelect = dropdown.getOptions();
+
+        for (WebElement option : optionsToSelect) {
+            if (option.getText().equals(sel_option)) {
+                option.click();
+                isClicked = true;
+                break;
+            }
+        }
     }
-    public void selectValuta(String valuta) throws Exception {
-        Valuta.sendKeys(valuta);
+    public WebElement getMesto() {
+        return Mesto;
     }
-    public void selectValutnaKlauzula(String valutnaKlauzula) throws Exception {
-        ValutnaKlauzula.sendKeys(valutnaKlauzula);
-      }
-    public void selectMetodPlacanja(String metodPlacanja) throws Exception {
-        MetodPlacanja.sendKeys(metodPlacanja);
+    public WebElement getDinamika() {
+        return Dinamika;
     }
-    public void selectBanka(String banka) throws Exception {
-        Banka.sendKeys(banka);
+    public WebElement getValuta() {
+        return Valuta;
     }
-    public void chackIndeksacija() throws Exception {
+    public WebElement getValutnaKlauzula(){
+        return ValutnaKlauzula;
+    }
+    public WebElement getMetodPlacanja(){
+        return MetodPlacanja;
+    }
+    public WebElement getBanka(){
+        return Banka;
+    }
+
+    public void checkIndeksacija() throws Exception {
         Indeksacija.click();
     }
+
     public void selectVrednostIndeksa(String vrednostIndeksa) throws Exception {
         VrednostIndeksa.sendKeys(vrednostIndeksa);
     }
 
+    public String url(String proizvod, String vrstaDokumenta) {
+        String url = null;
+        if(vrstaDokumenta.equals("Novi ugovor")) {
+            switch (proizvod) {
+                case "Doživotni riziko": {
+                    url = "https://t-score.uniqa.rs/POS/Serbia/Life/DozivotniRiziko/NewContract/New/General";
+                }
+                break;
+                case "Favorit": {
+                    url = "https://t-score.uniqa.rs/POS/Serbia/Life/FavoritPremium/NewContract/New/General";
+                }
+                break;
+                case "Riziko kredit": {
+                    url = "https://t-score.uniqa.rs/POS/Serbia/Life/RizikoKredit/NewContract/New/General";
+                }
+                break;
+                case "Joker": {
+                    url = "https://t-score.uniqa.rs/POS/Serbia/Life/JokerPremium/NewContract/New/General";
+                }
+                break;
+                case "Spektar": {
+                    url = "https://t-score.uniqa.rs/POS/Serbia/Life/SpektarPremium/NewContract/New/General";
+                }
+                break;
+                case "Riziko Mix": {
+                    url = "https://t-score.uniqa.rs/POS/Serbia/Life/Mozaik/NewContract/New/General";
+                }
+                break;
+                case "Riziko": {
+                    url = "https://t-score.uniqa.rs/POS/Serbia/Life/Riziko/NewContract/New/General";
+                }
+                break;
+                default:
+                    break;
+            }
+        }else {
+            switch (proizvod) {
+                case "Doživotni riziko": {
+                    url = "https://t-score.uniqa.rs/POS/Serbia/Life/DozivotniRiziko/InfoOffer/New/General";
+                }
+                break;
+                case "Favorit": {
+                    url = "https://t-score.uniqa.rs/POS/Serbia/Life/FavoritPremium/InfoOffer/New/General";
+                }
+                break;
+                case "Riziko kredit": {
+                    url = "https://t-score.uniqa.rs/POS/Serbia/Life/RizikoKredit/InfoOffer/New/General";
+                }
+                break;
+                case "Joker": {
+                    url = "https://t-score.uniqa.rs/POS/Serbia/Life/JokerPremium/InfoOffer/New/General";
+                }
+                break;
+                case "Spektar": {
+                    url = "https://t-score.uniqa.rs/POS/Serbia/Life/SpektarPremium/InfoOffer/New/General";
+                }
+                break;
+                case "Riziko Mix": {
+                    url = "https://t-score.uniqa.rs/POS/Serbia/Life/Mozaik/InfoOffer/New/General";
+                }
+                break;
+                case "Riziko": {
+                    url = "https://t-score.uniqa.rs/POS/Serbia/Life/Riziko/InfoOffer/New/General";
+                }
+                break;
+                default:
+                    break;
+            }
+        }
+        return url;
+    }
+    public void inputClientInfo(){
+        ClientInfo.sendKeys("Test");
+    }
 
 }
 
