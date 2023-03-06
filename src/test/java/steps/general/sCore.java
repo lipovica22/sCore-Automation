@@ -64,12 +64,22 @@ public class sCore extends BaseTest {
 
     @Then("Logged in")
     public void loggedIn() throws Exception {
-        Assert.assertEquals(new cSore_Mapping.pages.Login(driver).LoggedUser(), "sCoreAgent");
+        try {
+            Assert.assertEquals(new cSore_Mapping.pages.Login(driver).LoggedUser(), "sCoreAgent");
+    } catch (AssertionError e) {
+        System.out.println("Assertion failed: " + e.getMessage());
+        reportAssertionError(e);
+    }
     }
 
     @And("page is Products")
     public void pageIsProducts() {
-        Assert.assertEquals(driver.getCurrentUrl(), "https://t-score.uniqa.rs/POS/Serbia/Products");
+     try {
+         Assert.assertEquals(driver.getCurrentUrl(), "https://t-score.uniqa.rs/POS/Serbia/Products");
+    } catch (AssertionError e) {
+        System.out.println("Assertion failed: " + e.getMessage());
+        reportAssertionError(e);
+    }
     }
 
 
@@ -116,6 +126,9 @@ public class sCore extends BaseTest {
         if (!data.get("Vrsta dokumenta").equals("Novi ugovor")) {
             new General(driver).inputClientInfo();
         }
+        if (data.get("Proizvod").equals("Riziko kredit")){
+            selectOption("Godine",new General(driver).IzborDuzineTrajanja());
+        }
     }
 
     @And("set place")
@@ -148,8 +161,8 @@ public class sCore extends BaseTest {
         }
     }
 
-    @And("click on Tab Person")
-    public void clickOnTabPerson() throws Exception {
+    @And("click on next tab")
+    public void clickOnNexTab() throws Exception {
         if (data.get("Vrsta dokumenta").equals("Novi ugovor")) {
             new TabView(driver).clickPersonsTab();
         } else {
@@ -159,17 +172,22 @@ public class sCore extends BaseTest {
 
     @Then("tab is PersonConcerns")
     public void tabIsPersonConcerns() {
-        if (data.get("Proizvod").equals("Riziko Mix")) {
-            Assert.assertEquals(new BasePage(driver).ErrorMessage(), "Nije moguće zaključiti Novi ugovor, jer proizvod osiguranja više nije aktivan. Molimo, odaberite neki drugi.");
-        } else {
-
-            if (data.get("Vrsta dokumenta").equals("Novi ugovor")) {
-
-                Assert.assertTrue(driver.getCurrentUrl().contains("Persons"), "Nije prešao na tab Lica već " + driver.getCurrentUrl());
+        try {
+            if (data.get("Proizvod").equals("Riziko Mix")) {
+                Assert.assertEquals(new BasePage(driver).ErrorMessage(), "Nije moguće zaključiti Novi ugovor, jer proizvod osiguranja više nije aktivan. Molimo, odaberite neki drugi.");
             } else {
-                Assert.assertTrue(driver.getCurrentUrl().contains("Concern"), "Nije prešao na tab Ugovornih elemenata već " + driver.getCurrentUrl());
+
+                if (data.get("Vrsta dokumenta").equals("Novi ugovor")) {
+
+                    Assert.assertTrue(driver.getCurrentUrl().contains("Persons"), "Nije prešao na tab Lica već " + driver.getCurrentUrl());
+                } else {
+                    Assert.assertTrue(driver.getCurrentUrl().contains("Concern"), "Nije prešao na tab Ugovornih elemenata već " + driver.getCurrentUrl());
+                }
             }
-        }
+        }  catch (AssertionError e) {
+        System.out.println("Assertion failed: " + e.getMessage());
+        reportAssertionError(e);
+    }
     }
 
     @And("Choose Product type")

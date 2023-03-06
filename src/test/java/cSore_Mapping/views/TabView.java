@@ -29,10 +29,10 @@ public class TabView extends BasePage {
     }
     public void clickPersonsTab() throws Exception {
 
-        PersonsTab.click();
+        clickWithScroll(PersonsTab);
     }
     public void clickConcernsTab() throws Exception {
-        ConsernsTab.click();
+        clickWithScroll(ConsernsTab);
     }
     public void clickConditionsTab() throws Exception {
         clickWithScroll(ConditionsTab);

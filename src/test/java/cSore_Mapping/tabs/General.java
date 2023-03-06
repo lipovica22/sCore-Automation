@@ -41,54 +41,43 @@ public class General extends BasePage {
     WebElement VrednostIndeksa;
     @FindBy(id = "Kol17")
     WebElement ClientInfo;
+    @FindBy(id = "Kol51")
+    WebElement IzborDuzineTrajanja;
 
     public void setTrajanje(String trajanje) throws Exception {
-        if(!trajanje.equals("Doživotno")) {
+        if (!trajanje.equals("Doživotno")) {
             Trajanje.clear();
             Trajanje.sendKeys(trajanje);
         }
 
     }
 
-    public void setDrzava(String drzava) throws Exception {
-        Drzava.sendKeys(drzava);
-    }
-
-    public void setMesto(String mesto) throws Exception {
-        Mesto.sendKeys(mesto);
-    }
-
-    public void selectDinamika(String sel_option) throws Exception {
-        boolean isClicked = false;
-        Dinamika.click();
-        Select dropdown = new Select(Dinamika);
-        List<WebElement> optionsToSelect = dropdown.getOptions();
-
-        for (WebElement option : optionsToSelect) {
-            if (option.getText().equals(sel_option)) {
-                option.click();
-                isClicked = true;
-                break;
-            }
-        }
-    }
     public WebElement getMesto() {
         return Mesto;
     }
+
     public WebElement getDinamika() {
         return Dinamika;
     }
+
     public WebElement getValuta() {
         return Valuta;
     }
-    public WebElement getValutnaKlauzula(){
+
+    public WebElement getValutnaKlauzula() {
         return ValutnaKlauzula;
     }
-    public WebElement getMetodPlacanja(){
+
+    public WebElement getMetodPlacanja() {
         return MetodPlacanja;
     }
-    public WebElement getBanka(){
+
+    public WebElement getBanka() {
         return Banka;
+    }
+
+    public WebElement IzborDuzineTrajanja() {
+        return IzborDuzineTrajanja;
     }
 
     public void checkIndeksacija() throws Exception {
@@ -101,7 +90,7 @@ public class General extends BasePage {
 
     public String url(String proizvod, String vrstaDokumenta) {
         String url = null;
-        if(vrstaDokumenta.equals("Novi ugovor")) {
+        if (vrstaDokumenta.equals("Novi ugovor")) {
             switch (proizvod) {
                 case "Doživotni riziko": {
                     url = "https://t-score.uniqa.rs/POS/Serbia/Life/DozivotniRiziko/NewContract/New/General";
@@ -134,7 +123,7 @@ public class General extends BasePage {
                 default:
                     break;
             }
-        }else {
+        } else {
             switch (proizvod) {
                 case "Doživotni riziko": {
                     url = "https://t-score.uniqa.rs/POS/Serbia/Life/DozivotniRiziko/InfoOffer/New/General";
@@ -170,7 +159,8 @@ public class General extends BasePage {
         }
         return url;
     }
-    public void inputClientInfo(){
+
+    public void inputClientInfo() {
         ClientInfo.sendKeys("Test");
     }
 

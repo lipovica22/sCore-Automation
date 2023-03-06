@@ -115,7 +115,7 @@ public class BaseTest {
                 isClicked = true;
                 break;
             }
-        }
+        }element.click();
     }
     public void selectOptionAC (String value, String sel_option, WebElement element) {
 

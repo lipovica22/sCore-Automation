@@ -31,8 +31,8 @@ public class TestLogin extends BaseTest{
     @Test
     @Description("Login")
     public void login() throws Exception {
-        new Login(driver).setUsername("");
-        new Login(driver).setPassword("");
+        new Login(driver).setUsername("sCoreAgent");
+        new Login(driver).setPassword("OvoJ3Test");
         new Login(driver).clickSubmit();
         Assert.assertEquals(driver.getCurrentUrl(), "https://t-score.uniqa.rs/POS/Serbia/Products");
     }

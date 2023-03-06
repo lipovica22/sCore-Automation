@@ -22,13 +22,13 @@ Feature: Fill tab General by all products as different users for Life Insurance 
     And set currency
     And set FXClause
     And set Payment Method
-    And click on Tab Person
+    And click on next tab
     Then tab is PersonConcerns
 
 
     Examples:
       | row | TC ID          |
-      | 1   | RS_LI_FA_1002  |
+      | 1   | RS_LI_FA_1001  |
       | 2   | RS_LI_FA_1002  |
       | 3   | RS_LI_FA_1003  |
       | 4   | RS_LI_FA_1004  |
