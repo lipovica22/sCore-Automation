@@ -1,15 +1,10 @@
-package cSore_Mapping.tabs;
+package cSore_Mapping.Life.tabs;
 
-import cSore_Mapping.pages.LifeProductSelection;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import cSore_Mapping.pages.BasePage;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
-
-import java.util.List;
+import cSore_Mapping.Common.Pages.BasePage;
 
 public class General extends BasePage {
 

@@ -1,6 +1,5 @@
-package cSore_Mapping.pages;
+package cSore_Mapping.Common.Pages;
 
-import cSore_Mapping.pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

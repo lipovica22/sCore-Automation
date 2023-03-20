@@ -1,6 +1,6 @@
-package cSore_Mapping.views;
+package cSore_Mapping.Common.View;
 
-import cSore_Mapping.pages.BasePage;
+import cSore_Mapping.Common.Pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 

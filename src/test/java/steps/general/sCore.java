@@ -1,8 +1,8 @@
 package steps.general;
 
-import cSore_Mapping.pages.BasePage;
-import cSore_Mapping.tabs.General;
-import cSore_Mapping.views.TabView;
+import cSore_Mapping.Common.Pages.BasePage;
+import cSore_Mapping.Life.tabs.General;
+import cSore_Mapping.Common.View.TabView;
 import excel.ExcelReader;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -13,9 +13,9 @@ import io.cucumber.java.en.When;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.Reporter;
-import cSore_Mapping.pages.LifeProductSelection;
-import cSore_Mapping.pages.Login;
-import cSore_Mapping.pages.Products;
+import cSore_Mapping.Life.LifeProductSelection;
+import cSore_Mapping.Common.Pages.Login;
+import cSore_Mapping.Common.Pages.Products;
 import tests.BaseTest;
 
 import java.io.IOException;
@@ -65,7 +65,7 @@ public class sCore extends BaseTest {
     @Then("Logged in")
     public void loggedIn() throws Exception {
         try {
-            Assert.assertEquals(new cSore_Mapping.pages.Login(driver).LoggedUser(), "sCoreAgent");
+            Assert.assertEquals(new Login(driver).LoggedUser(), "sCoreAgent");
     } catch (AssertionError e) {
         System.out.println("Assertion failed: " + e.getMessage());
         reportAssertionError(e);

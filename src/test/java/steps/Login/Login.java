@@ -47,22 +47,22 @@ public class Login extends BaseTest {
 
     @When("enter username {string}")
     public void enterUsername(String username) throws Exception {
-        new cSore_Mapping.pages.Login(driver).setUsername(username);
+        new cSore_Mapping.Common.Pages.Login(driver).setUsername(username);
     }
 
     @And("enter password {string}")
     public void enterPassword(String password) throws Exception {
-        new cSore_Mapping.pages.Login(driver).setPassword(password);
+        new cSore_Mapping.Common.Pages.Login(driver).setPassword(password);
     }
 
     @And("click on Submit button")
     public void clickOnSubmitButton() throws Exception {
-        new cSore_Mapping.pages.Login(driver).clickSubmit();
+        new cSore_Mapping.Common.Pages.Login(driver).clickSubmit();
     }
 
     @Then("Logged in {string}")
     public void loggedIn(String loggedUser) throws Exception {
-        Assert.assertEquals(new cSore_Mapping.pages.Login(driver).LoggedUser(),loggedUser);
+        Assert.assertEquals(new cSore_Mapping.Common.Pages.Login(driver).LoggedUser(),loggedUser);
     }
 
     @And("page is Products")

@@ -1,4 +1,4 @@
-package cSore_Mapping.pages;
+package cSore_Mapping.Common.Pages;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
