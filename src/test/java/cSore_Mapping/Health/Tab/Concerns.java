@@ -40,7 +40,7 @@ public class Concerns extends BasePage {
     WebElement FranchiseCurrency;
     @FindBy(xpath= "//*[@id='ContentPlaceHolder1_Kol8_uc_display_inline']/div[1]")
     WebElement FileUploadLabel;
-    @FindBy(xpath= "//*[@id='ContentPlaceHolder1_Kol8_uc_display_inline']/div[2]/div/div/input")
+    @FindBy(css= "input[name='file2Upload']")
     WebElement FileUpload;
     @FindBy(xpath= "//*[@id='ContentPlaceHolder1_Kol8_uc_div1']/div/a")
     WebElement Find;
@@ -82,14 +82,14 @@ public class Concerns extends BasePage {
     public void PackageLabel() throws Exception {
 
     }
-    public void Package() throws Exception {
-
+    public WebElement selectPackage() throws Exception {
+        return Package;
     }
     public void PackageDescriptions() throws Exception {
 
     }
-    public void InsuredSum() throws Exception {
-
+    public WebElement selectInsuredSumList() throws Exception {
+        return InsuredSumList;
     }
     public void InsuredSumList() throws Exception {
 
@@ -100,8 +100,8 @@ public class Concerns extends BasePage {
     public void CorrectionLabel() throws Exception {
 
     }
-    public void Correction() throws Exception {
-
+    public WebElement selectCorrection() {
+        return Correction;
     }
     public void CorrectionCurrency() throws Exception {
 
@@ -109,8 +109,8 @@ public class Concerns extends BasePage {
     public void FranchiseLabel() throws Exception {
 
     }
-    public void Franchise() throws Exception {
-
+    public WebElement selectFranchise() throws Exception {
+        return Franchise;
     }
     public void FranchiseCurrency() throws Exception {
 
@@ -118,17 +118,17 @@ public class Concerns extends BasePage {
     public void FileUploadLabel() throws Exception {
 
     }
-    public void FileUpload() throws Exception {
-
+    public void FileUpload(String fileName) throws Exception {
+        FileUpload.sendKeys("C:/Users/srdjan.tanasijevic/IdeaProjects/sCore-Automation/src/test/FilesForUpload/"+fileName+".xlsm");
     }
-    public void Find() throws Exception {
-
+    public void clickFind() throws Exception {
+        Find.click();
     }
     public void Add() throws Exception {
-
+        Add.click();
     }
-    public void AddConcern() throws Exception {
-
+    public void clickAddConcern() throws Exception {
+        AddConcern.click();
     }
     public void ConcernListGrid() throws Exception {
 
@@ -148,6 +148,7 @@ public class Concerns extends BasePage {
 
     }
     public void Search() throws Exception {
+        Search.click();
 
     }
     public void IdentNumber() throws Exception {

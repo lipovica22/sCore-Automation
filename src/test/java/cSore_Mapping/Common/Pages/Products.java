@@ -47,7 +47,7 @@ public class Products extends BasePage {
             case "Kasko":{
                 clickMotor();
             }break;
-            case "Health":{
+            case "Nezgoda, putno i zdravstveno":{
                 clickAccidentHealth();
             }break;
             default:

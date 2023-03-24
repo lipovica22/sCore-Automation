@@ -71,4 +71,9 @@ public class BasePage {
         String error = Error.getText();
         return error;
     }
+    public String InfoMessage(){
+        String info = Info.getText();
+        return info;
+    }
+
 }

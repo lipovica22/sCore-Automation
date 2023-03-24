@@ -14,34 +14,61 @@ public class AccidentHealth extends BasePage {
         PageFactory.initElements(driver,this);
     }
 
-    @FindBy (className="ico_travelassistance")
+    @FindBy (css=".ico_travelassistance")
     WebElement PutnaAsistencija;
-    @FindBy (className="ico_accident")
+    @FindBy (className=".ico_accident")
     WebElement Nezgoda;
-    @FindBy (className="ico_meduniqa")
+    @FindBy (className=".ico_meduniqa")
     WebElement MedUniqa;
-    @FindBy (className="ico_bonusprotekt")
+    @FindBy (className=".ico_bonusprotekt")
     WebElement BonusPaket;
-    @FindBy (className="ico_kreditpaketi")
+    @FindBy (className=".ico_kreditpaketi")
     WebElement KreditPaket;
 
 
-    public void clickPutnaAsistencija() throws Exception {
+    public void selectPutnaAsistencija() throws Exception {
        PutnaAsistencija.click();
     }
-    public void clickNezgoda() throws Exception {
+    public void selectNezgoda() throws Exception {
         Nezgoda.click();
     }
-    public void clickMedUniqa() throws Exception {
+    public void selectMedUniqa() throws Exception {
         MedUniqa.click();
     }
-    public void clickBonusPaket() throws Exception {
+    public void selectBonusPaket() throws Exception {
         BonusPaket.click();
     }
 
-    public void clickKreditPaket() throws Exception {
+    public void selectKreditPaket() throws Exception {
         KreditPaket.click();
     }
 
+    public void selectProizvod(String Proizvod) throws Exception {
 
+        switch (Proizvod) {
+            case "Putna asistencija": {
+                selectPutnaAsistencija();
+            }
+            break;
+            case "Nezgoda": {
+                selectNezgoda();
+            }
+            break;
+            case "MedUniqa": {
+                selectMedUniqa();
+            }
+            break;
+            case "Bonus paket": {
+                selectBonusPaket();
+            }
+            break;
+            case "Kredit paket": {
+                selectKreditPaket();
+            }
+            break;
+            default:
+                break;
+
+        }
+    }
 }

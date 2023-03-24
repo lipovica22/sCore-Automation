@@ -90,7 +90,7 @@ public class sCore extends BaseTest {
     }
 
     @And("Choose product")
-    public void chooseProduct() throws Exception {
+    public void chooseProduct(String Proizvod) throws Exception {
         new LifeProductSelection(driver).selectProizvod(data.get("Proizvod"));
     }
 
@@ -153,10 +153,10 @@ public class sCore extends BaseTest {
 
     @And("set Payment Method")
     public void setPaymentMethod() throws Exception {
-        if (!data.get("Metod placanja").equals("Trajni nalog")) {
-            selectOption(data.get("Metod placanja"), new General(driver).getMetodPlacanja());
+        if (!data.get("Metod plaćanja").equals("Trajni nalog")) {
+            selectOption(data.get("Metod plaćanja"), new General(driver).getMetodPlacanja());
         } else {
-            selectOption(data.get("Metod placanja"), new General(driver).getMetodPlacanja());
+            selectOption(data.get("Metod plaćanja"), new General(driver).getMetodPlacanja());
             selectOption(data.get("Banka"), new General(driver).getBanka());
         }
     }
