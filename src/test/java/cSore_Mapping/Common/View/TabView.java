@@ -47,20 +47,20 @@ public class TabView extends BasePage {
 
 
     public void clickGeneralTab() throws Exception {
-        clickWithScroll(GeneralTab);
+        ClickWithScroll(GeneralTab, "Click general tab");
     }
     public void clickPersonsTab() throws Exception {
 
-        clickWithScroll(PersonTab);
+        ClickWithScroll(PersonTab, "Click person tab");
     }
     public void clickConcernsTab() throws Exception {
-        clickWithScroll(ConcernsTab);
+        ClickWithScroll(ConcernsTab, "Click concerns tab");
     }
     public void clickConditionsTab() throws Exception {
-        clickWithScroll(ConditionsTab);
+        ClickWithScroll(ConditionsTab, "Click conditions tab");
     }
     public void clickAnnulationTab() throws Exception {
-        clickWithScroll(AnnulationTab);
+        ClickWithScroll(AnnulationTab, "Click annulation tab");
     }
     public void clickPersonTab() throws Exception {
 

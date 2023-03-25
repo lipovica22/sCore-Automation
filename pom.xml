@@ -98,7 +98,12 @@
             <scope>test</scope>
         </dependency>
 
-
+        <!--For Allure Report Environment-->
+        <dependency>
+            <groupId>com.github.automatedowl</groupId>
+            <artifactId>allure-environment-writer</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

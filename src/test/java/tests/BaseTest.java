@@ -28,27 +28,26 @@ public class BaseTest {
     }
 
     public void quit(){
+
         driverManager.quitDriver();
     }
 
-    public void openApp(String env) throws Exception {
-        //env = env.toLowerCase();
-        switch (env) {
+    public void openApp(String environment) throws Exception {
+        environment = environment.toUpperCase();
+
+        switch (environment) {
             case "DEVELOPMENT": {
                 driver.get("0");
             }
             break;
-
             case "TEST_BA": {
                 driver.get("https://t-unba-iis.uniqa.ba/pos/BosniaAndHerzegovina/NoAD");
             }
             break;
-
             case "TEST_RS": {
                 driver.get("https://t-score.uniqa.rs/POS/Serbia/NoAD");
             }
             break;
-
             case "TEST_MNE": {
                 driver.get("https://mne-test-iis2.stech.loc/POS/Montenegro/NoAD");
             }
@@ -57,7 +56,6 @@ public class BaseTest {
                 driver.get("https://aasv098.uniqa.hr/POS/Croatia/NoAD/");
             }
             break;
-
             case "INTEGRATION": {
                 driver.get("01");
             }
@@ -66,7 +64,7 @@ public class BaseTest {
                 driver.get("022");
             }
             break;
-            default:
+            default: throw new Exception("Environment " + environment + " not supported!");
                 //driver.get("https://t-score.uniqa.rs/POS/Serbia/NoAD");
         }
     }
@@ -76,7 +74,7 @@ public class BaseTest {
         FileUtils.copyFile(file, new File(path +fileName+".png"));
     }
 
-    public void reporterScreenshot(String fileName, String desc) throws IOException {
+    public void reporterScreenshot(String fileName, String desc, WebDriver driver) throws IOException {
         takeScreenshot(fileName);
         Path filePath = Paths.get(path +fileName+".png");
         InputStream is = Files.newInputStream(filePath);
