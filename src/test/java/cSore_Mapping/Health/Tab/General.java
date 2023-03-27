@@ -172,14 +172,14 @@ public class General extends BasePage {
     public void ContractTypeLabel() throws Exception {
 
     }
-    public void ContractType() throws Exception {
-
+    public WebElement getContractType() {
+        return ContractType;
     }
     public void DestinationLabel() throws Exception {
 
     }
-    public void Destination() throws Exception {
-
+    public WebElement getDestination() {
+        return Destination;
     }
     public void OfferDate() throws Exception {
 
@@ -199,8 +199,9 @@ public class General extends BasePage {
     public void EndOfInsurance() throws Exception {
 
     }
-    public void DurationMonths() throws Exception {
-
+    public void inputDurationMonths(String meseci) throws Exception {
+        DurationMonths.clear();
+        DurationMonths.sendKeys(meseci);
     }
     public void DurationMonthsLabel() throws Exception {
 
@@ -208,8 +209,9 @@ public class General extends BasePage {
     public void DurationDaysLabel() throws Exception {
 
     }
-    public void DurationDays() throws Exception {
-
+    public void inputDurationDays(String dani) throws Exception {
+        DurationDays.clear();
+        DurationDays.sendKeys(dani);
     }
 
     public void OfferDateList() throws Exception {
@@ -255,8 +257,8 @@ public class General extends BasePage {
     public void FXClause() throws Exception {
 
     }
-    public void PaymentMethod() throws Exception {
-
+    public WebElement getPaymentMethod()  {
+        return PaymentMethod;
     }
     public void PaymentMethodLabel() throws Exception {
 
@@ -380,6 +382,8 @@ public class General extends BasePage {
     public void WebShopPolisa() throws Exception {
 
     }
+
+
 
 
 

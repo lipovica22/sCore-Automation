@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.IOException;
+
 public class Login extends BasePage {
 
 
@@ -25,17 +27,21 @@ public class Login extends BasePage {
     WebElement LoggedUser;
 
 
-    public void setUsername(String username)  {
-        Username.sendKeys(username);
+    public void setUsername(String username) throws Exception {
+        SetValue(Username, "Set username", username);
+        //Username.sendKeys(username);
     }
 
-    public void setPassword(String password)  {
-        Password.sendKeys(password);
+    public void setPassword(String password) throws Exception {
+        SetValue(Password, "Set password", password);
+        //Password.sendKeys(password);
     }
-    public void clickSubmit()  {
-        Submit.click();
+    public void clickSubmit() throws Exception {
+        Click(Submit, "Click on Submit button");
+        //Submit.click();
     }
-    public String LoggedUser() {
+    public String LoggedUser() throws IOException {
+        //AreEqual(LoggedUser, "Logged message", "sCoreAgent");
         String user = LoggedUser.getText();
       return user;
     }

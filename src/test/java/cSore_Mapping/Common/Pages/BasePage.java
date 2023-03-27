@@ -22,8 +22,8 @@ import java.util.List;
 
 public class BasePage {
 
-    WebDriver driver;
-    WebDriverWait webDriverWait;
+    public WebDriver driver;
+    public WebDriverWait webDriverWait;
     int waitTime = 3;
     int maxRetries = 3;
     public List<GridDataCollection> listGridDataCollection = new ArrayList<>();
@@ -146,7 +146,7 @@ public class BasePage {
         while (retryCount < maxRetries){
             try {
                 ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, -document.body.scrollHeight)");
-                Click(element, log);
+                Click(element);
 
                 System.out.println("Clicked with scroll: " + log);
                 break;
@@ -309,6 +309,16 @@ public class BasePage {
         }
     }
 
+    public void ScrollDown() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+    }
+
+    public void ScrollUp() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, -document.body.scrollHeight)");
+    }
+
     public void SetValue(WebElement element, String log, String value) throws Exception {
         webDriverWait = new WebDriverWait(driver, waitTime);
         Actions actions = new Actions(driver);
@@ -319,7 +329,7 @@ public class BasePage {
 
         while (retryCount < maxRetries){
             try{
-                Click(element, log);
+                Click(element);
                 element.clear();
                 element.sendKeys(value);
 
@@ -349,7 +359,7 @@ public class BasePage {
 
         while (retryCount < maxRetries){
             try {
-                Click(element, log);
+                Click(element);
                 element.sendKeys(value);
                 element.sendKeys(Keys.ENTER);
                 //TODO: dodati WaitTime.NextElementWaitTime();
@@ -382,7 +392,7 @@ public class BasePage {
 
             try {
                 String chassisNumber = firstElements + randomString;
-                Click(element, log);
+                Click(element);
                 element.sendKeys(chassisNumber);
 
                 System.out.println("SetValueStrNumGenerator: " + log);
@@ -410,7 +420,7 @@ public class BasePage {
 
         while (retryCount < maxRetries){
             try {
-                Click(element, log);
+                Click(element);
                 element.clear();
                 element.sendKeys(value);
                 element.sendKeys(Keys.ENTER);
@@ -440,7 +450,7 @@ public class BasePage {
 
         while (retryCount < maxRetries){
             try {
-                Click(element, log);
+                Click(element);
                 element.clear();
                 element.sendKeys(value);
                 element.sendKeys(Keys.ENTER);
@@ -499,7 +509,7 @@ public class BasePage {
 
         while (retryCount < maxRetries){
             try {
-                Click(element, log);
+                Click(element);
                 element.sendKeys(Keys.CONTROL + "a");
                 element.sendKeys(value);
                 //TODO: dodati WaitTime.NextElementWaitTime();
@@ -539,7 +549,7 @@ public class BasePage {
 
                 for (WebElement option : optionsToSelect) {
                     if (option.getText().equals(sel_value)){
-                        Click(option, log);
+                        Click(option);
                         isClicked = true;
                         System.out.println("SelectValueAC: " + log);
                         break;
@@ -640,7 +650,7 @@ public class BasePage {
 
                 for (WebElement option : optionsToSelect) {
                     if (option.getText().equals(sel_value)){
-                        Click(option, log);
+                        Click(option);
                         isClicked = true;
                         System.out.println("SelectValueAC_ItemName: " + log);
                         break;
@@ -680,7 +690,7 @@ public class BasePage {
         while (retryCount < maxRetries){
             try {
                 boolean isClicked = false;
-                Click(element, log);
+                Click(element);
 
                 webDriverWait = new WebDriverWait(driver, waitTime);
                 webDriverWait.until(ExpectedConditions.elementToBeSelected(element)); //TODO: Ovo proveriti da li je ispravno???
@@ -689,14 +699,14 @@ public class BasePage {
 
                 for (WebElement option : optionsToSelect) {
                     if (option.getText().equals(sel_option)){
-                        Click(option, log);
+                        Click(option);
                         isClicked = true;
                         System.out.println("SelectOption: " + log);
                         break;
                     }
                 }
 
-                Click(element, log);
+                Click(element);
 
                 if (!isClicked){
                     retryCount++;
@@ -731,7 +741,7 @@ public class BasePage {
         while (retryCount < maxRetries){
             try {
                 boolean isClicked = false;
-                Click(element, log);
+                Click(element);
 
                 webDriverWait = new WebDriverWait(driver, waitTime);
                 webDriverWait.until(ExpectedConditions.elementToBeSelected(element)); //TODO: Ovo proveriti da li je ispravno???
@@ -741,7 +751,7 @@ public class BasePage {
                 for (WebElement option : optionsToSelect) {
                     if (option.getText().equals(sel_option)){
                         //TODO: dodati WaitTime.NextElementWaitTime();
-                        Click(option, log);
+                        Click(option);
                         //TODO: dodati WaitTime.NextElementWaitTime();
                         isClicked = true;
                         System.out.println("SelectOptionWithWait: " + log);
@@ -782,7 +792,7 @@ public class BasePage {
         while (retryCount < maxRetries){
             try {
                 boolean isClicked = false;
-                Click(element, log);
+                Click(element);
 
                 webDriverWait = new WebDriverWait(driver, waitTime);
                 webDriverWait.until(ExpectedConditions.elementToBeSelected(element)); //TODO: Ovo proveriti da li je ispravno???
@@ -791,7 +801,7 @@ public class BasePage {
 
                 for (WebElement option : optionsToSelect) {
                     if (option.getText().equals(sel_option)){
-                        Click(option, log);
+                        Click(option);
                         isClicked = true;
                         System.out.println("SelectOptionLi: " + log);
                         break;
@@ -909,6 +919,37 @@ public class BasePage {
         }
     }
 
+    private void Click(WebElement element) throws Exception {
+
+        webDriverWait = new WebDriverWait(driver, waitTime);
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element);
+        actions.perform();
+
+        int retryCount = 0;
+
+        while (retryCount < maxRetries){
+            try {
+                webDriverWait.until(ExpectedConditions.visibilityOf(element));
+                webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
+                actions.moveToElement(element).build().perform(); //hover
+
+                element.click();
+
+                break;
+            } catch (Exception e) {
+                retryCount++;
+
+                System.out.println(retryCount + ".attempt >>>>> Click failed: " + e.getMessage());
+
+                if (retryCount == maxRetries) {
+                    new BaseTest().reporterScreenshot("Failed_Click", "Failed Click " + e.getMessage(), driver);
+                    throw new Exception("Failed to Click on element: " + e.getMessage());
+                }
+            }
+        }
+    }
+
 
     //------------------------- End Private Methods -------------------------
     @FindBy(id = "error_text")
@@ -922,4 +963,9 @@ public class BasePage {
         String error = Error.getText();
         return error;
     }
+    public String InfoMessage(){
+        String info = Info.getText();
+        return info;
+    }
+
 }

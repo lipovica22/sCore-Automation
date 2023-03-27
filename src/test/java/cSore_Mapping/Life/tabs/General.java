@@ -46,7 +46,9 @@ public class General extends BasePage {
         }
 
     }
-
+    public WebElement getDrzava() {
+        return Drzava;
+    }
     public WebElement getMesto() {
         return Mesto;
     }

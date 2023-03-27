@@ -1,5 +1,6 @@
 package tests;
 
+import cSore_Mapping.Common.Pages.BasePage;
 import io.qameta.allure.Allure;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
@@ -113,12 +114,12 @@ public class BaseTest {
             }
         }element.click();
     }
-    public void selectOptionAC (String value, String sel_option, WebElement element) {
+    public void selectOptionAC (String value, String sel_option, WebElement element) throws InterruptedException {
 
         boolean isClicked = false;
         element.click();
         element.sendKeys(value);
-
+        Thread.sleep(1000);
         //Select dropdown = new Select(list);
         List<WebElement> optionsToSelect = driver.findElements(By.className("ui-menu-item"));
 
@@ -134,7 +135,27 @@ public class BaseTest {
         Select dropdown = new Select(element);
         dropdown.selectByVisibleText(sel_option);
     }
-
+    public void ClickMenu(String elementName)
+    {
+        try {
+            List<WebElement> menuList = driver.findElements(By.tagName("a"));
+            for ( WebElement element : menuList) {
+                if (element.getText().equals(elementName)) {
+                    element.click();
+                    break;
+                }
+            }
+        } catch (NotFoundException ex) {
+            throw new NotFoundException("Menu Control Click Issue.", ex);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void JumpToFrame()
+    {
+        driver.switchTo().frame(driver.findElement(By.xpath("//iframe")));
+        //driver.findElement(By.id("MainContent_wucIndividualBusinessEntitySearch_tbIdentificationNumber")).sendKeys("123456789");
+    }
 }
 
 

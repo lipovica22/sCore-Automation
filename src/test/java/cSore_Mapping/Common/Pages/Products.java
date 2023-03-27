@@ -24,16 +24,20 @@ public class Products extends BasePage {
 
 
     public void clickLife() throws Exception {
-       Life.click();
+        Click(Life, "Click on Life");
+       //Life.click();
     }
     public void clickHousehold() throws Exception {
-        Household.click();
+        Click(Household, "Click on Household");
+        //Household.click();
     }
     public void clickMotor() throws Exception {
-        Motor.click();
+        Click(Motor, "Click on Motor");
+        //Motor.click();
     }
     public void clickAccidentHealth() throws Exception {
-        AccidentHealth.click();
+        Click(AccidentHealth, "Click on AccidentHealth");
+        //AccidentHealth.click();
     }
     public void selectLob(String LOB) throws Exception {
 
@@ -47,12 +51,11 @@ public class Products extends BasePage {
             case "Kasko":{
                 clickMotor();
             }break;
-            case "Health":{
+            case "Nezgoda, putno i zdravstveno":{
                 clickAccidentHealth();
             }break;
             default:
-                break;
+                throw new Exception("Non-existent LOB");
         }
     }
-
 }

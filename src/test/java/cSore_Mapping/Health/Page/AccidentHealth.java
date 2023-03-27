@@ -14,34 +14,65 @@ public class AccidentHealth extends BasePage {
         PageFactory.initElements(driver,this);
     }
 
-    @FindBy (className="ico_travelassistance")
+    @FindBy (css=".ico_travelassistance")
     WebElement PutnaAsistencija;
-    @FindBy (className="ico_accident")
+    @FindBy (className=".ico_accident")
     WebElement Nezgoda;
-    @FindBy (className="ico_meduniqa")
+    @FindBy (className=".ico_meduniqa")
     WebElement MedUniqa;
-    @FindBy (className="ico_bonusprotekt")
+    @FindBy (className=".ico_bonusprotekt")
     WebElement BonusPaket;
-    @FindBy (className="ico_kreditpaketi")
+    @FindBy (className=".ico_kreditpaketi")
     WebElement KreditPaket;
 
 
-    public void clickPutnaAsistencija() throws Exception {
-       PutnaAsistencija.click();
+    public void selectPutnaAsistencija() throws Exception {
+        Click(PutnaAsistencija, "Click on Putna Asistencija");
+       //PutnaAsistencija.click();
     }
-    public void clickNezgoda() throws Exception {
-        Nezgoda.click();
+    public void selectNezgoda() throws Exception {
+        Click(Nezgoda, "Click on Nezgoda");
+        //Nezgoda.click();
     }
-    public void clickMedUniqa() throws Exception {
-        MedUniqa.click();
+    public void selectMedUniqa() throws Exception {
+        Click(MedUniqa, "Click on MedUniqa");
+        //MedUniqa.click();
     }
-    public void clickBonusPaket() throws Exception {
-        BonusPaket.click();
+    public void selectBonusPaket() throws Exception {
+        Click(BonusPaket, "Click on Bonus Paket");
+        //BonusPaket.click();
     }
 
-    public void clickKreditPaket() throws Exception {
-        KreditPaket.click();
+    public void selectKreditPaket() throws Exception {
+        Click(KreditPaket, "Click on Kredit Paket");
+        //KreditPaket.click();
     }
 
+    public void selectProizvod(String Proizvod) throws Exception {
 
+        switch (Proizvod) {
+            case "Putna asistencija": {
+                selectPutnaAsistencija();
+            }
+            break;
+            case "Nezgoda": {
+                selectNezgoda();
+            }
+            break;
+            case "MedUniqa": {
+                selectMedUniqa();
+            }
+            break;
+            case "Bonus paket": {
+                selectBonusPaket();
+            }
+            break;
+            case "Kredit paket": {
+                selectKreditPaket();
+            }
+            break;
+            default:
+                throw new Exception("Non-existent product");
+        }
+    }
 }
