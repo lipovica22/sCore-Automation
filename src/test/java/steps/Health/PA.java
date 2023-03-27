@@ -1,6 +1,6 @@
 package steps.Health;
 
-import cSore_Mapping.Common.Menu.LeftManu;
+import cSore_Mapping.Common.Menu.LeftMenu;
 import cSore_Mapping.Common.Pages.BasePage;
 import cSore_Mapping.Common.View.TabView;
 import cSore_Mapping.Health.Page.AccidentHealth;
@@ -100,16 +100,16 @@ public class PA extends BaseTest{
 
     @And("choose Document type")
     public void chooseDocumentType()throws Exception {
-        new LeftManu(driver).clickLeftMenuButton();
-        ClickMenu("Novi dokument");
-        Thread.sleep(500);
-        ClickMenu(data.get("Vrsta dokumenta"));
-        Thread.sleep(2000);
+        new LeftMenu(driver).clickLeftMenuButton(data.get("Vrsta dokumenta"));
+        //ClickMenu("Novi dokument");
+        //Thread.sleep(500);
+        //ClickMenu(data.get("Vrsta dokumenta"));
+        //Thread.sleep(2000);
     }
 
     @Then("choose Contract type")
     public void chooseContractType() throws Exception{
-        selectOption(data.get("Tip ugovora"), new cSore_Mapping.Health.Tab.General(driver).getContractType());
+        new cSore_Mapping.Health.Tab.General(driver).contractType(data.get("Tip ugovora"));
     }
 
     @And("choose Destination")

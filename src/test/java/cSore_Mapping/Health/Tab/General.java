@@ -172,8 +172,8 @@ public class General extends BasePage {
     public void ContractTypeLabel() throws Exception {
 
     }
-    public WebElement getContractType() {
-        return ContractType;
+    public void contractType(String contract) throws Exception {
+        SelectOption(ContractType, "Select contract type", contract);
     }
     public void DestinationLabel() throws Exception {
 

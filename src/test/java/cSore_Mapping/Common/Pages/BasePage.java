@@ -163,6 +163,33 @@ public class BasePage {
         }
     }
 
+    public void ClickMenu(WebElement element, String log, String elementName)
+    {
+        webDriverWait = new WebDriverWait(driver, waitTime);
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element);
+        actions.perform();
+        try {
+            webDriverWait.until(ExpectedConditions.visibilityOf(element));
+            webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
+            actions.moveToElement(element).build().perform(); //hover
+
+            List<WebElement> menuList = driver.findElements(By.tagName("a"));
+
+            for ( WebElement elem : menuList) {
+                if (elem.getText().equals(elementName)) {
+                    elem.click();
+                    System.out.println("Clicked on left menu: " + log);
+                    break;
+                }
+            }
+        } catch (NotFoundException ex) {
+            throw new NotFoundException("Menu Control Click Issue.", ex);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public String GetSelectedItem(WebElement element, String log) throws Exception {
         webDriverWait = new WebDriverWait(driver, waitTime);
         Actions actions = new Actions(driver);
@@ -693,14 +720,15 @@ public class BasePage {
                 Click(element);
 
                 webDriverWait = new WebDriverWait(driver, waitTime);
-                webDriverWait.until(ExpectedConditions.elementToBeSelected(element)); //TODO: Ovo proveriti da li je ispravno???
+                webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("option"))); //TODO: Ispravno Metoda isprobana
 
                 List<WebElement> optionsToSelect = driver.findElements(By.cssSelector("option"));
 
                 for (WebElement option : optionsToSelect) {
                     if (option.getText().equals(sel_option)){
-                        Click(option);
+                        option.click();
                         isClicked = true;
+                        retryCount = 3;
                         System.out.println("SelectOption: " + log);
                         break;
                     }

@@ -7,8 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LeftManu extends BasePage {
-    public LeftManu(WebDriver driver) {
+public class LeftMenu extends BasePage {
+    public LeftMenu(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
@@ -17,8 +17,10 @@ public class LeftManu extends BasePage {
     @FindBy(id= "mCSB_1_container")
     WebElement LeftMenuControls;
 
-    public void clickLeftMenuButton() throws Exception {
-        Click(LeftMenuButton, "Click on left menu button");
+    public void clickLeftMenuButton(String typeDocument) throws Exception {
+        Click(LeftMenuButton, "Click on left menu");
+        ClickMenu(LeftMenuButton, "Clicked on new document", "Novi dokument");
+        ClickMenu(LeftMenuButton, "Clicked on type document", typeDocument);
         //LeftMenuButton.click();
     }
     public void clickLeftMenuControls(String documentType) throws Exception {
