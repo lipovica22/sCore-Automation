@@ -6,8 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class TotButtonView extends BasePage {
-    public TotButtonView(WebDriver driver) {
+public class TopButtonView extends BasePage {
+    public TopButtonView(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }

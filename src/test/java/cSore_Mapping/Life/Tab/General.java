@@ -1,4 +1,4 @@
-package cSore_Mapping.Life.tabs;
+package cSore_Mapping.Life.Tab;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

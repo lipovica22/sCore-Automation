@@ -45,6 +45,6 @@ public class DriverManagerFactory {
                         .put("Browser.Version", browserVersion)
                         .put("Operating System", platform)
                         .put("Environment", "v 3.32.1.0")
-                        .build(), "C:\\Users\\rss0105\\IdeaProjects\\DemoProject\\sCore-Automation\\results\\allure-results\\");
+                        .build(), "C:\\Users\\srdjan.tanasijevic\\IdeaProjects\\DemoProject\\sCore-Automation\\results\\allure-results\\");
     }
 }

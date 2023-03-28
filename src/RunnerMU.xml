@@ -12,8 +12,7 @@
     <test name="TC">
 
         <classes>
-            <class name="runners.Health.TA.TravelAssistance"/>
-
+            <class name="runners.Health.Meduniqa.HealthMU"/>
         </classes>
 
     </test>

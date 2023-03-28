@@ -7,6 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class General extends BasePage {
+
+
     public General(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -41,9 +43,37 @@ public class General extends BasePage {
     public void country(String valueCountry) throws Exception {
         SelectValueAC(drzava, "Select Country", valueCountry, valueCountry);
     }
+
+    public void inputDuration(String trajanj){
+        trajanje.clear();
+        trajanje.sendKeys(trajanj);
+    }
+
     public void place(String valuePlace) throws Exception {
         SelectValueAC(mesto, "Select place", valuePlace, "11000 Beograd");
     }
+
+    public void selectDinamika(String dinamik) throws Exception {
+        SelectOption(dinamika, "Payment dynamic selected", dinamik);
+    }
+
+    public void selectValuta(String valut) throws Exception {
+        SelectOption(valuta, "Currency selected", valut);
+    }
+
+    public void selectValutnaKlauzula(String valutnaKlauzul)throws Exception  {
+        SelectOption(valutnaKlauzula, "FXClause selected", valutnaKlauzul);
+    }
+
+    public void selectMetodPlacanja(String metodPlacanj)throws Exception  {
+        SelectOption(metodPlacanja,"PaymentMethod selected", metodPlacanj);
+    }
+
+    public void selectBanka(String bank) throws Exception {
+        SelectOption(banka, "Dinamika selected", bank);
+    }
+
+
     //-------------------- End Methods --------------------
 }
 

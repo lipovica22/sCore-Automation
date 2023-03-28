@@ -1,8 +1,11 @@
-package steps.Health;
+package steps.Health.Meduniqa;
 
-import cSore_Mapping.Common.Menu.LeftMenu;
 import cSore_Mapping.Common.Pages.BasePage;
+import cSore_Mapping.Common.Pages.Products;
+import cSore_Mapping.Common.View.TabView;
+import cSore_Mapping.Common.View.TopButtonView;
 import cSore_Mapping.Health.Page.AccidentHealth;
+import cSore_Mapping.Health.Tab.GeneralMU;
 import excel.ExcelReader;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -14,14 +17,14 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.Reporter;
 import cSore_Mapping.Common.Pages.Login;
-import cSore_Mapping.Common.Pages.Products;
 import tests.BaseTest;
+
 
 import java.io.IOException;
 import java.util.Map;
 
 
-public class TravelAssistance extends BaseTest{
+public class MU extends BaseTest {
     // naredne dve linije služe da iz xml file uzmemo parametre za cucumber
     String browser = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browser");
     String quit = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("quit");
@@ -41,9 +44,10 @@ public class TravelAssistance extends BaseTest{
         }
     }
     @Given("login on app RS Test {string} {string} {string}")
-    public void loginOnAppBATest(String file, String sheet, String row) throws Exception {
+    public void loginOnAppRSTest(String file, String sheet, String row) throws IOException {
         driver.get("https://t-score.uniqa.rs/POS/Serbia/NoAD");
         data = new ExcelReader().getRowData(file, sheet, Integer.parseInt(row));
+
     }
 
     @When("enter username")
@@ -63,22 +67,16 @@ public class TravelAssistance extends BaseTest{
 
     @Then("Logged in")
     public void loggedIn() throws Exception {
-        //TODO: Obrisati try i catch koristiti new Login(driver).loggedUser(loggedUser);
-        new Login(driver).testAssert();
-        /*
         try {
             Assert.assertEquals(new Login(driver).LoggedUser(), "sCoreAgent");
         } catch (AssertionError e) {
             System.out.println("Assertion failed: " + e.getMessage());
             reportAssertionError(e);
         }
-
-         */
     }
 
     @And("page is Products")
     public void pageIsProducts() {
-        //TODO: Obrisati try i catch
         try {
             Assert.assertEquals(driver.getCurrentUrl(), "https://t-score.uniqa.rs/POS/Serbia/Products");
         } catch (AssertionError e) {
@@ -86,7 +84,6 @@ public class TravelAssistance extends BaseTest{
             reportAssertionError(e);
         }
     }
-
     @Then("choose LOB")
     public void chooseLOB() throws Exception {
         new Products(driver).selectLob(data.get("LOB"));
@@ -100,63 +97,54 @@ public class TravelAssistance extends BaseTest{
 
     @And("choose Document type")
     public void chooseDocumentType()throws Exception {
-        new LeftMenu(driver).clickLeftMenuButton(data.get("Vrsta dokumenta"));
-        //ClickMenu("Novi dokument");
-        //Thread.sleep(500);
-        //ClickMenu(data.get("Vrsta dokumenta"));
-        //Thread.sleep(2000);
+        new cSore_Mapping.Common.Menu.LeftMenu(driver).clickLeftMenuButton(data.get("Vrsta dokumenta"));
     }
 
-    @Then("choose Contract type")
-    public void chooseContractType() throws Exception{
-        new cSore_Mapping.Health.Tab.General(driver).selectContractType(data.get("Tip ugovora"));
-    }
-
-    @And("choose Destination")
-    public void chooseDestination() throws Exception{
-        new cSore_Mapping.Health.Tab.General(driver).selectDestination(data.get("Odredište"));
-        //selectOption(data.get("Odredište"), new cSore_Mapping.Health.Tab.General(driver).getDestination());
-    }
-
-    @And("input Duration of insurance")
+    @Then("input Duration of insurance")
     public void inputDurationOfInsurance() throws Exception {
-        if (data.get("Tip ugovora").equals("Individualna Multi Visa")) {
-            new cSore_Mapping.Health.Tab.General(driver).setInputDurationMonths(data.get("Meseci"));
-        }else {
-            new cSore_Mapping.Health.Tab.General(driver).setInputDurationDays(data.get("Dani"));
-        }
-
-    }
-    @And("set Country")
-    public void setCountry() throws Exception{
-        new cSore_Mapping.Common.Tab.General(driver).country(data.get("Država ugovaranja"));
-        //selectOptionAC(data.get("Država ugovaranja"), data.get("Država ugovaranja"), new cSore_Mapping.Common.Tab.General(driver).getDrzava());
+        new cSore_Mapping.Common.Tab.General(driver).inputDuration(data.get("Trajanje"));
     }
 
     @And("set Place")
     public void setPlace() throws Exception{
         new cSore_Mapping.Common.Tab.General(driver).place(data.get("Mesto ugovaranja"));
-        //selectOptionAC(data.get("Mesto ugovaranja"), "11000 Beograd", new cSore_Mapping.Common.Tab.General(driver).getMesto());
     }
+    @Then("choose Tariff groups")
+    public void chooseTariffGroups() throws Exception {
+        new GeneralMU(driver).selectTariff(data.get("Tarifa osiguranja"));
+    }
+
+    @And("choose Classification types")
+    public void chooseClassificationTypes() throws Exception{
+        new GeneralMU(driver).selectTariffType(data.get("Vrsta tarife"));
+    }
+
+    @And("choose Premium calculation types")
+    public void choosePremiumCalculationTypes() throws Exception {
+        new GeneralMU(driver).selectPremiumCalculatonMethod(data.get("Način obračuna premije"));
+    }
+
+
     @And("set Payment Method")
     public void setPaymentMethod() throws Exception {
-        new cSore_Mapping.Health.Tab.General(driver).selectPaymentMethod(data.get("Metod plaćanja"));
-        //selectOption(data.get("Metod plaćanja"), new cSore_Mapping.Health.Tab.General(driver).getPaymentMethod());
+        new cSore_Mapping.Common.Tab.General(driver).selectDinamika(data.get("Metod plaćanja"));
     }
 
     @And("click on tab Persons")
     public void clickOnTabPersons() throws Exception{
-        new cSore_Mapping.Common.View.TabView(driver).clickPersonsTab();
+        new TabView(driver).clickPersonsTab();
     }
 
     @Then("set Same person")
     public void setSamePerson() throws Exception{
         new cSore_Mapping.Common.Tab.Person(driver).clickSamePerson();
+
     }
 
     @And("click on add button")
     public void clickOnAddButton() throws Exception{
         new cSore_Mapping.Common.Tab.Person(driver).clickAddPersonPolicyHolder();
+        Thread.sleep(2000);
     }
 
     @And("on Iframe input Identification number")
@@ -197,35 +185,28 @@ public class TravelAssistance extends BaseTest{
 
     @When("click on Concerns tab")
     public void clickOnConcernsTab() throws Exception{
-        new cSore_Mapping.Common.View.TabView(driver).clickConcernsTab();
+        new TabView(driver).clickConcernsTab();
     }
 
     @And("choose Package")
     public void choosePackage() throws Exception{
         new cSore_Mapping.Health.Tab.Concerns(driver).selectPackage(data.get("Paketi"));
-        //selectOption(data.get("Paketi"), new cSore_Mapping.Health.Tab.Concerns(driver).selectPackage());
-        //Thread.sleep(500);
+
     }
 
     @And("choose Insured sum")
     public void chooseInsuredSum() throws Exception{
         new cSore_Mapping.Health.Tab.Concerns(driver).selectInsuredSumList(data.get("Suma osiguranja"));
-        //selectOption(data.get("Suma osiguranja"), new cSore_Mapping.Health.Tab.Concerns(driver).selectInsuredSumList());
-        //Thread.sleep(500);
     }
 
     @And("choose Sum correction")
     public void chooseSumCorrection()throws Exception {
         new cSore_Mapping.Health.Tab.Concerns(driver).selectCorrection(data.get("Korekcija OS"));
-        //selectOption(data.get("Korekcija OS"), new cSore_Mapping.Health.Tab.Concerns(driver).selectCorrection());
-        //Thread.sleep(500);
     }
 
     @And("choose Franchise")
     public void chooseFranchise() throws Exception{
-        new cSore_Mapping.Health.Tab.Concerns(driver).selectFranchise(data.get("Učešće u šteti"));
-        //selectOption(data.get("Učešće u šteti"), new cSore_Mapping.Health.Tab.Concerns(driver).selectFranchise());
-        //Thread.sleep(500);
+       new cSore_Mapping.Health.Tab.Concerns(driver).selectFranchise(data.get("Učešće u šteti"));
     }
 
     @Then("add insured persons")
@@ -238,18 +219,18 @@ public class TravelAssistance extends BaseTest{
             new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).clickSearchButtonFL();
             new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).clickSearchResultGridFL();
             new cSore_Mapping.Common.Dialog.Iframe.ViewPerson(driver).clickAcceptButton();
-            new cSore_Mapping.Common.View.TotButtonView(driver).clickCertificationOfSignature();
+            new TopButtonView(driver).clickSubmit();
         }
         if(data.get("Tip ugovora").equals("Grupna")) {
             new cSore_Mapping.Health.Tab.Concerns(driver).fileUpload("grupno");
             new cSore_Mapping.Health.Tab.Concerns(driver).add();
-            //Thread.sleep(2000);
+            Thread.sleep(2000);
         }
     }
 
     @And("click on button Calculate")
     public void clickOnButtonCalculate() throws Exception{
-        new cSore_Mapping.Common.View.TotButtonView(driver).clickCalculate();
+        new TopButtonView(driver).clickCalculate();
     }
 
     @Then("check calculated Premium")
@@ -259,26 +240,26 @@ public class TravelAssistance extends BaseTest{
 
     @And("click on button Activate")
     public void clickOnButtonActivate() throws Exception{
-        new cSore_Mapping.Common.View.TotButtonView(driver).clickActivate();
-        //Thread.sleep(5000);
+        new TopButtonView(driver).clickActivate();
+        Thread.sleep(5000);
     }
 
     @And("click on button Print PUI")
     public void clickOnButtonPrintPUI() throws Exception{
-        new cSore_Mapping.Common.View.TotButtonView(driver).clickPrintPUI();
-        //Thread.sleep(5000);
+        new TopButtonView(driver).clickPrintPUI();
+        Thread.sleep(5000);
     }
 
     @And("click on button Confirm Payment")
     public void clickOnButtonConfirmPayment() throws Exception{
-        new cSore_Mapping.Common.View.TotButtonView(driver).clickConfirmPayment();
-        //Thread.sleep(5000);
+        new TopButtonView(driver).clickConfirmPayment();
+        Thread.sleep(5000);
     }
 
     @And("click on button Certification of signature")
     public void clickOnButtonCertificationOfSignature()throws Exception {
-        new cSore_Mapping.Common.View.TotButtonView(driver).clickCertificationOfSignature();
-        //Thread.sleep(5000);
+        new TopButtonView(driver).clickCertificationOfSignature();
+        Thread.sleep(5000);
     }
     @Then("check Info message After Certification Of Signature")
     public void checkInfoMessageAfterCertificationOfSignature() throws Exception{
@@ -297,4 +278,43 @@ public class TravelAssistance extends BaseTest{
     public void chooseEntityType() throws Exception {
         new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).setChooseEntityTypes(data.get("Ugovarač Pr/Fi lice"));
     }
+
+    @Then("print offer document and health questionnaire")
+    public void printOfferDocumentAndHealthQuestionnaire() {
+
+    }
+
+    @Then("input height")
+    public void inputHeight() {
+    }
+
+    @And("input weight")
+    public void inputWeight() {
+    }
+
+    @And("status of insured person")
+    public void statusOfInsuredPerson() {
+    }
+
+    @And("choose insured risks and sums")
+    public void chooseInsuredRisksAndSums() {
+    }
+
+    @And("fill health questionnaire")
+    public void fillHealthQuestionnaire() {
+
+
+
+    }
+
+    @And("upload offer document")
+    public void uploadOfferDocument() {
+    }
+
+    @Then("check Warring message After Certification Of Signature")
+    public void checkWarringMessageAfterCertificationOfSignature() {
+    }
+
+
+
 }

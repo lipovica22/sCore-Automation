@@ -12,33 +12,33 @@ public class AccidentHealth extends BasePage {
         PageFactory.initElements(driver,this);
     }
 
-    @FindBy (css=".ico_travelassistance")
-    WebElement putnaAsistencija;
-    @FindBy (className=".ico_accident")
-    WebElement nezgoda;
-    @FindBy (className=".ico_meduniqa")
-    WebElement medUniqa;
-    @FindBy (className=".ico_bonusprotekt")
-    WebElement bonusPaket;
-    @FindBy (className=".ico_kreditpaketi")
-    WebElement kreditPaket;
+    @FindBy (className="ico_travelassistance")
+    WebElement PutnaAsistencija;
+    @FindBy (className="ico_accident")
+    WebElement Nezgoda;
+    @FindBy (className="ico_meduniqa")
+    WebElement MedUniqa;
+    @FindBy (className="ico_bonusprotekt")
+    WebElement BonusPaket;
+    @FindBy (className="ico_kreditpaketi")
+    WebElement KreditPaket;
 
     //--------------------- Methods ----------------------
     public void selectPutnaAsistencija() throws Exception {
-        Click(putnaAsistencija, "Click on Travel Assistance");
+        Click(PutnaAsistencija, "Click on Travel Assistance");
     }
     public void selectNezgoda() throws Exception {
-        Click(nezgoda, "Click on Accident");
+        Click(Nezgoda, "Click on Accident");
     }
     public void selectMedUniqa() throws Exception {
-        Click(medUniqa, "Click on MedUniqa");
+        Click(MedUniqa, "Click on MedUniqa");
     }
     public void selectBonusPaket() throws Exception {
-        Click(bonusPaket, "Click on Bonus Package");
+        Click(BonusPaket, "Click on Bonus Package");
     }
 
     public void selectKreditPaket() throws Exception {
-        Click(kreditPaket, "Click on Credit Package");
+        Click(KreditPaket, "Click on Credit Package");
     }
 
     public void selectProizvod(String proizvod) throws Exception {
