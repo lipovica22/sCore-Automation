@@ -13,28 +13,11 @@ public class Documentation extends BasePage {
     }
 
     @FindBy(xpath= "//*[@id='Kol1']/div/div[1]/h4")
-    WebElement DocumentationLabel;
+    WebElement documentationLabel;
     @FindBy(id= "basic-grid_1")
-    WebElement DocumentationGrid;
+    WebElement documentationGrid;
     @FindBy(xpath= "//*[@id='Kol2']/div/div[1]/h4")
-    WebElement ScannedDocumentationLabel;
+    WebElement scannedDocumentationLabel;
     @FindBy(id= "basic-grid_2")
-    WebElement ScannedDocumentationGrid;
-
-
-    public void DocumentationLabel() throws Exception {
-
-    }
-    public void DocumentationGrid() throws Exception {
-
-    }
-    public void ScannedDocumentationLabel() throws Exception {
-
-    }
-    public void ScannedDocumentationGrid() throws Exception {
-
-    }
-
-
-
+    WebElement scannedDocumentationGrid;
 }

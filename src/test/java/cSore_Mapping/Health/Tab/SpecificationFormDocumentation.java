@@ -13,27 +13,11 @@ public class SpecificationFormDocumentation extends BasePage {
     }
 
     @FindBy(xpath= "//*[@id='Kol1']/div/div[1]/h4")
-    WebElement DocumentationLabel;
+    WebElement documentationLabel;
     @FindBy(id= "basic-grid_1")
-    WebElement DocumentationGrid;
+    WebElement documentationGrid;
     @FindBy(xpath= "//*[@id='Kol1']/div/div[1]/h4")
-    WebElement PrintOutDocumentationLabel;
+    WebElement printOutDocumentationLabel;
     @FindBy(id= "basic-grid_2")
-    WebElement PrintOutDocumentationGrid;
-
-    public void DocumentationLabel() throws Exception {
-
-    }
-    public void DocumentationGrid() throws Exception {
-
-    }
-    public void PrintOutDocumentationLabel() throws Exception {
-
-    }
-    public void PrintOutDocumentationGrid() throws Exception {
-
-    }
-
-
-
+    WebElement printOutDocumentationGrid;
 }

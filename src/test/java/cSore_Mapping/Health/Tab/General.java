@@ -7,387 +7,167 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class General extends BasePage {
-
     public General(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
 
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/fieldset/legend")
-    WebElement DokumentLabel;
-   
+    WebElement dokumentLabel;
     @FindBy(xpath= "//*[@id='form1'/div[4]/div[2]/div/div/div[2]/fieldset/div[1]/div[3]/div[1]/div[1]/div[1]/div/label")   
-    WebElement ContractTypeLabel;
+    WebElement contractTypeLabel;
     @FindBy(id= "Kol26")   
-    WebElement ContractType;
+    WebElement contractType;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/fieldset/div[1]/div[3]/div[1]/div[1]/div[2]/div/label")   
-    WebElement DestinationLabel;
+    WebElement destinationLabel;
     @FindBy(id= "Kol27")   
-    WebElement Destination;
+    WebElement destination;
     @FindBy(id= "Kol19")   
-    WebElement OfferDate;
+    WebElement offerDate;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/fieldset/div[1]/div[3]/div[1]/div[2]/div[2]/div/label")   
-    WebElement OfferDateLabel;
+    WebElement offerDateLabel;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/fieldset/div[1]/div[3]/div[1]/div[2]/div[3]/div/label")   
-    WebElement StartOfInsuranceLAbel;
+    WebElement startOfInsuranceLabel;
     @FindBy(id= "Kol2")   
-    WebElement StartOfInsurance;
+    WebElement startOfInsurance;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/fieldset/div[1]/div[3]/div[1]/div[3]/div[2]/div/label")
-    WebElement EndOfInsuranceLAbel;
+    WebElement endOfInsuranceLAbel;
     @FindBy(id= "Kol4")   
-    WebElement EndOfInsurance;
+    WebElement endOfInsurance;
     @FindBy(id= "Kol33")   
-    WebElement DurationMonths;
+    WebElement durationMonths;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/fieldset/div[1]/div[3]/div[1]/div[2]/div[6]/div/label")   
-    WebElement DurationMonthsLabel;
+    WebElement durationMonthsLabel;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/fieldset/div[1]/div[3]/div[1]/div[2]/div[7]/div/label")   
-    WebElement DurationDaysLabel;
+    WebElement durationDaysLabel;
     @FindBy(id= "Kol34")   
-    WebElement DurationDays;
-
+    WebElement durationDays;
     @FindBy(css= ".ui-state-active")
-    WebElement OfferDateList;
+    WebElement offerDateList;
     @FindBy(css= ".ui-state-active")
-    WebElement EndOfInsuranceList;
+    WebElement endOfInsuranceList;
     @FindBy(css= ".ui-state-active")
-    WebElement StartOfInsuranceList;
-
+    WebElement startOfInsuranceList;
     @FindBy(id= "ContentPlaceHolder1_Kol29_uc_idWucPlaces_tbPlaces")   
-    WebElement Places;
+    WebElement places;
     @FindBy(xpath= "//*[@id='place_29']/div/div[2]/div/label")   
-    WebElement PlacesLabel;
+    WebElement placesLabel;
     @FindBy(id= "ContentPlaceHolder1_Kol29_uc_idWucPlaces_tbStates")   
-    WebElement States;
+    WebElement states;
     @FindBy(xpath= "//*[@id='place_29']/div/div[1]/div/label") 
-    WebElement StatesLabel;
+    WebElement statesLabel;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/fieldset/div[1]/div[3]/div[1]/div[8]/fieldset/legend")   
-    WebElement PaymentsLabel;
+    WebElement paymentsLabel;
     @FindBy(id= "Kol24")  
-    WebElement PaymentDynamic;
+    WebElement paymentDynamic;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/fieldset/div[1]/div[3]/div[1]/div[8]/fieldset/div[1]/div/label")   
-    WebElement PaymentDynamicLabel;
+    WebElement paymentDynamicLabel;
     @FindBy(id= "Kol22")   
-    WebElement Currency;
+    WebElement currency;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/fieldset/div[1]/div[3]/div[1]/div[8]/fieldset/div[2]/div/label")   
-    WebElement CurrencyLabel;
+    WebElement currencyLabel;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/fieldset/div[1]/div[3]/div[1]/div[8]/fieldset/div[3]/div/label")
-    WebElement FXClauseLabel;
+    WebElement fxClauseLabel;
     @FindBy(id= "Kol23")   
-    WebElement FXClause;
+    WebElement fxClause;
     @FindBy(id= "Kol21")   
-    WebElement PaymentMethod;
+    WebElement paymentMethod;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/fieldset/div[1]/div[3]/div[1]/div[8]/fieldset/div[4]/div/label")   
-    WebElement PaymentMethodLabel;
+    WebElement paymentMethodLabel;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/fieldset/div[1]/div[3]/div[1]/div[8]/fieldset/div[5]/div/label")   
-    WebElement BankLabel;
+    WebElement bankLabel;
     @FindBy(id= "Kol30")   
-    WebElement Bank;
-
+    WebElement bank;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/fieldset/div[1]/div[3]/div[1]/div[8]/fieldset/legend")   
-    WebElement PodaciOGratisuLabel;
+    WebElement podaciOGratisuLabel;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/fieldset/div[1]/div[3]/div[1]/div[8]/fieldset/div[1]/div/label")   
-    WebElement TipgratisaLabel;
+    WebElement tipGratisaLabel;
     @FindBy(id= "Kol41")
-    WebElement Tipgratisa;
+    WebElement tipGratisa;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/fieldset/div[1]/div[3]/div[1]/div[8]/fieldset/div[3]/div/label")   
-    WebElement InterniNalogLabel;
+    WebElement interniNalogLabel;
     @FindBy(id= "Kol43")
-    WebElement InterniNalog;
+    WebElement interniNalog;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/fieldset/div[1]/div[3]/div[1]/div[8]/fieldset/div[2]/div/label")   
-    WebElement TroskovniCentarLabel;
+    WebElement troskovniCentarLabel;
     @FindBy(id= "Kol42")
-    WebElement TroskovniCentar;
-
+    WebElement troskovniCentar;
     @FindBy(id= "Kol14_61")
-    WebElement PopustZaLojalnostBUSPLUS;
+    WebElement popustZaLojalnostBUSPLUS;
     @FindBy(css= "label[for='Kol14_61']")
-    WebElement PopustZaLojalnostBUSPLUSLabel;
+    WebElement popustZaLojalnostBUSPLUSLabel;
     @FindBy(id= "Kol14_5")
-    WebElement OsiguranjeProfesionalnihVozaca;
+    WebElement osiguranjeProfesionalnihVozaca;
     @FindBy(css= "label[for='Kol14_5']")
-    WebElement OsiguranjeProfesionalnihVozacaLabel;
+    WebElement osiguranjeProfesionalnihVozacaLabel;
     @FindBy(id= "Kol14_34")
-    WebElement VodiciIVozaciTuristickihAgencija;
+    WebElement vodiciIVozaciTuristickihAgencija;
     @FindBy(css= "label[for='Kol14_34']")
-    WebElement VodiciIVozaciTuristickihAgencijaLabel;
+    WebElement vodiciIVozaciTuristickihAgencijaLabel;
     @FindBy(id= "Kol14_33")
-    WebElement UdruzenjeTransporteraVozaca;
+    WebElement udruzenjeTransporteraVozaca;
     @FindBy(css= "label[for='Kol14_33']")
-    WebElement UdruzenjeTransporteraVozacaLabel;
+    WebElement udruzenjeTransporteraVozacaLabel;
     @FindBy(id= "Kol14_6")
-    WebElement TuristickeAgencijePoUgovoru;
+    WebElement turistickeAgencijePoUgovoru;
     @FindBy(css= "label[for='Kol14_6']")
-    WebElement TuristickeAgencijePoUgovoruLabel;
+    WebElement turistickeAgencijePoUgovoruLabel;
     @FindBy(id= "Kol14_7")
-    WebElement KolektivnoOsiguranjeZaZaposlene;
+    WebElement kolektivnoOsiguranjeZaZaposlene;
     @FindBy(css= "label[for='Kol14_7']")
-    WebElement KolektivnoOsiguranjeZaZaposleneLabel;
+    WebElement kolektivnoOsiguranjeZaZaposleneLabel;
     @FindBy(id= "Kol14_19")
-    WebElement ZaposleniKodUniqaKompanija;
+    WebElement zaposleniKodUniqaKompanija;
     @FindBy(css= "label[for='Kol14_19']")
-    WebElement ZaposleniKodUniqaKompanijaLabel;
+    WebElement zaposleniKodUniqaKompanijaLabel;
     @FindBy(id= "Kol14_8")
-    WebElement PremijaPoDanu;
+    WebElement premijaPoDanu;
     @FindBy(css= "label[for='Kol14_8']")
-    WebElement PremijaPoDanuLabel;
+    WebElement premijaPoDanuLabel;
     @FindBy(id= "Kol14_20")
-    WebElement PoslovnoPutovanje;
+    WebElement poslovnoPutovanje;
     @FindBy(css= "label[for='Kol14_20']")
-    WebElement PoslovnoPutovanjeLabel;
+    WebElement poslovnoPutovanjeLabel;
     @FindBy(id= "Kol14_21")
-    WebElement ZaposleniKodPravnogLica;
+    WebElement zaposleniKodPravnogLica;
     @FindBy(css= "label[for='Kol14_21']")
-    WebElement ZaposleniKodPravnogLicaLabel;
+    WebElement zaposleniKodPravnogLicaLabel;
     @FindBy(id= "Kol14_30")
-    WebElement DokumentKontaktCentra;
+    WebElement dokumentKontaktCentra;
     @FindBy(css= "label[for='Kol14_30']")
-    WebElement DokumentKontaktCentraLabel;
+    WebElement dokumentKontaktCentraLabel;
     @FindBy(id= "Kol14_26")
-    WebElement Gratis;
+    WebElement gratis;
     @FindBy(css= "label[for='Kol14_26']")
-    WebElement GratisLabel;
+    WebElement gratisLabel;
     @FindBy(id= "Kol14_9")
-    WebElement PolisaSaTerena;
+    WebElement polisaSaTerena;
     @FindBy(css= "label[for='Kol14_9']")
-    WebElement PolisaSaTerenaLabel;
+    WebElement polisaSaTerenaLabel;
     @FindBy(id= "Kol14_35")
-    WebElement PolisaBezPoreza;
+    WebElement polisaBezPoreza;
     @FindBy(css= "label[for='Kol14_35']")
-    WebElement PolisaBezPrezaLabel;
+    WebElement polisaBezPrezaLabel;
     @FindBy(css= "label[for='Kol14_57']")
-    WebElement WebShopLabel;
+    WebElement webShopLabel;
     @FindBy(id= "Kol14_57")
-    WebElement WebShopPolisa;
+    WebElement webShopPolisa;
 
-
-    public void DokumentLabel() throws Exception {
-
-    }
-    public void DocumentNumber() throws Exception {
-
-    }
-    public void DocumentNumberLabel() throws Exception {
-
-    }
-    public void ContractTypeLabel() throws Exception {
-
-    }
-    public void contractType(String contract) throws Exception {
-        SelectOption(ContractType, "Select contract type", contract);
-    }
-    public void DestinationLabel() throws Exception {
-
-    }
-    public void destination(String valueDestination) throws Exception {
-        SelectOption(Destination, "Select destination", valueDestination);
-    }
-    public void OfferDate() throws Exception {
-
-    }
-    public void OfferDateLabel() throws Exception {
-
-    }
-    public void StartOfInsuranceLAbel() throws Exception {
-
-    }
-    public void StartOfInsurance() throws Exception {
-
-    }
-    public void EndOfInsuranceLAbel() throws Exception {
-
-    }
-    public void EndOfInsurance() throws Exception {
-
-    }
-    public void inputDurationMonths(String meseci) throws Exception {
-        SetValue(DurationMonths, "Set value month", meseci);
-        //DurationMonths.clear();
-        //DurationMonths.sendKeys(meseci);
-    }
-    public void DurationMonthsLabel() throws Exception {
-
-    }
-    public void DurationDaysLabel() throws Exception {
-
-    }
-    public void inputDurationDays(String dani) throws Exception {
-        SetValue(DurationDays, "Set value day", dani);
-        //DurationDays.clear();
-        //DurationDays.sendKeys(dani);
-    }
-
-    public void OfferDateList() throws Exception {
-
-    }
-    public void EndOfInsuranceList() throws Exception {
-
-    }
-    public void StartOfInsuranceList() throws Exception {
-
-    }
-
-    public void Places() throws Exception {
-
-    }
-    public void PlacesLabel() throws Exception {
-
-    }
-    public void States() throws Exception {
-
-    }
-    public void StatesLabel() throws Exception {
-
-    }
-    public void PaymentsLabel() throws Exception {
-
-    }
-    public void PaymentDynamic() throws Exception {
-
-    }
-    public void PaymentDynamicLabel() throws Exception {
-
-    }
-    public void Currency() throws Exception {
-
-    }
-    public void CurrencyLabel() throws Exception {
-
-    }
-    public void FXClauseLabel() throws Exception {
-
-    }
-    public void FXClause() throws Exception {
-
-    }
-    public void paymentMethod(String valuePayment) throws Exception {
-        SelectOption(PaymentMethod, "Select payment", valuePayment);
-    }
-    public void PaymentMethodLabel() throws Exception {
-
-    }
-    public void BankLabel() throws Exception {
-
-    }
-    public void Bank() throws Exception {
-
-    }
-
-    public void PodaciOGratisuLabel() throws Exception {
-
-    }
-    public void TipgratisaLabel() throws Exception {
-
+    //-------------------- Methods --------------------
+    public void selectContractType(String contract) throws Exception {
+        SelectOption(contractType, "Select contract type", contract);
     }
-    public void Tipgratisa() throws Exception {
-
-    }
-    public void InterniNalogLabel() throws Exception {
-
-    }
-    public void InterniNalog() throws Exception {
-
-    }
-    public void TroskovniCentarLabel() throws Exception {
-
-    }
-    public void TroskovniCentar() throws Exception {
-
-    }
-
-    public void PopustZaLojalnostBUSPLUS() throws Exception {
-
-    }
-    public void PopustZaLojalnostBUSPLUSLabel() throws Exception {
-
-    }
-    public void OsiguranjeProfesionalnihVozaca() throws Exception {
-
-    }
-    public void OsiguranjeProfesionalnihVozacaLabel() throws Exception {
-
-    }
-    public void VodiciIVozaciTuristickihAgencija() throws Exception {
-
-    }
-    public void VodiciIVozaciTuristickihAgencijaLabel() throws Exception {
-
-    }
-    public void UdruzenjeTransporteraVozaca() throws Exception {
-
-    }
-    public void UdruzenjeTransporteraVozacaLabel() throws Exception {
-
-    }
-    public void TuristickeAgencijePoUgovoru() throws Exception {
-
-    }
-    public void TuristickeAgencijePoUgovoruLabel() throws Exception {
-
-    }
-    public void KolektivnoOsiguranjeZaZaposlene() throws Exception {
-
-    }
-    public void KolektivnoOsiguranjeZaZaposleneLabel() throws Exception {
-
-    }
-    public void ZaposleniKodUniqaKompanija() throws Exception {
-
+    public void selectDestination(String valueDestination) throws Exception {
+        SelectOption(destination, "Select destination", valueDestination);
     }
-    public void ZaposleniKodUniqaKompanijaLabel() throws Exception {
-
-    }
-    public void PremijaPoDanu() throws Exception {
-
-    }
-    public void PremijaPoDanuLabel() throws Exception {
-
-    }
-    public void PoslovnoPutovanje() throws Exception {
-
-    }
-    public void PoslovnoPutovanjeLabel() throws Exception {
-
-    }
-    public void ZaposleniKodPravnogLica() throws Exception {
-
-    }
-    public void ZaposleniKodPravnogLicaLabel() throws Exception {
-
-    }
-    public void DokumentKontaktCentra() throws Exception {
-
-    }
-    public void DokumentKontaktCentraLabel() throws Exception {
-
-    }
-    public void Gratis() throws Exception {
-
-    }
-    public void GratisLabel() throws Exception {
-
-    }
-    public void PolisaSaTerena() throws Exception {
-
-    }
-    public void PolisaSaTerenaLabel() throws Exception {
-
-    }
-    public void PolisaBezPoreza() throws Exception {
-
+    public void setInputDurationMonths(String meseci) throws Exception {
+        SetValue(durationMonths, "Set value month", meseci);
     }
-    public void PolisaBezPrezaLabel() throws Exception {
-
-    }
-    public void WebShopLabel() throws Exception {
-
+    public void setInputDurationDays(String dani) throws Exception {
+        SetValue(durationDays, "Set value day", dani);
     }
-    public void WebShopPolisa() throws Exception {
-
+    public void selectPaymentMethod(String valuePayment) throws Exception {
+        SelectOption(paymentMethod, "Select payment", valuePayment);
     }
-
-
-
-
-
-
+    //-------------------- End Methods --------------------
 }

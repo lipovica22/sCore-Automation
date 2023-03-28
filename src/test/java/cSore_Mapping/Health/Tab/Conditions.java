@@ -13,65 +13,23 @@ public class Conditions extends BasePage {
     }
 
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[1]/div/div/fieldset/legend")
-    WebElement AkcijeLabel;
-
+    WebElement akcijeLabel;
     @FindBy(id= "")   
-    WebElement Akcije;
-
-          
+    WebElement akcije;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[3]/fieldset/legend")   
-    WebElement KomercijalniPopustiLabel;
+    WebElement komercijalniPopustiLabel;
     @FindBy(id= "Kol6")   
-    WebElement Coupon;
+    WebElement coupon;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[3]/fieldset/div[2]/div/label")   
-    WebElement CouponLabel;
+    WebElement couponLabel;
     @FindBy(id= "Kol7")   
-    WebElement AddCoupon;
-
+    WebElement addCoupon;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[3]/fieldset/div[5]/div/label")   
-    WebElement CommercialDiscountLabel;
+    WebElement commercialDiscountLabel;
     @FindBy(id= "Kol8")   
-    WebElement CommercialDiscount;
+    WebElement commercialDiscount;
     @FindBy(id= "Kol9")   
-    WebElement AddCommercialDiscount;
-
+    WebElement addCommercialDiscount;
     @FindBy(id= "basic-grid_10")   
-    WebElement CommercialDiscounts;
-
-    public void AkcijeLabel() throws Exception {
-
-    }
-
-    public void Akcije() throws Exception {
-
-    }
-
-    public void KomercijalniPopustiLabel() throws Exception {
-
-    }
-    public void Coupon() throws Exception {
-
-    }
-    public void CouponLabel() throws Exception {
-
-    }
-    public void AddCoupon() throws Exception {
-
-    }
-
-    public void CommercialDiscountLabel() throws Exception {
-
-    }
-    public void CommercialDiscount() throws Exception {
-
-    }
-    public void AddCommercialDiscount() throws Exception {
-
-    }
-
-    public void CommercialDiscounts() throws Exception {
-
-    }
-
-
+    WebElement commercialDiscounts;
 }

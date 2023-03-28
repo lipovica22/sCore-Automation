@@ -116,7 +116,7 @@ public class BasePage {
                 actions.moveToElement(element).build().perform(); //hover
 
                 element.click();
-                //TODO: dodati WaitTime.WaitForElementToBeClickable("id", "UploadedDocumentsListView_tbl1");
+                core_class.WaitTime.WaitForElementNotToBeVisible(driver, "id", "UploadedDocumentsListView_tbl1");
                 //TODO: dodati WaitTime.PageWaitTime();
 
                 System.out.println("ClickUploadDocuments: " + log);
@@ -622,10 +622,10 @@ public class BasePage {
                 boolean isClicked = false;
                 SetValue(element, log, value);
 
-                //TODO: dodati WaitTime.FillList();
-
-                webDriverWait = new WebDriverWait(driver, waitTime);
-                webDriverWait.until(ExpectedConditions.elementToBeSelected(element)); //TODO: Ovo proveriti da li je ispravno???
+                try {
+                    webDriverWait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.className("ui-menu-item"))));
+                }catch (Exception ignored){
+                }
 
                 List<WebElement> optionsToSelect = driver.findElements(By.className("ui-menu-item"));
 
@@ -675,8 +675,10 @@ public class BasePage {
             try {
                 boolean isClicked = false;
 
-                webDriverWait = new WebDriverWait(driver, waitTime);
-                webDriverWait.until(ExpectedConditions.elementToBeSelected(element)); //TODO: Ovo proveriti da li je ispravno???
+                try {
+                    webDriverWait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.className("myClassItemName"))));
+                }catch (Exception ignored){
+                }
 
                 List<WebElement> optionsToSelect = driver.findElements(By.className("myClassItemName"));
 
@@ -779,8 +781,10 @@ public class BasePage {
                 boolean isClicked = false;
                 Click(element);
 
-                webDriverWait = new WebDriverWait(driver, waitTime);
-                webDriverWait.until(ExpectedConditions.elementToBeSelected(element)); //TODO: Ovo proveriti da li je ispravno???
+                try {
+                    webDriverWait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.cssSelector("option"))));
+                }catch (Exception ignored){
+                }
 
                 List<WebElement> optionsToSelect = driver.findElements(By.cssSelector("option"));
 
@@ -831,8 +835,10 @@ public class BasePage {
                 boolean isClicked = false;
                 Click(element);
 
-                webDriverWait = new WebDriverWait(driver, waitTime);
-                webDriverWait.until(ExpectedConditions.elementToBeSelected(element)); //TODO: Ovo proveriti da li je ispravno???
+                try {
+                    webDriverWait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.cssSelector("li"))));
+                }catch (Exception ignored){
+                }
 
                 List<WebElement> optionsToSelect = driver.findElements(By.cssSelector("li"));
 
@@ -937,7 +943,6 @@ public class BasePage {
             throw new ElementClickInterceptedException("Grid Control Is Cell Checked Issue. " + log);
         }
     }
-
 
     //------------------------- End Methods -----------------------------------
 

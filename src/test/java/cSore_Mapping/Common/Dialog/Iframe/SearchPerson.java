@@ -7,115 +7,71 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class SearchPerson extends BasePage {
-
-
     public SearchPerson(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
     @FindBy(tagName= "iframe")
-    WebElement PersonFrame;
+    WebElement personFrame;
     @FindBy(id= "linkAdd")
-    WebElement AddNewButton;
+    WebElement addNewButton;
     @FindBy(id= "MainContent_wucBusinessEntityTypes_ddlBusinessEntityTypes")
-    WebElement EntityTypes;
+    WebElement entityTypes;
     @FindBy(xpath= "//*[@id='MainContent_wucIndividualBusinessEntitySearch_divFirstName']/label")
-    WebElement FirstNameLabel;
+    WebElement firstNameLabel;
     @FindBy(id= "MainContent_wucIndividualBusinessEntitySearch_tbFirstName")
-    WebElement FirstName;
+    WebElement firstName;
     @FindBy(xpath= "//*[@id='MainContent_wucIndividualBusinessEntitySearch_divSurname']/label")
-    WebElement SurnameLabel;
+    WebElement surnameLabel;
     @FindBy(id= "MainContent_wucIndividualBusinessEntitySearch_tbSurname")
-    WebElement Surname;
+    WebElement surname;
     @FindBy(xpath= "//*[@id='custom-tab-nav']/div/fieldset/div[1]/div[3]/div[1]/label")
     WebElement IdentificationNumberLabel;
     @FindBy(id= "MainContent_wucIndividualBusinessEntitySearch_tbIdentificationNumber")
-    WebElement IdentificationNumber;
+    WebElement identificationNumber;
     @FindBy(xpath= "//*[@id='custom-tab-nav']/div/fieldset/div[1]/div[3]/div[2]/label")
-    WebElement PassportNumberLabel;
+    WebElement passportNumberLabel;
     @FindBy(id= "MainContent_wucIndividualBusinessEntitySearch_tbPassportNumber")
-    WebElement PassportNumber;
+    WebElement passportNumber;
     @FindBy(xpath= "//*[@id='custom-tab-nav']/div/fieldset/div[1]/div[3]/div[3]/label")
-    WebElement TelephoneLabel;
+    WebElement telephoneLabel;
     @FindBy(id= "MainContent_wucIndividualBusinessEntitySearch_tbTelephone")
-    WebElement Telephone;
+    WebElement telephone;
     @FindBy(xpath= "//*[@id='custom-tab-nav']/div/fieldset/div[1]/div[4]/div[1]/label")
-    WebElement StreetLabel;
+    WebElement streetLabel;
     @FindBy(id= "MainContent_wucIndividualBusinessEntitySearch_tbStreet")
-    WebElement Street;
+    WebElement street;
     @FindBy(xpath= "//*[@id='custom-tab-nav']/div/fieldset/div[1]/div[4]/div[2]/label")
-    WebElement HouseNumberLabel;
+    WebElement houseNumberLabel;
     @FindBy(id= "MainContent_wucIndividualBusinessEntitySearch_tbHouseNumber")
-    WebElement HouseNumber;
+    WebElement houseNumber;
     @FindBy(xpath= "//*[@id='custom-tab-nav']/div/fieldset/div[1]/div[4]/div[3]/label")
-    WebElement PlaceLabel;
+    WebElement placeLabel;
     @FindBy(id= "MainContent_wucIndividualBusinessEntitySearch_tbPlace")
-    WebElement Place;
+    WebElement place;
     @FindBy(xpath= "//*[@id='MainContent_wucIndividualBusinessEntitySearch_divOnlyEmployees']/div/span")
-    WebElement EmployeesLabel;
+    WebElement employeesLabel;
     @FindBy(id= "MainContent_wucIndividualBusinessEntitySearch_cbEmployees")
-    WebElement Employees;
+    WebElement employees;
     @FindBy(xpath= "//*[@id='MainContent_wucIndividualBusinessEntitySearch_divOnlyIntermediaries']/span")
-    WebElement IntermediariesLabel;
+    WebElement intermediariesLabel;
     @FindBy(id= "MainContent_wucIndividualBusinessEntitySearch_cbIntermediaries")
-    WebElement Intermediaries;
+    WebElement intermediaries;
     @FindBy(xpath= "//*[@id='MainContent_wucIndividualBusinessEntitySearch_divOnlySuppliers']/span")
-    WebElement SuppliersLabel;
+    WebElement suppliersLabel;
     @FindBy(id= "MainContent_wucIndividualBusinessEntitySearch_cbSuppliers")
-    WebElement Suppliers;
+    WebElement suppliers;
     @FindBy(xpath= "//*[@id='MainContent_wucIndividualBusinessEntitySearch_divOnlyEntrepreneurs']/span")
-    WebElement EntrepreneursLabel;
+    WebElement entrepreneursLabel;
     @FindBy(id= "MainContent_wucIndividualBusinessEntitySearch_cbEntrepreneurs")
-    WebElement Entrepreneurs;
+    WebElement entrepreneurs;
     @FindBy(xpath= "//*[@id='MainContent_wucIndividualBusinessEntitySearch_divOnlyActive']/span")
-    WebElement ActiveLabel;
+    WebElement activeLabel;
     @FindBy(id= "MainContent_wucIndividualBusinessEntitySearch_cbOnlyActive")
-    WebElement Active;
+    WebElement active;
     @FindBy(id= "MainContent_wucIndividualBusinessEntitySearch_SearchButton")
-    WebElement SearchButton;
-
-    public void PersonFrame() throws Exception {}
-    public void AddNewButton() throws Exception {}
-    public void chooseEntityTypes(String entity) throws Exception {
-        EntityTypes.sendKeys(entity);
-    }
-    public void FirstNameLabel() throws Exception {}
-    public void FirstName() throws Exception {}
-    public void SurnameLabel() throws Exception {}
-    public void Surname() throws Exception {}
-    public void IdentificationNumberLabel() throws Exception {}
-    public void IdentificationNumber(String JMBG) throws Exception {
-        IdentificationNumber.sendKeys(JMBG);
-    }
-    public void PassportNumberLabel() throws Exception {}
-    public void PassportNumber() throws Exception {}
-    public void TelephoneLabel() throws Exception {}
-    public void Telephone() throws Exception {}
-    public void StreetLabel() throws Exception {}
-    public void Street() throws Exception {}
-    public void HouseNumberLabel() throws Exception {}
-    public void HouseNumber() throws Exception {}
-    public void PlaceLabel() throws Exception {}
-    public void Place() throws Exception {}
-    public void EmployeesLabel() throws Exception {}
-    public void Employees() throws Exception {}
-    public void IntermediariesLabel() throws Exception {}
-    public void Intermediaries() throws Exception {}
-    public void SuppliersLabel() throws Exception {}
-    public void Suppliers() throws Exception {}
-    public void EntrepreneursLabel() throws Exception {}
-    public void Entrepreneurs() throws Exception {}
-    public void ActiveLabel() throws Exception {}
-    public void Active() throws Exception {}
-    public void clickSearchButton() throws Exception {
-        SearchButton.click();
-    }
-
-
-
-
-
+    WebElement searchButton;
 
 }
 

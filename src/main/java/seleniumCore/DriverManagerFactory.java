@@ -35,7 +35,7 @@ public class DriverManagerFactory {
     private static void setAllureEnvironment(DriverManager driverManager) throws Exception {
         Capabilities capabilities = ((RemoteWebDriver)driverManager.getDriver()).getCapabilities();
 
-        String browserName = capabilities.getBrowserName();
+        String browserName = capabilities.getBrowserName().toUpperCase();
         String browserVersion = capabilities.getVersion();
         String platform = capabilities.getPlatform().name();
 
@@ -44,7 +44,7 @@ public class DriverManagerFactory {
                         .put("Browser", browserName)
                         .put("Browser.Version", browserVersion)
                         .put("Operating System", platform)
-                        .put("Environment", "QA")
+                        .put("Environment", "v 3.32.1.0")
                         .build(), "C:\\Users\\rss0105\\IdeaProjects\\DemoProject\\sCore-Automation\\results\\allure-results\\");
     }
 }

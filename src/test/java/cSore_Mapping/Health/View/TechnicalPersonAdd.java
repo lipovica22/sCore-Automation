@@ -8,66 +8,29 @@ import org.openqa.selenium.support.PageFactory;
 
 public class TechnicalPersonAdd extends BasePage {
 
-
     public TechnicalPersonAdd(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
 
     @FindBy(xpath= "//*[@id='ContentPlaceHolder1_wucTechnicalPersons_divTechnicalPersonsOnDocument']/fieldset/legend")
-    WebElement TechnicalPersonsLabel;
+    WebElement technicalPersonsLabel;
     @FindBy(id= "tblTechnicalPersonsOnDocument")
-    WebElement TechnicalPersonsGrid;
-
+    WebElement technicalPersonsGrid;
     @FindBy(xpath= "//*[@id='divAddTechnicalPerson']/fieldset/legend")
-    WebElement AddTechnicalPersonLabel;
+    WebElement addTechnicalPersonLabel;
     @FindBy(xpath= "//*[@id='ContentPlaceHolder1_wucTechnicalPersons_DivTechnicalPersonType']/div[1]/text()")
-    WebElement TechnicalPersonTypesLabel;
+    WebElement technicalPersonTypesLabel;
     @FindBy(id= "ContentPlaceHolder1_wucTechnicalPersons_wucTechnicalPersonTypesAdd_ddlTechnicalPersonTypes")
-    WebElement TechnicalPersonTypes;
+    WebElement technicalPersonTypes;
     @FindBy(xpath= "//*[@id='ContentPlaceHolder1_wucTechnicalPersons_DivAddTechnicalPersonLabel']")
-    WebElement ExternalReferenceIDLabel;
+    WebElement externalReferenceIDLabel;
     @FindBy(id= "ContentPlaceHolder1_wucTechnicalPersons_TbExternalReferenceID")
-    WebElement ExternalReferenceID;
+    WebElement externalReferenceID;
     @FindBy(id= "ContentPlaceHolder1_wucTechnicalPersons_TbName")
-    WebElement TechnicalPersonsName;
+    WebElement technicalPersonsName;
     @FindBy(id= "ContentPlaceHolder1_wucTechnicalPersons_BtnOpenSearch")
-    WebElement OpenSearchButton;
+    WebElement openSearchButton;
     @FindBy(id= "ContentPlaceHolder1_wucTechnicalPersons_BtnAddTechnicalPerson")
-    WebElement AddTechnicalPersonButton;
-
-
-    public void TechnicalPersonsLabel() throws Exception {
-
-    }
-    public void TechnicalPersonsGrid() throws Exception {
-
-    }
-
-    public void AddTechnicalPersonLabel() throws Exception {
-
-
-    }
-    public void TechnicalPersonTypesLabel() throws Exception {
-
-    }
-    public void TechnicalPersonTypes() throws Exception {
-
-    }
-    public void ExternalReferenceIDLabel() throws Exception {
-
-    }
-    public void ExternalReferenceID() throws Exception {
-
-    }
-    public void TechnicalPersonsName() throws Exception {
-
-    }
-    public void OpenSearchButton() throws Exception {
-
-    }
-    public void AddTechnicalPersonButton() throws Exception {
-
-    }
-
+    WebElement addTechnicalPersonButton;
 }

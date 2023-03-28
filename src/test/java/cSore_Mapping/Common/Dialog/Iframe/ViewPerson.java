@@ -7,107 +7,74 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class ViewPerson extends BasePage {
-
-
     public ViewPerson(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
     @FindBy(tagName= "iframe")
-    WebElement AddEditPersonMUFrame;
+    WebElement addEditPersonMUFrame;
     @FindBy(id= "MainContent_IndividualClientNonLifeFormView_divAccept")
-    WebElement AcceptButton;
+    WebElement acceptButton;
     @FindBy(id= "MainContent_IndividualClientNonLifeFormView_lbEdit")
-    WebElement EditButton;
+    WebElement editButton;
     @FindBy(id= "MainContent_IndividualClientNonLifeFormView_hlSearch")
-    WebElement Search;
+    WebElement search;
     @FindBy(xpath= "//*[@id='MainContent_IndividualClientNonLifeFormView_pnlFirstName']/label")
-    WebElement FirstNameLabel;
+    WebElement firstNameLabel;
     @FindBy(xpath= "MainContent_IndividualClientNonLifeFormView_lbFirstName")
-    WebElement FirstName;
+    WebElement firstName;
     @FindBy(xpath= "//*[@id='MainContent_IndividualClientNonLifeFormView_pnlSurname']/label")
-    WebElement SurnameLabel;
+    WebElement surnameLabel;
     @FindBy(xpath= "MainContent_IndividualClientNonLifeFormView_lbSurname")
-    WebElement Surname;
+    WebElement surname;
     @FindBy(xpath= "//*[@id='MainContent_IndividualClientNonLifeFormView_pnlGender']/label")
-    WebElement GenderLabel;
+    WebElement genderLabel;
     @FindBy(xpath= "MainContent_IndividualClientNonLifeFormView_lbGender")
-    WebElement Gender;
+    WebElement gender;
     @FindBy(xpath= "//*[@id='MainContent_IndividualClientNonLifeFormView_pnlDateOfBirth']/label")
-    WebElement DateOfBirthLabel;
+    WebElement dateOfBirthLabel;
     @FindBy(xpath= "MainContent_IndividualClientNonLifeFormView_lbDateOfBirth")
-    WebElement DateOfBirth;
+    WebElement dateOfBirth;
     @FindBy(xpath= "//*[@id='MainContent_IndividualClientNonLifeFormView_pnlIsForeigner']/div/span")
-    WebElement ForeingerLabel;
+    WebElement foreingerLabel;
     @FindBy(xpath= "MainContent_IndividualClientNonLifeFormView_cbIsForeigner")
-    WebElement Foreinger;
+    WebElement foreinger;
     @FindBy(xpath= "//*[@id='MainContent_IndividualClientNonLifeFormView_divDeceased']/span")
-    WebElement DeceasedLabel;
+    WebElement deceasedLabel;
     @FindBy(xpath= "MainContent_IndividualClientNonLifeFormView_ucBusinessEntityMarkId_cbBusinessEntityMark")
-    WebElement Deceased;
+    WebElement deceased;
     @FindBy(xpath= "//*[@id='MainContent_IndividualClientNonLifeFormView_pnlJMBG']/label")
-    WebElement JMBGLabel;
+    WebElement jmbgLabel;
     @FindBy(xpath= "MainContent_IndividualClientNonLifeFormView_lbJMBG")
-    WebElement JMBG;
+    WebElement jmbg;
     @FindBy(xpath= "//*[@id='MainContent_IndividualClientNonLifeFormView_pnlHealthCard']/label")
-    WebElement HealthCardLabel;
+    WebElement healthCardLabel;
     @FindBy(xpath= "MainContent_IndividualClientNonLifeFormView_lbHealthCard")
-    WebElement HealthCard;
+    WebElement healthCard;
     @FindBy(xpath= "//*[@id='MainContent_IndividualClientNonLifeFormView_pnlPersonOccupation']/label")
-    WebElement PersonOccupationLabel;
+    WebElement personOccupationLabel;
     @FindBy(xpath= "MainContent_IndividualClientNonLifeFormView_lbPersonOccupationName")
-    WebElement Occupation;
-
+    WebElement occupation;
     @FindBy(xpath= "//*[@id='MainContent_divAddresses']/fieldset/legend")
-    WebElement AddressesLabel;
+    WebElement addressesLabel;
     @FindBy(id= "MainContent_BusinessEntityAddressListView_tbl1")
-    WebElement Addresses;
-
+    WebElement addresses;
     @FindBy(xpath= "//*[@id='MainContent_divTelephones']/fieldset/legend")
-    WebElement TelephoneLabel;
+    WebElement telephoneLabel;
     @FindBy(id= "MainContent_BusinessEntityTelephoneListView_tbl1")
-    WebElement TelephoneListViewTable;
+    WebElement telephoneListViewTable;
 
     @FindBy(xpath= "//*[@id='MainContent_divEmails']/fieldset/legend")
-    WebElement EmailsLabel;
+    WebElement emailsLabel;
     @FindBy(id= "MainContent_BusinessEntityEmailListView_tbl1")
-    WebElement EmailListView;
+    WebElement emailListView;
 
-    public void AddEditPersonMUFrame() throws Exception {}
+
+    //-------------------- Methods ------------------------
     public void clickAcceptButton() throws Exception {
-        Click(AcceptButton, "Click on accept for person");
-        //AcceptButton.click();
+        Click(acceptButton, "Click on accept for person");
     }
-    public void EditButton() throws Exception {}
-    public void Search() throws Exception {}
-    public void FirstNameLabel() throws Exception {}
-    public void FirstName() throws Exception {}
-    public void SurnameLabel() throws Exception {}
-    public void Surname() throws Exception {}
-    public void GenderLabel() throws Exception {}
-    public void Gender() throws Exception {}
-    public void DateOfBirthLabel() throws Exception {}
-    public void DateOfBirth() throws Exception {}
-    public void ForeingerLabel() throws Exception {}
-    public void Foreinger() throws Exception {}
-    public void DeceasedLabel() throws Exception {}
-    public void Deceased() throws Exception {}
-    public void JMBGLabel() throws Exception {}
-    public void JMBG() throws Exception {}
-    public void HealthCardLabel() throws Exception {}
-    public void HealthCard() throws Exception {}
-    public void PersonOccupationLabel() throws Exception {}
-    public void Occupation() throws Exception {}
-
-    public void AddressesLabel() throws Exception {}
-    public void Addresses() throws Exception {}
-
-    public void TelephoneLabel() throws Exception {}
-    public void TelephoneListViewTable() throws Exception {}
-
-    public void EmailsLabel() throws Exception {}
-    public void EmailListView() throws Exception {}
-
+    //-------------------- End Methods --------------------
 }
 

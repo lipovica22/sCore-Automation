@@ -7,70 +7,64 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LifeProductSelection extends BasePage {
-
-
     public LifeProductSelection(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
     @FindBy(css = "div[id='1']>div[class='answer']>label:nth-child(1)")
-    WebElement DozivotnoDA;
+    WebElement dozivotnoDA;
     @FindBy(css = "div[id='1']>div[class='answer']>label:nth-child(2)")
-    WebElement DozivotnoNE;
+    WebElement dozivotnoNE;
     @FindBy(css = "div[id='2']>div[class='answer']>label:nth-child(1)")
-    WebElement FavoritPremiumDA;
+    WebElement favoritPremiumDA;
     @FindBy(css = "div[id='2']>div[class='answer']>label:nth-child(2)")
-    WebElement FavoritPremiumNE;
+    WebElement favoritPremiumNE;
     @FindBy(css = "div[id='3']>div[class='answer']>label:nth-child(1)")
-    WebElement RizikoKreditDA;
+    WebElement rizikoKreditDA;
     @FindBy(css = "div[id='3']>div[class='answer']>label:nth-child(2)")
-    WebElement RizikoKreditNE;
+    WebElement rizikoKreditNE;
     @FindBy(css = "div[id='4']>div[class='answer']>label:nth-child(1)")
-    WebElement JokerPremiumDA;
+    WebElement jokerPremiumDA;
     @FindBy(css = "div[id='4']>div[class='answer']>label:nth-child(2)")
-    WebElement JokerPremiumNE;
+    WebElement jokerPremiumNE;
     @FindBy(css = "div[id='5']>div[class='answer']>label:nth-child(1)")
-    WebElement SpektarPremiumDA;
+    WebElement spektarPremiumDA;
     @FindBy(css = "div[id='5']>div[class='answer']>label:nth-child(2)")
-    WebElement SpektarPremiumNE;
+    WebElement spektarPremiumNE;
     @FindBy(css = "div[id='6']>div[class='answer']>label:nth-child(1)")
-    WebElement RizikoMixDA;
+    WebElement rizikoMixDA;
     @FindBy(css = "div[id='6']>div[class='answer']>label:nth-child(2)")
-    WebElement RizikoMixNE;
-
+    WebElement rizikoMixNE;
     @FindBy(css = "div[id='7']>div[class='answer']>label:nth-child(1)")
-    WebElement UnitLinkedDA;
+    WebElement unitLinkedDA;
     @FindBy(css = "div[id='7']>div[class='answer']>label:nth-child(2)")
-    WebElement UnitLinkedNeRiziko;
-
+    WebElement unitLinkedNeRiziko;
     @FindBy(id = "nextBtn")
-    WebElement NarednoPitanje;
+    WebElement narednoPitanje;
     @FindBy(id = "backBtn")
-    WebElement PrethodnoPitanje;
-
+    WebElement prethodnoPitanje;
     @FindBy(css = ".ico_dozivotniriziko")
-    WebElement DozivotniRiziko;
+    WebElement dozivotniRiziko;
     @FindBy(css = ".ico_favoritpremium")
-    WebElement FavoritPremium;
+    WebElement favoritPremium;
     @FindBy(css = ".ico_rizikokredit")
-    WebElement RizikoKredit;
+    WebElement rizikoKredit;
     @FindBy(css = ".ico_jokerpremium")
-    WebElement JokerPremium;
+    WebElement jokerPremium;
     @FindBy(css = ".ico_spektarpremium")
-    WebElement SpektarPremium;
+    WebElement spektarPremium;
     @FindBy(css = ".ico_mozaik")
-    WebElement RizikoMix;
+    WebElement rizikoMix;
     @FindBy(css = ".ico_riziko")
-    WebElement Riziko;
-
+    WebElement riziko;
     @FindBy(css = "div[id='productTypeChoice']>label:nth-child(1)")
-    WebElement InfoPonuda;
+    WebElement infoPonuda;
     @FindBy(css = "div[id='productTypeChoice']>label:nth-child(2)")
-    WebElement NoviUgovor;
+    WebElement noviUgovor;
 
     public void narednoPitanje() throws Exception {
-        NarednoPitanje.click();
+        narednoPitanje.click();
         Thread.sleep(2000);
     }
 
@@ -78,13 +72,11 @@ public class LifeProductSelection extends BasePage {
        // new WebDriverWait(driver,10).until(ExpectedConditions.elementToBeClickable(NoviUgovor));
         switch (productType) {
             case "Novi ugovor": {
-
-                NoviUgovor.click();
+                noviUgovor.click();
             }
             break;
             case "Info ponuda": {
-
-                InfoPonuda.click();
+                infoPonuda.click();
             }
             default:
                 break;
@@ -92,112 +84,111 @@ public class LifeProductSelection extends BasePage {
     }
 
     public void selectInfoPonuda() throws Exception {
-        InfoPonuda.click();
-
+        infoPonuda.click();
     }
 
     public void selectNoviUgovor() throws Exception {
-        NoviUgovor.click();
+        noviUgovor.click();
     }
 
     public void selectDozivotniRiziko() throws Exception {
-        DozivotnoDA.click();
+        dozivotnoDA.click();
     }
 
     public void selectFavorit() throws Exception {
-        DozivotnoNE.click();
+        dozivotnoNE.click();
         narednoPitanje();
-        FavoritPremiumDA.click();
+        favoritPremiumDA.click();
     }
 
     public void selectRizikoKredit() throws Exception {
-        DozivotnoNE.click();
+        dozivotnoNE.click();
         narednoPitanje();
-        FavoritPremiumNE.click();
+        favoritPremiumNE.click();
         narednoPitanje();
-        RizikoKreditDA.click();
+        rizikoKreditDA.click();
     }
 
     public void selectJoker() throws Exception {
-        DozivotnoNE.click();
+        dozivotnoNE.click();
         narednoPitanje();
-        FavoritPremiumNE.click();
+        favoritPremiumNE.click();
         narednoPitanje();
-        RizikoKreditNE.click();
+        rizikoKreditNE.click();
         narednoPitanje();
-        JokerPremiumDA.click();
+        jokerPremiumDA.click();
     }
 
     public void selectSpectar() throws Exception {
-        DozivotnoNE.click();
+        dozivotnoNE.click();
         narednoPitanje();
-        FavoritPremiumNE.click();
+        favoritPremiumNE.click();
         narednoPitanje();
-        RizikoKreditNE.click();
+        rizikoKreditNE.click();
         narednoPitanje();
-        JokerPremiumNE.click();
+        jokerPremiumNE.click();
         narednoPitanje();
-        SpektarPremiumNE.click();
+        spektarPremiumNE.click();
     }
 
     public void selectRizikoMix() throws Exception {
-        DozivotnoNE.click();
+        dozivotnoNE.click();
         narednoPitanje();
-        FavoritPremiumNE.click();
+        favoritPremiumNE.click();
         narednoPitanje();
-        RizikoKreditNE.click();
+        rizikoKreditNE.click();
         narednoPitanje();
-        JokerPremiumNE.click();
+        jokerPremiumNE.click();
         narednoPitanje();
-        SpektarPremiumDA.click();
+        spektarPremiumDA.click();
         narednoPitanje();
-        RizikoMixDA.click();
+        rizikoMixDA.click();
     }
 
     public void selectRiziko() throws Exception {
-        DozivotnoNE.click();
+        dozivotnoNE.click();
         narednoPitanje();
-        FavoritPremiumNE.click();
+        favoritPremiumNE.click();
         narednoPitanje();
-        RizikoKreditNE.click();
+        rizikoKreditNE.click();
         narednoPitanje();
-        JokerPremiumNE.click();
+        jokerPremiumNE.click();
         narednoPitanje();
-        SpektarPremiumDA.click();
+        spektarPremiumDA.click();
         narednoPitanje();
-        RizikoMixNE.click();
+        rizikoMixNE.click();
         narednoPitanje();
-        UnitLinkedNeRiziko.click();
+        unitLinkedNeRiziko.click();
     }
 
     public void clickProductIcon(String Proizvod) throws Exception {
         switch (Proizvod) {
             case "Doživotni riziko": {
-                DozivotniRiziko.click();
+                dozivotniRiziko.click();
             }
             break;
             case "Favorit": {
-                FavoritPremium.click();
+                favoritPremium.click();
             }
             break;
             case "Riziko kredit": {
-                RizikoKredit.click();
+                rizikoKredit.click();
             }
             break;
             case "Joker": {
-                JokerPremium.click();
+                jokerPremium.click();
             }
             break;
             case "Spektar": {
-                SpektarPremium.click();
+                spektarPremium.click();
             }
             break;
             case "Riziko Mix": {
-                RizikoMix.click();
+                rizikoMix.click();
             }
             break;
             case "Riziko": {
-                Riziko.click();
+                riziko.click();
             }
             break;
             default:
@@ -238,7 +229,6 @@ public class LifeProductSelection extends BasePage {
             break;
             default:
                 break;
-
         }
     }
 }

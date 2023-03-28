@@ -12,94 +12,54 @@ public class TabView extends BasePage {
         PageFactory.initElements(driver, this);
     }
     @FindBy(id= "tab_General")
-    WebElement GeneralTab;
+    WebElement generalTab;
     @FindBy(id= "tab_Persons")
-    WebElement PersonTab;
+    WebElement personTab;
     @FindBy(id= "tab_Concerns")
-    WebElement ConcernsTab;
+    WebElement concernsTab;
     @FindBy(id= "tab_Conditions")
-    WebElement ConditionsTab;
+    WebElement conditionsTab;
     @FindBy(id= "tab_Calculation")
-    WebElement CalculationTab;
+    WebElement calculationTab;
     @FindBy(id= "tab_Clauses")
-    WebElement ClausesTab;
+    WebElement clausesTab;
     @FindBy(id= "tab_Printouts")
-    WebElement PrintoutsTab;
+    WebElement printoutsTab;
     @FindBy(id= "tab_SpecificationFormDocumentation")
-    WebElement SpecificationFormDocumentationTab;
+    WebElement specificationFormDocumentationTab;
     @FindBy(id= "tab_Documentation")
-    WebElement DocumentationTab;
+    WebElement documentationTab;
     @FindBy(id= "tab_PassengerListCancellation")
-    WebElement PassengerListCancellationTab;
+    WebElement passengerListCancellationTab;
     @FindBy(id= "tab_Annulation")
-    WebElement AnnulationTab;
+    WebElement annulationTab;
     @FindBy(id= "tab_Underwriting")
-    WebElement UnderwritingTab;
+    WebElement underwritingTab;
     @FindBy(id= "tab_Reclamation")
-    WebElement ReclamationTab;
+    WebElement reclamationTab;
     @FindBy(id= "tab_CancellationNonLife")
-    WebElement CancellationTab;
+    WebElement cancellationTab;
     @FindBy(id= "tab_Statements")
-    WebElement StatementsTab;
+    WebElement statementsTab;
     @FindBy(id= "tab_FinancialBalance")
-    WebElement FinancialBalanceTab;
+    WebElement financialBalanceTab;
 
-
-
+    //-------------------- Methods --------------------
     public void clickGeneralTab() throws Exception {
-        ClickWithScroll(GeneralTab, "Click general tab");
+        ClickWithScroll(generalTab, "Click general tab");
     }
     public void clickPersonsTab() throws Exception {
 
-        ClickWithScroll(PersonTab, "Click person tab");
+        ClickWithScroll(personTab, "Click person tab");
     }
     public void clickConcernsTab() throws Exception {
-        ClickWithScroll(ConcernsTab, "Click concerns tab");
+        ClickWithScroll(concernsTab, "Click concerns tab");
     }
     public void clickConditionsTab() throws Exception {
-        ClickWithScroll(ConditionsTab, "Click conditions tab");
+        ClickWithScroll(conditionsTab, "Click conditions tab");
     }
     public void clickAnnulationTab() throws Exception {
-        ClickWithScroll(AnnulationTab, "Click annulation tab");
+        ClickWithScroll(annulationTab, "Click annulation tab");
     }
-    public void clickPersonTab() throws Exception {
-
-    }
-
-    public void clickCalculationTab() throws Exception {
-
-    }
-    public void clickClausesTab() throws Exception {
-
-    }
-    public void clickPrintoutsTab() throws Exception {
-
-    }
-    public void clickSpecificationFormDocumentationTab() throws Exception {
-
-    }
-    public void clickDocumentationTab() throws Exception {
-
-    }
-    public void clickPassengerListCancellationTab() throws Exception {
-
-    }
-    public void clickUnderwritingTab() throws Exception {
-
-    }
-    public void clickReclamationTab() throws Exception {
-
-    }
-    public void clickCancellationTab() throws Exception {
-
-    }
-    public void clickStatementsTab() throws Exception {
-
-    }
-    public void clickFinancialBalanceTab() throws Exception {
-
-    }
-
-
-
+    //-------------------- End Methods --------------------
 }

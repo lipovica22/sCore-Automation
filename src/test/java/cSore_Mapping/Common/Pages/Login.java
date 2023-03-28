@@ -9,41 +9,38 @@ import org.openqa.selenium.support.PageFactory;
 import java.io.IOException;
 
 public class Login extends BasePage {
-
-
     public Login(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
 
     @FindBy (id="Username")
-    WebElement Username;
+    WebElement username;
     @FindBy (id="Password")
-    WebElement Password;
+    WebElement password;
     @FindBy (xpath="//button[contains(text(),'Prijava')]")
-    WebElement Submit;
-
+    WebElement submit;
     @FindBy (id="userFullName")
-    WebElement LoggedUser;
+    WebElement loggedUser;
 
-
-    public void setUsername(String username) throws Exception {
-        SetValue(Username, "Set username", username);
-        //Username.sendKeys(username);
+    //-------------------- Methods --------------------
+    public void setUsername(String valueUsername) throws Exception {
+        SetValue(username, "Set username", valueUsername);
     }
-
-    public void setPassword(String password) throws Exception {
-        SetValue(Password, "Set password", password);
-        //Password.sendKeys(password);
+    public void setPassword(String valuePassword) throws Exception {
+        SetValue(password, "Set password", valuePassword);
     }
     public void clickSubmit() throws Exception {
-        Click(Submit, "Click on Submit button");
-        //Submit.click();
+        Click(submit, "Click on Submit button");
     }
     public String LoggedUser() throws IOException {
         //AreEqual(LoggedUser, "Logged message", "sCoreAgent");
-        String user = LoggedUser.getText();
+        String user = loggedUser.getText();
       return user;
     }
 
+    public void testAssert() throws Exception {
+        AreEqual(loggedUser, "Checked user status", "sCoreAgent2");
+    }
+   //-------------------- End Methods --------------------
 }

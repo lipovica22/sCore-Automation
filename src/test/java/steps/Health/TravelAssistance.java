@@ -64,13 +64,16 @@ public class TravelAssistance extends BaseTest{
     @Then("Logged in")
     public void loggedIn() throws Exception {
         //TODO: Obrisati try i catch koristiti new Login(driver).loggedUser(loggedUser);
-        //new Login(driver).loggedUser(loggedUser);
+        new Login(driver).testAssert();
+        /*
         try {
             Assert.assertEquals(new Login(driver).LoggedUser(), "sCoreAgent");
         } catch (AssertionError e) {
             System.out.println("Assertion failed: " + e.getMessage());
             reportAssertionError(e);
         }
+
+         */
     }
 
     @And("page is Products")
@@ -106,21 +109,21 @@ public class TravelAssistance extends BaseTest{
 
     @Then("choose Contract type")
     public void chooseContractType() throws Exception{
-        new cSore_Mapping.Health.Tab.General(driver).contractType(data.get("Tip ugovora"));
+        new cSore_Mapping.Health.Tab.General(driver).selectContractType(data.get("Tip ugovora"));
     }
 
     @And("choose Destination")
     public void chooseDestination() throws Exception{
-        new cSore_Mapping.Health.Tab.General(driver).destination(data.get("Odredište"));
+        new cSore_Mapping.Health.Tab.General(driver).selectDestination(data.get("Odredište"));
         //selectOption(data.get("Odredište"), new cSore_Mapping.Health.Tab.General(driver).getDestination());
     }
 
     @And("input Duration of insurance")
     public void inputDurationOfInsurance() throws Exception {
         if (data.get("Tip ugovora").equals("Individualna Multi Visa")) {
-            new cSore_Mapping.Health.Tab.General(driver).inputDurationMonths(data.get("Meseci"));
+            new cSore_Mapping.Health.Tab.General(driver).setInputDurationMonths(data.get("Meseci"));
         }else {
-            new cSore_Mapping.Health.Tab.General(driver).inputDurationDays(data.get("Dani"));
+            new cSore_Mapping.Health.Tab.General(driver).setInputDurationDays(data.get("Dani"));
         }
 
     }
@@ -137,7 +140,7 @@ public class TravelAssistance extends BaseTest{
     }
     @And("set Payment Method")
     public void setPaymentMethod() throws Exception {
-        new cSore_Mapping.Health.Tab.General(driver).paymentMethod(data.get("Metod plaćanja"));
+        new cSore_Mapping.Health.Tab.General(driver).selectPaymentMethod(data.get("Metod plaćanja"));
         //selectOption(data.get("Metod plaćanja"), new cSore_Mapping.Health.Tab.General(driver).getPaymentMethod());
     }
 
@@ -153,14 +156,13 @@ public class TravelAssistance extends BaseTest{
 
     @And("click on add button")
     public void clickOnAddButton() throws Exception{
-        new cSore_Mapping.Common.Tab.Person(driver).addPersonPolicyHolder();
-        //Thread.sleep(2000);
+        new cSore_Mapping.Common.Tab.Person(driver).clickAddPersonPolicyHolder();
     }
 
     @And("on Iframe input Identification number")
     public void onIframeInputIdentificationNumber() throws Exception{
         JumpToFrame();
-        new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).inputIdentificationNumber(data.get("Identifikacioni broj"));
+        new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).setInputIdentificationNumber(data.get("Identifikacioni broj"));
    // }else
      //   if(data.get("Ugovarač Pr/Fi lice").equals("Pravno")) {
      //       new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).inputPIB(data.get("Identifikacioni broj"));
@@ -232,11 +234,11 @@ public class TravelAssistance extends BaseTest{
             new cSore_Mapping.Health.Tab.Concerns(driver).clickAddConcern();
             new cSore_Mapping.Health.Tab.Concerns(driver).search();
             JumpToFrame();
-            new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).inputIdentificationNumber(data.get("Osiguranici"));
+            new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).setInputIdentificationNumber(data.get("Osiguranici"));
             new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).clickSearchButtonFL();
             new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).clickSearchResultGridFL();
             new cSore_Mapping.Common.Dialog.Iframe.ViewPerson(driver).clickAcceptButton();
-            new cSore_Mapping.Common.View.TotButtonView(driver).Submit();
+            new cSore_Mapping.Common.View.TotButtonView(driver).clickCertificationOfSignature();
         }
         if(data.get("Tip ugovora").equals("Grupna")) {
             new cSore_Mapping.Health.Tab.Concerns(driver).fileUpload("grupno");
@@ -257,25 +259,25 @@ public class TravelAssistance extends BaseTest{
 
     @And("click on button Activate")
     public void clickOnButtonActivate() throws Exception{
-        new cSore_Mapping.Common.View.TotButtonView(driver).activate();
+        new cSore_Mapping.Common.View.TotButtonView(driver).clickActivate();
         //Thread.sleep(5000);
     }
 
     @And("click on button Print PUI")
     public void clickOnButtonPrintPUI() throws Exception{
-        new cSore_Mapping.Common.View.TotButtonView(driver).PrintPUI();
+        new cSore_Mapping.Common.View.TotButtonView(driver).clickPrintPUI();
         //Thread.sleep(5000);
     }
 
     @And("click on button Confirm Payment")
     public void clickOnButtonConfirmPayment() throws Exception{
-        new cSore_Mapping.Common.View.TotButtonView(driver).confirmPayment();
-        Thread.sleep(5000);
+        new cSore_Mapping.Common.View.TotButtonView(driver).clickConfirmPayment();
+        //Thread.sleep(5000);
     }
 
     @And("click on button Certification of signature")
     public void clickOnButtonCertificationOfSignature()throws Exception {
-        new cSore_Mapping.Common.View.TotButtonView(driver).CertificationOfSignature();
+        new cSore_Mapping.Common.View.TotButtonView(driver).clickCertificationOfSignature();
         //Thread.sleep(5000);
     }
     @Then("check Info message After Certification Of Signature")
@@ -293,6 +295,6 @@ public class TravelAssistance extends BaseTest{
 
     @And("choose entity type")
     public void chooseEntityType() throws Exception {
-        new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).chooseEntityTypes(data.get("Ugovarač Pr/Fi lice"));
+        new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).setChooseEntityTypes(data.get("Ugovarač Pr/Fi lice"));
     }
 }

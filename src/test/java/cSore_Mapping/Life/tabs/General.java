@@ -7,82 +7,87 @@ import org.openqa.selenium.support.PageFactory;
 import cSore_Mapping.Common.Pages.BasePage;
 
 public class General extends BasePage {
-
-
     public General(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
     @FindBy(css = "input[class='spinner_year_3 input lift center ui-spinner-input']")
-    WebElement Trajanje;
+    WebElement trajanje;
     @FindBy(id = "ContentPlaceHolder1_Kol29_uc_idWucPlaces_tbStates")
-    WebElement Drzava;
+    WebElement drzava;
     @FindBy(id = "ContentPlaceHolder1_Kol29_uc_idWucPlaces_tbPlaces")
-    WebElement Mesto;
+    WebElement mesto;
     @FindBy(id = "Kol24")
-    WebElement Dinamika;
+    WebElement dinamika;
     @FindBy(id = "Kol22")
-    WebElement Valuta;
+    WebElement valuta;
     @FindBy(id = "Kol23")
-    WebElement ValutnaKlauzula;
+    WebElement valutnaKlauzula;
     @FindBy(id = "Kol21")
-    WebElement MetodPlacanja;
+    WebElement metodPlacanja;
     @FindBy(id = "Kol30")
-    WebElement Banka;
+    WebElement banka;
     @FindBy(id = "li_Kol14_90")
-    WebElement Indeksacija;
+    WebElement indeksacija;
     @FindBy(id = "Kol62")
-    WebElement VrednostIndeksa;
+    WebElement vrednostIndeksa;
     @FindBy(id = "Kol17")
-    WebElement ClientInfo;
+    WebElement clientInfo;
     @FindBy(id = "Kol51")
-    WebElement IzborDuzineTrajanja;
+    WebElement izborDuzineTrajanja;
 
-    public void setTrajanje(String trajanje) throws Exception {
+    public void setTrajanje(String valueTrajanje) throws Exception {
         if (!trajanje.equals("Doživotno")) {
-            Trajanje.clear();
-            Trajanje.sendKeys(trajanje);
+            trajanje.clear();
+            trajanje.sendKeys(valueTrajanje);
         }
 
     }
     public WebElement getDrzava() {
-        return Drzava;
+
+        return drzava;
     }
     public WebElement getMesto() {
-        return Mesto;
+
+        return mesto;
     }
 
     public WebElement getDinamika() {
-        return Dinamika;
+
+        return dinamika;
     }
 
     public WebElement getValuta() {
-        return Valuta;
+
+        return valuta;
     }
 
     public WebElement getValutnaKlauzula() {
-        return ValutnaKlauzula;
+
+        return valutnaKlauzula;
     }
 
     public WebElement getMetodPlacanja() {
-        return MetodPlacanja;
+
+        return metodPlacanja;
     }
 
     public WebElement getBanka() {
-        return Banka;
+        return banka;
     }
 
     public WebElement IzborDuzineTrajanja() {
-        return IzborDuzineTrajanja;
+
+        return izborDuzineTrajanja;
     }
 
     public void checkIndeksacija() throws Exception {
-        Indeksacija.click();
+        indeksacija.click();
     }
 
-    public void selectVrednostIndeksa(String vrednostIndeksa) throws Exception {
-        VrednostIndeksa.sendKeys(vrednostIndeksa);
+    public void selectVrednostIndeksa(String valueVrednostIndeksa) throws Exception {
+        vrednostIndeksa.sendKeys(valueVrednostIndeksa);
     }
 
     public String url(String proizvod, String vrstaDokumenta) {
@@ -158,8 +163,7 @@ public class General extends BasePage {
     }
 
     public void inputClientInfo() {
-        ClientInfo.sendKeys("Test");
+        clientInfo.sendKeys("Test");
     }
-
 }
 

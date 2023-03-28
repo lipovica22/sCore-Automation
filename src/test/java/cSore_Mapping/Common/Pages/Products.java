@@ -6,38 +6,32 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class Products extends BasePage {
-
-
     public Products(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
 
     @FindBy (className="ico_life")
-    WebElement Life;
+    WebElement life;
     @FindBy (className="ico_property")
-    WebElement Household;
+    WebElement household;
     @FindBy (className="ico_accidenthealth")
-    WebElement AccidentHealth;
+    WebElement accidentHealth;
     @FindBy (className="ico_motor")
-    WebElement Motor;
+    WebElement motor;
 
-
+    //-------------------- Methods --------------------
     public void clickLife() throws Exception {
-        Click(Life, "Click on Life");
-       //Life.click();
+        Click(life, "Click on Life");
     }
     public void clickHousehold() throws Exception {
-        Click(Household, "Click on Household");
-        //Household.click();
+        Click(household, "Click on Household");
     }
     public void clickMotor() throws Exception {
-        Click(Motor, "Click on Motor");
-        //Motor.click();
+        Click(motor, "Click on Motor");
     }
     public void clickAccidentHealth() throws Exception {
-        Click(AccidentHealth, "Click on Accident Health");
-        //AccidentHealth.click();
+        Click(accidentHealth, "Click on Accident Health");
     }
     public void selectLob(String LOB) throws Exception {
 
@@ -58,4 +52,5 @@ public class Products extends BasePage {
                 throw new Exception("Non-existent LOB");
         }
     }
+    //-------------------- End Methods --------------------
 }

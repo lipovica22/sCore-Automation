@@ -7,64 +7,51 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class Person extends BasePage {
-
-
     public Person(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
     @FindBy(id= "Kol7")
-    WebElement SamePerson;
+    WebElement samePerson;
     @FindBy(css = "label[for='Kol7']")
-    WebElement SamePersonLabel;
+    WebElement samePersonLabel;
     @FindBy(xpath= "//*[@id='Kol1']/div/div[1]/h4")
-    WebElement PolicyHolder;
+    WebElement policyHolder;
     @FindBy(xpath= "//*[@id='Kol1']/div/div[2]/div/div/a")
-    WebElement AddPersonPolicyHolder;
+    WebElement addPersonPolicyHolder;
     @FindBy(id= "basic-grid_1")
-    WebElement PolicyHolderGrid;
+    WebElement policyHolderGrid;
     @FindBy(xpath= "//*[@id='Kol6']/div/div[1]/h4")
-    WebElement InsuredPerson;
+    WebElement insuredPerson;
     @FindBy(xpath= "//*[@id='Kol6']/div/div[2]/div/div/a")
-    WebElement AddInsuredPerson;
+    WebElement addInsuredPerson;
     @FindBy(id= "basic-grid_6")
-    WebElement InsuredPersonGrid;
+    WebElement insuredPersonGrid;
     @FindBy(id= "Kol20")
-    WebElement AddSamePerson;
+    WebElement addSamePerson;
 
+    //-------------------- Methods --------------------
     public void clickSamePerson() throws Exception {
-        Click(SamePersonLabel, "Click on same person");
+        Click(samePersonLabel, "Click on same person");
         //SamePersonLabel.click();
     }
-    public void SamePersonLabel() throws Exception {
-        SamePersonLabel.click();
-    }
     public void clickPolicyHolder() throws Exception {
-        Thread.sleep(5000);
-        PolicyHolder.click();
+        Click(policyHolder, "Click on policy holder");
     }
-    public void addPersonPolicyHolder() throws Exception {
+    public void clickAddPersonPolicyHolder() throws Exception {
         //Thread.sleep(5000);
-        Click(AddPersonPolicyHolder, "Click on person policy holder");
-        //AddPersonPolicyHolder.click();
+        Click(addPersonPolicyHolder, "Click on person policy holder");
     }
-    public void PolicyHolderGrid() throws Exception {
-
+    public void clickInsuredPerson() throws Exception{
+        Click(insuredPerson, "Click on insured person");
     }
-    public void InsuredPerson() throws Exception{
-        InsuredPerson.click();
+    public void clickAddInsuredPerson() throws Exception {
+        Click(addInsuredPerson, "Click on add insured person");
     }
-    public void AddInsuredPerson() throws Exception {
-        AddInsuredPerson.click();
+    public void clickAddSamePerson() throws Exception {
+        Click(addSamePerson, "Click on add same person");
     }
-    public void InsuredPersonGrid() throws Exception {
-
-    }
-    public void AddSamePerson() throws Exception {
-        AddSamePerson.click();
-    }
-
-
+    //-------------------- End Methods --------------------
 }
 

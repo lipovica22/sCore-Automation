@@ -7,22 +7,18 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class Kasko extends BasePage {
-
-
     public Kasko(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
 
     @FindBy (className="ico_casco")
-    WebElement Kasko;
+    WebElement kasko;
 
-
-
+    //-------------------- Methods --------------------
     public void clickKasko() throws Exception {
-       Kasko.click();
+       kasko.click();
     }
-
-
+    //-------------------- End Methods --------------------
 
 }

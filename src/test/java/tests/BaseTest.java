@@ -81,22 +81,6 @@ public class BaseTest {
         InputStream is = Files.newInputStream(filePath);
         Allure.addAttachment(desc,is);
     }
-    public void click(WebElement element)
-    {
-        try
-        {
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-            element.click();
-        }
-        catch (NotFoundException ex)
-        {
-            throw new NotFoundException("Control Click Issue.", ex);
-        }
-        catch (ElementClickInterceptedException ex)
-        {
-            throw new ElementClickInterceptedException("Control Click Issue.", ex);
-        }
-    }
 
     public void selectOption (String sel_option, WebElement element) {
 
@@ -131,26 +115,7 @@ public class BaseTest {
             }
         }
     }
-    public void selectOption1 (String sel_option, WebElement element) {
-        Select dropdown = new Select(element);
-        dropdown.selectByVisibleText(sel_option);
-    }
-    public void ClickMenu(String elementName)
-    {
-        try {
-            List<WebElement> menuList = driver.findElements(By.tagName("a"));
-            for ( WebElement element : menuList) {
-                if (element.getText().equals(elementName)) {
-                    element.click();
-                    break;
-                }
-            }
-        } catch (NotFoundException ex) {
-            throw new NotFoundException("Menu Control Click Issue.", ex);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
+
     public void JumpToFrame()
     {
         driver.switchTo().frame(driver.findElement(By.xpath("//iframe")));

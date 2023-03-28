@@ -7,50 +7,43 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AccidentHealth extends BasePage {
-
-
     public AccidentHealth(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
 
     @FindBy (css=".ico_travelassistance")
-    WebElement PutnaAsistencija;
+    WebElement putnaAsistencija;
     @FindBy (className=".ico_accident")
-    WebElement Nezgoda;
+    WebElement nezgoda;
     @FindBy (className=".ico_meduniqa")
-    WebElement MedUniqa;
+    WebElement medUniqa;
     @FindBy (className=".ico_bonusprotekt")
-    WebElement BonusPaket;
+    WebElement bonusPaket;
     @FindBy (className=".ico_kreditpaketi")
-    WebElement KreditPaket;
+    WebElement kreditPaket;
 
-
+    //--------------------- Methods ----------------------
     public void selectPutnaAsistencija() throws Exception {
-        Click(PutnaAsistencija, "Click on Travel Assistance");
-       //PutnaAsistencija.click();
+        Click(putnaAsistencija, "Click on Travel Assistance");
     }
     public void selectNezgoda() throws Exception {
-        Click(Nezgoda, "Click on Accident");
-        //Nezgoda.click();
+        Click(nezgoda, "Click on Accident");
     }
     public void selectMedUniqa() throws Exception {
-        Click(MedUniqa, "Click on MedUniqa");
-        //MedUniqa.click();
+        Click(medUniqa, "Click on MedUniqa");
     }
     public void selectBonusPaket() throws Exception {
-        Click(BonusPaket, "Click on Bonus Package");
-        //BonusPaket.click();
+        Click(bonusPaket, "Click on Bonus Package");
     }
 
     public void selectKreditPaket() throws Exception {
-        Click(KreditPaket, "Click on Credit Package");
-        //KreditPaket.click();
+        Click(kreditPaket, "Click on Credit Package");
     }
 
-    public void selectProizvod(String Proizvod) throws Exception {
+    public void selectProizvod(String proizvod) throws Exception {
 
-        switch (Proizvod) {
+        switch (proizvod) {
             case "Putna asistencija": {
                 selectPutnaAsistencija();
             }
@@ -75,4 +68,5 @@ public class AccidentHealth extends BasePage {
                 throw new Exception("Non-existent product");
         }
     }
+    //-------------------- End Methods --------------------
 }

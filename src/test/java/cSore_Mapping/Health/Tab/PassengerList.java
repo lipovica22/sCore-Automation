@@ -13,64 +13,61 @@ public class PassengerList extends BasePage {
     }
 
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[1]/fieldset/legend")
-    WebElement UgovorniElementiSpiskaPutnika;
+    WebElement ugovorniElementiSpiskaPutnika;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[1]/fieldset/div/div[1]/div[1]/div/label")
-    WebElement ListDateLabel;
+    WebElement listDateLabel;
     @FindBy(id= "Kol3")
-    WebElement ListDate;
-
-    WebElement Agency;
+    WebElement listDate;
+    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[1]/fieldset/div/div[1]/div[2]/div/label")
+    WebElement agency;
     @FindBy(id= "Kol1")
-    WebElement AgencyList;
+    WebElement agencyList;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[1]/fieldset/div/div[2]/div[1]/div/label")
-    WebElement IssuingTypeLabel;
+    WebElement issuingTypeLabel;
     @FindBy(id= "Kol11")
-    WebElement IssuingType;
+    WebElement issuingType;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[1]/fieldset/div/div[2]/div[2]/div/label")
-    WebElement VariantLabel;
+    WebElement variantLabel;
     @FindBy(id= "Kol2")
-    WebElement Variant;
+    WebElement variant;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[1]/fieldset/div/div[2]/div[3]/div/label")
-    WebElement DestinationLabel;
+    WebElement destinationLabel;
     @FindBy(id= "Kol4")
-    WebElement Destination;
+    WebElement destination;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[1]/fieldset/div/div[1]/div[1]/div/label")
-    WebElement DateOfContractingLabel;
+    WebElement dateOfContractingLabel;
     @FindBy(id= "Kol12")
-    WebElement DateOfContracting;
+    WebElement dateOfContracting;
     @FindBy(css= ".ui-state-active")
-    WebElement DateOfContractingList;
+    WebElement dateOfContractingList;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[1]/fieldset/div/div[3]/div[2]/div/label")
-    WebElement StartDateLabel;
+    WebElement startDateLabel;
     @FindBy(id= "Kol5")
-    WebElement StartDate;
+    WebElement startDate;
     @FindBy(css= ".ui-state-active")
-    WebElement StartDateList;
+    WebElement startDateList;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[1]/fieldset/div/div[3]/div[3]/div/label")
-    WebElement EndDateLabel;
+    WebElement endDateLabel;
     @FindBy(id= "Kol6")
-    WebElement EndDate;
+    WebElement endDate;
     @FindBy(css= ".ui-state-active")
-    WebElement EndDateList;
-
+    WebElement endDateList;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/fieldset/div[1]/div[1]/div/label")
-    WebElement PackagesLabel;
+    WebElement packagesLabel;
     @FindBy(id= "Kol13")
-    WebElement Packages;
+    WebElement packages;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/fieldset/div[1]/div[2]/div/label")
-    WebElement InsuranceSumLabel;
+    WebElement insuranceSumLabel;
     @FindBy(id= "Kol14")
-    WebElement InsuranceSum;
+    WebElement insuranceSum;
     @FindBy(xpath= "//*[@id='ContentPlaceHolder1_Kol8_uc_display_multi_row']/label")
-    WebElement FileUploadLabel;
+    WebElement fileUploadLabel;
     @FindBy(xpath= "//*[@id='ContentPlaceHolder1_Kol8_uc_display_multi_row']/div/div[1]/div/div/input")
-    WebElement FileUpload;
+    WebElement fileUpload;
     @FindBy(xpath= "//*[@id='ContentPlaceHolder1_Kol8_uc_div2']/div/a")
-    WebElement Find;
+    WebElement find;
     @FindBy(xpath= "//*[@id='ContentPlaceHolder1_Kol8_uc_divButton2']/div/a")
-    WebElement Send;
+    WebElement send;
     @FindBy(id= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/fieldset/div[2]/div[2]/div/a")
-    WebElement AddInsuree;
-
-    
+    WebElement addInsuree;
 }

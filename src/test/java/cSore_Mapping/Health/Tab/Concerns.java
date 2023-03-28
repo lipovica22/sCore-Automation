@@ -13,169 +13,100 @@ public class Concerns extends BasePage {
     }
     
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[1]/fieldset/legend")
-    WebElement OpstiUgovorniElementi;
+    WebElement opstiUgovorniElementi;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[1]/fieldset/div[1]/div/label")
-    WebElement PackageLabel;
+    WebElement packageLabel;
     @FindBy(id= "Kol5")
-    WebElement Package;
+    WebElement packages;
     @FindBy(id= "Kol12")
-    WebElement PackageDescriptions;
+    WebElement packageDescriptions;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[1]/fieldset/div[3]/div/label")
-    WebElement InsuredSum;
+    WebElement insuredSum;
     @FindBy(id= "Kol6")
-    WebElement InsuredSumList;
+    WebElement insuredSumList;
     @FindBy(id= "Kol10")
-    WebElement Currency;
+    WebElement currency;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[1]/fieldset/div[5]/div/label")
-    WebElement CorrectionLabel;
+    WebElement correctionLabel;
     @FindBy(id= "Kol7")
-    WebElement Correction;
+    WebElement correction;
     @FindBy(id= "Kol11")
-    WebElement CorrectionCurrency;
+    WebElement correctionCurrency;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[1]/fieldset/div[7]/div/label")
-    WebElement FranchiseLabel;
+    WebElement franchiseLabel;
     @FindBy(id= "Kol4")
-    WebElement Franchise;
+    WebElement franchise;
     @FindBy(id= "")
-    WebElement FranchiseCurrency;
+    WebElement franchiseCurrency;
     @FindBy(xpath= "//*[@id='ContentPlaceHolder1_Kol8_uc_display_inline']/div[1]")
-    WebElement FileUploadLabel;
+    WebElement fileUploadLabel;
     @FindBy(css= "input[name='file2Upload']")
-    WebElement FileUpload;
+    WebElement fileUpload;
     @FindBy(xpath= "//*[@id='ContentPlaceHolder1_Kol8_uc_div1']/div/a")
-    WebElement Find;
+    WebElement find;
     @FindBy(xpath= "//*[@id='ContentPlaceHolder1_Kol8_uc_divButton1']/div/a")
-    WebElement Add;
+    WebElement add;
     @FindBy(id= "Kol2")
-    WebElement AddConcern;
+    WebElement addConcern;
     @FindBy(id= "basic-grid_3")
-    WebElement ConcernListGrid;
-
+    WebElement concernListGrid;
     @FindBy(xpath= "//*[@id='Kol5']")
-    WebElement ConcernsLabel;
-
+    WebElement concernsLabel;
     @FindBy(id= "ContentPlaceHolder1_ucContainer1")
-    WebElement SelectFP;
+    WebElement selectFP;
     @FindBy(id= "ContentPlaceHolder1_Kol7_uc_wucBusinessEntityBaseSearch_tbExternalReferenceId")
-    WebElement ExternalReferenceId;
+    WebElement externalReferenceId;
     @FindBy(id= "ContentPlaceHolder1_Kol7_uc_wucBusinessEntityBaseSearch_tbName")
-    WebElement Name;
+    WebElement name;
     @FindBy(id= "ContentPlaceHolder1_Kol7_uc_wucBusinessEntityBaseSearch_search")
-    WebElement Search;
+    WebElement search;
     @FindBy(id= "ContentPlaceHolder1_Kol7_uc_wucBusinessEntityBaseSearch_tbIdentNumbers")
-    WebElement IdentNumber;
+    WebElement identNumber;
     @FindBy(id= "ContentPlaceHolder1_Kol7_uc_wucBusinessEntityBaseSearch_addedit")
-    WebElement Search_AddEdit;
+    WebElement search_AddEdit;
     @FindBy(id= "ContentPlaceHolder1_Kol7_uc_wucBusinessEntityBaseSearch_tbAdress")
-    WebElement Adress;
-
+    WebElement adress;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div/div[2]/fieldset/div[1]/div[2]/div[1]/div/label")
-    WebElement DateOfBirthLabel;
-    @FindBy(id= "Kol5")   WebElement DateOfBirth;
+    WebElement dateOfBirthLabel;
+    @FindBy(id= "Kol5")
+    WebElement dateOfBirth;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div/div[2]/fieldset/div[1]/div[2]/div[2]/div/label")
-    WebElement AgeLabel;
-    @FindBy(id= "Kol6")   WebElement Age;
+    WebElement ageLabel;
+    @FindBy(id= "Kol6")
+    WebElement age;
 
-    public void OpstiUgovorniElementi() throws Exception {
-
-    }
-    public void PackageLabel() throws Exception {
-
-    }
+    //-------------------- Methods --------------------
     public void selectPackage(String valuePackage) throws Exception {
-        SelectOption(Package, "Select package", valuePackage);
-    }
-    public void PackageDescriptions() throws Exception {
-
+        SelectOption(packages, "Select package", valuePackage);
     }
     public void selectInsuredSumList(String valueSumList) throws Exception {
-        SelectOption(InsuredSumList, "Select insured sum list", valueSumList);
-    }
-    public void InsuredSumList() throws Exception {
-
-    }
-    public void Currency() throws Exception {
-
-    }
-    public void CorrectionLabel() throws Exception {
-
+        SelectOption(insuredSumList, "Select insured sum list", valueSumList);
     }
     public void selectCorrection(String valueCorrection) throws Exception {
-        SelectOption(Correction, "Select correction", valueCorrection);
-    }
-    public void CorrectionCurrency() throws Exception {
+        int ifValueZero = Integer.parseInt(valueCorrection);
 
-    }
-    public void FranchiseLabel() throws Exception {
-
+        if (ifValueZero != 0){
+            SelectOption(correction, "Select correction", valueCorrection);
+        }
     }
     public void selectFranchise(String valueFranchise) throws Exception {
-        SelectOption(Franchise, "Select franchise", valueFranchise);
-    }
-    public void FranchiseCurrency() throws Exception {
-
-    }
-    public void FileUploadLabel() throws Exception {
-
+        SelectOption(franchise, "Select franchise", valueFranchise);
     }
     public void fileUpload(String valueFileName) throws Exception {
         String valueSet= "C:/Users/srdjan.tanasijevic/IdeaProjects/sCore-Automation/src/test/FilesForUpload/" + valueFileName + ".xlsm";
-        SetValue(FileUpload, "Set value file upload", valueSet);
-        //FileUpload.sendKeys("C:/Users/srdjan.tanasijevic/IdeaProjects/sCore-Automation/src/test/FilesForUpload/" + valueFileName + ".xlsm");
+        SetValue(fileUpload, "Set value file upload", valueSet);
     }
     public void clickFind() throws Exception {
-        Find.click();
+        Click(find, "Clicko on find");
     }
     public void add() throws Exception {
-        Click(Add, "Click on add");
+        Click(add, "Click on add");
     }
     public void clickAddConcern() throws Exception {
-        Click(AddConcern, "Click on add concern");
-    }
-    public void ConcernListGrid() throws Exception {
-
-    }
-
-    public void ConcernsLabel() throws Exception {
-
-    }
-
-    public void SelectFP() throws Exception {
-
-    }
-    public void ExternalReferenceId() throws Exception {
-
-    }
-    public void Name() throws Exception {
-
+        Click(addConcern, "Click on add concern");
     }
     public void search() throws Exception {
-        Click(Search, "Click on search");
-        //Search.click();
+        Click(search, "Click on search");
     }
-    public void IdentNumber() throws Exception {
-
-    }
-    public void Search_AddEdit() throws Exception {
-
-    }
-    public void Adress() throws Exception {
-
-    }
-
-    public void DateOfBirthLabel() throws Exception {
-
-    }
-    public void DateOfBirth() throws Exception {
-
-    }
-    public void AgeLabel() throws Exception {
-
-    }
-    public void Age() throws Exception {
-
-    }
-
-
-    
+    //-------------------- End Methods --------------------
 }

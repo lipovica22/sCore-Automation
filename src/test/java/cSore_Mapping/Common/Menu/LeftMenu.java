@@ -1,7 +1,6 @@
 package cSore_Mapping.Common.Menu;
 
 import cSore_Mapping.Common.Pages.BasePage;
-import io.cucumber.java.an.E;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,21 +12,16 @@ public class LeftMenu extends BasePage {
         PageFactory.initElements(driver, this);
     }
     @FindBy(className= "ribbon_menu_area")
-    WebElement LeftMenuButton;
+    WebElement leftMenuButton;
     @FindBy(id= "mCSB_1_container")
-    WebElement LeftMenuControls;
+    WebElement leftMenuControls;
 
+    //-------------------- Methods ------------------------
     public void clickLeftMenuButton(String typeDocument) throws Exception {
-        Click(LeftMenuButton, "Click on left menu");
-        ClickMenu(LeftMenuButton, "Clicked on new document", "Novi dokument");
-        ClickMenu(LeftMenuButton, "Clicked on type document", typeDocument);
-        //LeftMenuButton.click();
+        Click(leftMenuButton, "Click on left menu");
+        ClickMenu(leftMenuButton, "Clicked on new document", "Novi dokument");
+        ClickMenu(leftMenuButton, "Clicked on type document", typeDocument);
     }
-    public void clickLeftMenuControls(String documentType) throws Exception {
-
-    }
-
-
-
+    //-------------------- End Methods --------------------
 }
 

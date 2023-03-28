@@ -16,5 +16,11 @@ public class WaitTime {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
 
+    public static void WaitForElementUrlContains(WebDriver driver, String value)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, 60);
+        wait.until(ExpectedConditions.urlContains(value));
+    }
+
 
 }

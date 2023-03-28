@@ -12,14 +12,10 @@ public class Passengers extends BasePage {
         PageFactory.initElements(driver,this);
     }
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[1]/fieldset/legend")
-    WebElement PassengersListLabel;
+    WebElement passengersListLabel;
     @FindBy(xpath= "//*[@id='Kol1']/div/div[2]/div/div/a")
-    WebElement ListDateLabel;
+    WebElement listDateLabel;
     @FindBy(id= "basic-grid_1")
-    WebElement PassengersGrid;
-
-    public void PassengersListLabel() throws Exception {}
-    public void ListDateLabel() throws Exception {}
-    public void PassengersGrid() throws Exception {}
+    WebElement passengersGrid;
 
 }

@@ -7,71 +7,43 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class General extends BasePage {
-
-
     public General(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
     @FindBy(css = "input[class='spinner_year_3 input lift center ui-spinner-input']")
-    WebElement Trajanje;
+    WebElement trajanje;
     @FindBy(id = "ContentPlaceHolder1_Kol29_uc_idWucPlaces_tbStates")
-    WebElement Drzava;
+    WebElement drzava;
     @FindBy(id = "ContentPlaceHolder1_Kol29_uc_idWucPlaces_tbPlaces")
-    WebElement Mesto;
+    WebElement mesto;
     @FindBy(id = "Kol24")
-    WebElement Dinamika;
+    WebElement dinamika;
     @FindBy(id = "Kol22")
-    WebElement Valuta;
+    WebElement valuta;
     @FindBy(id = "Kol23")
-    WebElement ValutnaKlauzula;
+    WebElement valutnaKlauzula;
     @FindBy(id = "Kol21")
-    WebElement MetodPlacanja;
+    WebElement metodPlacanja;
     @FindBy(id = "Kol30")
-    WebElement Banka;
+    WebElement banka;
     @FindBy(id = "li_Kol14_90")
-    WebElement Indeksacija;
+    WebElement indeksacija;
     @FindBy(id = "Kol62")
-    WebElement VrednostIndeksa;
+    WebElement vrednostIndeksa;
     @FindBy(id = "Kol17")
-    WebElement ClientInfo;
+    WebElement clientInfo;
     @FindBy(id = "Kol51")
-    WebElement IzborDuzineTrajanja;
+    WebElement izborDuzineTrajanja;
 
-
+    //--------------------- Methods -----------------------
     public void country(String valueCountry) throws Exception {
-        SelectValueAC(Drzava, "Select Country", valueCountry, valueCountry);
+        SelectValueAC(drzava, "Select Country", valueCountry, valueCountry);
     }
     public void place(String valuePlace) throws Exception {
-        SelectValueAC(Mesto, "Select place", valuePlace, "11000 Beograd");
+        SelectValueAC(mesto, "Select place", valuePlace, "11000 Beograd");
     }
-
-    public WebElement getDinamika() {
-
-        return Dinamika;
-    }
-
-    public WebElement getValuta() {
-
-        return Valuta;
-    }
-
-    public WebElement getValutnaKlauzula() {
-
-        return ValutnaKlauzula;
-    }
-
-    public WebElement getMetodPlacanja() {
-
-        return MetodPlacanja;
-    }
-
-    public WebElement getBanka() {
-
-        return Banka;
-    }
-
-
+    //-------------------- End Methods --------------------
 }
 

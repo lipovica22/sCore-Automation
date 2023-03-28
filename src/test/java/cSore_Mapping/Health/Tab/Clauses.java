@@ -12,55 +12,22 @@ public class Clauses extends BasePage {
         PageFactory.initElements(driver,this);
     }
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/legend")
-    WebElement AnnulationLabel;
+    WebElement annulationLabel;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[1]/div/label")   
-    WebElement TypeOfAnnulationLabel;
+    WebElement typeOfAnnulationLabel;
     @FindBy(id= "Kol1")   
-    WebElement TypeOfAnnulation;
+    WebElement typeOfAnnulation;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[2]/div/label")   
-    WebElement AnnulationReasonLabel;
+    WebElement annulationReasonLabel;
     @FindBy(id= "Kol2")   
-    WebElement AnnulationReason;
-
+    WebElement annulationReason;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[2]/div[1]/div/label")   
-    WebElement DateOfAnnullationFromLabel;
+    WebElement dateOfAnnullationFromLabel;
     @FindBy(id= "Kol3")   
-    WebElement DateOfAnnullationFrom;
+    WebElement dateOfAnnullationFrom;
     
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[2]/div[2]/div/label")   
-    WebElement AnnulationNoteLabel;
+    WebElement annulationNoteLabel;
     @FindBy(id= "Kol4")   
-    WebElement AnnulationNote;
-
-
-    public void AnnulationLabel() throws Exception {
-
-    }
-    public void TypeOfAnnulationLabel() throws Exception {
-
-    }
-    public void TypeOfAnnulation() throws Exception {
-
-    }
-    public void AnnulationReasonLabel() throws Exception {
-
-    }
-    public void AnnulationReason() throws Exception {
-
-    }
-
-    public void DateOfAnnullationFromLabel() throws Exception {
-
-    }
-    public void DateOfAnnullationFrom() throws Exception {
-
-    }
-
-    public void AnnulationNoteLabel() throws Exception {
-
-    }
-    public void AnnulationNote() throws Exception {
-
-    }
-
+    WebElement annulationNote;
 }
