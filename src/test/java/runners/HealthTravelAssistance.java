@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
         plugin ={"io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm"}
 
 )
-public class HealthPA extends AbstractTestNGCucumberTests {
+public class HealthTravelAssistance extends AbstractTestNGCucumberTests {
     @DataProvider(parallel = true)
     @Override
     public Object[][] scenarios() {

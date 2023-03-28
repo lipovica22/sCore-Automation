@@ -76,7 +76,8 @@ public class ViewPerson extends BasePage {
 
     public void AddEditPersonMUFrame() throws Exception {}
     public void clickAcceptButton() throws Exception {
-        AcceptButton.click();
+        Click(AcceptButton, "Click on accept for person");
+        //AcceptButton.click();
     }
     public void EditButton() throws Exception {}
     public void Search() throws Exception {}

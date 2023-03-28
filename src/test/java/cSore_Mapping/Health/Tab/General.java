@@ -178,8 +178,8 @@ public class General extends BasePage {
     public void DestinationLabel() throws Exception {
 
     }
-    public WebElement getDestination() {
-        return Destination;
+    public void destination(String valueDestination) throws Exception {
+        SelectOption(Destination, "Select destination", valueDestination);
     }
     public void OfferDate() throws Exception {
 
@@ -200,8 +200,9 @@ public class General extends BasePage {
 
     }
     public void inputDurationMonths(String meseci) throws Exception {
-        DurationMonths.clear();
-        DurationMonths.sendKeys(meseci);
+        SetValue(DurationMonths, "Set value month", meseci);
+        //DurationMonths.clear();
+        //DurationMonths.sendKeys(meseci);
     }
     public void DurationMonthsLabel() throws Exception {
 
@@ -210,8 +211,9 @@ public class General extends BasePage {
 
     }
     public void inputDurationDays(String dani) throws Exception {
-        DurationDays.clear();
-        DurationDays.sendKeys(dani);
+        SetValue(DurationDays, "Set value day", dani);
+        //DurationDays.clear();
+        //DurationDays.sendKeys(dani);
     }
 
     public void OfferDateList() throws Exception {
@@ -257,8 +259,8 @@ public class General extends BasePage {
     public void FXClause() throws Exception {
 
     }
-    public WebElement getPaymentMethod()  {
-        return PaymentMethod;
+    public void paymentMethod(String valuePayment) throws Exception {
+        SelectOption(PaymentMethod, "Select payment", valuePayment);
     }
     public void PaymentMethodLabel() throws Exception {
 

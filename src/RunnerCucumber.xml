@@ -12,7 +12,7 @@
     <test name="TC">
 
         <classes>
-            <class name="runners.HealthPA"/>
+            <class name="runners.HealthTravelAssistance"/>
 
         </classes>
 

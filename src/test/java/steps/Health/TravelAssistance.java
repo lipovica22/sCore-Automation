@@ -2,9 +2,7 @@ package steps.Health;
 
 import cSore_Mapping.Common.Menu.LeftMenu;
 import cSore_Mapping.Common.Pages.BasePage;
-import cSore_Mapping.Common.View.TabView;
 import cSore_Mapping.Health.Page.AccidentHealth;
-import cSore_Mapping.Health.Tab.General;
 import excel.ExcelReader;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -15,7 +13,6 @@ import io.cucumber.java.en.When;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.Reporter;
-import cSore_Mapping.Life.LifeProductSelection;
 import cSore_Mapping.Common.Pages.Login;
 import cSore_Mapping.Common.Pages.Products;
 import tests.BaseTest;
@@ -24,7 +21,7 @@ import java.io.IOException;
 import java.util.Map;
 
 
-public class PA extends BaseTest{
+public class TravelAssistance extends BaseTest{
     // naredne dve linije služe da iz xml file uzmemo parametre za cucumber
     String browser = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browser");
     String quit = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("quit");
@@ -114,28 +111,34 @@ public class PA extends BaseTest{
 
     @And("choose Destination")
     public void chooseDestination() throws Exception{
-        selectOption(data.get("Odredište"), new cSore_Mapping.Health.Tab.General(driver).getDestination());
+        new cSore_Mapping.Health.Tab.General(driver).destination(data.get("Odredište"));
+        //selectOption(data.get("Odredište"), new cSore_Mapping.Health.Tab.General(driver).getDestination());
     }
 
     @And("input Duration of insurance")
     public void inputDurationOfInsurance() throws Exception {
         if (data.get("Tip ugovora").equals("Individualna Multi Visa")) {
             new cSore_Mapping.Health.Tab.General(driver).inputDurationMonths(data.get("Meseci"));
+        }else {
+            new cSore_Mapping.Health.Tab.General(driver).inputDurationDays(data.get("Dani"));
         }
-        new cSore_Mapping.Health.Tab.General(driver).inputDurationDays(data.get("Dani"));
+
     }
     @And("set Country")
     public void setCountry() throws Exception{
-        selectOptionAC(data.get("Država ugovaranja"), data.get("Država ugovaranja"), new cSore_Mapping.Common.Tab.General(driver).getDrzava());
+        new cSore_Mapping.Common.Tab.General(driver).country(data.get("Država ugovaranja"));
+        //selectOptionAC(data.get("Država ugovaranja"), data.get("Država ugovaranja"), new cSore_Mapping.Common.Tab.General(driver).getDrzava());
     }
 
     @And("set Place")
     public void setPlace() throws Exception{
-        selectOptionAC(data.get("Mesto ugovaranja"), "11000 Beograd", new cSore_Mapping.Common.Tab.General(driver).getMesto());
+        new cSore_Mapping.Common.Tab.General(driver).place(data.get("Mesto ugovaranja"));
+        //selectOptionAC(data.get("Mesto ugovaranja"), "11000 Beograd", new cSore_Mapping.Common.Tab.General(driver).getMesto());
     }
     @And("set Payment Method")
     public void setPaymentMethod() throws Exception {
-        selectOption(data.get("Metod plaćanja"), new cSore_Mapping.Health.Tab.General(driver).getPaymentMethod());
+        new cSore_Mapping.Health.Tab.General(driver).paymentMethod(data.get("Metod plaćanja"));
+        //selectOption(data.get("Metod plaćanja"), new cSore_Mapping.Health.Tab.General(driver).getPaymentMethod());
     }
 
     @And("click on tab Persons")
@@ -146,13 +149,12 @@ public class PA extends BaseTest{
     @Then("set Same person")
     public void setSamePerson() throws Exception{
         new cSore_Mapping.Common.Tab.Person(driver).clickSamePerson();
-
     }
 
     @And("click on add button")
     public void clickOnAddButton() throws Exception{
-        new cSore_Mapping.Common.Tab.Person(driver).AddPersonPolicyHolder();
-        Thread.sleep(2000);
+        new cSore_Mapping.Common.Tab.Person(driver).addPersonPolicyHolder();
+        //Thread.sleep(2000);
     }
 
     @And("on Iframe input Identification number")
@@ -198,33 +200,37 @@ public class PA extends BaseTest{
 
     @And("choose Package")
     public void choosePackage() throws Exception{
-        selectOption(data.get("Paketi"), new cSore_Mapping.Health.Tab.Concerns(driver).selectPackage());
-        Thread.sleep(500);
+        new cSore_Mapping.Health.Tab.Concerns(driver).selectPackage(data.get("Paketi"));
+        //selectOption(data.get("Paketi"), new cSore_Mapping.Health.Tab.Concerns(driver).selectPackage());
+        //Thread.sleep(500);
     }
 
     @And("choose Insured sum")
     public void chooseInsuredSum() throws Exception{
-        selectOption(data.get("Suma osiguranja"), new cSore_Mapping.Health.Tab.Concerns(driver).selectInsuredSumList());
-        Thread.sleep(500);
+        new cSore_Mapping.Health.Tab.Concerns(driver).selectInsuredSumList(data.get("Suma osiguranja"));
+        //selectOption(data.get("Suma osiguranja"), new cSore_Mapping.Health.Tab.Concerns(driver).selectInsuredSumList());
+        //Thread.sleep(500);
     }
 
     @And("choose Sum correction")
     public void chooseSumCorrection()throws Exception {
-        selectOption(data.get("Korekcija OS"), new cSore_Mapping.Health.Tab.Concerns(driver).selectCorrection());
-        Thread.sleep(500);
+        new cSore_Mapping.Health.Tab.Concerns(driver).selectCorrection(data.get("Korekcija OS"));
+        //selectOption(data.get("Korekcija OS"), new cSore_Mapping.Health.Tab.Concerns(driver).selectCorrection());
+        //Thread.sleep(500);
     }
 
     @And("choose Franchise")
     public void chooseFranchise() throws Exception{
-        selectOption(data.get("Učešće u šteti"), new cSore_Mapping.Health.Tab.Concerns(driver).selectFranchise());
-        Thread.sleep(500);
+        new cSore_Mapping.Health.Tab.Concerns(driver).selectFranchise(data.get("Učešće u šteti"));
+        //selectOption(data.get("Učešće u šteti"), new cSore_Mapping.Health.Tab.Concerns(driver).selectFranchise());
+        //Thread.sleep(500);
     }
 
     @Then("add insured persons")
     public void addInsuredPersons() throws Exception{
         if(data.get("Tip ugovora").equals("Porodična")) {
             new cSore_Mapping.Health.Tab.Concerns(driver).clickAddConcern();
-            new cSore_Mapping.Health.Tab.Concerns(driver).Search();
+            new cSore_Mapping.Health.Tab.Concerns(driver).search();
             JumpToFrame();
             new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).inputIdentificationNumber(data.get("Osiguranici"));
             new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).clickSearchButtonFL();
@@ -233,9 +239,9 @@ public class PA extends BaseTest{
             new cSore_Mapping.Common.View.TotButtonView(driver).Submit();
         }
         if(data.get("Tip ugovora").equals("Grupna")) {
-            new cSore_Mapping.Health.Tab.Concerns(driver).FileUpload("grupno");
-            new cSore_Mapping.Health.Tab.Concerns(driver).Add();
-            Thread.sleep(2000);
+            new cSore_Mapping.Health.Tab.Concerns(driver).fileUpload("grupno");
+            new cSore_Mapping.Health.Tab.Concerns(driver).add();
+            //Thread.sleep(2000);
         }
     }
 
@@ -251,26 +257,26 @@ public class PA extends BaseTest{
 
     @And("click on button Activate")
     public void clickOnButtonActivate() throws Exception{
-        new cSore_Mapping.Common.View.TotButtonView(driver).Activate();
-        Thread.sleep(5000);
+        new cSore_Mapping.Common.View.TotButtonView(driver).activate();
+        //Thread.sleep(5000);
     }
 
     @And("click on button Print PUI")
     public void clickOnButtonPrintPUI() throws Exception{
         new cSore_Mapping.Common.View.TotButtonView(driver).PrintPUI();
-        Thread.sleep(5000);
+        //Thread.sleep(5000);
     }
 
     @And("click on button Confirm Payment")
     public void clickOnButtonConfirmPayment() throws Exception{
-        new cSore_Mapping.Common.View.TotButtonView(driver).ConfirmPayment();
+        new cSore_Mapping.Common.View.TotButtonView(driver).confirmPayment();
         Thread.sleep(5000);
     }
 
     @And("click on button Certification of signature")
     public void clickOnButtonCertificationOfSignature()throws Exception {
         new cSore_Mapping.Common.View.TotButtonView(driver).CertificationOfSignature();
-        Thread.sleep(5000);
+        //Thread.sleep(5000);
     }
     @Then("check Info message After Certification Of Signature")
     public void checkInfoMessageAfterCertificationOfSignature() throws Exception{

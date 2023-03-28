@@ -65,21 +65,22 @@ public class TotButtonView extends BasePage {
 
 
     public void clickCalculate() throws Exception {
-        Calculate.click();
+        Click(Calculate, "Click on calculate");
     }
     public void Close() throws Exception {}
-    public void Activate() throws Exception {
-        Activate.click();
+    public void activate() throws Exception {
+        Click(Activate, "Click on activate");
     }
-    public void ConfirmPayment() throws Exception {
-        ConfirmPayment.click();
+    public void confirmPayment() throws Exception {
+        Click(ConfirmPayment, "confirm payment");
     }
     public void CertificationOfSignature() throws Exception {
-        CertificationOfSignature.click();
+        Click(CertificationOfSignature, "Click on certification of signature");
     }
     public void Annule() throws Exception {}
     public void Submit() throws Exception {
-        Submit.click();
+        Click(Submit, "Click on Submit");
+        //Submit.click();
     }
     public void Cancel() throws Exception {}
 
@@ -103,7 +104,7 @@ public class TotButtonView extends BasePage {
     public void Search() throws Exception {}
     public void Export() throws Exception {}
     public void PrintPUI() throws Exception {
-        PrintPUI.click();
+        Click(PrintPUI, "Click on print");
     }
     public void PaymentInstructions() throws Exception {}
     public void Cancellation() throws Exception {}

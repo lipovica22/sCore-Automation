@@ -82,14 +82,14 @@ public class Concerns extends BasePage {
     public void PackageLabel() throws Exception {
 
     }
-    public WebElement selectPackage() throws Exception {
-        return Package;
+    public void selectPackage(String valuePackage) throws Exception {
+        SelectOption(Package, "Select package", valuePackage);
     }
     public void PackageDescriptions() throws Exception {
 
     }
-    public WebElement selectInsuredSumList() throws Exception {
-        return InsuredSumList;
+    public void selectInsuredSumList(String valueSumList) throws Exception {
+        SelectOption(InsuredSumList, "Select insured sum list", valueSumList);
     }
     public void InsuredSumList() throws Exception {
 
@@ -100,8 +100,8 @@ public class Concerns extends BasePage {
     public void CorrectionLabel() throws Exception {
 
     }
-    public WebElement selectCorrection() {
-        return Correction;
+    public void selectCorrection(String valueCorrection) throws Exception {
+        SelectOption(Correction, "Select correction", valueCorrection);
     }
     public void CorrectionCurrency() throws Exception {
 
@@ -109,8 +109,8 @@ public class Concerns extends BasePage {
     public void FranchiseLabel() throws Exception {
 
     }
-    public WebElement selectFranchise() throws Exception {
-        return Franchise;
+    public void selectFranchise(String valueFranchise) throws Exception {
+        SelectOption(Franchise, "Select franchise", valueFranchise);
     }
     public void FranchiseCurrency() throws Exception {
 
@@ -118,17 +118,19 @@ public class Concerns extends BasePage {
     public void FileUploadLabel() throws Exception {
 
     }
-    public void FileUpload(String fileName) throws Exception {
-        FileUpload.sendKeys("C:/Users/srdjan.tanasijevic/IdeaProjects/sCore-Automation/src/test/FilesForUpload/"+fileName+".xlsm");
+    public void fileUpload(String valueFileName) throws Exception {
+        String valueSet= "C:/Users/srdjan.tanasijevic/IdeaProjects/sCore-Automation/src/test/FilesForUpload/" + valueFileName + ".xlsm";
+        SetValue(FileUpload, "Set value file upload", valueSet);
+        //FileUpload.sendKeys("C:/Users/srdjan.tanasijevic/IdeaProjects/sCore-Automation/src/test/FilesForUpload/" + valueFileName + ".xlsm");
     }
     public void clickFind() throws Exception {
         Find.click();
     }
-    public void Add() throws Exception {
-        Add.click();
+    public void add() throws Exception {
+        Click(Add, "Click on add");
     }
     public void clickAddConcern() throws Exception {
-        AddConcern.click();
+        Click(AddConcern, "Click on add concern");
     }
     public void ConcernListGrid() throws Exception {
 
@@ -147,9 +149,9 @@ public class Concerns extends BasePage {
     public void Name() throws Exception {
 
     }
-    public void Search() throws Exception {
-        Search.click();
-
+    public void search() throws Exception {
+        Click(Search, "Click on search");
+        //Search.click();
     }
     public void IdentNumber() throws Exception {
 

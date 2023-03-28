@@ -40,30 +40,35 @@ public class General extends BasePage {
     WebElement IzborDuzineTrajanja;
 
 
-    public WebElement getDrzava() {
-        return Drzava;
+    public void country(String valueCountry) throws Exception {
+        SelectValueAC(Drzava, "Select Country", valueCountry, valueCountry);
     }
-    public WebElement getMesto() {
-        return Mesto;
+    public void place(String valuePlace) throws Exception {
+        SelectValueAC(Mesto, "Select place", valuePlace, "11000 Beograd");
     }
 
     public WebElement getDinamika() {
+
         return Dinamika;
     }
 
     public WebElement getValuta() {
+
         return Valuta;
     }
 
     public WebElement getValutnaKlauzula() {
+
         return ValutnaKlauzula;
     }
 
     public WebElement getMetodPlacanja() {
+
         return MetodPlacanja;
     }
 
     public WebElement getBanka() {
+
         return Banka;
     }
 

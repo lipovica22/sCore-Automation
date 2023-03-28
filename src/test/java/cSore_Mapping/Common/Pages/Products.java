@@ -36,7 +36,7 @@ public class Products extends BasePage {
         //Motor.click();
     }
     public void clickAccidentHealth() throws Exception {
-        Click(AccidentHealth, "Click on AccidentHealth");
+        Click(AccidentHealth, "Click on Accident Health");
         //AccidentHealth.click();
     }
     public void selectLob(String LOB) throws Exception {

@@ -89,15 +89,16 @@ public class SearchPersonTA extends BasePage {
     public void PersonFrame() throws Exception {}
     public void AddNewButton() throws Exception {}
     public void chooseEntityTypes(String entity) throws Exception {
-        EntityTypes.sendKeys(entity);
+        SetValue(EntityTypes, "Set entity types", entity);
     }
     public void SurnameLabel() throws Exception {}
     public void Surname() throws Exception {}
     public void FirstNameLabel() throws Exception {}
     public void FirstName() throws Exception {}
     public void IdentificationNumberLabel() throws Exception {}
-    public void inputIdentificationNumber(String JMBG) throws Exception {
-        IdentificationNumber.sendKeys(JMBG);
+    public void inputIdentificationNumber(String valueJmbg) throws Exception {
+        SetValue(IdentificationNumber, "Set value JMBG", valueJmbg);
+        //IdentificationNumber.sendKeys(JMBG);
     }
     public void PassportNumberLabel() throws Exception {
 
@@ -122,11 +123,13 @@ public class SearchPersonTA extends BasePage {
     public void Active() throws Exception {}
     public void ActiveLabel() throws Exception {}
     public void clickSearchButtonFL() throws Exception {
-        SearchButtonFL.click();
+        Click(SearchButtonFL, "Click on search FL");
+        //SearchButtonFL.click();
     }
 
     public void clickSearchResultGridFL() throws Exception {
-        SearchResultGridFL.click();
+        Click(SearchResultGridFL, "Click on grid FL");
+        //SearchResultGridFL.click();
     }
 
     public void FooterGridFL() throws Exception {}

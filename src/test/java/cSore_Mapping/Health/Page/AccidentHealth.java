@@ -27,11 +27,11 @@ public class AccidentHealth extends BasePage {
 
 
     public void selectPutnaAsistencija() throws Exception {
-        Click(PutnaAsistencija, "Click on Putna Asistencija");
+        Click(PutnaAsistencija, "Click on Travel Assistance");
        //PutnaAsistencija.click();
     }
     public void selectNezgoda() throws Exception {
-        Click(Nezgoda, "Click on Nezgoda");
+        Click(Nezgoda, "Click on Accident");
         //Nezgoda.click();
     }
     public void selectMedUniqa() throws Exception {
@@ -39,12 +39,12 @@ public class AccidentHealth extends BasePage {
         //MedUniqa.click();
     }
     public void selectBonusPaket() throws Exception {
-        Click(BonusPaket, "Click on Bonus Paket");
+        Click(BonusPaket, "Click on Bonus Package");
         //BonusPaket.click();
     }
 
     public void selectKreditPaket() throws Exception {
-        Click(KreditPaket, "Click on Kredit Paket");
+        Click(KreditPaket, "Click on Credit Package");
         //KreditPaket.click();
     }
 

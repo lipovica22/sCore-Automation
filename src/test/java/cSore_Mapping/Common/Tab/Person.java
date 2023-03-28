@@ -34,7 +34,8 @@ public class Person extends BasePage {
     WebElement AddSamePerson;
 
     public void clickSamePerson() throws Exception {
-        SamePersonLabel.click();
+        Click(SamePersonLabel, "Click on same person");
+        //SamePersonLabel.click();
     }
     public void SamePersonLabel() throws Exception {
         SamePersonLabel.click();
@@ -43,9 +44,10 @@ public class Person extends BasePage {
         Thread.sleep(5000);
         PolicyHolder.click();
     }
-    public void AddPersonPolicyHolder() throws Exception {
-        Thread.sleep(5000);
-        AddPersonPolicyHolder.click();
+    public void addPersonPolicyHolder() throws Exception {
+        //Thread.sleep(5000);
+        Click(AddPersonPolicyHolder, "Click on person policy holder");
+        //AddPersonPolicyHolder.click();
     }
     public void PolicyHolderGrid() throws Exception {
 

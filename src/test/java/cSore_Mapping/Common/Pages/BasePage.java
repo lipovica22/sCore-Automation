@@ -14,7 +14,6 @@ import tests.BaseTest;
 
 
 import java.io.IOException;
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -566,11 +565,13 @@ public class BasePage {
 
         while (retryCount < maxRetries){
             try {
-                boolean isClicked = false;
                 SetValue(element, log, value);
+                boolean isClicked = false;
 
-                webDriverWait = new WebDriverWait(driver, waitTime);
-                webDriverWait.until(ExpectedConditions.elementToBeSelected(element)); //TODO: Ovo proveriti da li je ispravno???
+                try {
+                    webDriverWait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.className("ui-menu-item"))));
+                }catch (Exception ignored){
+                }
 
                 List<WebElement> optionsToSelect = driver.findElements(By.className("ui-menu-item"));
 
@@ -578,6 +579,7 @@ public class BasePage {
                     if (option.getText().equals(sel_value)){
                         Click(option);
                         isClicked = true;
+                        retryCount = 3;
                         System.out.println("SelectValueAC: " + log);
                         break;
                     }
@@ -585,6 +587,8 @@ public class BasePage {
 
                 if (!isClicked){
                     retryCount++;
+
+                    System.out.println(retryCount + ".attempt >>>>> SelectValueAC failed: " + log);
 
                     if (retryCount == maxRetries){
                         new BaseTest().reporterScreenshot("Failed_SelectValueAC", "Failed SelectValueAC - " + log, driver);
@@ -631,6 +635,7 @@ public class BasePage {
                         option.click();
                         //TODO: dodati WaitTime.NextElementWaitTime();
                         isClicked = true;
+                        retryCount = 3;
                         System.out.println("SelectValueACWithWait: " + log);
                         break;
                     }
@@ -679,6 +684,7 @@ public class BasePage {
                     if (option.getText().equals(sel_value)){
                         Click(option);
                         isClicked = true;
+                        retryCount = 3;
                         System.out.println("SelectValueAC_ItemName: " + log);
                         break;
                     }
@@ -716,11 +722,13 @@ public class BasePage {
 
         while (retryCount < maxRetries){
             try {
-                boolean isClicked = false;
                 Click(element);
+                boolean isClicked = false;
 
-                webDriverWait = new WebDriverWait(driver, waitTime);
-                webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("option"))); //TODO: Ispravno Metoda isprobana
+                try {
+                    webDriverWait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.cssSelector("option"))));
+                }catch (Exception ignored){
+                }
 
                 List<WebElement> optionsToSelect = driver.findElements(By.cssSelector("option"));
 
@@ -782,6 +790,7 @@ public class BasePage {
                         Click(option);
                         //TODO: dodati WaitTime.NextElementWaitTime();
                         isClicked = true;
+                        retryCount = 3;
                         System.out.println("SelectOptionWithWait: " + log);
                         break;
                     }
@@ -831,6 +840,7 @@ public class BasePage {
                     if (option.getText().equals(sel_option)){
                         Click(option);
                         isClicked = true;
+                        retryCount = 3;
                         System.out.println("SelectOptionLi: " + log);
                         break;
                     }
