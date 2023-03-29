@@ -40,7 +40,7 @@ public class Login extends BasePage {
     }
 
     public void testAssert() throws Exception {
-        AreEqual(loggedUser, "Checked user status", "sCoreAgent1");
+        AreEqual(loggedUser, "Checked user status", "sCoreAgent");
     }
    //-------------------- End Methods --------------------
 }

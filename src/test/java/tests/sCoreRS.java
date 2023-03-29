@@ -8,7 +8,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import cSore_Mapping.Common.Pages.Login;
 import cSore_Mapping.Common.Pages.Products;
-import cSore_Mapping.Life.views.Kasko;
+import cSore_Mapping.Life.View.Kasko;
 
 import java.io.IOException;
 

@@ -31,6 +31,19 @@ public class Person extends BasePage {
     @FindBy(id= "Kol20")
     WebElement addSamePerson;
 
+    @FindBy(xpath= "//*[@id='Kol5']/div/div[2]/div/div")
+    WebElement AddContactPerson;
+    @FindBy(xpath= "//*[@id='Kol5']/div/div[1]/h4")
+    WebElement ContactPersonLabel;
+    @FindBy(id= "basic-grid_5")
+    WebElement ContactPersonGrid;
+
+    @FindBy(xpath= "//*[@id='Kol8']/div/div[1]/h4")
+    WebElement SMSNotificationLabel;
+    @FindBy(xpath= "//*[@id='Kol8']/div/div[2]/div/div")
+    WebElement AddSMSNotification;
+
+
     //-------------------- Methods --------------------
     public void clickSamePerson() throws Exception {
         Click(samePersonLabel, "Click on same person");
@@ -52,6 +65,17 @@ public class Person extends BasePage {
     public void clickAddSamePerson() throws Exception {
         Click(addSamePerson, "Click on add same person");
     }
+    public void AddSamePerson() throws Exception {
+        addSamePerson.click();
+    }
+
+    public void AddContactPerson() throws Exception {}
+    public void ContactPersonLabel() throws Exception {}
+    public void ContactPersonGrid() throws Exception {}
+
+    public void SMSNotificationLabel() throws Exception {}
+    public void AddSMSNotification() throws Exception {}
+
     //-------------------- End Methods --------------------
 }
 

@@ -6,8 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class General extends BasePage {
-    public General(WebDriver driver) {
+public class GeneralPA extends BasePage {
+    public GeneralPA(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }

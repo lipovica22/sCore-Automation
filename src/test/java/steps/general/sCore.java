@@ -1,7 +1,7 @@
 package steps.general;
 
 import cSore_Mapping.Common.Pages.BasePage;
-import cSore_Mapping.Life.tabs.General;
+import cSore_Mapping.Life.Tab.General;
 import cSore_Mapping.Common.View.TabView;
 import excel.ExcelReader;
 import io.cucumber.java.After;
@@ -17,6 +17,7 @@ import cSore_Mapping.Life.LifeProductSelection;
 import cSore_Mapping.Common.Pages.Login;
 import cSore_Mapping.Common.Pages.Products;
 import tests.BaseTest;
+
 
 import java.io.IOException;
 import java.util.Map;
@@ -42,7 +43,7 @@ public class sCore extends BaseTest {
     }
 
     @Given("login on app RS Test {string} {string} {string}")
-    public void loginOnAppBATest(String file, String sheet, String row) throws Exception {
+    public void loginOnAppRSTest(String file, String sheet, String row) throws Exception {
         driver.get("https://t-score.uniqa.rs/POS/Serbia/NoAD");
         data = new ExcelReader().getRowData(file, sheet, Integer.parseInt(row));
     }
@@ -156,7 +157,7 @@ public class sCore extends BaseTest {
         if (!data.get("Metod plaćanja").equals("Trajni nalog")) {
             selectOption(data.get("Metod plaćanja"), new General(driver).getMetodPlacanja());
         } else {
-            selectOption(data.get("Metod plaćanja"), new General(driver).getMetodPlacanja());
+            selectOption(data.get("Metod placanja"), new General(driver).getMetodPlacanja());
             selectOption(data.get("Banka"), new General(driver).getBanka());
         }
     }
