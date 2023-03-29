@@ -1,12 +1,10 @@
 package seleniumCore;
 
 import com.google.common.collect.ImmutableMap;
-import io.github.bonigarcia.wdm.managers.FirefoxDriverManager;
 import org.openqa.selenium.Capabilities;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.sql.Driver;
+import java.io.File;
 
 import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnvironmentWriter;
 
@@ -44,7 +42,14 @@ public class DriverManagerFactory {
                         .put("Browser", browserName)
                         .put("Browser.Version", browserVersion)
                         .put("Operating System", platform)
-                        .put("Environment", "v 3.32.1.0")
-                        .build(), "C:\\Users\\rss0105\\IdeaProjects\\DemoProject\\sCore-Automation\\results\\allure-results\\");
+                        .put("Environment", "3.32.1.0")
+                        .build(), pathAllureEnvironment());
+    }
+
+    private static String pathAllureEnvironment(){
+        File directory = new File(".");
+        String absolutePath = directory.getAbsolutePath().replace("\\", "/").replace(".", "").trim();
+        String path = absolutePath + "results/allure-results/";
+        return path;
     }
 }

@@ -16,8 +16,12 @@ public class General extends BasePage {
     WebElement trajanje;
     @FindBy(id = "ContentPlaceHolder1_Kol29_uc_idWucPlaces_tbStates")
     WebElement drzava;
+    @FindBy(css = "ul[id='ui-id-1']")
+    WebElement drzavaList;
     @FindBy(id = "ContentPlaceHolder1_Kol29_uc_idWucPlaces_tbPlaces")
     WebElement mesto;
+    @FindBy(css = "ul[id='ui-id-2']")
+    WebElement mestoList;
     @FindBy(id = "Kol24")
     WebElement dinamika;
     @FindBy(id = "Kol22")
@@ -39,10 +43,10 @@ public class General extends BasePage {
 
     //--------------------- Methods -----------------------
     public void country(String valueCountry) throws Exception {
-        SelectValueAC(drzava, "Select Country", valueCountry, valueCountry);
+        SelectValueAC(drzava, drzavaList, "Select Country", valueCountry, valueCountry);
     }
     public void place(String valuePlace) throws Exception {
-        SelectValueAC(mesto, "Select place", valuePlace, "11000 Beograd");
+        SelectValueAC(mesto, mestoList, "Select place", valuePlace, "11000 Beograd");
     }
     //-------------------- End Methods --------------------
 }

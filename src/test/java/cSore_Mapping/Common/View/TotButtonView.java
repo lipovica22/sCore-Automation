@@ -111,7 +111,7 @@ public class TotButtonView extends BasePage {
     }
 
     public void clickPrintPUI() throws Exception {
-        Click(printPUI, "Click on print");
+        Click(printPUI, "Click on print PUI");
     }
     //-------------------- End Methods --------------------
 }

@@ -4,17 +4,13 @@
 
 
 <suite name="Fast test" thread-count="1" data-provider-thread-count="1">
-
     <parameter name="browser" value="CHROME"/>
     <parameter name="quit" value="yes"/>
     <parameter name="env" value="TEST_RS"/>
 
     <test name="TC">
-
         <classes>
             <class name="runners.HealthTravelAssistance"/>
-
         </classes>
-
     </test>
 </suite>

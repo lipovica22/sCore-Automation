@@ -1,6 +1,7 @@
 package cSore_Mapping.Health.Tab;
 
 import cSore_Mapping.Common.Pages.BasePage;
+import core_class.ApplicationBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -93,11 +94,12 @@ public class Concerns extends BasePage {
         SelectOption(franchise, "Select franchise", valueFranchise);
     }
     public void fileUpload(String valueFileName) throws Exception {
-        String valueSet= "C:/Users/srdjan.tanasijevic/IdeaProjects/sCore-Automation/src/test/FilesForUpload/" + valueFileName + ".xlsm";
-        SetValue(fileUpload, "Set value file upload", valueSet);
+        //String valueSet= "C:/Users/rss0105/IdeaProjects/DemoProject/sCore-Automation/src/test/FilesForUpload/" + valueFileName + ".xlsm";
+        //fileUpload.sendKeys(valueSet);
+        SetValuePackage(fileUpload, "Upload excel file for package", ApplicationBase.pathXlsm(valueFileName));
     }
     public void clickFind() throws Exception {
-        Click(find, "Clicko on find");
+        Click(find, "Click on find");
     }
     public void add() throws Exception {
         Click(add, "Click on add");

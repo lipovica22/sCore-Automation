@@ -345,6 +345,34 @@ public class BasePage {
         js.executeScript("window.scrollTo(0, -document.body.scrollHeight)");
     }
 
+    public void SetValuePackage(WebElement element, String log, String value) throws Exception {
+        webDriverWait = new WebDriverWait(driver, waitTime);
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element);
+        actions.perform();
+
+        int retryCount = 0;
+
+        while (retryCount < maxRetries){
+            try{
+                element.sendKeys(value);
+
+                System.out.println("SetValuePackage: " + log);
+
+                break;
+            }catch(Exception e){
+                retryCount++;
+
+                System.out.println(retryCount + ".attempt >>>>> SetValuePackage failed: " + log);
+
+                if (retryCount == maxRetries) {
+                    new BaseTest().reporterScreenshot("Failed_SetValuePackage", "Failed SetValue - " + log, driver);
+                    throw new Exception("Failed to SetValuePackage on element: " + log);
+                }
+            }
+        }
+    }
+
     public void SetValue(WebElement element, String log, String value) throws Exception {
         webDriverWait = new WebDriverWait(driver, waitTime);
         Actions actions = new Actions(driver);
@@ -555,7 +583,7 @@ public class BasePage {
         }
     }
 
-    public void SelectValueAC(WebElement element, String log, String value, String sel_value) throws Exception {
+    public void SelectValueAC(WebElement element, WebElement elementList, String log, String value, String sel_value) throws Exception {
         webDriverWait = new WebDriverWait(driver, waitTime);
         Actions actions = new Actions(driver);
         actions.moveToElement(element);
@@ -568,12 +596,7 @@ public class BasePage {
                 SetValue(element, log, value);
                 boolean isClicked = false;
 
-                try {
-                    webDriverWait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.className("ui-menu-item"))));
-                }catch (Exception ignored){
-                }
-
-                List<WebElement> optionsToSelect = driver.findElements(By.className("ui-menu-item"));
+                List<WebElement> optionsToSelect = elementList.findElements(By.tagName("li"));
 
                 for (WebElement option : optionsToSelect) {
                     if (option.getText().equals(sel_value)){
@@ -727,12 +750,7 @@ public class BasePage {
                 Click(element);
                 boolean isClicked = false;
 
-                try {
-                    webDriverWait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.cssSelector("option"))));
-                }catch (Exception ignored){
-                }
-
-                List<WebElement> optionsToSelect = driver.findElements(By.cssSelector("option"));
+                List<WebElement> optionsToSelect = element.findElements(By.cssSelector("option"));
 
                 for (WebElement option : optionsToSelect) {
                     if (option.getText().equals(sel_option)){
@@ -744,7 +762,7 @@ public class BasePage {
                     }
                 }
 
-                Click(element);
+                //Click(element);
 
                 if (!isClicked){
                     retryCount++;
@@ -879,8 +897,11 @@ public class BasePage {
             String actualResult = GetText(element, log);
             Assert.assertEquals(actualResult, expected);
             System.out.println("AreEqual: " + log);
-        }catch (Exception ex){
+        }catch (AssertionError ex){
             new BaseTest().reporterScreenshot("NotEqual", "Not equal assert - " + log, driver);
+            throw ex;
+        } catch (Exception ex) {
+
         }
     }
 
@@ -964,18 +985,13 @@ public class BasePage {
 
     private void Click(WebElement element) throws Exception {
 
-        webDriverWait = new WebDriverWait(driver, waitTime);
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element);
-        actions.perform();
+
 
         int retryCount = 0;
 
         while (retryCount < maxRetries){
             try {
-                webDriverWait.until(ExpectedConditions.visibilityOf(element));
-                webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
-                actions.moveToElement(element).build().perform(); //hover
+
 
                 element.click();
 
