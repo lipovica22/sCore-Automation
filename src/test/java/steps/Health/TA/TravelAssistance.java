@@ -122,13 +122,8 @@ public class TravelAssistance extends BaseTest{
     @And("input Duration of insurance")
     public void inputDurationOfInsurance() throws Exception {
         if (data.get("Tip ugovora").equals("Individualna Multi Visa")) {
-<<<<<<< HEAD:src/test/java/steps/Health/TravelAssistance.java
-            new cSore_Mapping.Health.Tab.General(driver).setInputDurationMonths(data.get("Meseci"));
-            //Thread.sleep(1000);
-            new cSore_Mapping.Health.Tab.General(driver).setInputDurationDays(data.get("Dani"));
-=======
             new cSore_Mapping.Health.Tab.GeneralPA(driver).setInputDurationMonths(data.get("Meseci"));
->>>>>>> fea11f24fc10507af2bc0fe1976e6748dd57444f:src/test/java/steps/Health/TA/TravelAssistance.java
+            new cSore_Mapping.Health.Tab.GeneralPA(driver).setInputDurationDays(data.get("Dani"));
         }else {
             new cSore_Mapping.Health.Tab.GeneralPA(driver).setInputDurationDays(data.get("Dani"));
         }
@@ -245,15 +240,11 @@ public class TravelAssistance extends BaseTest{
             new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).clickSearchButtonFL();
             new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).clickSearchResultGridFL();
             new cSore_Mapping.Common.Dialog.Iframe.ViewPerson(driver).clickAcceptButton();
-<<<<<<< HEAD:src/test/java/steps/Health/TravelAssistance.java
-            new cSore_Mapping.Common.View.TotButtonView(driver).clickSubmit();
+            new cSore_Mapping.Common.View.TopButtonView(driver).clickSubmit();
 
             //new cSore_Mapping.Common.View.TotButtonView(driver).clickCalculate();
             //new cSore_Mapping.Common.View.TotButtonView(driver).clickActivate();
             //new cSore_Mapping.Common.View.TotButtonView(driver).clickCertificationOfSignature();
-=======
-            new cSore_Mapping.Common.View.TopButtonView(driver).clickCertificationOfSignature();
->>>>>>> fea11f24fc10507af2bc0fe1976e6748dd57444f:src/test/java/steps/Health/TA/TravelAssistance.java
         }
         if(data.get("Tip ugovora").equals("Grupna")) {
             new cSore_Mapping.Health.Tab.Concerns(driver).fileUpload("grupno");
@@ -274,46 +265,27 @@ public class TravelAssistance extends BaseTest{
 
     @And("click on button Activate")
     public void clickOnButtonActivate() throws Exception{
-<<<<<<< HEAD:src/test/java/steps/Health/TravelAssistance.java
-        new cSore_Mapping.Common.View.TotButtonView(driver).clickActivate();
-        Thread.sleep(5000);
-=======
         new cSore_Mapping.Common.View.TopButtonView(driver).clickActivate();
         //Thread.sleep(5000);
->>>>>>> fea11f24fc10507af2bc0fe1976e6748dd57444f:src/test/java/steps/Health/TA/TravelAssistance.java
     }
 
     @And("click on button Print PUI")
     public void clickOnButtonPrintPUI() throws Exception{
-<<<<<<< HEAD:src/test/java/steps/Health/TravelAssistance.java
-        new cSore_Mapping.Common.View.TotButtonView(driver).clickPrintPUI();
-        Thread.sleep(5000);
-=======
         new cSore_Mapping.Common.View.TopButtonView(driver).clickPrintPUI();
         //Thread.sleep(5000);
->>>>>>> fea11f24fc10507af2bc0fe1976e6748dd57444f:src/test/java/steps/Health/TA/TravelAssistance.java
+
     }
 
     @And("click on button Confirm Payment")
     public void clickOnButtonConfirmPayment() throws Exception{
-<<<<<<< HEAD:src/test/java/steps/Health/TravelAssistance.java
-        new cSore_Mapping.Common.View.TotButtonView(driver).clickConfirmPayment();
-        Thread.sleep(5000);
-=======
         new cSore_Mapping.Common.View.TopButtonView(driver).clickConfirmPayment();
         //Thread.sleep(5000);
->>>>>>> fea11f24fc10507af2bc0fe1976e6748dd57444f:src/test/java/steps/Health/TA/TravelAssistance.java
     }
 
     @And("click on button Certification of signature")
     public void clickOnButtonCertificationOfSignature()throws Exception {
-<<<<<<< HEAD:src/test/java/steps/Health/TravelAssistance.java
-        new cSore_Mapping.Common.View.TotButtonView(driver).clickCertificationOfSignature();
-        Thread.sleep(5000);
-=======
         new cSore_Mapping.Common.View.TopButtonView(driver).clickCertificationOfSignature();
         //Thread.sleep(5000);
->>>>>>> fea11f24fc10507af2bc0fe1976e6748dd57444f:src/test/java/steps/Health/TA/TravelAssistance.java
     }
     @Then("check Info message After Certification Of Signature")
     public void checkInfoMessageAfterCertificationOfSignature() throws Exception{

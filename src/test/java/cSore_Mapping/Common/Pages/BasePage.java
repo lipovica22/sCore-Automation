@@ -36,7 +36,6 @@ public class BasePage {
 
     //------------------------- Methods -------------------------
     public void Click(WebElement element, String log) throws Exception {
-
         webDriverWait = new WebDriverWait(driver, waitTime);
         Actions actions = new Actions(driver);
         actions.moveToElement(element);
@@ -762,8 +761,6 @@ public class BasePage {
                     }
                 }
 
-                //Click(element);
-
                 if (!isClicked){
                     retryCount++;
 
@@ -984,14 +981,18 @@ public class BasePage {
     }
 
     private void Click(WebElement element) throws Exception {
-
-
+        webDriverWait = new WebDriverWait(driver, waitTime);
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element);
+        actions.perform();
 
         int retryCount = 0;
 
         while (retryCount < maxRetries){
             try {
-
+                webDriverWait.until(ExpectedConditions.visibilityOf(element));
+                webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
+                actions.moveToElement(element).build().perform(); //hover
 
                 element.click();
 
