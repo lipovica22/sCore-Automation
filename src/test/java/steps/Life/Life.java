@@ -28,7 +28,7 @@ public class Life extends BaseTest {
     String browser = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browser");
     String quit = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("quit");
     Map<String, String> data;
-    String path = "src/results/screenshots/";
+    String path = "results/screenshots/";
 
     @Before
     public void setup() throws Exception {
