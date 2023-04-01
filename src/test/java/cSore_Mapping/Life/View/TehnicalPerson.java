@@ -1,4 +1,4 @@
-package cSore_Mapping.Life;
+package cSore_Mapping.Life.View;
 
 import cSore_Mapping.Common.Pages.BasePage;
 import org.openqa.selenium.WebDriver;
@@ -6,8 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LifeProductSelection extends BasePage {
-    public LifeProductSelection(WebDriver driver) {
+public class TehnicalPerson extends BasePage {
+    public TehnicalPerson(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }

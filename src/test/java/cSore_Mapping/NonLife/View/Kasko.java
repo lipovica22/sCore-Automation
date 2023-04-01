@@ -1,4 +1,4 @@
-package cSore_Mapping.Life.View;
+package cSore_Mapping.NonLife.View;
 
 import cSore_Mapping.Common.Pages.BasePage;
 import org.openqa.selenium.WebDriver;

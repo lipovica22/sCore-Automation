@@ -94,7 +94,7 @@ public class Concerns extends BasePage {
     }
     public void fileUpload(String valueFileName) throws Exception {
         String valueSet= "C:/Users/srdjan.tanasijevic/IdeaProjects/sCore-Automation/src/test/FilesForUpload/" + valueFileName + ".xlsm";
-        SetValue(fileUpload, "Set value file upload", valueSet);
+        fileUpload.sendKeys(valueSet);
     }
     public void clickFind() throws Exception {
         Click(find, "Clicko on find");
