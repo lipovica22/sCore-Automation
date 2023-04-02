@@ -53,7 +53,6 @@ public class Person extends BasePage {
         Click(policyHolder, "Click on policy holder");
     }
     public void clickAddPersonPolicyHolder() throws Exception {
-        //Thread.sleep(5000);
         Click(addPersonPolicyHolder, "Click on person policy holder");
     }
     public void clickInsuredPerson() throws Exception{
@@ -68,13 +67,6 @@ public class Person extends BasePage {
     public void AddSamePerson() throws Exception {
         addSamePerson.click();
     }
-
-    public void AddContactPerson() throws Exception {}
-    public void ContactPersonLabel() throws Exception {}
-    public void ContactPersonGrid() throws Exception {}
-
-    public void SMSNotificationLabel() throws Exception {}
-    public void AddSMSNotification() throws Exception {}
 
     //-------------------- End Methods --------------------
 }

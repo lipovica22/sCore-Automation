@@ -17,6 +17,7 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.Reporter;
 import cSore_Mapping.Common.Pages.Login;
+import org.testng.asserts.SoftAssert;
 import tests.BaseTest;
 
 
@@ -31,9 +32,12 @@ public class MU extends BaseTest {
     Map<String, String> data;
     String path = "src/results/screenshots/";
 
+    private SoftAssert softAssert;
+
     @Before
     public void setup() throws Exception {
         initialization(browser);
+        softAssert = new SoftAssert();
     }
 
     @After
@@ -41,6 +45,10 @@ public class MU extends BaseTest {
         takeScreenshot("slika" + System.currentTimeMillis());
         if (quit.equalsIgnoreCase("Yes")) {
             quit();
+        }
+
+        if (softAssert != null) {
+            softAssert.assertAll();
         }
     }
     @Given("login on app RS Test {string} {string} {string}")
@@ -263,8 +271,9 @@ public class MU extends BaseTest {
     }
     @Then("check Info message After Certification Of Signature")
     public void checkInfoMessageAfterCertificationOfSignature() throws Exception{
+        new BasePage(driver).InfoMessage(data.get("Poruka nakon potvrde potpisa"), softAssert);
 
-        Assert.assertEquals(new BasePage(driver).InfoMessage(),data.get("Poruka nakon potvrde potpisa"));
+        //Assert.assertEquals(new BasePage(driver).InfoMessage(),data.get("Poruka nakon potvrde potpisa"));
     }
     @And("click on button Print conditions")
     public void clickOnButtonPrintConditions()throws Exception {

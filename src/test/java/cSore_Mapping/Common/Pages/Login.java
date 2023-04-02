@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.asserts.SoftAssert;
 
 import java.io.IOException;
 
@@ -39,8 +40,12 @@ public class Login extends BasePage {
       return user;
     }
 
-    public void testAssert() throws Exception {
-        AreEqual(loggedUser, "Checked user status", "sCoreAgent");
+    public void assertUser(String valueAssertUser, SoftAssert softAssert) throws Exception {
+        AreEqual(loggedUser, "Assert user status", valueAssertUser, softAssert);
+    }
+
+    public void assertUrl(String valueAssertUrl, SoftAssert softAssert) throws Exception {
+        AreEqualURL("Assert current URL", valueAssertUrl, softAssert);
     }
    //-------------------- End Methods --------------------
 }

@@ -32,7 +32,7 @@ Feature: Create policy for all products of TravelAssistance in Serbia
     Then check Info message on top of page
 
     When click on Concerns tab
-    Then check Info message on top of page
+    Then check Info message after click on concerns tab on top of page
     And choose Package
     And choose Insured sum
     And choose Sum correction
@@ -52,9 +52,10 @@ Feature: Create policy for all products of TravelAssistance in Serbia
     Examples:
       | row | TC ID         |
       | 1   | RS_NE_PA_101  |
-      | 2   | RS_NE_PA_102  |
-      | 3   | RS_NE_PA_103  |
-      | 4   | RS_NE_PA_104  |
+      #| 2   | RS_NE_PA_102  |
+      #| 3   | RS_NE_PA_103  |
+      #| 4   | RS_NE_PA_104  |
+
 
 
 

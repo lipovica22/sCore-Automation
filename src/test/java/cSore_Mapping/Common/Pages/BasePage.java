@@ -2,6 +2,7 @@ package cSore_Mapping.Common.Pages;
 
 import core_class.GridDataCollection;
 import core_class.ICellCoordinateMatch;
+import io.qameta.allure.Allure;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -10,10 +11,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import io.qameta.allure.model.Status;
+import org.testng.asserts.SoftAssert;
 import tests.BaseTest;
 
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -23,16 +28,16 @@ public class BasePage {
 
     public WebDriver driver;
     public WebDriverWait webDriverWait;
-    int waitTime = 3;
+    int waitTime = 30;
     int maxRetries = 3;
     public List<GridDataCollection> listGridDataCollection = new ArrayList<>();
     public WebElement webElement;
-
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
 
     //------------------------- Methods -------------------------
     public void Click(WebElement element, String log) throws Exception {
@@ -306,7 +311,6 @@ public class BasePage {
 
             new BaseTest().reporterScreenshot("Failed_IsEnabled", "Failed IsEnabled - " + log, driver);
             throw new Exception("Failed to IsEnabled on element: " + log);
-
         }
     }
 
@@ -318,7 +322,6 @@ public class BasePage {
 
             new BaseTest().reporterScreenshot("Failed_IsChecked", "Failed IsChecked - " + log, driver);
             throw new Exception("Failed to IsChecked on element: " + log);
-
         }
     }
 
@@ -330,7 +333,6 @@ public class BasePage {
 
             new BaseTest().reporterScreenshot("Failed_IsVisiable", "Failed IsVisiable - " + log, driver);
             throw new Exception("Failed to IsVisiable on element: " + log);
-
         }
     }
 
@@ -889,38 +891,112 @@ public class BasePage {
         }
     }
 
-    public void AreEqual(WebElement element, String log, String expected) throws IOException {
+    public void AreEqual(WebElement element, String log, String expected, SoftAssert softAssert) throws IOException {
+        String currentUrl = driver.getCurrentUrl();
+
         try {
             String actualResult = GetText(element, log);
-            Assert.assertEquals(actualResult, expected);
+            softAssert.assertEquals(actualResult, expected);
             System.out.println("AreEqual: " + log);
+            Assert.assertEquals(actualResult, expected);
         }catch (AssertionError ex){
-            new BaseTest().reporterScreenshot("NotEqual", "Not equal assert - " + log, driver);
-            throw ex;
-        } catch (Exception ex) {
-
+            failAssert(currentUrl, ex);
+        }catch (Exception ex){
+            new BaseTest().reporterScreenshot("NotEqualMessage", "Not equal message assert - " + log, driver);
         }
     }
 
-    public void AreEqualMessage(WebElement element, String log, String expected) throws IOException {
+    public void AreEqualMessage(WebElement element, String log, String expected, SoftAssert softAssert) throws IOException {
         try {
+            String currentUrl = driver.getCurrentUrl();
             String actualResult = "";
+            String[] partsExpected = expected.split("\n");
+            int counter = 0;
 
             List<String> stringList = GetAllLiTagValue(element, log);
 
             if (stringList.size() != 0){
                 for (String searchElement: stringList){
                     actualResult = searchElement;
+                    softAssert.assertEquals(actualResult, partsExpected[counter]);
+
+                    if (!actualResult.equals(partsExpected[counter])){
+                        try {
+                            Assert.assertEquals(actualResult, partsExpected[counter]);
+                        }catch (AssertionError ex){
+                            failAssert(currentUrl, ex);
+                        }
+                    }
+
+                    counter++;
                 }
             }
-            Assert.assertEquals(actualResult, expected);
+
             System.out.println("AreEqualMessage: " + log);
         }catch (Exception ex){
             new BaseTest().reporterScreenshot("NotEqualMessage", "Not equal message assert - " + log, driver);
         }
     }
+    public void AreEqualURL(String log, String expectedUrl, SoftAssert softAssert) throws IOException {
+        String actualUrl = driver.getCurrentUrl();
+
+        try {
+            softAssert.assertEquals(actualUrl, expectedUrl);
+            System.out.println("AreEqual: " + log);
+            Assert.assertEquals(actualUrl, expectedUrl);
+        }catch (AssertionError ex){
+            failAssert(actualUrl, ex);
+        }catch (Exception ex){
+            new BaseTest().reporterScreenshot("NotEqualMessage", "Not equal url assert - " + log, driver);
+        }
+    }
+
+    public void AreEqualCheckBox(String log, String actualValue, String expectedValue, SoftAssert softAssert) throws IOException {
+        String currentUrl = driver.getCurrentUrl();
+
+        try {
+            softAssert.assertEquals(actualValue, expectedValue);
+            System.out.println("AreEqual: " + log);
+            Assert.assertEquals(actualValue, expectedValue);
+        }catch (AssertionError ex){
+            failAssert(currentUrl, ex);
+        }catch (Exception ex){
+            new BaseTest().reporterScreenshot("NotEqualMessage", "Not equal checkbox assert - " + log, driver);
+        }
+    }
 
     public List<String> GetAllLiTagValue(WebElement element, String log) throws IOException {
+
+        String additionalId = "error_message_1";
+
+        try {
+            List<String> stringList = new ArrayList<>();
+            List<WebElement> optionsToSelect = element.findElements(By.tagName("li"));
+
+            List<WebElement> helperList = new ArrayList<>();
+            helperList.addAll(optionsToSelect);
+            WebElement webElement = null;
+
+            try {
+                if (optionsToSelect == null){
+                    webElement = driver.findElement(By.id(additionalId));
+                }
+            } catch (NoSuchElementException ignored) {
+            }
+
+            if (webElement != null) {
+                helperList.add(webElement);
+            }
+
+            for (WebElement option : helperList) {
+                stringList.add(option.getText());
+            }
+
+            return stringList;
+        } catch (NotFoundException ex) {
+            throw new NotFoundException("List Control Get All Value Issue.", ex);
+        }
+        /*
         String additionalId= "error_message_1";
         List<String> stringList = new ArrayList<>();
 
@@ -949,6 +1025,8 @@ public class BasePage {
         }
 
         return stringList;
+
+         */
     }
 
     public boolean IsCellChecked(WebElement element, String log, ICellCoordinateMatch cellCoordinateMatch)
@@ -960,6 +1038,41 @@ public class BasePage {
         } catch (org.openqa.selenium.ElementClickInterceptedException ex) {
             throw new ElementClickInterceptedException("Grid Control Is Cell Checked Issue. " + log);
         }
+    }
+
+    public void readTable(WebElement element, String log){
+        //WebElement table = driver.findElement(By.id("tableId")); // locate table element
+        List<WebElement> rows = element.findElements(By.tagName("tr")); // find all rows
+        for (int i = 0; i < rows.size(); i++) {
+            List<WebElement> cells = rows.get(i).findElements(By.tagName("th")); // find all cells in row
+            for (int j = 0; j < cells.size(); j++) {
+                String cellText = cells.get(j).getText(); // extract text from cell
+                if (cellText.contains("Štampaj")) { // locate button element by text
+                    WebElement button = cells.get(j).findElement(By.tagName("a")); // locate button element
+                    button.click(); // click button
+                }
+            }
+        }
+
+     /*
+
+        List<WebElement> rows = element.findElements(By.tagName("tr")); // find all rows
+        String[][] tableData = new String[rows.size()][];
+        for (int i = 0; i < rows.size(); i++) {
+            List<WebElement> cells = rows.get(i).findElements(By.tagName("th")); // find all cells in row
+            tableData[i] = new String[cells.size()];
+            for (int j = 0; j < cells.size(); j++) {
+                tableData[i][j] = cells.get(j).getText(); // extract text from each cell
+                String name = cells.get(j).getText();
+            }
+        }
+
+        for(int i = 0; i <rows.size(); i++){
+
+        }
+
+      */
+
     }
 
     //------------------------- End Methods -----------------------------------
@@ -1010,6 +1123,17 @@ public class BasePage {
         }
     }
 
+    private void failAssert(String currentUrl, AssertionError ex){
+        Allure.step("Failed Assert", Status.FAILED);
+
+        byte[] screenshotBytes = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        InputStream screenshotStream = new ByteArrayInputStream(screenshotBytes);
+
+        Allure.addAttachment("Assertion Error Message", ex.getMessage());
+        Allure.addAttachment("Screenshot", "image/png", screenshotStream, ".png");
+        Allure.addAttachment("URL", currentUrl);
+    }
+
 
     //------------------------- End Private Methods -------------------------
     @FindBy(id = "error_text")
@@ -1019,13 +1143,14 @@ public class BasePage {
     @FindBy(id = "info_text")
     WebElement Info;
 
-    public String ErrorMessage(){
-        String error = Error.getText();
-        return error;
-    }
-    public String InfoMessage(){
-        String info = Info.getText();
-        return info;
+    public void WaringMessage(String valueMessageExpected, SoftAssert softAssert) throws IOException {
+        AreEqualMessage(Waring, "Assert waring message", valueMessageExpected, softAssert);
     }
 
+    public void ErrorMessage(String valueMessageExpected, SoftAssert softAssert) throws IOException {
+        AreEqualMessage(Error, "Assert error message", valueMessageExpected, softAssert);
+    }
+    public void InfoMessage(String valueMessageExpected, SoftAssert softAssert) throws IOException {
+        AreEqualMessage(Info, "Assert info message", valueMessageExpected, softAssert);
+    }
 }

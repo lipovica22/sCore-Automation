@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.asserts.SoftAssert;
 
 public class TabView extends BasePage {
     public TabView(WebDriver driver) {
@@ -43,6 +44,8 @@ public class TabView extends BasePage {
     WebElement statementsTab;
     @FindBy(id= "tab_FinancialBalance")
     WebElement financialBalanceTab;
+    @FindBy(css = "div[class='sixteen columns padding_left_10 document_info'] div:nth-child(1) div:nth-child(5)")
+    WebElement status;
 
     //-------------------- Methods --------------------
     public void clickGeneralTab() throws Exception {
@@ -60,6 +63,10 @@ public class TabView extends BasePage {
     }
     public void clickAnnulationTab() throws Exception {
         ClickWithScroll(annulationTab, "Click annulation tab");
+    }
+
+    public void assertStatus(SoftAssert softAssert, String valueExpected) throws Exception {
+        AreEqual(status, "Message status", valueExpected, softAssert);
     }
     //-------------------- End Methods --------------------
 }

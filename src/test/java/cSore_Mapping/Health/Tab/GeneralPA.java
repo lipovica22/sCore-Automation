@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.asserts.SoftAssert;
+
+import java.util.Map;
 
 public class GeneralPA extends BasePage {
     public GeneralPA(WebDriver driver) {
@@ -168,6 +171,47 @@ public class GeneralPA extends BasePage {
     }
     public void selectPaymentMethod(String valuePayment) throws Exception {
         SelectOption(paymentMethod, "Select payment", valuePayment);
+    }
+
+    public void assertMarks(SoftAssert softAssert, Map<String, String> data) throws Exception {
+        //TODO dodati parametar da cita iz excela umesto false
+        //Is enabled
+        String enabledDiscountBusPlus = String.valueOf(IsEnabled(popustZaLojalnostBUSPLUS, "Is 'Popust za lojalnost BUSPLUS' enabled"));
+        AreEqualCheckBox("Assert 'Popust za lojalnost BUSPLUS' enabled", enabledDiscountBusPlus, data.get("DisablePopustBusPlus"), softAssert);
+
+        String enabledBusinessTrip = String.valueOf(IsEnabled(poslovnoPutovanje, "Is 'Poslovno putovanje' enabled"));
+        AreEqualCheckBox("Assert 'Poslovno putovanje' enabled", enabledBusinessTrip, data.get("DisablePoslovnoPutovanje"), softAssert);
+
+        String enabledContactCenterDocument = String.valueOf(IsEnabled(dokumentKontaktCentra, "Is 'Dokument Kontakt centra' enabled"));
+        AreEqualCheckBox("Assert 'Dokument Kontakt centra' enabled", enabledContactCenterDocument, data.get("DisableDokumentKonCentra"), softAssert);
+
+        String enabledTaxFreePolicy = String.valueOf(IsEnabled(polisaBezPoreza, "Is 'Polisa bez poreza' enabled"));
+        AreEqualCheckBox("Assert 'Polisa bez poreza' enabled", enabledTaxFreePolicy, data.get("DisablePolisaBezPoreza"), softAssert);
+
+        String enabledWebShopPolicy = String.valueOf(IsEnabled(webShopPolisa, "Is 'WebShop polisa' enabled"));
+        AreEqualCheckBox("Assert 'WebShop polisa' enabled", enabledWebShopPolicy, data.get("DisableWebShop"), softAssert);
+
+        //Is checked
+        String checkedDiscountBusPlus = String.valueOf(IsChecked(popustZaLojalnostBUSPLUS, "Is 'Popust za lojalnost BUSPLUS' checked"));
+        AreEqualCheckBox("Assert 'Popust za lojalnost BUSPLUS' checked", checkedDiscountBusPlus, data.get("CekiranoPopustBusPlus"), softAssert);
+
+        String checkedEmployeesOfUniqaCompanies = String.valueOf(IsChecked(zaposleniKodUniqaKompanija, "Is 'Zaposleni kod Uniqa kompanija ili partnera od posebnog značaja' checked"));
+        AreEqualCheckBox("Assert 'Zaposleni kod Uniqa kompanija ili partnera od posebnog značaja' checked", checkedEmployeesOfUniqaCompanies, data.get("CekiranoZapolseniUniqa"), softAssert);
+
+        String checkedBusinessTrip = String.valueOf(IsChecked(poslovnoPutovanje, "Is 'Poslovno putovanje' checked"));
+        AreEqualCheckBox("Assert 'Poslovno putovanje' checked", checkedBusinessTrip, data.get("CekiranoPoslovnoPutovanje"), softAssert);
+
+        String checkedEmployeesOfLegalEntity = String.valueOf(IsChecked(zaposleniKodPravnogLica, "Is 'Zaposleni kod pravnog lica sa kojim postoji ugovor o poslovnoj saradnji' checked"));
+        AreEqualCheckBox("Assert 'Zaposleni kod pravnog lica sa kojim postoji ugovor o poslovnoj saradnji' checked", checkedEmployeesOfLegalEntity, data.get("CekiranoZaposleniPravnoLice"), softAssert);
+
+        String checkedContactCenterDocument = String.valueOf(IsChecked(dokumentKontaktCentra, "Is 'Dokument Kontakt centra' checked"));
+        AreEqualCheckBox("Assert 'Dokument Kontakt centra' checked", checkedContactCenterDocument, data.get("CekiranoDokumentKonCentra"), softAssert);
+
+        String checkedTaxFreePolicy = String.valueOf(IsChecked(polisaBezPoreza, "Is 'Polisa bez poreza' checked"));
+        AreEqualCheckBox("Assert 'Polisa bez poreza' checked", checkedTaxFreePolicy, data.get("CekiranoPolisaBezPoreza"), softAssert);
+
+        String checkedWebShopPolicy = String.valueOf(IsChecked(webShopPolisa, "Is 'WebShop polisa' checked"));
+        AreEqualCheckBox("Assert 'WebShop polisa' checked", checkedWebShopPolicy, data.get("CekiranoWebShop"), softAssert);
     }
     //-------------------- End Methods --------------------
 }
