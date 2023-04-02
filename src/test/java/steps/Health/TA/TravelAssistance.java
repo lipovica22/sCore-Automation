@@ -2,7 +2,7 @@ package steps.Health.TA;
 
 import cSore_Mapping.Common.Menu.LeftMenu;
 import cSore_Mapping.Common.Pages.BasePage;
-import cSore_Mapping.Common.View.TopButtonView;
+import cSore_Mapping.Common.View.DocumentInfo;
 import cSore_Mapping.Health.Page.AccidentHealth;
 import excel.ExcelReader;
 import io.cucumber.java.After;
@@ -260,7 +260,7 @@ public class TravelAssistance extends BaseTest{
 
     @Then("check calculated Premium")
     public void checkCalculatedPremium()throws Exception {
-        Assert.assertEquals(new cSore_Mapping.Health.View.DocumentInfo(driver).getRatePremije(),data.get("Premija"));
+        Assert.assertEquals(new DocumentInfo(driver).getRatePremije(),data.get("Premija"));
     }
 
     @And("click on button Activate")

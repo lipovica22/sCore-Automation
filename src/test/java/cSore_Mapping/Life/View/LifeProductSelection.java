@@ -196,9 +196,9 @@ public class LifeProductSelection extends BasePage {
         }
     }
 
-    public void selectProizvod(String Proizvod) throws Exception {
+    public void selectProizvod(String proizvod) throws Exception {
 
-        switch (Proizvod) {
+        switch (proizvod) {
             case "Doživotni riziko": {
                 selectDozivotniRiziko();
             }

@@ -69,9 +69,13 @@ public class Concerns extends BasePage {
 
     public void CalculationDirectionHeaderLabel() throws Exception {}
     public void CalculationDirectionLabel() throws Exception {}
-    public void CalculationDirection() throws Exception {}
+    public void selectCalculationDirection(String calculationDirection) throws Exception {
+        SelectOption(CalculationDirection, "Select Calculation direction", calculationDirection);
+    }
     public void InsuredSumOrPremiumLabel() throws Exception {}
-    public void InsuredSumOrPremium() throws Exception {}
+    public void inputInsuredSumOrPremium(String sumOrPremium) throws Exception {
+        SetValue(InsuredSumOrPremium, "Input insured sum or premium", sumOrPremium);
+    }
 
     public void BaseSearchFP() throws Exception {}
     public void BaseSearchReferenceId() throws Exception {}
@@ -84,13 +88,21 @@ public class Concerns extends BasePage {
     public void GenderLabel() throws Exception {}
     public void Gender() throws Exception {}
     public void HeightLabel() throws Exception {}
-    public void Height() throws Exception {}
+    public void inputHeight(String height) throws Exception {
+        SetValue(Height, "Input height", height);
+    }
     public void WeightLabel() throws Exception {}
-    public void Weight() throws Exception {}
+    public void inputWeight(String weight) throws Exception {
+        SetValue(Weight, "Input height", weight);
+    }
     public void BMILabel() throws Exception {}
-    public void BMI() throws Exception {}
+    public void BMI() throws Exception {
+
+    }
     public void InterestLabel() throws Exception {}
-    public void Interest() throws Exception {}
+    public void inputInterest(String interest) throws Exception {
+        SetValue(Interest, "Input height",interest );
+    }
 
     public void ConcernListGrid() throws Exception {}
 

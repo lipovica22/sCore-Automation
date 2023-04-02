@@ -1,6 +1,7 @@
 package steps.Life;
 
 import cSore_Mapping.Common.Pages.BasePage;
+import cSore_Mapping.Common.View.DocumentInfo;
 import cSore_Mapping.Common.View.TopButtonView;
 import cSore_Mapping.Life.Tab.General;
 import cSore_Mapping.Common.View.TabView;
@@ -96,7 +97,7 @@ public class Life extends BaseTest {
     }
 
     @And("Choose product")
-    public void chooseProduct(String Proizvod) throws Exception {
+    public void chooseProduct() throws Exception {
         new LifeProductSelection(driver).selectProizvod(data.get("Proizvod"));
     }
     @And("Choose Product type")
@@ -142,26 +143,26 @@ public class Life extends BaseTest {
 
     @And("set payment dynamic")
     public void setPaymentDynamic() throws Exception {
-        selectOption(data.get("Dinamika placanja"), new General(driver).getDinamika());
+        new cSore_Mapping.Common.Tab.General(driver).selectDinamika(data.get("Dinamika plaćanja"));
     }
 
     @And("set currency")
     public void setCurrency() throws Exception {
-        selectOption(data.get("Valuta"), new General(driver).getValuta());
+        new cSore_Mapping.Common.Tab.General(driver).selectValuta(data.get("Valuta"));
     }
 
     @And("set FXClause")
     public void setFXClause() throws Exception {
-        selectOption(data.get("Valutna klauzula"), new General(driver).getValutnaKlauzula());
+        new cSore_Mapping.Common.Tab.General(driver).selectValutnaKlauzula(data.get("Valutna klauzula"));
     }
 
     @And("set Payment Method")
     public void setPaymentMethod() throws Exception {
         if (!data.get("Metod plaćanja").equals("Trajni nalog")) {
-            selectOption(data.get("Metod plaćanja"), new General(driver).getMetodPlacanja());
+            new cSore_Mapping.Common.Tab.General(driver).selectMetodPlacanja(data.get("Metod plaćanja"));
         } else {
-            selectOption(data.get("Metod placanja"), new General(driver).getMetodPlacanja());
-            selectOption(data.get("Banka"), new General(driver).getBanka());
+            new cSore_Mapping.Common.Tab.General(driver).selectMetodPlacanja(data.get("Metod plaćanja"));
+            new cSore_Mapping.Common.Tab.General(driver).selectBanka(data.get("Banka"));
         }
     }
 
@@ -240,32 +241,75 @@ public class Life extends BaseTest {
     }
 
     @And("select payer option")
-    public void selectPayerOption() {
+    public void selectPayerOption() throws Exception {
+        if (data.get("Ugovarač i platilac su isto lice").equals("Da")) {
+            new cSore_Mapping.Life.Tab.Person(driver).clickPayerInsureeSamePerson();
+        }
+        if (data.get("Ugovarač i platilac su isto lice").equals("Ne")) {
+            new cSore_Mapping.Life.Tab.Person(driver).clickAddPayer();
+            JumpToFrame();
+            new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).setInputIdentificationNumber(data.get("Platilac"));
+            // }else
+            //   if(data.get("Ugovarač Pr/Fi lice").equals("Pravno")) {
+            //       new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).inputPIB(data.get("Identifikacioni broj"));
+            //   }
+            clickOnButtonSearch();
+            clickOnButtonPreview();
+            clickOnButtonAccept();
+            checkInfoMessageOnTopOfPage();
+        }
     }
 
     @And("choose legal representative")
-    public void chooseLegalRepresentative() {
+    public void chooseLegalRepresentative() throws Exception {
+        if (data.get("Ugovarač/Osiguranik imaju zakonskog zastupnika").equals("Da")) {
+            new cSore_Mapping.Life.Tab.Person(driver).clickHasLegalRepresentative();
+        }
+        if (data.get("Ugovarač/Osiguranik imaju zakonskog zastupnika").equals("Ne")) {
+            new cSore_Mapping.Life.Tab.Person(driver).clickAddLegalRepresentative();
+            JumpToFrame();
+            new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).setInputIdentificationNumber(data.get("Zakonski zastupnik"));
+            // }else
+            //   if(data.get("Ugovarač Pr/Fi lice").equals("Pravno")) {
+            //       new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).inputPIB(data.get("Identifikacioni broj"));
+            //   }
+            clickOnButtonSearch();
+            clickOnButtonPreview();
+            clickOnButtonAccept();
+            checkInfoMessageOnTopOfPage();
+        }
     }
 
     @When("click on tab Concerns")
-    public void clickOnTabConcerns() {
+    public void clickOnTabConcerns() throws Exception {
+        new TabView(driver).clickConcernsTab();
     }
     @Then("choose Calculation direction")
-    public void chooseCalculationDirection() {
+    public void chooseCalculationDirection() throws Exception {
+        new cSore_Mapping.Life.Tab.Concerns(driver).selectCalculationDirection(data.get("Osnov za kalkulaciju"));
     }
 
     @And("input insured sum or premium")
-    public void inputInsuredSumOrPremium() {
+    public void inputInsuredSumOrPremium() throws Exception {
+        new cSore_Mapping.Life.Tab.Concerns(driver).inputInsuredSumOrPremium(data.get("Iznos"));
+
     }
     @Then("input height")
-    public void inputHeight() {
+    public void inputHeight() throws Exception {
+        new cSore_Mapping.Life.Tab.Concerns(driver).inputHeight(data.get("Visina"));
     }
 
     @And("input weight")
-    public void inputWeight() {
+    public void inputWeight()throws Exception  {
+        new cSore_Mapping.Life.Tab.Concerns(driver).inputWeight(data.get("Težina"));
+    }
+
+    @And("input interest")
+    public void inputInterest() throws Exception {
+        new cSore_Mapping.Life.Tab.Concerns(driver).inputInterest(data.get("Kamatna stopa"));
     }
     @And("fill health questionnaire")
-    public void fillHealthQuestionnaire() {
+    public void fillHealthQuestionnaire() throws Exception {
 
 
 
@@ -281,7 +325,7 @@ public class Life extends BaseTest {
     @Then("check calculation")
     public void checkCalculation()throws Exception {
         // TODO: u zavisnosti od osnova za obračun
-        Assert.assertEquals(new cSore_Mapping.Health.View.DocumentInfo(driver).getRatePremije(),data.get("Premija"));
+        Assert.assertEquals(new DocumentInfo(driver).getRatePremije(),data.get("Premija"));
     }
     @And("click on button Activate")
     public void clickOnButtonActivate() throws Exception{
@@ -346,4 +390,6 @@ public class Life extends BaseTest {
 
         Assert.assertEquals(new BasePage(driver).InfoMessage(),data.get("Poruka nakon potvrde potpisa"));
     }
+
+
 }

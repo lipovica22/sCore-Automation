@@ -3,7 +3,7 @@ Feature: Fill tab General by all products as different users for Life Insurance 
 
   Scenario Outline:
 
-    Given login on app RS Test "TestData" "RS" "<row>"
+    Given login on app RS Test "TestData" "RSLife" "<row>"
     When enter username
     And enter password
     And click on Submit button
@@ -43,6 +43,7 @@ Feature: Fill tab General by all products as different users for Life Insurance 
     And input insured sum or premium
     And input height
     And input weight
+    And input interest
     And fill health questionnaire
     Then click on button Accept on top view
     And click on button Calculate
