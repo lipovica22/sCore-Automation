@@ -1,4 +1,4 @@
-package cSore_Mapping.Health.View;
+package cSore_Mapping.Common.View;
 
 import cSore_Mapping.Common.Pages.BasePage;
 import org.openqa.selenium.WebDriver;

@@ -13,7 +13,7 @@ import io.cucumber.java.en.When;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.Reporter;
-import cSore_Mapping.Life.LifeProductSelection;
+import cSore_Mapping.Life.View.LifeProductSelection;
 import cSore_Mapping.Common.Pages.Login;
 import cSore_Mapping.Common.Pages.Products;
 import tests.BaseTest;
@@ -92,18 +92,18 @@ public class sCore extends BaseTest {
 
     @And("Choose product")
     public void chooseProduct(String Proizvod) throws Exception {
-        new LifeProductSelection(driver).selectProizvod(data.get("Proizvod"));
+        new cSore_Mapping.Life.View.LifeProductSelection(driver).selectProizvod(data.get("Proizvod"));
     }
 
     @And("Choose NewContract")
     public void ChooseNewContract() throws Exception {
 
-        new LifeProductSelection(driver).selectNoviUgovor();
+        new cSore_Mapping.Life.View.LifeProductSelection(driver).selectNoviUgovor();
     }
 
     @And("click on product icon")
     public void clickOnProductIcon() throws Exception {
-        new LifeProductSelection(driver).clickProductIcon(data.get("Proizvod"));
+        new cSore_Mapping.Life.View.LifeProductSelection(driver).clickProductIcon(data.get("Proizvod"));
     }
 
     @Then("tab is General")
@@ -193,7 +193,7 @@ public class sCore extends BaseTest {
 
     @And("Choose Product type")
     public void chooseProductType() throws InterruptedException {
-        new LifeProductSelection(driver).selectProductType(data.get("Vrsta dokumenta"));
+        new cSore_Mapping.Life.View.LifeProductSelection(driver).selectProductType(data.get("Vrsta dokumenta"));
     }
 
     @Step("Assertion Error: {0}")

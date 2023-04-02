@@ -1,4 +1,4 @@
-package cSore_Mapping.Life;
+package cSore_Mapping.Life.View;
 
 import cSore_Mapping.Common.Pages.BasePage;
 import org.openqa.selenium.WebDriver;
@@ -196,9 +196,9 @@ public class LifeProductSelection extends BasePage {
         }
     }
 
-    public void selectProizvod(String Proizvod) throws Exception {
+    public void selectProizvod(String proizvod) throws Exception {
 
-        switch (Proizvod) {
+        switch (proizvod) {
             case "Doživotni riziko": {
                 selectDozivotniRiziko();
             }

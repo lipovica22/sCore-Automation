@@ -8,7 +8,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import cSore_Mapping.Common.Pages.Login;
 import cSore_Mapping.Common.Pages.Products;
-import cSore_Mapping.Life.View.Kasko;
+import cSore_Mapping.Life.View.AnnexSelection;
 
 import java.io.IOException;
 
@@ -49,7 +49,7 @@ public class sCoreRS extends BaseTest {
     @Test
     @Description("Klik na Kasko")
     public void clickOnKasko() throws Exception {
-        new Kasko(driver).clickKasko();
+        //new AnnexSelection(driver).clickKasko();
         Assert.assertEquals(driver.getCurrentUrl(), "https://t-unba-iis.uniqa.ba/POS/BosniaAndHerzegovina/Motor/Casco/InfoOffer/New/General");
     }
 

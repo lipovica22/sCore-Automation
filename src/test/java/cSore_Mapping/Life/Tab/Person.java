@@ -1,6 +1,7 @@
 package cSore_Mapping.Life.Tab;
 
 import cSore_Mapping.Common.Pages.BasePage;
+import io.cucumber.java.an.E;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -60,16 +61,25 @@ public class Person extends BasePage {
 
 
 
-    public void PayerInsureeSamePerson() throws Exception {}
+    public void clickPayerInsureeSamePerson() throws Exception {
+        Click(PayerInsureeSamePerson, "Click on Payer Insuree Same Person");
+    }
     public void PayerInsureeSamePersonLabel() throws Exception {}
-    public void AddPayer() throws Exception {}
+    public void clickAddPayer() throws Exception {
+        Click(AddPayer, "Click on add Payer");
+    }
+
     public void PayerLabel() throws Exception {}
     public void PayerGrid() throws Exception {}
 
     public void HasLegalRepresentativeLabel() throws Exception {}
-    public void HasLegalRepresentative() throws Exception {}
+    public void clickHasLegalRepresentative() throws Exception {
+        Click(HasLegalRepresentative, "Click on Has Legal Representative");
+    }
 
-    public void AddLegalRepresentative() throws Exception {}
+    public void clickAddLegalRepresentative() throws Exception {
+        Click(AddLegalRepresentative, "Click on add Legal Representative");
+    }
     public void LegalRepresentativeLabel() throws Exception {}
     public void LegalRepresentativeGrid() throws Exception {}
 
