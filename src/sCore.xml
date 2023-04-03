@@ -6,7 +6,7 @@
 <suite name="sCoreRS" >
 
     <parameter name="browser" value="CHROME"/>
-    <parameter name="quit" value="yes"/>
+    <parameter name="quit" value="no"/>
     <parameter name="env" value="TEST_RS"/>
 
     <test name="Login">

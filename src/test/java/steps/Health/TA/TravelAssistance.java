@@ -1,5 +1,6 @@
 package steps.Health.TA;
 
+import cSore_Mapping.Common.Dialog.Iframe.ViewPersonNL;
 import cSore_Mapping.Common.Menu.LeftMenu;
 import cSore_Mapping.Common.Pages.BasePage;
 import cSore_Mapping.Common.View.DocumentInfo;
@@ -183,7 +184,7 @@ public class TravelAssistance extends BaseTest{
 
     @And("click on button Accept")
     public void clickOnButtonAccept() throws Exception{
-        new cSore_Mapping.Common.Dialog.Iframe.ViewPerson(driver).clickAcceptButton();
+        new ViewPersonNL(driver).clickAcceptButton();
     }
 
     @Then("check Info message on top of page")
@@ -237,7 +238,7 @@ public class TravelAssistance extends BaseTest{
             new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).setInputIdentificationNumber(data.get("Osiguranici"));
             new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).clickSearchButtonFL();
             new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).clickSearchResultGridFL();
-            new cSore_Mapping.Common.Dialog.Iframe.ViewPerson(driver).clickAcceptButton();
+            new ViewPersonNL(driver).clickAcceptButton();
             new cSore_Mapping.Common.View.TopButtonView(driver).clickSubmit();
 
             //new cSore_Mapping.Common.View.TotButtonView(driver).clickCalculate();

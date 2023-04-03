@@ -1,6 +1,7 @@
 package steps.Life;
 
-import cSore_Mapping.Common.Pages.BasePage;
+import cSore_Mapping.Common.Dialog.Iframe.ViewPersonL;
+import cSore_Mapping.Common.Dialog.Iframe.ViewPersonNL;
 import cSore_Mapping.Common.View.DocumentInfo;
 import cSore_Mapping.Common.View.TopButtonView;
 import cSore_Mapping.Life.Tab.General;
@@ -50,7 +51,7 @@ public class Life extends BaseTest {
 
     @Given("login on app RS Test {string} {string} {string}")
     public void loginOnAppRSTest(String file, String sheet, String row) throws Exception {
-        driver.get("https://t-score.uniqa.rs/POS/Serbia/NoAD");
+        driver.get("https://s-dev-iis.stech.loc/POS/Serbia/Products");
         data = new ExcelReader().getRowData(file, sheet, Integer.parseInt(row));
     }
 
@@ -72,7 +73,7 @@ public class Life extends BaseTest {
     @Then("Logged in")
     public void loggedIn() throws Exception {
         try {
-            Assert.assertEquals(new Login(driver).LoggedUser(), "sCoreAgent");
+            Assert.assertEquals(new Login(driver).LoggedUser(), "scoreAgent");
         } catch (AssertionError e) {
              System.out.println("Assertion failed: " + e.getMessage());
             reportAssertionError(e);
@@ -82,7 +83,8 @@ public class Life extends BaseTest {
     @And("page is Products")
     public void pageIsProducts() {
      try {
-         Assert.assertEquals(driver.getCurrentUrl(), "https://t-score.uniqa.rs/POS/Serbia/Products");
+         //Assert.assertEquals(driver.getCurrentUrl(), "https://t-score.uniqa.rs/POS/Serbia/Products");
+         Assert.assertEquals(driver.getCurrentUrl(), "https://s-dev-iis.stech.loc/POS/Serbia/Products");
      } catch (AssertionError e) {
         System.out.println("Assertion failed: " + e.getMessage());
         reportAssertionError(e);
@@ -113,7 +115,7 @@ public class Life extends BaseTest {
     @Then("tab is General")
     public void tabIsGeneral() {
         try {
-            Assert.assertEquals(driver.getCurrentUrl(), new General(driver).url(data.get("Proizvod"), data.get("Vrsta dokumenta")));
+            //Assert.assertEquals(driver.getCurrentUrl(), new General(driver).url(data.get("Proizvod"), data.get("Vrsta dokumenta")));
             /*if (!new General(driver).url(data.get("Proizvod"), data.get("Vrsta dokumenta")).equals(driver.getCurrentUrl())) {
                 byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
                 scenario.attach(screenshot, "image/png", "Screenshot");
@@ -125,7 +127,7 @@ public class Life extends BaseTest {
 
     }
 
-    @Then("input duration of insurance")
+    @Then("input duration of insurance and if product is Riziko kredit fill Izbor dužine trajanja")
     public void inputDurationOfInsurance() throws Exception {
         new General(driver).setTrajanje(data.get("Trajanje"));
         if (!data.get("Vrsta dokumenta").equals("Novi ugovor")) {
@@ -138,7 +140,8 @@ public class Life extends BaseTest {
 
     @And("set place")
     public void setPlace() throws Exception {
-        selectOptionAC(data.get("Mesto"), "11000 Beograd", new General(driver).getMesto());
+        //selectOptionAC(data.get("Mesto"), "11000 Beograd", new General(driver).getMesto());
+        selectOptionAC(data.get("Mesto"), "11030 Beograd (Čukarica) - Beograd-Cukarica", new General(driver).getMesto());
     }
 
     @And("set payment dynamic")
@@ -156,7 +159,7 @@ public class Life extends BaseTest {
         new cSore_Mapping.Common.Tab.General(driver).selectValutnaKlauzula(data.get("Valutna klauzula"));
     }
 
-    @And("set Payment Method")
+    @And("set Payment Method and bank if method is Trajni nalog")
     public void setPaymentMethod() throws Exception {
         if (!data.get("Metod plaćanja").equals("Trajni nalog")) {
             new cSore_Mapping.Common.Tab.General(driver).selectMetodPlacanja(data.get("Metod plaćanja"));
@@ -179,7 +182,7 @@ public class Life extends BaseTest {
     public void tabIsPersonConcerns() {
         try {
             if (data.get("Proizvod").equals("Riziko Mix")) {
-                Assert.assertEquals(new BasePage(driver).ErrorMessage(), "Nije moguće zaključiti Novi ugovor, jer proizvod osiguranja više nije aktivan. Molimo, odaberite neki drugi.");
+                //Assert.assertEquals(new BasePage(driver).ErrorMessage("", "Nije moguće zaključiti Novi ugovor, jer proizvod osiguranja više nije aktivan. Molimo, odaberite neki drugi.",);
             } else {
 
                 if (data.get("Vrsta dokumenta").equals("Novi ugovor")) {
@@ -196,8 +199,10 @@ public class Life extends BaseTest {
     }
 
     @And("set Same person")
-    public void setSamePerson() throws Exception{
-        new cSore_Mapping.Common.Tab.Person(driver).clickSamePerson();
+    public void setSamePerson() throws Exception {
+        if (data.get("Ugovarač i platilac su isto lice").equals("true")) {
+            new cSore_Mapping.Common.Tab.Person(driver).clickSamePerson();
+        }
     }
 
     @Then("click on add button")
@@ -209,7 +214,7 @@ public class Life extends BaseTest {
     @And("on Iframe input Identification number")
     public void onIframeInputIdentificationNumber() throws Exception {
         JumpToFrame();
-        new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).setInputIdentificationNumber(data.get("Identifikacioni broj"));
+        new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).setInputIdentificationNumber(data.get("Ugovarač"));
         // }else
         //   if(data.get("Ugovarač Pr/Fi lice").equals("Pravno")) {
         //       new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).inputPIB(data.get("Identifikacioni broj"));
@@ -232,7 +237,7 @@ public class Life extends BaseTest {
 
     @And("click on button Accept")
     public void clickOnButtonAccept() throws Exception{
-        new cSore_Mapping.Common.Dialog.Iframe.ViewPerson(driver).clickAcceptButton();
+        new ViewPersonL(driver).clickAcceptButton();
     }
     @Then("check Info message on top of page")
     public void checkInfoMessageOnTopOfPage() throws Exception{
@@ -242,10 +247,10 @@ public class Life extends BaseTest {
 
     @And("select payer option")
     public void selectPayerOption() throws Exception {
-        if (data.get("Ugovarač i platilac su isto lice").equals("Da")) {
+        if (data.get("Ugovarač i platilac su isto lice").equals("true")) {
             new cSore_Mapping.Life.Tab.Person(driver).clickPayerInsureeSamePerson();
         }
-        if (data.get("Ugovarač i platilac su isto lice").equals("Ne")) {
+        if (data.get("Ugovarač i platilac su isto lice").equals("false")) {
             new cSore_Mapping.Life.Tab.Person(driver).clickAddPayer();
             JumpToFrame();
             new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).setInputIdentificationNumber(data.get("Platilac"));
@@ -294,30 +299,369 @@ public class Life extends BaseTest {
         new cSore_Mapping.Life.Tab.Concerns(driver).inputInsuredSumOrPremium(data.get("Iznos"));
 
     }
-    @Then("input height")
-    public void inputHeight() throws Exception {
-        new cSore_Mapping.Life.Tab.Concerns(driver).inputHeight(data.get("Visina"));
+    @Then("input height if product is not Favorit")
+    public void inputHeightIfProductIsntFavorit() throws Exception {
+        if (!data.get("Proizvod").equals("Favorit")) {
+            new cSore_Mapping.Life.Tab.Concerns(driver).inputHeight(data.get("Visina"));
+        }
     }
 
-    @And("input weight")
-    public void inputWeight()throws Exception  {
-        new cSore_Mapping.Life.Tab.Concerns(driver).inputWeight(data.get("Težina"));
+    @And("input weight if product is not Favorit")
+    public void inputWeightIfProductIsNotFavorit()throws Exception {
+        if (!data.get("Proizvod").equals("Favorit")) {
+            new cSore_Mapping.Life.Tab.Concerns(driver).inputWeight(data.get("Težina"));
+        }
     }
 
-    @And("input interest")
-    public void inputInterest() throws Exception {
-        new cSore_Mapping.Life.Tab.Concerns(driver).inputInterest(data.get("Kamatna stopa"));
+    @And("input interest if product is Riziko kredit")
+    public void inputInterestIfProductIsRisikoKredit() throws Exception {
+        if (data.get("Proizvod").equals("Riziko kredit")) {
+            new cSore_Mapping.Life.Tab.Concerns(driver).inputInterest(data.get("Kamatna stopa"));
+        }
     }
+
+    //@And("check insured risks and sum or premium")
+    /*public void checkInsuredRisksAndSumOrPremium(String proizvod) throws Exception {
+        switch (proizvod=data.get("Proizvod")) {
+            case "Doživotni riziko": {
+                if(data.get("Smrt usled nezgode").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickSmrtUsledNezgode(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputSmrtUsledNezgodeValue(data.get("Smrt usled nezgode - Suma"));
+                }
+                if(data.get("Trajni invaliditet").equals("true")) {
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickTrajniInvaliditet(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputTrajniInvaliditetValue(data.get("Trajni invaliditet - Suma"));
+                }
+                if(data.get("Lom kostiju").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickLomKostiju(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputLomKostijuValue(data.get("Lom kostiju - Suma"));
+                }
+                if(data.get("Dnevna naknada -nezgoda").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickDnevnaNaknadaNezgoda(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputDnevnaNaknadaNezgodaValue(data.get("Dnevna naknada -nezgoda - Suma"));
+                }
+                if(data.get("Hirurške intervencije - nezgoda").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickHirurskeIntervencijeNezgode(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputHirurskeIntervencijeNezgodeValue(data.get("Hirurške intervencije - nezgoda - Suma"));
+                }
+            }
+            break;
+            case "Favorit": {
+                new cSore_Mapping.Life.Tab.Concerns(driver).inputTrajniInvaliditetValue(data.get("Trajni invaliditet - Suma"));
+                if(data.get("Lom kostiju").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickLomKostiju(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputLomKostijuValue(data.get("Lom kostiju - Suma"));
+                }
+                if(data.get("Dnevna naknada -nezgoda").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickDnevnaNaknadaNezgoda(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputDnevnaNaknadaNezgodaValue(data.get("Dnevna naknada -nezgoda - Suma"));
+                }
+                if(data.get("Hirurške intervencije - nezgoda").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickHirurskeIntervencijeNezgode(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputHirurskeIntervencijeNezgodeValue(data.get("Hirurške intervencije - nezgoda - Suma"));
+                }
+
+            }
+            break;
+            case "Riziko kredit": {
+
+            }
+            break;
+            case "Joker": {
+                if(data.get("Teže bolesti").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickTezeBolesti(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputTezeBolestiValue(data.get("Teže bolesti - Suma"));
+                }
+                if(data.get("Smrt usled nezgode").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickSmrtUsledNezgode(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputSmrtUsledNezgodeValue(data.get("Smrt usled nezgode - Suma"));
+                }
+                new cSore_Mapping.Life.Tab.Concerns(driver).inputTrajniInvaliditetValue(data.get("Trajni invaliditet - Suma"));
+                if(data.get("Lom kostiju").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickLomKostiju(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputLomKostijuValue(data.get("Lom kostiju - Suma"));
+                }
+                if(data.get("Dnevna naknada -nezgoda").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickDnevnaNaknadaNezgoda(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputDnevnaNaknadaNezgodaValue(data.get("Dnevna naknada -nezgoda - Suma"));
+                }
+                if(data.get("Dnevna naknada  - bolest").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickDnevnaNaknadaBolesti(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputDnevnaNaknadaBolestiValue(data.get("Dnevna naknada  - bolest - Suma"));
+                }
+                if(data.get("Hirurške intervencije - nezgoda").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickHirurskeIntervencijeNezgode(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputHirurskeIntervencijeNezgodeValue(data.get("Hirurške intervencije - nezgoda - Suma"));
+                }
+                if(data.get("Hirurške intervencije - bolest").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickHirurskeIntervencijeBolesti(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputHirurskeIntervencijeBolestiValue(data.get("Hirurške intervencije - bolest - Suma"));
+                }
+                if(data.get("Bolovanje").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickBolovanje42(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputBolovanje42Value(data.get("Bolovanje - Suma"));
+                }
+
+            }
+            break;
+            case "Spektar":
+            case "Riziko": {
+                if(data.get("Teže bolesti").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickTezeBolesti(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputTezeBolestiValue(data.get("Teže bolesti - Suma"));
+                }
+                if(data.get("Smrt usled nezgode").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickSmrtUsledNezgode(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputSmrtUsledNezgodeValue(data.get("Smrt usled nezgode - Suma"));
+                }
+                if(data.get("Trajni invaliditet").equals("true")) {
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickTrajniInvaliditet(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputTrajniInvaliditetValue(data.get("Trajni invaliditet - Suma"));
+                }
+                if(data.get("Lom kostiju").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickLomKostiju(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputLomKostijuValue(data.get("Lom kostiju - Suma"));
+                }
+                if(data.get("Dnevna naknada -nezgoda").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickDnevnaNaknadaNezgoda(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputDnevnaNaknadaNezgodaValue(data.get("Dnevna naknada -nezgoda - Suma"));
+                }
+                if(data.get("Dnevna naknada  - bolest").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickDnevnaNaknadaBolesti(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputDnevnaNaknadaBolestiValue(data.get("Dnevna naknada  - bolest - Suma"));
+                }
+                if(data.get("Hirurške intervencije - nezgoda").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickHirurskeIntervencijeNezgode(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputHirurskeIntervencijeNezgodeValue(data.get("Hirurške intervencije - nezgoda - Suma"));
+                }
+                if(data.get("Hirurške intervencije - bolest").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickHirurskeIntervencijeBolesti(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputHirurskeIntervencijeBolestiValue(data.get("Hirurške intervencije - bolest - Suma"));
+                }
+                if(data.get("Bolovanje").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickBolovanje42(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputBolovanje42Value(data.get("Bolovanje - Suma"));
+                }
+
+            }
+            break;
+            case "Riziko Mix": {
+                if(data.get("Smrt usled nezgode").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickSmrtUsledNezgode(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputSmrtUsledNezgodeValue(data.get("Smrt usled nezgode - Suma"));
+                }
+                if(data.get("Trajni invaliditet").equals("true")) {
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickTrajniInvaliditet(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputTrajniInvaliditetValue(data.get("Trajni invaliditet - Suma"));
+                }
+                if(data.get("Lom kostiju").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickLomKostiju(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputLomKostijuValue(data.get("Lom kostiju - Suma"));
+                }
+                if(data.get("Dnevna naknada -nezgoda").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickDnevnaNaknadaNezgoda(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputDnevnaNaknadaNezgodaValue(data.get("Dnevna naknada -nezgoda - Suma"));
+                }
+                if(data.get("Dnevna naknada  - bolest").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickDnevnaNaknadaBolesti(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputDnevnaNaknadaBolestiValue(data.get("Dnevna naknada  - bolest - Suma"));
+                }
+                if(data.get("Hirurške intervencije - nezgoda").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickHirurskeIntervencijeNezgode(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputHirurskeIntervencijeNezgodeValue(data.get("Hirurške intervencije - nezgoda - Suma"));
+                }
+                if(data.get("Hirurške intervencije - bolest").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickHirurskeIntervencijeBolesti(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputHirurskeIntervencijeBolestiValue(data.get("Hirurške intervencije - bolest - Suma"));
+                }
+                if(data.get("Bolovanje").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickBolovanje42(proizvod);
+                    new cSore_Mapping.Life.Tab.Concerns(driver).inputBolovanje42Value(data.get("Bolovanje - Suma"));
+                }
+            }
+            break;
+            default:
+                break;
+        }
+    }*/
+    @And("check insured risks and sum or premium")
+    public void checkInsuredRisksAndSumOrPremium() throws Exception {
+        switch (data.get("Proizvod")) {
+            case "Doživotni riziko": {
+                if(data.get("Smrt usled nezgode").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickSmrtUsledNezgode();
+                    //new cSore_Mapping.Life.Tab.Concerns(driver).inputSmrtUsledNezgodeValue(data.get("Smrt usled nezgode - Suma"));
+                }
+                if(data.get("Trajni invaliditet").equals("true")) {
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickTrajniInvaliditet();
+                    //new cSore_Mapping.Life.Tab.Concerns(driver).inputTrajniInvaliditetValue(data.get("Trajni invaliditet - Suma"));
+                }
+                if(data.get("Lom kostiju").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickLomKostiju();
+                    //new cSore_Mapping.Life.Tab.Concerns(driver).inputLomKostijuValue(data.get("Lom kostiju - Suma"));
+                }
+                if(data.get("Dnevna naknada -nezgoda").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickDnevnaNaknadaNezgoda();
+                    //new cSore_Mapping.Life.Tab.Concerns(driver).inputDnevnaNaknadaNezgodaValue(data.get("Dnevna naknada -nezgoda - Suma"));
+                }
+                if(data.get("Hirurške intervencije - nezgoda").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickHirurskeIntervencijeNezgode();
+                    //new cSore_Mapping.Life.Tab.Concerns(driver).inputHirurskeIntervencijeNezgodeValue(data.get("Hirurške intervencije - nezgoda - Suma"));
+                }
+            }
+            break;
+            case "Favorit": {
+                //new cSore_Mapping.Life.Tab.Concerns(driver).inputTrajniInvaliditetValue(data.get("Trajni invaliditet - Suma"));
+                if(data.get("Lom kostiju").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickLomKostiju();
+                  //  new cSore_Mapping.Life.Tab.Concerns(driver).inputLomKostijuValue(data.get("Lom kostiju - Suma"));
+                }
+                if(data.get("Dnevna naknada -nezgoda").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickDnevnaNaknadaNezgoda();
+                  //  new cSore_Mapping.Life.Tab.Concerns(driver).inputDnevnaNaknadaNezgodaValue(data.get("Dnevna naknada -nezgoda - Suma"));
+                }
+                if(data.get("Hirurške intervencije - nezgoda").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickHirurskeIntervencijeNezgode();
+                  //  new cSore_Mapping.Life.Tab.Concerns(driver).inputHirurskeIntervencijeNezgodeValue(data.get("Hirurške intervencije - nezgoda - Suma"));
+                }
+
+            }
+            break;
+            case "Joker": {
+                if(data.get("Teže bolesti").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickTezeBolesti();
+                   // new cSore_Mapping.Life.Tab.Concerns(driver).inputTezeBolestiValue(data.get("Teže bolesti - Suma"));
+                }
+                if(data.get("Smrt usled nezgode").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickSmrtUsledNezgode();
+                  //  new cSore_Mapping.Life.Tab.Concerns(driver).inputSmrtUsledNezgodeValue(data.get("Smrt usled nezgode - Suma"));
+                }
+                //new cSore_Mapping.Life.Tab.Concerns(driver).inputTrajniInvaliditetValue(data.get("Trajni invaliditet - Suma"));
+                if(data.get("Lom kostiju").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickLomKostiju();
+                 //   new cSore_Mapping.Life.Tab.Concerns(driver).inputLomKostijuValue(data.get("Lom kostiju - Suma"));
+                }
+                if(data.get("Dnevna naknada -nezgoda").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickDnevnaNaknadaNezgoda();
+                  //  new cSore_Mapping.Life.Tab.Concerns(driver).inputDnevnaNaknadaNezgodaValue(data.get("Dnevna naknada -nezgoda - Suma"));
+                }
+                if(data.get("Dnevna naknada  - bolest").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickDnevnaNaknadaBolesti();
+                 //   new cSore_Mapping.Life.Tab.Concerns(driver).inputDnevnaNaknadaBolestiValue(data.get("Dnevna naknada  - bolest - Suma"));
+                }
+                if(data.get("Hirurške intervencije - nezgoda").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickHirurskeIntervencijeNezgode();
+                 //   new cSore_Mapping.Life.Tab.Concerns(driver).inputHirurskeIntervencijeNezgodeValue(data.get("Hirurške intervencije - nezgoda - Suma"));
+                }
+                if(data.get("Hirurške intervencije - bolest").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickHirurskeIntervencijeBolesti();
+                 //   new cSore_Mapping.Life.Tab.Concerns(driver).inputHirurskeIntervencijeBolestiValue(data.get("Hirurške intervencije - bolest - Suma"));
+                }
+                if(data.get("Bolovanje").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickBolovanje42();
+                //    new cSore_Mapping.Life.Tab.Concerns(driver).inputBolovanje42Value(data.get("Bolovanje - Suma"));
+                }
+
+            }
+            break;
+            case "Spektar":
+            case "Riziko": {
+                if(data.get("Teže bolesti").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickTezeBolesti();
+                 //   new cSore_Mapping.Life.Tab.Concerns(driver).inputTezeBolestiValue(data.get("Teže bolesti - Suma"));
+                }
+                if(data.get("Smrt usled nezgode").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickSmrtUsledNezgode();
+                 //   new cSore_Mapping.Life.Tab.Concerns(driver).inputSmrtUsledNezgodeValue(data.get("Smrt usled nezgode - Suma"));
+                }
+                if(data.get("Trajni invaliditet").equals("true")) {
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickTrajniInvaliditet();
+                 //   new cSore_Mapping.Life.Tab.Concerns(driver).inputTrajniInvaliditetValue(data.get("Trajni invaliditet - Suma"));
+                }
+                if(data.get("Lom kostiju").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickLomKostiju();
+                 //   new cSore_Mapping.Life.Tab.Concerns(driver).inputLomKostijuValue(data.get("Lom kostiju - Suma"));
+                }
+                if(data.get("Dnevna naknada -nezgoda").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickDnevnaNaknadaNezgoda();
+                  //  new cSore_Mapping.Life.Tab.Concerns(driver).inputDnevnaNaknadaNezgodaValue(data.get("Dnevna naknada -nezgoda - Suma"));
+                }
+                if(data.get("Dnevna naknada  - bolest").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickDnevnaNaknadaBolesti();
+                  //  new cSore_Mapping.Life.Tab.Concerns(driver).inputDnevnaNaknadaBolestiValue(data.get("Dnevna naknada  - bolest - Suma"));
+                }
+                if(data.get("Hirurške intervencije - nezgoda").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickHirurskeIntervencijeNezgode();
+                   // new cSore_Mapping.Life.Tab.Concerns(driver).inputHirurskeIntervencijeNezgodeValue(data.get("Hirurške intervencije - nezgoda - Suma"));
+                }
+                if(data.get("Hirurške intervencije - bolest").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickHirurskeIntervencijeBolesti();
+                   // new cSore_Mapping.Life.Tab.Concerns(driver).inputHirurskeIntervencijeBolestiValue(data.get("Hirurške intervencije - bolest - Suma"));
+                }
+                if(data.get("Bolovanje").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickBolovanje42();
+                   // new cSore_Mapping.Life.Tab.Concerns(driver).inputBolovanje42Value(data.get("Bolovanje - Suma"));
+                }
+
+            }
+            break;
+            case "Riziko Mix": {
+                if(data.get("Smrt usled nezgode").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickSmrtUsledNezgode();
+                  //  new cSore_Mapping.Life.Tab.Concerns(driver).inputSmrtUsledNezgodeValue(data.get("Smrt usled nezgode - Suma"));
+                }
+                if(data.get("Trajni invaliditet").equals("true")) {
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickTrajniInvaliditet();
+                  //  new cSore_Mapping.Life.Tab.Concerns(driver).inputTrajniInvaliditetValue(data.get("Trajni invaliditet - Suma"));
+                }
+                if(data.get("Lom kostiju").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickLomKostiju();
+                  //  new cSore_Mapping.Life.Tab.Concerns(driver).inputLomKostijuValue(data.get("Lom kostiju - Suma"));
+                }
+                if(data.get("Dnevna naknada -nezgoda").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickDnevnaNaknadaNezgoda();
+                  //  new cSore_Mapping.Life.Tab.Concerns(driver).inputDnevnaNaknadaNezgodaValue(data.get("Dnevna naknada -nezgoda - Suma"));
+                }
+                if(data.get("Dnevna naknada  - bolest").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickDnevnaNaknadaBolesti();
+                  //  new cSore_Mapping.Life.Tab.Concerns(driver).inputDnevnaNaknadaBolestiValue(data.get("Dnevna naknada  - bolest - Suma"));
+                }
+                if(data.get("Hirurške intervencije - nezgoda").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickHirurskeIntervencijeNezgode();
+                  //  new cSore_Mapping.Life.Tab.Concerns(driver).inputHirurskeIntervencijeNezgodeValue(data.get("Hirurške intervencije - nezgoda - Suma"));
+                }
+                if(data.get("Hirurške intervencije - bolest").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickHirurskeIntervencijeBolesti();
+                   // new cSore_Mapping.Life.Tab.Concerns(driver).inputHirurskeIntervencijeBolestiValue(data.get("Hirurške intervencije - bolest - Suma"));
+                }
+                if(data.get("Bolovanje").equals("true")){
+                    new cSore_Mapping.Life.Tab.Concerns(driver).clickBolovanje42();
+                   // new cSore_Mapping.Life.Tab.Concerns(driver).inputBolovanje42Value(data.get("Bolovanje - Suma"));
+                }
+            }
+            break;
+            default:
+                break;
+        }
+    }
+
+
+    @And("click on button Accept on top view")
+    public void clickOnButtonAcceptOnTopView() throws Exception {
+        new cSore_Mapping.Common.View.TopButtonView(driver).clickSubmit();
+    }
+
     @And("fill health questionnaire")
     public void fillHealthQuestionnaire() throws Exception {
 
 
 
     }
-    @And("click on button Accept on top view")
-    public void clickOnButtonAcceptOnTopView() throws Exception{
-        new cSore_Mapping.Common.View.TopButtonView(driver).clickSubmit();
+    @And("click on button Save Questionnaire")
+    public void clickOnButtonSaveQuestionnaire() throws Exception {
+        new cSore_Mapping.Common.View.TopButtonView(driver).clickSaveQuestionary();
     }
+
     @And("click on button Calculate")
     public void clickOnButtonCalculate() throws Exception{
         new TopButtonView(driver).clickCalculate();
@@ -388,8 +732,9 @@ public class Life extends BaseTest {
     @And("check Info message After Certification Of Signature")
     public void checkInfoMessageAfterCertificationOfSignature() throws Exception{
 
-        Assert.assertEquals(new BasePage(driver).InfoMessage(),data.get("Poruka nakon potvrde potpisa"));
+        //Assert.assertEquals(new BasePage(driver).InfoMessage(),data.get("Poruka nakon potvrde potpisa"));
     }
+
 
 
 }

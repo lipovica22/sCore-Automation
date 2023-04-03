@@ -1104,7 +1104,7 @@ public class BasePage {
         while (retryCount < maxRetries){
             try {
                 webDriverWait.until(ExpectedConditions.visibilityOf(element));
-                webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
+                //webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
                 actions.moveToElement(element).build().perform(); //hover
 
                 element.click();

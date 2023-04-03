@@ -74,7 +74,7 @@ public class General extends BasePage {
     }
 
     public void selectBanka(String bank) throws Exception {
-        SelectOption(banka, "Dinamika selected", bank);
+        SelectOption(banka, "Bank selected", bank);
     }
 
 

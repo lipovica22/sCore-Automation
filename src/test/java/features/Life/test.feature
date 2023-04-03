@@ -16,12 +16,12 @@ Feature: Fill tab General by all products as different users for Life Insurance 
     And click on product icon
     Then tab is General
 
-    Then input duration of insurance
+    Then input duration of insurance and if product is Riziko kredit fill Izbor dužine trajanja
     And set place
     And set payment dynamic
     And set currency
     And set FXClause
-    And set Payment Method
+    And set Payment Method and bank if method is Trajni nalog
     And click on next tab
 
     When tab is PersonConcerns
@@ -41,11 +41,13 @@ Feature: Fill tab General by all products as different users for Life Insurance 
     When click on tab Concerns
     Then choose Calculation direction
     And input insured sum or premium
-    And input height
-    And input weight
-    And input interest
-    And fill health questionnaire
+    And input height if product is not Favorit
+    And input weight if product is not Favorit
+    And input interest if product is Riziko kredit
+    And check insured risks and sum or premium
     Then click on button Accept on top view
+    And fill health questionnaire
+    And click on button Save Questionnaire
     And click on button Calculate
     Then check calculation
     And click on button Activate

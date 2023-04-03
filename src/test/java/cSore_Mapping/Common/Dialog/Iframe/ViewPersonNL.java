@@ -6,8 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ViewPerson extends BasePage {
-    public ViewPerson(WebDriver driver) {
+public class ViewPersonNL extends BasePage {
+    public ViewPersonNL(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }

@@ -1,5 +1,6 @@
 package steps.Health.Meduniqa;
 
+import cSore_Mapping.Common.Dialog.Iframe.ViewPersonNL;
 import cSore_Mapping.Common.Pages.BasePage;
 import cSore_Mapping.Common.Pages.Products;
 import cSore_Mapping.Common.View.DocumentInfo;
@@ -183,7 +184,7 @@ public class MU extends BaseTest {
 
     @And("click on button Accept")
     public void clickOnButtonAccept() throws Exception{
-        new cSore_Mapping.Common.Dialog.Iframe.ViewPerson(driver).clickAcceptButton();
+        new ViewPersonNL(driver).clickAcceptButton();
     }
 
     @Then("check Info message on top of page")
@@ -227,7 +228,7 @@ public class MU extends BaseTest {
             new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).setInputIdentificationNumber(data.get("Osiguranici"));
             new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).clickSearchButtonFL();
             new cSore_Mapping.Common.Dialog.Iframe.SearchPersonTA(driver).clickSearchResultGridFL();
-            new cSore_Mapping.Common.Dialog.Iframe.ViewPerson(driver).clickAcceptButton();
+            new ViewPersonNL(driver).clickAcceptButton();
             new TopButtonView(driver).clickSubmit();
         }
         if(data.get("Tip ugovora").equals("Grupna")) {

@@ -92,6 +92,54 @@ public class TopButtonView extends BasePage {
     WebElement annulLastCancellation;
     @FindBy(id= "btn_AcceptCorrection")
     WebElement acceptCorrection;
+    @FindBy(id= "btn_SwitchDocumentType")   WebElement SwitchDocumentType;
+    @FindBy(id= "btn_CreateLifeAnnex")   WebElement CreateLifeAnnex;
+
+    @FindBy(id= "btn_CalculateUW")   WebElement CalculateUW;
+    @FindBy(id= "btn_CalculateAnnex")   WebElement CalculateAnnex;
+    @FindBy(id= "btn_Close")   WebElement Close;
+    @FindBy(id= "btn_Activate")   WebElement Activate;
+    @FindBy(id= "btn_ActivateLifeAnnex")   WebElement ActivateLifeAnnex;
+    @FindBy(id= "btn_ActivateAnnex")   WebElement ActivateAnnex;
+
+    @FindBy(id= "btn_ConfirmPayment")   WebElement ConfirmPayment;
+    @FindBy(id= "btn_CertificationOfSignature")   WebElement CertificationOfSignature;
+    @FindBy(id= "btn_CertificationOfSignatureLifeAnnex")   WebElement CertificationOfSignatureAnnex;
+    @FindBy(id= "btn_Annule")   WebElement Annule;
+    @FindBy(id= "btn_EditOfferOrPolicy")   WebElement Edit;
+
+    @FindBy(id= "btn_AcceptCorrection")   WebElement AcceptCorrection;
+    @FindBy(id= "btn_Accept")   WebElement Accept;
+    @FindBy(id= "btn_Correction")   WebElement Correction;
+    @FindBy(id= "btn_Accept")   WebElement Submit;
+    @FindBy(id= "btn_Cancel")   WebElement Cancel;
+
+    @FindBy(id= "btn_Save")   WebElement Save;
+
+    @FindBy(id= "btn_SaveQuestionary")   WebElement SaveQuestionary;
+    @FindBy(id= "btn_SaveCancellation")   WebElement SaveCancellation;
+    @FindBy(id= "btn_Print")   WebElement Print;
+    @FindBy(id= "btn_TestPrint")   WebElement TestPrint;
+    @FindBy(id= "btn_CreateNewContract")   WebElement CreateNewContract;
+
+    @FindBy(id= "btn_AcceptMoneyLaundry")   WebElement AcceptMoneyLaundry;
+
+    @FindBy(id= "btn_CreateIndividualInvoices")   WebElement CreateIndividualInvoices;
+    @FindBy(id= "btn_FileUpload")   WebElement FileUpload;
+    @FindBy(id= "btn_CreateGroupInvoice")   WebElement CreateGroupInvoice;
+
+    @FindBy(id= "btn_Search")   WebElement Search;
+
+    @FindBy(id= "btn_ExportToExcel")   WebElement Export;
+
+    @FindBy(id= "btn_SendUnderwriting")   WebElement SendUnderwriting;
+    @FindBy(id= "btn_Decline")   WebElement Decline;
+    @FindBy(id= "btn_ConfirmAnnex")   WebElement ConfirmAnnex;
+
+    @FindBy(id= "btn_CreatePolicy")   WebElement CreatePolicy;
+    @FindBy(id= "btn_Confirm")   WebElement Confirm;
+    @FindBy(id= "btn_AcceptOfferWithoutCorrection")   WebElement AcceptOfferWithoutCorrection;
+    @FindBy(id= "btn_SendForApproval")   WebElement SendForApproval;
 
 
     @FindBy(css = "table[id='basic-grid_1']")
@@ -122,5 +170,56 @@ public class TopButtonView extends BasePage {
     public void testReadTable() throws Exception {
         readTable(table, "Read table");
     }
+
+    public void SwitchDocumentType() throws Exception {}
+    public void CreateLifeAnnex() throws Exception {}
+    public void Calculate() throws Exception {}
+    public void CalculateUW() throws Exception {}
+    public void CalculateAnnex() throws Exception {}
+    public void Close() throws Exception {}
+    public void Activate() throws Exception {}
+    public void ActivateLifeAnnex() throws Exception {}
+    public void ActivateAnnex() throws Exception {}
+
+    public void ConfirmPayment() throws Exception {}
+    public void CertificationOfSignature() throws Exception {}
+    public void CertificationOfSignatureAnnex() throws Exception {}
+    public void Annule() throws Exception {}
+    public void Edit() throws Exception {}
+
+    public void AcceptCorrection() throws Exception {}
+    public void Accept() throws Exception {}
+    public void Correction() throws Exception {}
+    public void Submit() throws Exception {}
+    public void Cancel() throws Exception {}
+
+    public void Save() throws Exception {}
+
+    public void clickSaveQuestionary() throws Exception {
+        Click(saveQuestionary, "Click on Save Questionary");}
+    public void SaveCancellation() throws Exception {}
+    public void Print() throws Exception {}
+    public void TestPrint() throws Exception {}
+    public void CreateNewContract() throws Exception {}
+
+    public void AcceptMoneyLaundry() throws Exception {}
+
+    public void CreateIndividualInvoices() throws Exception {}
+    public void FileUpload() throws Exception {}
+    public void CreateGroupInvoice() throws Exception {}
+
+    public void Search() throws Exception {}
+
+    public void Export() throws Exception {}
+
+    public void SendUnderwriting() throws Exception {}
+    public void Decline() throws Exception {}
+    public void ConfirmAnnex() throws Exception {}
+
+    public void CreatePolicy() throws Exception {}
+    public void Confirm() throws Exception {}
+    public void AcceptOfferWithoutCorrection() throws Exception {}
+    public void SendForApproval() throws Exception {}
+
     //-------------------- End Methods --------------------
 }

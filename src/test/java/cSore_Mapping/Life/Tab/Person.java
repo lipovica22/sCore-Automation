@@ -62,7 +62,7 @@ public class Person extends BasePage {
 
 
     public void clickPayerInsureeSamePerson() throws Exception {
-        Click(PayerInsureeSamePerson, "Click on Payer Insuree Same Person");
+        Click(PayerInsureeSamePersonLabel, "Click on Payer Insuree Same Person");
     }
     public void PayerInsureeSamePersonLabel() throws Exception {}
     public void clickAddPayer() throws Exception {
