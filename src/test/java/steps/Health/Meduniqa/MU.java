@@ -32,7 +32,7 @@ public class MU extends BaseTest {
     String browser = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browser");
     String quit = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("quit");
     Map<String, String> data;
-    String path = "src/results/screenshots/";
+    String path = "/results/screenshots/";
 
     private SoftAssert softAssert;
 
