@@ -94,7 +94,7 @@ public class TopButtonView extends BasePage {
     WebElement acceptCorrection;
 
 
-    @FindBy(css = "table[id='basic-grid_1']")
+    @FindBy(css = "tbody[class='basic_grid_body']")
     WebElement table;
 
 
@@ -119,8 +119,8 @@ public class TopButtonView extends BasePage {
         Click(printPUI, "Click on print PUI");
     }
 
-    public void testReadTable() throws Exception {
-        readTable(table, "Read table");
+    public void print(String valuePrints) throws Exception {
+        gridPrinting(table, "Print: ", valuePrints);
     }
     //-------------------- End Methods --------------------
 }

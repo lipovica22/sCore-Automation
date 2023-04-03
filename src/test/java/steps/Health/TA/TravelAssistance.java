@@ -285,7 +285,7 @@ public class TravelAssistance extends BaseTest{
     public void clickOnButtonCertificationOfSignature()throws Exception {
         new cSore_Mapping.Common.View.TopButtonView(driver).clickCertificationOfSignature();
 
-        new cSore_Mapping.Common.View.TopButtonView(driver).testReadTable();
+        new cSore_Mapping.Common.View.TopButtonView(driver).print(data.get("Stampa"));
         //Thread.sleep(5000);
     }
     @Then("check Info message After Certification Of Signature")

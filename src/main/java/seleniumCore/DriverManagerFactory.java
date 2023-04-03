@@ -49,7 +49,8 @@ public class DriverManagerFactory {
     private static String pathAllureEnvironment(){
         File directory = new File(".");
         String absolutePath = directory.getAbsolutePath().replace("\\", "/").trim();
-        String path = (absolutePath + "results/allure-results/").replace(".results", "results");
+        absolutePath = absolutePath.substring(0, absolutePath.length() - 1);
+        String path = (absolutePath + "results/allure-results/");
         return path;
     }
 }

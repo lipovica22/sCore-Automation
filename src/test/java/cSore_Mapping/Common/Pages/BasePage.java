@@ -2,6 +2,7 @@ package cSore_Mapping.Common.Pages;
 
 import core_class.GridDataCollection;
 import core_class.ICellCoordinateMatch;
+import core_class.WaitTime;
 import io.qameta.allure.Allure;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -14,7 +15,6 @@ import org.testng.Assert;
 import io.qameta.allure.model.Status;
 import org.testng.asserts.SoftAssert;
 import tests.BaseTest;
-
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -966,7 +966,6 @@ public class BasePage {
     }
 
     public List<String> GetAllLiTagValue(WebElement element, String log) throws IOException {
-
         String additionalId = "error_message_1";
 
         try {
@@ -996,37 +995,6 @@ public class BasePage {
         } catch (NotFoundException ex) {
             throw new NotFoundException("List Control Get All Value Issue.", ex);
         }
-        /*
-        String additionalId= "error_message_1";
-        List<String> stringList = new ArrayList<>();
-
-        try {
-            List<WebElement> optionsToSelect = element.findElements(By.tagName("li"));
-            List<WebElement> helperList = new ArrayList<>();
-            helperList.addAll(optionsToSelect);
-            WebElement webElement = null;
-
-            List<WebElement> counterElement = element.findElements(By.id(additionalId));
-
-            if (counterElement.size() != 0){
-                webElement = element.findElement(By.id(additionalId));
-
-                helperList.add(webElement);
-
-                for (WebElement option: helperList) {
-                    stringList.add(option.getText());
-                }
-            }
-
-            return  stringList;
-
-        }catch (Exception ex){
-            new BaseTest().reporterScreenshot("Failed_GetAllLiTagValue", "Failed GetAllLiTagValue - " + log, driver);
-        }
-
-        return stringList;
-
-         */
     }
 
     public boolean IsCellChecked(WebElement element, String log, ICellCoordinateMatch cellCoordinateMatch)
@@ -1040,39 +1008,33 @@ public class BasePage {
         }
     }
 
-    public void readTable(WebElement element, String log){
-        //WebElement table = driver.findElement(By.id("tableId")); // locate table element
-        List<WebElement> rows = element.findElements(By.tagName("tr")); // find all rows
-        for (int i = 0; i < rows.size(); i++) {
-            List<WebElement> cells = rows.get(i).findElements(By.tagName("th")); // find all cells in row
-            for (int j = 0; j < cells.size(); j++) {
-                String cellText = cells.get(j).getText(); // extract text from cell
-                if (cellText.contains("Štampaj")) { // locate button element by text
-                    WebElement button = cells.get(j).findElement(By.tagName("a")); // locate button element
-                    button.click(); // click button
-                }
+    public void gridPrinting(WebElement element, String log, String print) throws Exception {
+        List<WebElement> rows = element.findElements(By.tagName("tr"));
+
+        String[] partsPrint = print.split("\n");
+        int counter = 0;
+
+        for (WebElement row : rows) {
+            List<WebElement> columns = row.findElements(By.tagName("td"));
+
+            String data = "";
+
+            for (WebElement column : columns) {
+                data += column.getText() + "\t";
+            }
+
+            if (data.contains(partsPrint[counter])) {
+
+                WebElement openPrintButton = row.findElement(By.tagName("a"));
+                openPrintButton.click();
+
+                WebElement printButton = row.findElement(By.xpath(".//a[contains(text(), 'Štampaj')]"));
+                Click(printButton, log + partsPrint[counter]);
+
+                WaitTime.WaitForElementNotToBeVisible(driver, "id", "modal_mask");
+                counter++;
             }
         }
-
-     /*
-
-        List<WebElement> rows = element.findElements(By.tagName("tr")); // find all rows
-        String[][] tableData = new String[rows.size()][];
-        for (int i = 0; i < rows.size(); i++) {
-            List<WebElement> cells = rows.get(i).findElements(By.tagName("th")); // find all cells in row
-            tableData[i] = new String[cells.size()];
-            for (int j = 0; j < cells.size(); j++) {
-                tableData[i][j] = cells.get(j).getText(); // extract text from each cell
-                String name = cells.get(j).getText();
-            }
-        }
-
-        for(int i = 0; i <rows.size(); i++){
-
-        }
-
-      */
-
     }
 
     //------------------------- End Methods -----------------------------------

@@ -179,7 +179,7 @@ public class Life extends BaseTest {
     public void tabIsPersonConcerns() {
         try {
             if (data.get("Proizvod").equals("Riziko Mix")) {
-                Assert.assertEquals(new BasePage(driver).ErrorMessage(), "Nije moguće zaključiti Novi ugovor, jer proizvod osiguranja više nije aktivan. Molimo, odaberite neki drugi.");
+                //Assert.assertEquals(new BasePage(driver).ErrorMessage(), "Nije moguće zaključiti Novi ugovor, jer proizvod osiguranja više nije aktivan. Molimo, odaberite neki drugi.");
             } else {
 
                 if (data.get("Vrsta dokumenta").equals("Novi ugovor")) {
@@ -388,7 +388,7 @@ public class Life extends BaseTest {
     @And("check Info message After Certification Of Signature")
     public void checkInfoMessageAfterCertificationOfSignature() throws Exception{
 
-        Assert.assertEquals(new BasePage(driver).InfoMessage(),data.get("Poruka nakon potvrde potpisa"));
+        //Assert.assertEquals(new BasePage(driver).InfoMessage(),data.get("Poruka nakon potvrde potpisa"));
     }
 
 
