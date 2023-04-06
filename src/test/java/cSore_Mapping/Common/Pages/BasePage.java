@@ -9,6 +9,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -19,6 +20,7 @@ import tests.BaseTest;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -53,18 +55,14 @@ public class BasePage {
                 webDriverWait.until(ExpectedConditions.visibilityOf(element));
                 webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
                 actions.moveToElement(element).build().perform(); //hover
-
                 element.click();
-
                 System.out.println("Clicked: " + log);
                 break;
             } catch (Exception e) {
                 retryCount++;
-
-                System.out.println(retryCount + ".attempt >>>>> Click failed: " + log);
-
+                System.out.println(retryCount + ". attempt >>>>> Click failed: " + log);
                 if (retryCount == maxRetries) {
-                    new BaseTest().reporterScreenshot("Failed_Click", "Failed Click - " + log, driver);
+                    failOnControl(e);
                     throw new Exception("Failed to Click on element: " + log);
                 }
             }
@@ -72,7 +70,6 @@ public class BasePage {
     }
 
     public void ClickL(WebElement element, String log) throws Exception {
-
         webDriverWait = new WebDriverWait(driver, waitTime);
         Actions actions = new Actions(driver);
         actions.moveToElement(element);
@@ -85,19 +82,14 @@ public class BasePage {
                 webDriverWait.until(ExpectedConditions.visibilityOf(element));
                 webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
                 actions.moveToElement(element).build().perform(); //hover
-
                 element.click();
-                //TODO: dodati WaitTime.ClickWaitTime();
-
-                System.out.println("ClickL: " + log);
+                System.out.println("Clicked: " + log);
                 break;
             } catch (Exception e) {
                 retryCount++;
-
-                System.out.println(retryCount + ".attempt >>>>> ClickL failed: " + log);
-
+                System.out.println(retryCount + ". attempt >>>>> ClickL failed: " + log);
                 if (retryCount == maxRetries) {
-                    new BaseTest().reporterScreenshot("Failed_ClickL", "Failed ClickL - " + log, driver);
+                    failOnControl(e);
                     throw new Exception("Failed to ClickL on element: " + log);
                 }
             }
@@ -105,7 +97,6 @@ public class BasePage {
     }
 
     public void ClickUploadDocuments(WebElement element, String log) throws Exception {
-
         webDriverWait = new WebDriverWait(driver, waitTime);
         Actions actions = new Actions(driver);
         actions.moveToElement(element);
@@ -118,20 +109,16 @@ public class BasePage {
                 webDriverWait.until(ExpectedConditions.visibilityOf(element));
                 webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
                 actions.moveToElement(element).build().perform(); //hover
-
                 element.click();
                 core_class.WaitTime.WaitForElementNotToBeVisible(driver, "id", "UploadedDocumentsListView_tbl1");
                 //TODO: dodati WaitTime.PageWaitTime();
-
-                System.out.println("ClickUploadDocuments: " + log);
+                System.out.println("Clicked: " + log);
                 break;
             } catch (Exception e) {
                 retryCount++;
-
-                System.out.println(retryCount + ".attempt >>>>> ClickUploadDocuments failed: " + log);
-
+                System.out.println(retryCount + ". attempt >>>>> ClickUploadDocuments failed: " + log);
                 if (retryCount == maxRetries) {
-                    new BaseTest().reporterScreenshot("Failed_ClickUploadDocuments", "Failed ClickUploadDocuments - " + log, driver);
+                    failOnControl(e);
                     throw new Exception("Failed to ClickUploadDocuments on element: " + log);
                 }
             }
@@ -148,48 +135,81 @@ public class BasePage {
 
         while (retryCount < maxRetries){
             try {
+                webDriverWait.until(ExpectedConditions.visibilityOf(element));
+                webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
+                actions.moveToElement(element).build().perform(); //hover
                 ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, -document.body.scrollHeight)");
                 Click(element);
-
-                System.out.println("Clicked with scroll: " + log);
+                System.out.println("Clicked: " + log);
                 break;
-            }catch (Exception e){
+            } catch (Exception e) {
                 retryCount++;
-
-                System.out.println(retryCount + ".attempt >>>>> Click with scroll failed: " + log);
-
+                System.out.println(retryCount + ". attempt >>>>> ClickWithScroll failed: " + log);
                 if (retryCount == maxRetries) {
-                    new BaseTest().reporterScreenshot("Failed_ClickWithScroll", "Failed click with scroll - " + log, driver);
-                    throw new Exception("Failed to click with scroll on element: " + log);
+                    failOnControl(e);
+                    throw new Exception("Failed to ClickWithScroll on element: " + log);
                 }
             }
         }
     }
 
-    public void ClickMenu(WebElement element, String log, String elementName)
-    {
+    public void ClickMenu(WebElement element, String log, String elementName) throws Exception {
         webDriverWait = new WebDriverWait(driver, waitTime);
         Actions actions = new Actions(driver);
         actions.moveToElement(element);
         actions.perform();
-        try {
-            webDriverWait.until(ExpectedConditions.visibilityOf(element));
-            webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
-            actions.moveToElement(element).build().perform(); //hover
 
-            List<WebElement> menuList = driver.findElements(By.tagName("a"));
+        int retryCount = 0;
 
-            for ( WebElement elem : menuList) {
-                if (elem.getText().equals(elementName)) {
-                    elem.click();
-                    System.out.println("Clicked on left menu: " + log);
-                    break;
+        while (retryCount < maxRetries){
+            try {
+                webDriverWait.until(ExpectedConditions.visibilityOf(element));
+                webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
+                actions.moveToElement(element).build().perform(); //hover
+                List<WebElement> menuList = driver.findElements(By.tagName("a"));
+
+                for ( WebElement elem : menuList) {
+                    if (elem.getText().equals(elementName)) {
+                        elem.click();
+                        System.out.println("Clicked on left menu: " + log);
+                        break;
+                    }
+                }
+                System.out.println("Clicked: " + log);
+                break;
+            } catch (NotFoundException ex) {
+                failOnControl(ex);
+                throw new NotFoundException("Menu Control Click Issue.", ex);}
+            catch (Exception e) {
+                retryCount++;
+                System.out.println(retryCount + ". attempt >>>>> ClickWithScroll failed: " + log);
+                if (retryCount == maxRetries) {
+                    failOnControl(e);
+                    throw new Exception("Failed to ClickWithScroll on element: " + log);
                 }
             }
-        } catch (NotFoundException ex) {
-            throw new NotFoundException("Menu Control Click Issue.", ex);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        }
+    }
+
+    public void ClickCheckbox(WebElement checkbox, String log) throws Exception {
+        int retryCount = 0;
+
+        while (retryCount < maxRetries){
+            try {
+                if (!checkbox.isSelected()) {
+                    JavascriptExecutor executor = (JavascriptExecutor) driver;
+                    executor.executeScript("arguments[0].click();", checkbox);
+                    System.out.println("Checked checkbox: " + log);
+                    break;
+                }
+            } catch (Exception e) {
+                retryCount++;
+                System.out.println(retryCount + ". attempt >>>>> ClickCheckbox failed: " + log);
+                if (retryCount == maxRetries) {
+                    failOnControl(e);
+                    throw new Exception("Failed to ClickCheckbox on element: " + log);
+                }
+            }
         }
     }
 
@@ -207,7 +227,7 @@ public class BasePage {
         }catch(Exception e){
             System.out.println("GetProperty failed: " + log);
 
-            new BaseTest().reporterScreenshot("Failed_GetProperty", "Failed SetValueCalendar - " + log, driver);
+            failOnControl(e);
             throw new Exception("Failed to SetValueCalendar on element: " + log);
         }
     }
@@ -224,7 +244,7 @@ public class BasePage {
         }catch(Exception e){
             System.out.println("GetProperty failed: " + log);
 
-            new BaseTest().reporterScreenshot("Failed_GetProperty", "Failed GetProperty - " + log, driver);
+            failOnControl(e);
             throw new Exception("Failed to GetProperty on element: " + log);
         }
     }
@@ -242,7 +262,7 @@ public class BasePage {
 
             System.out.println("GetText failed: " + log);
 
-            new BaseTest().reporterScreenshot("Failed_GetText", "Failed GetText - " + log, driver);
+            failOnControl(e);
             throw new Exception("Failed to GetText on element: " + log);
         }
     }
@@ -262,7 +282,7 @@ public class BasePage {
         }catch(Exception e){
             System.out.println("GetAllOptionValue failed: " + log);
 
-            new BaseTest().reporterScreenshot("Failed_GetAllOptionValue", "Failed GetAllOptionValue - " + log, driver);
+            failOnControl(e);
             throw new Exception("Failed to GetAllOptionValue on element: " + log);
         }
     }
@@ -292,7 +312,7 @@ public class BasePage {
         }catch(Exception e){
             System.out.println("GetAllLiTagValueClauses failed: " + log);
 
-            new BaseTest().reporterScreenshot("Failed_GetAllLiTagValueClauses", "Failed GetAllLiTagValueClauses - " + log, driver);
+            failOnControl(e);
             throw new Exception("Failed to GetAllLiTagValueClauses on element: " + log);
         }
     }
@@ -309,7 +329,7 @@ public class BasePage {
         } catch (Exception e) {
             System.out.println("IsEnabled failed: " + log);
 
-            new BaseTest().reporterScreenshot("Failed_IsEnabled", "Failed IsEnabled - " + log, driver);
+            failOnControl(e);
             throw new Exception("Failed to IsEnabled on element: " + log);
         }
     }
@@ -320,7 +340,7 @@ public class BasePage {
         } catch (Exception e) {
             System.out.println("IsChecked failed: " + log);
 
-            new BaseTest().reporterScreenshot("Failed_IsChecked", "Failed IsChecked - " + log, driver);
+            failOnControl(e);
             throw new Exception("Failed to IsChecked on element: " + log);
         }
     }
@@ -331,7 +351,7 @@ public class BasePage {
         } catch (Exception e) {
             System.out.println("IsVisiable failed: " + log);
 
-            new BaseTest().reporterScreenshot("Failed_IsVisiable", "Failed IsVisiable - " + log, driver);
+            failOnControl(e);
             throw new Exception("Failed to IsVisiable on element: " + log);
         }
     }
@@ -367,7 +387,7 @@ public class BasePage {
                 System.out.println(retryCount + ".attempt >>>>> SetValuePackage failed: " + log);
 
                 if (retryCount == maxRetries) {
-                    new BaseTest().reporterScreenshot("Failed_SetValuePackage", "Failed SetValue - " + log, driver);
+                    failOnControl(e);
                     throw new Exception("Failed to SetValuePackage on element: " + log);
                 }
             }
@@ -397,7 +417,7 @@ public class BasePage {
                 System.out.println(retryCount + ".attempt >>>>> SetValue failed: " + log);
 
                 if (retryCount == maxRetries) {
-                    new BaseTest().reporterScreenshot("Failed_SetValue", "Failed SetValue - " + log, driver);
+                    failOnControl(e);
                     throw new Exception("Failed to SetValue on element: " + log);
                 }
             }
@@ -427,7 +447,7 @@ public class BasePage {
                 System.out.println(retryCount + ".attempt >>>>> SetValueDate failed: " + log);
 
                 if (retryCount == maxRetries) {
-                    new BaseTest().reporterScreenshot("Failed_SetValueDate", "Failed SetValueDate - " + log, driver);
+                    failOnControl(e);
                     throw new Exception("Failed to SetValueDate on element: " + log);
                 }
             }
@@ -458,7 +478,7 @@ public class BasePage {
                 System.out.println(retryCount + ".attempt >>>>> SetValueStrNumGenerator failed: " + log);
 
                 if (retryCount == maxRetries) {
-                    new BaseTest().reporterScreenshot("Failed_SetValueStrNumGenerator", "Failed SetValueStrNumGenerator - " + log, driver);
+                    failOnControl(e);
                     throw new Exception("Failed to SetValueStrNumGenerator on element: " + log);
                 }
             }
@@ -488,7 +508,7 @@ public class BasePage {
                 System.out.println(retryCount + ".attempt >>>>> SetValueWithEnter failed: " + log);
 
                 if (retryCount == maxRetries) {
-                    new BaseTest().reporterScreenshot("Failed_SetValueWithEnter", "Failed SetValueWithEnter - " + log, driver);
+                    failOnControl(e);
                     throw new Exception("Failed to SetValueWithEnter on element: " + log);
                 }
             }
@@ -519,7 +539,7 @@ public class BasePage {
                 System.out.println(retryCount + ".attempt >>>>> SetValueWithEnterAndWait failed: " + log);
 
                 if (retryCount == maxRetries) {
-                    new BaseTest().reporterScreenshot("Failed_SetValueWithEnterAndWait", "Failed SetValueWithEnterAndWait - " + log, driver);
+                    failOnControl(e);
                     throw new Exception("Failed to SetValueWithEnterAndWait on element: " + log);
                 }
             }
@@ -547,7 +567,7 @@ public class BasePage {
                 System.out.println(retryCount + ".attempt >>>>> SetValueWithTab failed: " + log);
 
                 if (retryCount == maxRetries) {
-                    new BaseTest().reporterScreenshot("Failed_SetValueWithTab", "Failed SetValueWithTab - " + log, driver);
+                    failOnControl(e);
                     throw new Exception("Failed to SetValueWithTab on element: " + log);
                 }
             }
@@ -578,7 +598,7 @@ public class BasePage {
 
                 if (retryCount == maxRetries) {
                     new BaseTest().reporterScreenshot("Failed_SetValueWithCtrlA", "Failed SetValueWithCtrlA - " + log, driver);
-                    throw new Exception("Failed to SetValueWithCtrlA on element: " + log);
+                    failOnControl(e);
                 }
             }
         }
@@ -626,7 +646,7 @@ public class BasePage {
                 System.out.println(retryCount + ".attempt >>>>> SelectValueAC failed: " + log);
 
                 if (retryCount == maxRetries) {
-                    new BaseTest().reporterScreenshot("Failed_SelectValueAC", "Failed SelectValueAC - " + log, driver);
+                    failOnControl(e);
                     throw new Exception("Failed to SelectValueAC on element: " + log);
                 }
             }
@@ -669,7 +689,7 @@ public class BasePage {
                     retryCount++;
 
                     if (retryCount == maxRetries){
-                        new BaseTest().reporterScreenshot("Failed_SelectValueACWithWait", "Failed SelectValueACWithWait - " + log, driver);
+                        failOnControl(new Exception("No such element to select"));
                         throw new Exception("No such element to select");
                     }
                 }
@@ -680,7 +700,7 @@ public class BasePage {
                 System.out.println(retryCount + ".attempt >>>>> SelectValueACWithWait failed: " + log);
 
                 if (retryCount == maxRetries) {
-                    new BaseTest().reporterScreenshot("Failed_SelectValueACWithWait", "Failed SelectValueACWithWait - " + log, driver);
+                    failOnControl(e);
                     throw new Exception("Failed to SelectValueACWithWait on element: " + log);
                 }
             }
@@ -720,7 +740,7 @@ public class BasePage {
                     retryCount++;
 
                     if (retryCount == maxRetries){
-                        new BaseTest().reporterScreenshot("Failed_SelectValueAC_ItemName", "Failed SelectValueAC_ItemName - " + log, driver);
+                        failOnControl(new Exception("No such element to select"));
                         throw new Exception("No such element to select");
                     }
                 }
@@ -731,7 +751,7 @@ public class BasePage {
                 System.out.println(retryCount + ".attempt >>>>> SelectValueAC_ItemName failed: " + log);
 
                 if (retryCount == maxRetries) {
-                    new BaseTest().reporterScreenshot("Failed_SelectValueAC_ItemName", "Failed SelectValueAC_ItemName - " + log, driver);
+                    failOnControl(e);
                     throw new Exception("Failed to SelectValueAC_ItemName on element: " + log);
                 }
             }
@@ -767,7 +787,7 @@ public class BasePage {
                     retryCount++;
 
                     if (retryCount == maxRetries){
-                        new BaseTest().reporterScreenshot("Failed_SelectOption", "Failed SelectOption - " + log, driver);
+                        failOnControl(new Exception("No such element to select"));
                         throw new Exception("No such element to select");
                     }
                 }
@@ -778,7 +798,7 @@ public class BasePage {
                 System.out.println(retryCount + ".attempt >>>>> SelectOption failed: " + log);
 
                 if (retryCount == maxRetries) {
-                    new BaseTest().reporterScreenshot("Failed_SelectOption", "Failed SelectOption - " + log, driver);
+                    failOnControl(e);
                     throw new Exception("Failed to SelectOption on element: " + log);
                 }
             }
@@ -821,7 +841,7 @@ public class BasePage {
                     retryCount++;
 
                     if (retryCount == maxRetries){
-                        new BaseTest().reporterScreenshot("Failed_SelectOptionWithWait", "Failed SelectOptionWithWait - " + log, driver);
+                        failOnControl(new Exception("No such element to select"));
                         throw new Exception("No such element to select");
                     }
                 }
@@ -832,7 +852,7 @@ public class BasePage {
                 System.out.println(retryCount + ".attempt >>>>> SelectOptionWithWait failed: " + log);
 
                 if (retryCount == maxRetries) {
-                    new BaseTest().reporterScreenshot("Failed_SelectOptionWithWait", "Failed SelectOptionWithWait - " + log, driver);
+                    failOnControl(e);
                     throw new Exception("Failed to SelectOptionWithWait on element: " + log);
                 }
             }
@@ -873,7 +893,7 @@ public class BasePage {
                     retryCount++;
 
                     if (retryCount == maxRetries){
-                        new BaseTest().reporterScreenshot("Failed_SelectOptionLi", "Failed SelectOptionLi - " + log, driver);
+                        failOnControl(new Exception("No such element to select"));
                         throw new Exception("No such element to select");
                     }
                 }
@@ -884,7 +904,7 @@ public class BasePage {
                 System.out.println(retryCount + ".attempt >>>>> SelectOptionLi failed: " + log);
 
                 if (retryCount == maxRetries) {
-                    new BaseTest().reporterScreenshot("Failed_SelectOptionLi", "Failed SelectOptionLi - " + log, driver);
+                    failOnControl(e);
                     throw new Exception("Failed to SelectOptionLi on element: " + log);
                 }
             }
@@ -892,23 +912,20 @@ public class BasePage {
     }
 
     public void AreEqual(WebElement element, String log, String expected, SoftAssert softAssert) throws IOException {
-        String currentUrl = driver.getCurrentUrl();
-
         try {
             String actualResult = GetText(element, log);
             softAssert.assertEquals(actualResult, expected);
             System.out.println("AreEqual: " + log);
             Assert.assertEquals(actualResult, expected);
         }catch (AssertionError ex){
-            failAssert(currentUrl, ex);
-        }catch (Exception ex){
-            new BaseTest().reporterScreenshot("NotEqualMessage", "Not equal message assert - " + log, driver);
+            failAssert(ex);
+        }catch (Exception e){
+            failOnControl(e);
         }
     }
 
     public void AreEqualMessage(WebElement element, String log, String expected, SoftAssert softAssert) throws IOException {
         try {
-            String currentUrl = driver.getCurrentUrl();
             String actualResult = "";
             String[] partsExpected = expected.split("\n");
             int counter = 0;
@@ -924,7 +941,7 @@ public class BasePage {
                         try {
                             Assert.assertEquals(actualResult, partsExpected[counter]);
                         }catch (AssertionError ex){
-                            failAssert(currentUrl, ex);
+                            failAssert(ex);
                         }
                     }
 
@@ -945,21 +962,19 @@ public class BasePage {
             System.out.println("AreEqual: " + log);
             Assert.assertEquals(actualUrl, expectedUrl);
         }catch (AssertionError ex){
-            failAssert(actualUrl, ex);
+            failAssert(ex);
         }catch (Exception ex){
             new BaseTest().reporterScreenshot("NotEqualMessage", "Not equal url assert - " + log, driver);
         }
     }
 
     public void AreEqualCheckBox(String log, String actualValue, String expectedValue, SoftAssert softAssert) throws IOException {
-        String currentUrl = driver.getCurrentUrl();
-
         try {
             softAssert.assertEquals(actualValue, expectedValue);
             System.out.println("AreEqual: " + log);
             Assert.assertEquals(actualValue, expectedValue);
         }catch (AssertionError ex){
-            failAssert(currentUrl, ex);
+            failAssert(ex);
         }catch (Exception ex){
             new BaseTest().reporterScreenshot("NotEqualMessage", "Not equal checkbox assert - " + log, driver);
         }
@@ -1008,32 +1023,38 @@ public class BasePage {
         }
     }
 
-    public void gridPrinting(WebElement element, String log, String print) throws Exception {
-        List<WebElement> rows = element.findElements(By.tagName("tr"));
+    public void gridPrinting(WebElement gridElement, String log, String expectedPrintValues) throws Exception {
+        try {
+            List<WebElement> rows = gridElement.findElements(By.tagName("tr"));
 
-        String[] partsPrint = print.split("\n");
-        int counter = 0;
+            String[] partsPrint = expectedPrintValues.split("\n");
+            int counter = 0;
 
-        for (WebElement row : rows) {
-            List<WebElement> columns = row.findElements(By.tagName("td"));
+            for (WebElement row : rows) {
+                List<WebElement> columns = row.findElements(By.tagName("td"));
 
-            String data = "";
+                String data = "";
 
-            for (WebElement column : columns) {
-                data += column.getText() + "\t";
+                for (WebElement column : columns) {
+                    data += column.getText() + "\t";
+                }
+
+                if (data.contains(partsPrint[counter])) {
+
+                    WebElement openPrintButton = row.findElement(By.tagName("a"));
+                    openPrintButton.click();
+
+                    WebElement printButton = row.findElement(By.xpath(".//a[contains(text(), 'Štampaj')]"));
+                    Click(printButton, log + partsPrint[counter]);
+
+                    WaitTime.WaitForElementNotToBeVisible(driver, "id", "modal_mask");
+                    counter++;
+                }
             }
 
-            if (data.contains(partsPrint[counter])) {
-
-                WebElement openPrintButton = row.findElement(By.tagName("a"));
-                openPrintButton.click();
-
-                WebElement printButton = row.findElement(By.xpath(".//a[contains(text(), 'Štampaj')]"));
-                Click(printButton, log + partsPrint[counter]);
-
-                WaitTime.WaitForElementNotToBeVisible(driver, "id", "modal_mask");
-                counter++;
-            }
+        } catch (Exception e){
+            failOnControl(e);
+            throw new Exception("Failed to gridPrinting on element: " + log);
         }
     }
 
@@ -1085,7 +1106,19 @@ public class BasePage {
         }
     }
 
-    private void failAssert(String currentUrl, AssertionError ex){
+    private void failAssert(AssertionError ex){
+        String currentUrl = driver.getCurrentUrl();
+        Allure.step("Failed Assert", Status.FAILED);
+
+        byte[] screenshotBytes = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        InputStream screenshotStream = new ByteArrayInputStream(screenshotBytes);
+
+        Allure.addAttachment("Assertion Error Message", ex.getMessage());
+        Allure.addAttachment("Screenshot", "image/png", screenshotStream, ".png");
+        Allure.addAttachment("URL", currentUrl);
+    }
+    private void failOnControl(Exception ex){
+        String currentUrl = driver.getCurrentUrl();
         Allure.step("Failed Assert", Status.FAILED);
 
         byte[] screenshotBytes = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);

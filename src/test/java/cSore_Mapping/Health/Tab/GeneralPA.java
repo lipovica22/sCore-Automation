@@ -212,6 +212,8 @@ public class GeneralPA extends BasePage {
 
         String checkedWebShopPolicy = String.valueOf(IsChecked(webShopPolisa, "Is 'WebShop polisa' checked"));
         AreEqualCheckBox("Assert 'WebShop polisa' checked", checkedWebShopPolicy, data.get("CekiranoWebShop"), softAssert);
+
+        ClickCheckbox(zaposleniKodUniqaKompanija, "Checked Zaposleni kod Uniqa kompanija ili partnera od posebnog značaja");
     }
     //-------------------- End Methods --------------------
 }
