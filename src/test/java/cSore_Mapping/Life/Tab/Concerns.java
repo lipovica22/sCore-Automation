@@ -73,7 +73,7 @@ public class Concerns extends BasePage {
     @FindBy(id= "chk_7311")   WebElement Smrt;
     @FindBy( linkText= "Smrt")   WebElement SmrtLabel;
     @FindBy(id= "chk_7320")   WebElement TezeBolesti;
-    @FindBy( linkText= " Teže bolesti                                                             ")   WebElement TezeBolestiLabel;
+    @FindBy( css= "label.checkbox.rizici_osiguranja.checked:contains('Teže bolesti')")   WebElement TezeBolestiLabel;
     @FindBy(id= "inp_7320_1")   WebElement TezeBolestiValue;
     @FindBy(id= "chk_7312")   WebElement SmrtUsledNezgode;
     @FindBy( linkText= "Smrt usled nezgode ")   WebElement SmrtUsledNezgodeLabel;
@@ -650,7 +650,7 @@ public class Concerns extends BasePage {
 */
 
     public void clickTezeBolesti() throws Exception {
-        Click(TezeBolestiLabel,"");
+        TezeBolestiLabel.click();
     }
     public void TezeBolestiValue() throws Exception {}
 

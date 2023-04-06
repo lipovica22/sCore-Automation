@@ -223,6 +223,255 @@ public class MoneyLaundry extends BasePage {
     @FindBy(id= "Kol3")   WebElement MoneyLaundryLevel;
 
 
+    public void questionnaire() throws Exception {}
+ 
+             
+    public void QNN_1_0Label() throws Exception {}
+    public void QNN_1_0_0Label() throws Exception {}
+    public void QNN_1_0_0() throws Exception {
+        QNN_1_0_0Label.click();
+    }
+    public void QNN_1_0_1Label() throws Exception {}
+    public void QNN_1_0_1() throws Exception {
+        QNN_1_0_1Label.click();
+    }
+    public void QNN_1_0_2Label() throws Exception {}
+    public void QNN_1_0_2() throws Exception {
+        QNN_1_0_2Label.click();
+    }
+    public void QNN_1_0_3_0Label() throws Exception {}
+    public void QNN_1_0_3_0Text(String ostalo) throws Exception {
+        SetValue(QNN_1_0_3_0Text,"Input ...",ostalo);
+    }
+    public void QNN_1_0_3Label() throws Exception {}
+    public void QNN_1_0_3() throws Exception {
+        QNN_1_0_3Label.click();
+    }
+ 
+    public void QNN_1_1Label() throws Exception {}
+    public void QNN_1_1_1Label() throws Exception {}
+    public void QNN_1_1_1() throws Exception {
+        QNN_1_1_1Label.click();
+    }
+    public void QNN_1_1_0Label() throws Exception {}
+    public void QNN_1_1_0() throws Exception {
+        QNN_1_1_0Label.click();
+    }
+    public void QNN_1_1_2Label() throws Exception {}
+    public void QNN_1_1_2() throws Exception {
+        QNN_1_1_2Label.click();
+    }
+    public void QNN_1_1_3Label() throws Exception {}
+    public void QNN_1_1_3() throws Exception {
+        QNN_1_1_3Label.click();
+    }
+    public void QNN_1_1_4Label() throws Exception {}
+    public void QNN_1_1_4() throws Exception {
+        QNN_1_1_4Label.click();
+    }
+    public void QNN_1_1_4_0Label() throws Exception {}
+    public void QNN_1_1_4_0Text(String ostalo1) throws Exception {
+        SetValue(QNN_1_1_4_0Text,"Input ...",ostalo1);
+    }
+ 
+    public void QNN_1_2Label() throws Exception {}
+    public void QNN_1_2_1Label() throws Exception {}
+    public void QNN_1_2_1() throws Exception {
+        QNN_1_2_1Label.click();
+    }
+    public void QNN_1_2_0Label() throws Exception {}
+    public void QNN_1_2_0() throws Exception {
+        QNN_1_2_0Label.click();
+    }
+    public void QNN_1_2_1_0Label() throws Exception {}
+    public void QNN_1_2_1_0Text(String ostalo2) throws Exception {
+        SetValue(QNN_1_1_4_0Text,"Input ...",ostalo2);
+    }
+ 
+    public void QNN_1_3Label() throws Exception {}
+    public void QNN_1_3_0Label() throws Exception {}
+    public void QNN_1_3_0() throws Exception {}
+    public void QNN_1_3_1Label() throws Exception {}
+    public void QNN_1_3_1() throws Exception {}
+    public void QNN_1_3_1_0() throws Exception {}
+ 
+    public void QNN_1_4Label() throws Exception {}
+    public void QNN_1_4_1Label() throws Exception {}
+    public void QNN_1_4_1() throws Exception {}
+    public void QNN_1_4_0Label() throws Exception {}
+    public void QNN_1_4_0() throws Exception {}
+    public void QNN_1_4_1_0() throws Exception {}
+ 
+    public void QNN_1_5Label() throws Exception {}
+    public void QNN_1_5_1Label() throws Exception {}
+    public void QNN_1_5_1() throws Exception {}
+    public void QNN_1_5_0Label() throws Exception {}
+    public void QNN_1_5_0() throws Exception {}
+    public void QNN_1_5_1_0() throws Exception {}
+ 
+    public void QNN_1_6Label() throws Exception {}
+    public void QNN_1_6_1Label() throws Exception {}
+    public void QNN_1_6_1() throws Exception {}
+    public void QNN_1_6_0Label() throws Exception {}
+    public void QNN_1_6_0() throws Exception {}
+ 
+    public void QNN_1_7Label() throws Exception {}
+    public void QNN_1_7_1Label() throws Exception {}
+    public void QNN_1_7_1() throws Exception {}
+    public void QNN_1_7_0Label() throws Exception {}
+    public void QNN_1_7_0() throws Exception {}
+    public void QNN_1_7_0_0() throws Exception {}
+    public void QNN_1_7_0_0_0Label() throws Exception {}
+    public void QNN_1_7_0_0_0() throws Exception {}
+    public void QNN_1_7_0_0_1Label() throws Exception {}
+    public void QNN_1_7_0_0_1() throws Exception {}
+ 
+             
+    public void QNN_1_7_0_0_1_0Label() throws Exception {}
+    public void QNN_1_7_0_0_1_0() throws Exception {}
+    public void QNN_1_7_0_0_1_1Label() throws Exception {}
+    public void QNN_1_7_0_0_1_1() throws Exception {}
+    public void QNN_1_7_0_0_1_2Label() throws Exception {}
+    public void QNN_1_7_0_0_1_2() throws Exception {}
+    public void QNN_1_7_0_0_1_3Label() throws Exception {}
+    public void QNN_1_7_0_0_1_3() throws Exception {}
+    public void QNN_1_7_0_0_1_4Label() throws Exception {}
+    public void QNN_1_7_0_0_1_4() throws Exception {}
+    public void QNN_1_7_0_0_1_5Label() throws Exception {}
+    public void QNN_1_7_0_0_1_5() throws Exception {}
+    public void QNN_1_7_0_0_1_6Label() throws Exception {}
+    public void QNN_1_7_0_0_1_6() throws Exception {}
+    public void QNN_1_7_0_0_1_7Label() throws Exception {}
+    public void QNN_1_7_0_0_1_7() throws Exception {}
+    public void QNN_1_7_0_0_1_8Label() throws Exception {}
+    public void QNN_1_7_0_0_1_8() throws Exception {}
+    public void QNN_1_7_0_0_1_9Label() throws Exception {}
+    public void QNN_1_7_0_0_1_9() throws Exception {}
+    public void QNN_1_7_0_0_1_10Label() throws Exception {}
+    public void QNN_1_7_0_0_1_10() throws Exception {}
+    public void QNN_1_7_0_0_1_11Label() throws Exception {}
+    public void QNN_1_7_0_0_1_11_0Label() throws Exception {}
+    public void QNN_1_7_0_0_1_11_0() throws Exception {}
+    public void QNN_1_7_0_0_1_11_1Label() throws Exception {}
+    public void QNN_1_7_0_0_1_11_1() throws Exception {}
+    public void QNN_1_7_0_0_1_11_1_0Label() throws Exception {}
+    public void QNN_1_7_0_0_1_11_1_0() throws Exception {}
+    public void QNN_1_7_0_0_1_12Label() throws Exception {}
+    public void QNN_1_7_0_0_1_12_0Label() throws Exception {}
+    public void QNN_1_7_0_0_1_12_0() throws Exception {}
+    public void QNN_1_7_0_0_1_12_1Label() throws Exception {}
+    public void QNN_1_7_0_0_1_12_1() throws Exception {}
+    public void QNN_1_7_0_0_1_12_1_0Label() throws Exception {}
+    public void QNN_1_7_0_0_1_12_1_0() throws Exception {}
+    public void QNN_1_7_0_0_1_13Label() throws Exception {}
+    public void QNN_1_7_0_0_1_13_0Label() throws Exception {}
+    public void QNN_1_7_0_0_1_13_0() throws Exception {}
+    public void QNN_1_7_0_0_1_13_1Label() throws Exception {}
+    public void QNN_1_7_0_0_1_13_1() throws Exception {}
+    public void QNN_1_7_0_0_1_14Label() throws Exception {}
+    public void QNN_1_7_0_0_1_14_0Label() throws Exception {}
+    public void QNN_1_7_0_0_1_14_0() throws Exception {}
+    public void QNN_1_7_0_0_1_14_1Label() throws Exception {}
+    public void QNN_1_7_0_0_1_14_1() throws Exception {}
+    public void QNN_1_7_0_0_1_14_1_0Label() throws Exception {}
+    public void QNN_1_7_0_0_1_14_1_0() throws Exception {}
+ 
+             
+             
+    public void QNN_1_7_0_0_0_1Label() throws Exception {}
+    public void QNN_1_7_0_0_0_1() throws Exception {}
+    public void QNN_1_7_0_0_0_0Label() throws Exception {}
+    public void QNN_1_7_0_0_0_0() throws Exception {}
+ 
+             
+             
+    public void QNN_1_8Label() throws Exception {}
+    public void QNN_1_8_1Label() throws Exception {}
+    public void QNN_1_8_1() throws Exception {
+        QNN_1_8_1Label.click();
+    }
+    public void QNN_1_8_0Label() throws Exception {}
+    public void QNN_1_8_0() throws Exception {
+        QNN_1_8_0Label.click();
+    }
+ 
+    public void QNN_1_9Label() throws Exception {}
+    public void QNN_1_9_1Label() throws Exception {}
+    public void QNN_1_9_1() throws Exception {}
+    public void QNN_1_9_0Label() throws Exception {}
+    public void QNN_1_9_0() throws Exception {}
+    public void QNN_1_9_1_0() throws Exception {}
+    public void QNN_1_9_1_0_0Label() throws Exception {}
+    public void QNN_1_9_1_0_0() throws Exception {}
+    public void QNN_1_9_1_0_1Label() throws Exception {}
+    public void QNN_1_9_1_0_1() throws Exception {}
+ 
+             
+             
+    public void QNN_1_9_1_0_1_1Label() throws Exception {}
+    public void QNN_1_9_1_0_1_1() throws Exception {}
+    public void QNN_1_9_1_0_1_0Label() throws Exception {}
+    public void QNN_1_9_1_0_1_0() throws Exception {}
+    public void QNN_1_9_1_0_1_2Label() throws Exception {}
+    public void QNN_1_9_1_0_1_2() throws Exception {}
+    public void QNN_1_9_1_0_1_3Label() throws Exception {}
+    public void QNN_1_9_1_0_1_3() throws Exception {}
+    public void QNN_1_9_1_0_1_5Label() throws Exception {}
+    public void QNN_1_9_1_0_1_5() throws Exception {}
+    public void QNN_1_9_1_0_1_4Label() throws Exception {}
+    public void QNN_1_9_1_0_1_4() throws Exception {}
+    public void QNN_1_9_1_0_1_6Label() throws Exception {}
+    public void QNN_1_9_1_0_1_6() throws Exception {}
+    public void QNN_1_9_1_0_1_8Label() throws Exception {}
+    public void QNN_1_9_1_0_1_8() throws Exception {}
+    public void QNN_1_9_1_0_1_7Label() throws Exception {}
+    public void QNN_1_9_1_0_1_7() throws Exception {}
+ 
+             
+    public void QNN_1_9_1_0_1_9Label() throws Exception {}
+    public void QNN_1_9_1_0_1_9() throws Exception {}
+ 
+             
+    public void QNN_1_9_1_0_1_10Label() throws Exception {}
+    public void QNN_1_9_1_0_1_10_1Label() throws Exception {}
+    public void QNN_1_9_1_0_1_10_1() throws Exception {}
+    public void QNN_1_9_1_0_1_10_0Label() throws Exception {}
+    public void QNN_1_9_1_0_1_10_0() throws Exception {}
+    public void QNN_1_9_1_0_1_10_1_0Label() throws Exception {}
+    public void QNN_1_9_1_0_1_10_1_0() throws Exception {}
+ 
+    public void QNN_1_9_1_0_1_11Label() throws Exception {}
+    public void QNN_1_9_1_0_1_11_0Label() throws Exception {}
+    public void QNN_1_9_1_0_1_11_0() throws Exception {}
+    public void QNN_1_9_1_0_1_11_1Label() throws Exception {}
+    public void QNN_1_9_1_0_1_11_1() throws Exception {}
+    public void QNN_1_9_1_0_1_11_0_0Label() throws Exception {}
+    public void QNN_1_9_1_0_1_11_0_0() throws Exception {}
+ 
+    public void QNN_1_9_1_0_1_12Label() throws Exception {}
+    public void QNN_1_9_1_0_1_12_1Label() throws Exception {}
+    public void QNN_1_9_1_0_1_12_1() throws Exception {}
+    public void QNN_1_9_1_0_1_12_0Label() throws Exception {}
+    public void QNN_1_9_1_0_1_12_0() throws Exception {}
+
+    public void QNN_1_9_1_0_1_13Label() throws Exception {}
+    public void QNN_1_9_1_0_1_13_0Label() throws Exception {}
+    public void QNN_1_9_1_0_1_13_0() throws Exception {}
+    public void QNN_1_9_1_0_1_13_1Label() throws Exception {}
+    public void QNN_1_9_1_0_1_13_1() throws Exception {}
+    public void QNN_1_9_1_0_1_13_1_0Label() throws Exception {}
+    public void QNN_1_9_1_0_1_13_1_0() throws Exception {}
+
+    public void QNN_1_9_1_0_0_1Label() throws Exception {}
+    public void QNN_1_9_1_0_0_1() throws Exception {}
+    public void QNN_1_9_1_0_0_0Label() throws Exception {}
+    public void QNN_1_9_1_0_0_0() throws Exception {}
+    public void QNN_1_9_1_0_0_2Label() throws Exception {}
+    //public void QNN_1_9_1_0_0_1() throws Exception {}
+
+    public void MoneyLaundryLevelLegend() throws Exception {}
+    public void MoneyLaundryLevelLabel() throws Exception {}
+    public void MoneyLaundryLevel() throws Exception {}
 
 
 }

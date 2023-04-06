@@ -680,6 +680,7 @@ public class Life extends BaseTest {
 
     @And("fill Money laundry questionnaire")
     public void fillMoneyLaundryQuestionnaire() {
+
     }
 
     @And("fill Associate money laundry questionnaire")

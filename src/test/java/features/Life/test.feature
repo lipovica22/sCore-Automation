@@ -52,6 +52,7 @@ Feature: Fill tab General by all products as different users for Life Insurance 
     Then check calculation
     And click on button Activate
     Then check Info message on top of page
+    Then check Warring message on top of page
 
     And fill Money laundry questionnaire
     Then check Info message on top of page
@@ -74,7 +75,7 @@ Feature: Fill tab General by all products as different users for Life Insurance 
 
     Examples:
       | row | TC ID          |
-      | 1   | RS_LI_FA_1001  |
+      | 1   | RS_LI_RK_100  |
 
 
 
