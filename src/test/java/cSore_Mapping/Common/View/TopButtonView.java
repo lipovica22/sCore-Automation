@@ -202,7 +202,9 @@ public class TopButtonView extends BasePage {
     public void TestPrint() throws Exception {}
     public void CreateNewContract() throws Exception {}
 
-    public void AcceptMoneyLaundry() throws Exception {}
+    public void acceptMoneyLaundry() throws Exception {
+        Click(acceptMoneyLaundry, "Click on Accept Money Laundry");
+    }
 
     public void CreateIndividualInvoices() throws Exception {}
     public void FileUpload() throws Exception {}

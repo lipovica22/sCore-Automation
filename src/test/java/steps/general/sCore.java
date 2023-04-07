@@ -128,7 +128,7 @@ public class sCore extends BaseTest {
             new General(driver).inputClientInfo();
         }
         if (data.get("Proizvod").equals("Riziko kredit")){
-            selectOption("Godine",new General(driver).IzborDuzineTrajanja());
+            new General(driver).selectIzborDuzineTrajanja(data.get("IzborDuzineTrajanja"));
         }
     }
 

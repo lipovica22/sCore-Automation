@@ -226,18 +226,35 @@ public class MoneyLaundry extends BasePage {
     public void questionnaire() throws Exception {}
  
              
-    public void QNN_1_0Label() throws Exception {}
+    public void QNN_1_0Label(String q1) throws Exception {
+        switch (q1){
+            case "Socijalna sigurnost":{
+                QNN_1_0_0();
+            }break;
+            case "Štednja":{
+                QNN_1_0_1();
+            }break;
+            case "Sigurnost porodice":{
+                QNN_1_0_2();
+            }break;
+            case "Ostalo:":{
+                QNN_1_0_3();
+                QNN_1_0_3_0Text("Test");
+            }break;
+            default:{}break;
+        }
+    }
     public void QNN_1_0_0Label() throws Exception {}
     public void QNN_1_0_0() throws Exception {
-        QNN_1_0_0Label.click();
+        Click(QNN_1_0_0Label,"Checkbox clicked");
     }
     public void QNN_1_0_1Label() throws Exception {}
     public void QNN_1_0_1() throws Exception {
-        QNN_1_0_1Label.click();
+        Click(QNN_1_0_1Label,"Checkbox clicked");
     }
     public void QNN_1_0_2Label() throws Exception {}
     public void QNN_1_0_2() throws Exception {
-        QNN_1_0_2Label.click();
+        Click(QNN_1_0_2Label,"Checkbox clicked");
     }
     public void QNN_1_0_3_0Label() throws Exception {}
     public void QNN_1_0_3_0Text(String ostalo) throws Exception {
@@ -245,43 +262,85 @@ public class MoneyLaundry extends BasePage {
     }
     public void QNN_1_0_3Label() throws Exception {}
     public void QNN_1_0_3() throws Exception {
-        QNN_1_0_3Label.click();
+        Click(QNN_1_0_3Label,"Checkbox clicked");
     }
  
-    public void QNN_1_1Label() throws Exception {}
+    public void QNN_1_1Label(String q2) throws Exception {
+        switch (q2) {
+            case "Student": {
+                QNN_1_1_0();
+            }
+            break;
+            case "Zaposlen": {
+                QNN_1_1_1();
+            }
+            break;
+            case "Nezaposlen": {
+                QNN_1_1_2();
+            }
+            break;
+            case "Penzioner": {
+                QNN_1_1_3();
+            }
+            break;
+            case "Ostalo:": {
+                QNN_1_1_4();
+                QNN_1_1_4_0Text("Test");
+            }
+            break;
+            default: {
+            }
+            break;
+        }
+    }
     public void QNN_1_1_1Label() throws Exception {}
     public void QNN_1_1_1() throws Exception {
-        QNN_1_1_1Label.click();
+        Click(QNN_1_1_1Label,"Checkbox clicked");
     }
     public void QNN_1_1_0Label() throws Exception {}
     public void QNN_1_1_0() throws Exception {
-        QNN_1_1_0Label.click();
+        Click(QNN_1_1_0Label,"Checkbox clicked");
     }
     public void QNN_1_1_2Label() throws Exception {}
     public void QNN_1_1_2() throws Exception {
-        QNN_1_1_2Label.click();
+        Click(QNN_1_1_2Label,"Checkbox clicked");
     }
     public void QNN_1_1_3Label() throws Exception {}
     public void QNN_1_1_3() throws Exception {
-        QNN_1_1_3Label.click();
+        Click(QNN_1_1_3Label,"Checkbox clicked");
     }
     public void QNN_1_1_4Label() throws Exception {}
     public void QNN_1_1_4() throws Exception {
-        QNN_1_1_4Label.click();
+        Click(QNN_1_1_4Label,"Checkbox clicked");
     }
     public void QNN_1_1_4_0Label() throws Exception {}
     public void QNN_1_1_4_0Text(String ostalo1) throws Exception {
         SetValue(QNN_1_1_4_0Text,"Input ...",ostalo1);
     }
  
-    public void QNN_1_2Label() throws Exception {}
+    public void QNN_1_2Label(String q3) throws Exception {
+        switch (q3){
+            case "Stalni izvori (plata, porodična primanja, penzija ili nešto treće)": {
+                QNN_1_2_0();
+            }
+            break;
+            case "Drugi prihodi": {
+                QNN_1_2_1();
+            }
+            break;
+            default: {
+            }
+            break;
+        }
+
+    }
     public void QNN_1_2_1Label() throws Exception {}
     public void QNN_1_2_1() throws Exception {
-        QNN_1_2_1Label.click();
+        Click(QNN_1_2_1Label,"Checkbox clicked");
     }
     public void QNN_1_2_0Label() throws Exception {}
     public void QNN_1_2_0() throws Exception {
-        QNN_1_2_0Label.click();
+        Click(QNN_1_2_0Label,"Checkbox clicked");
     }
     public void QNN_1_2_1_0Label() throws Exception {}
     public void QNN_1_2_1_0Text(String ostalo2) throws Exception {
@@ -385,14 +444,26 @@ public class MoneyLaundry extends BasePage {
  
              
              
-    public void QNN_1_8Label() throws Exception {}
+    public void QNN_1_8Label(String q9) throws Exception {
+        switch (q9){
+            case "NE":{
+                QNN_1_8_0();
+            }break;
+            case "DA":{
+                QNN_1_8_1();
+            }break;
+            default: {
+        }
+        break;
+        }
+    }
     public void QNN_1_8_1Label() throws Exception {}
     public void QNN_1_8_1() throws Exception {
-        QNN_1_8_1Label.click();
+        Click(QNN_1_8_1Label,"Checkbox clicked");
     }
     public void QNN_1_8_0Label() throws Exception {}
     public void QNN_1_8_0() throws Exception {
-        QNN_1_8_0Label.click();
+        Click(QNN_1_8_0Label,"Checkbox clicked");
     }
  
     public void QNN_1_9Label() throws Exception {}

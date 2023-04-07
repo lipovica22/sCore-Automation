@@ -37,6 +37,9 @@ public class General extends BasePage {
     @FindBy(id = "Kol51")
     WebElement izborDuzineTrajanja;
 
+    @FindBy(xpath = "//*[@id='li_Kol14_60']/label")
+    WebElement Vinkulation;
+
     public void setTrajanje(String valueTrajanje) throws Exception {
         if (!trajanje.equals("Doživotno")) {
             trajanje.clear();
@@ -77,9 +80,8 @@ public class General extends BasePage {
         return banka;
     }
 
-    public WebElement IzborDuzineTrajanja() {
-
-        return izborDuzineTrajanja;
+    public void  selectIzborDuzineTrajanja(String duzina) throws Exception {
+        SelectOption(izborDuzineTrajanja,"",duzina);
     }
 
     public void checkIndeksacija() throws Exception {
@@ -165,5 +167,14 @@ public class General extends BasePage {
     public void inputClientInfo() {
         clientInfo.sendKeys("Test");
     }
-}
+    public void ClickVinculation() throws Exception {
 
+            Vinkulation.click();
+
+    }
+    public void uNClickVinculation () throws Exception {
+
+            Vinkulation.click();
+
+    }
+}

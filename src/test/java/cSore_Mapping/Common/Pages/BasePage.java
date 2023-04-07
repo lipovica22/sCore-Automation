@@ -212,6 +212,28 @@ public class BasePage {
             }
         }
     }
+    public void UNClickCheckbox(WebElement checkbox, String log) throws Exception {
+        int retryCount = 0;
+
+        while (retryCount < maxRetries){
+            try {
+                if (checkbox.isSelected()) {
+                    //JavascriptExecutor executor = (JavascriptExecutor) driver;
+                    checkbox.click();
+                    //executor.executeScript("arguments[0].click();", checkbox);
+                    System.out.println("Unchecked checkbox: " + log);
+                    break;
+                }
+            } catch (Exception e) {
+                retryCount++;
+                System.out.println(retryCount + ". attempt >>>>> ClickCheckbox failed: " + log);
+                if (retryCount == maxRetries) {
+                    failOnControl(e);
+                    throw new Exception("Failed to ClickCheckbox on element: " + log);
+                }
+            }
+        }
+    }
 
     public String GetSelectedItem(WebElement element, String log) throws Exception {
         webDriverWait = new WebDriverWait(driver, waitTime);

@@ -22,6 +22,7 @@ Feature: Fill tab General by all products as different users for Life Insurance 
     And set currency
     And set FXClause
     And set Payment Method and bank if method is Trajni nalog
+    And choose vinculation option
     And click on next tab
 
     When tab is PersonConcerns

@@ -44,6 +44,12 @@ public class TabView extends BasePage {
     WebElement statementsTab;
     @FindBy(id= "tab_FinancialBalance")
     WebElement financialBalanceTab;
+
+    @FindBy(id= "tab_MoneyLaundry")
+    WebElement moneyLaundry;
+    @FindBy(id= "tab_AssociateMoneyLaundry")
+    WebElement associateMoneyLaundry;
+
     @FindBy(css = "div[class='sixteen columns padding_left_10 document_info'] div:nth-child(1) div:nth-child(5)")
     WebElement status;
 
@@ -63,6 +69,13 @@ public class TabView extends BasePage {
     }
     public void clickAnnulationTab() throws Exception {
         ClickWithScroll(annulationTab, "Click annulation tab");
+    }
+
+    public void clickMoneyLaundryTab() throws Exception {
+        ClickWithScroll(moneyLaundry, "Click MoneyLaundry tab");
+    }
+    public void clickAssociateMoneyLaundryTab() throws Exception {
+        ClickWithScroll(associateMoneyLaundry, "Click AssociateMoneyLaundry tab");
     }
 
     public void assertStatus(SoftAssert softAssert, String valueExpected) throws Exception {
