@@ -29,7 +29,7 @@
         <parameter name="password" value="OvoJ3Test"></parameter>-->
 
         <classes>
-            <class name="runners.Life"/>
+            <class name="runners.LifeStepsRunner"/>
         </classes>
 
     </test>

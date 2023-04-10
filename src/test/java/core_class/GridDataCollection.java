@@ -1,10 +1,7 @@
 package core_class;
 
-import cSore_Mapping.Common.Pages.BasePage;
+import cSore_Mapping.BasePage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import java.sql.Driver;
 
 public class GridDataCollection extends BasePage {
 

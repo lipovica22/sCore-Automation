@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class ExcelReader {
     public Map<String,String> getRowData(String fileName,String sheetName,int row) throws IOException {
-        FileInputStream fis = new FileInputStream("src/test/testData/"+fileName+".xlsx");
+        FileInputStream fis = new FileInputStream("src/test/testData/" + fileName + ".xlsx");
         Workbook workbook = new XSSFWorkbook(fis);
         Sheet sheet = workbook.getSheet(sheetName);
 
@@ -26,7 +26,5 @@ public class ExcelReader {
             data.put(key,value);
         }
         return data;
-
-
-        }
+    }
 }
