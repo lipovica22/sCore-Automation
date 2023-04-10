@@ -1,7 +1,9 @@
-Feature: Create policy for all products of TravelAssistance in Serbia
+Feature: Serbia
+  Create policy for all products of TravelAssistance in Serbia
 
 
-  Scenario Outline:
+  Scenario Outline: Health - Scenario: Create policy for all products of TravelAssistance.
+    As I user should be able to create policy for all products
 
     Given login on app RS Test "PA-testData" "PA" "<row>"
     When enter username
@@ -51,10 +53,10 @@ Feature: Create policy for all products of TravelAssistance in Serbia
 
     Examples:
       | row | TC ID         |
-      | 1   | RS_NE_PA_101  |
-      #| 2   | RS_NE_PA_102  |
-      #| 3   | RS_NE_PA_103  |
-      #| 4   | RS_NE_PA_104  |
+      | 1   | RS_NE_PA_100  |
+      | 2   | RS_NE_PA_101  |
+      | 3   | RS_NE_PA_102  |
+      | 4   | RS_NE_PA_103  |
 
 
 

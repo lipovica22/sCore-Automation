@@ -3,13 +3,13 @@
 
 
 
-<suite name="Fast test" thread-count="1" data-provider-thread-count="1">
+<suite name="Health" thread-count="1" data-provider-thread-count="1">
 
     <parameter name="browser" value="CHROME"/>
     <parameter name="quit" value="yes"/>
     <parameter name="environment" value="TEST_RS"/>
 
-    <test name="TC">
+    <test name="Travel Assistance">
         <classes>
             <class name="runners.Health.TravelAssistance.TravelAssistanceRunner"/>
         </classes>

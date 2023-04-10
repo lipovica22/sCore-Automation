@@ -31,7 +31,6 @@ import tests.BaseTest;
 import java.io.IOException;
 import java.util.Map;
 
-
 public class TravelAssistanceSteps extends BaseTest{
     // naredne dve linije služe da iz xml file uzmemo parametre za cucumber
     String browser = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browser");

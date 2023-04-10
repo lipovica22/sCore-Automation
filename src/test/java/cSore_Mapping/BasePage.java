@@ -374,19 +374,10 @@ public class BasePage {
     }
 
     public void SetValuePackage(WebElement element, String log, String value) throws Exception {
-        FluentWait<WebDriver> fluentWait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(waitTime))
-                .pollingEvery(Duration.ofMillis(500))
-                .ignoring(StaleElementReferenceException.class)
-                .ignoring(ElementNotInteractableException.class);
-
         int retryCount = 0;
 
         while (retryCount < maxRetries){
             try{
-                fluentWait.until(ExpectedConditions.visibilityOf(element));
-                fluentWait.until(ExpectedConditions.elementToBeClickable(element));
-
                 element.sendKeys(value);
 
                 System.out.println("SetValuePackage: " + log);
