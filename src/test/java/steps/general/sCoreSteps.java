@@ -74,12 +74,12 @@ public class sCoreSteps extends BaseTest {
 
     @And("page is Products")
     public void pageIsProducts() {
-     try {
-         Assert.assertEquals(driver.getCurrentUrl(), "https://t-score.uniqa.rs/POS/Serbia/Products");
-    } catch (AssertionError e) {
-        System.out.println("Assertion failed: " + e.getMessage());
-        reportAssertionError(e);
-    }
+        try {
+            Assert.assertEquals(driver.getCurrentUrl(), "https://t-score.uniqa.rs/POS/Serbia/Products");
+        } catch (AssertionError e) {
+            System.out.println("Assertion failed: " + e.getMessage());
+            reportAssertionError(e);
+        }
     }
 
 
@@ -97,7 +97,7 @@ public class sCoreSteps extends BaseTest {
     @And("Choose NewContract")
     public void ChooseNewContract() throws Exception {
 
-        new LifeProductSelectionPage(driver).selectNoviUgovor();
+        new LifeProductSelectionPage(driver).clickNoviUgovor();
     }
 
     @And("click on product icon")
@@ -191,7 +191,7 @@ public class sCoreSteps extends BaseTest {
     }
 
     @And("Choose Product type")
-    public void chooseProductType() throws InterruptedException {
+    public void chooseProductType() throws Exception {
         new LifeProductSelectionPage(driver).selectProductType(data.get("Vrsta dokumenta"));
     }
 
@@ -199,6 +199,4 @@ public class sCoreSteps extends BaseTest {
     public void reportAssertionError(AssertionError e) {
         throw e;
     }
-
-
 }

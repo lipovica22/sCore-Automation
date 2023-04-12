@@ -12,84 +12,88 @@ public class AnnexSelectionPage extends BasePage {
         PageFactory.initElements(driver,this);
     }
 
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[1]/fieldset/div[1]/div/label")   WebElement AnnexIssuingDateLabel;
-    @FindBy(id= "Kol1")   WebElement AnnexIssuingDate;
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[1]/fieldset/legend")   WebElement DatesLabel;
-    @FindBy(className= "ui-state-default")   WebElement AnnexIssuingDateList;
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[1]/fieldset/div[2]/div/label")   WebElement AnnexCalculationDateLabel;
-    @FindBy(id= "Kol4")   WebElement AnnexCalculationDate;
+    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[1]/fieldset/div[1]/div/label")
+    WebElement annexIssuingDateLabel;
+    @FindBy(id= "Kol1")
+    WebElement annexIssuingDate;
+    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[1]/fieldset/legend")
+    WebElement datesLabel;
     @FindBy(className= "ui-state-default")
-    WebElement AnnexCalculationDateList;
-
+    WebElement annexIssuingDateList;
+    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[1]/fieldset/div[2]/div/label")
+    WebElement annexCalculationDateLabel;
+    @FindBy(id= "Kol4")
+    WebElement annexCalculationDate;
+    @FindBy(className= "ui-state-default")
+    WebElement annexCalculationDateList;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/fieldset/legend")
-    WebElement NonPremiumLabel;
+    WebElement nonPremiumLabel;
     @FindBy(id= "li_Kol2_46")
-    WebElement PromenaKorisnika;
+    WebElement promenaKorisnika;
     @FindBy(css= "label[for='Kol2_46']")
-    WebElement PromenaKorisnikaLabel;
+    WebElement promenaKorisnikaLabel;
     @FindBy(css= "label[for='Kol2_47']")
-    WebElement PromenaValutneKlauzuleLabel;
+    WebElement promenaValutneKlauzuleLabel;
     @FindBy(id= "li_Kol2_47")
-    WebElement PromenaValutneKlauzule;
+    WebElement promenaValutneKlauzule;
     @FindBy(id= "li_Kol2_50")
-    WebElement PromenaNacinaPlacanja;
+    WebElement promenaNacinaPlacanja;
     @FindBy(css= "label[for='Kol2_50']")
-    WebElement PromenaNacinaPlacanjaLabel;
+    WebElement promenaNacinaPlacanjaLabel;
     @FindBy(id= "li_Kol2_45")
-    WebElement PromenaLicnihPodataka;
+    WebElement promenaLicnihPodataka;
     @FindBy(css= "label[for='Kol2_45']")
-    WebElement PromenaLicnihPodatakaLabel;
+    WebElement promenaLicnihPodatakaLabel;
     @FindBy(css= "label[for='Kol2_49']")
-    WebElement PromenaUgovaracaLabel;
+    WebElement promenaUgovaracaLabel;
     @FindBy(id= "li_Kol2_49")
-    WebElement PromenaUgovaraca;
-
+    WebElement promenaUgovaraca;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[3]/fieldset/legend")
-    WebElement PremiumLabel;
+    WebElement premiumLabel;
     @FindBy(id= "Kol3_75")
-    WebElement IskljucenjeDodatnihRizka;
+    WebElement iskljucenjeDodatnihRizka;
     @FindBy(css= "label[for='Kol3_75']")
-    WebElement IskljucenjeDodatnihRizkaLabel;
+    WebElement iskljucenjeDodatnihRizkaLabel;
     @FindBy(id= "Kol3_74")
-    WebElement UkljucenjeDodatnihRizika;
+    WebElement ukljucenjeDodatnihRizika;
     @FindBy(css= "label[for='Kol3_74']")
-    WebElement UkljucenjeDodatnihRizikaLabel;
+    WebElement ukljucenjeDodatnihRizikaLabel;
     @FindBy(css= "label[for='Kol3_73']")
-    WebElement SmanjenjeTrajanjaLabel;
+    WebElement smanjenjeTrajanjaLabel;
     @FindBy(id= "Kol3_73")
-    WebElement SmanjenjeTrajanja;
+    WebElement smanjenjeTrajanja;
     @FindBy(id= "Kol3_72")
-    WebElement PovecanjeTrajanja;
+    WebElement povecanjeTrajanja;
     @FindBy(css= "label[for='Kol3_72']")
-    WebElement PovecanjeTrajanjaLabel;
+    WebElement povecanjeTrajanjaLabel;
     @FindBy(id= "Kol3_2")
-    WebElement PromenaSportaZanimanjaHobija;
+    WebElement promenaSportaZanimanjaHobija;
     @FindBy(css= "label[for='Kol3_2']")
-    WebElement PromenaSportaZanimanjaHobijaLabel;
+    WebElement promenaSportaZanimanjaHobijaLabel;
     @FindBy(id= "Kol3_3")
-    WebElement PromenaDinamike;
+    WebElement promenaDinamike;
     @FindBy(css= "label[for='Kol3_3']")
-    WebElement PromenaDinamikeLabel;
+    WebElement promenaDinamikeLabel;
     @FindBy(css= "label[for='Kol3_70']")
-    WebElement SmanjenjePremijeLabel;
+    WebElement smanjenjePremijeLabel;
     @FindBy(id= "Kol3_70")
-    WebElement SmanjenjePremije;
+    WebElement smanjenjePremije;
     @FindBy(id= "Kol3_71")
-    WebElement PovecanjePremije;
+    WebElement povecanjePremije;
     @FindBy(css= "label[for='Kol3_71']")
-    WebElement PovecanjePremijeLabel;
+    WebElement povecanjePremijeLabel;
     @FindBy(id= "Kol3_8")
-    WebElement Redukcija;
+    WebElement redukcija;
     @FindBy(css= "label[for='Kol3_8']")
-    WebElement RedukcijaLabel;
+    WebElement redukcijaLabel;
     @FindBy(id= "Kol3_69")
-    WebElement SmanjenjeOsiguraneSume;
+    WebElement smanjenjeOsiguraneSume;
     @FindBy(css= "label[for='Kol3_69']")
-    WebElement SmanjenjeOsiguraneSumeLabel;
+    WebElement smanjenjeOsiguraneSumeLabel;
     @FindBy(css= "label[for='Kol3_68']")
-    WebElement PovecanjeOsiguraneSumeLabel;
+    WebElement povecanjeOsiguraneSumeLabel;
     @FindBy(id= "Kol3_68")
-    WebElement PovecanjeOsiguraneSume;
+    WebElement povecanjeOsiguraneSume;
 
 
     //-------------------- Methods --------------------
@@ -100,7 +104,6 @@ public class AnnexSelectionPage extends BasePage {
     public void AnnexCalculationDateLabel() throws Exception {}
     public void AnnexCalculationDate() throws Exception {}
     public void AnnexCalculationDateList() throws Exception {}
-
     public void NonPremiumLabel() throws Exception {}
     public void PromenaKorisnika() throws Exception {}
     public void PromenaKorisnikaLabel() throws Exception {}
@@ -112,7 +115,6 @@ public class AnnexSelectionPage extends BasePage {
     public void PromenaLicnihPodatakaLabel() throws Exception {}
     public void PromenaUgovaracaLabel() throws Exception {}
     public void PromenaUgovaraca() throws Exception {}
-
     public void PremiumLabel() throws Exception {}
     public void IskljucenjeDodatnihRizka() throws Exception {}
     public void IskljucenjeDodatnihRizkaLabel() throws Exception {}

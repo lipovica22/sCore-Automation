@@ -64,171 +64,164 @@ public class LifeProductSelectionPage extends BasePage {
     WebElement noviUgovor;
 
     public void narednoPitanje() throws Exception {
-        narednoPitanje.click();
+        Click(narednoPitanje, "Clock on next question");
         Thread.sleep(2000);
     }
 
-    public void selectProductType(String productType) throws InterruptedException {
-       // new WebDriverWait(driver,10).until(ExpectedConditions.elementToBeClickable(NoviUgovor));
+    public void selectProductType(String productType) throws Exception {
         switch (productType) {
             case "Novi ugovor": {
-                noviUgovor.click();
+                Click(noviUgovor, "Click on new contract");
             }
             break;
             case "Info ponuda": {
-                infoPonuda.click();
+                Click(infoPonuda, "Click on info offer");
             }
-            default:
-                break;
         }
     }
 
-    public void selectInfoPonuda() throws Exception {
-        infoPonuda.click();
+    public void clickInfoOffer() throws Exception {
+        Click(infoPonuda, "Click on info offer");
     }
 
-    public void selectNoviUgovor() throws Exception {
-        noviUgovor.click();
+    public void clickNoviUgovor() throws Exception {
+        Click(noviUgovor, "Click on new contract");
     }
 
-    public void selectDozivotniRiziko() throws Exception {
-        dozivotnoDA.click();
+    public void clickDozivotniRiziko() throws Exception {
+        Click(dozivotnoDA, "Click on for life yes - dozivotni riziko");
     }
 
-    public void selectFavorit() throws Exception {
-        dozivotnoNE.click();
+    public void clickFavorit() throws Exception {
+        Click(dozivotnoNE, "Click on for life no - favorit");
         narednoPitanje();
-        favoritPremiumDA.click();
+        Click(favoritPremiumDA, "Click on favorite premium yes - favorit");
     }
 
-    public void selectRizikoKredit() throws Exception {
-        dozivotnoNE.click();
+    public void clickRizikoKredit() throws Exception {
+        Click(dozivotnoNE, "Click on for life no - riziko kredit");
         narednoPitanje();
-        favoritPremiumNE.click();
+        Click(favoritPremiumNE, "Click on favorit premium no");
         narednoPitanje();
-        rizikoKreditDA.click();
+        Click(rizikoKreditDA, "Click on riziko kredit yes");
     }
 
-    public void selectJoker() throws Exception {
-        dozivotnoNE.click();
+    public void clickJoker() throws Exception {
+        Click(dozivotnoNE, "Click on for life no - joker");
         narednoPitanje();
-        favoritPremiumNE.click();
+        Click(favoritPremiumNE, "Click on favorit premium no");
         narednoPitanje();
-        rizikoKreditNE.click();
+        Click(rizikoKreditNE, "Click on riziko kredit no");
         narednoPitanje();
-        jokerPremiumDA.click();
+        Click(jokerPremiumDA, "Click on joker premium yes");
     }
 
-    public void selectSpectar() throws Exception {
-        dozivotnoNE.click();
+    public void clickSpectar() throws Exception {
+        Click(dozivotnoNE, "Click on for life no - spectar");
         narednoPitanje();
-        favoritPremiumNE.click();
+        Click(favoritPremiumNE, "Click on favorit premium no");
         narednoPitanje();
-        rizikoKreditNE.click();
+        Click(rizikoKreditNE, "Click on riziko kredit no");
         narednoPitanje();
-        jokerPremiumNE.click();
+        Click(jokerPremiumNE, "Click on joker premium no");
         narednoPitanje();
-        spektarPremiumNE.click();
+        Click(spektarPremiumNE, "Click on spektar premium no");
     }
 
-    public void selectRizikoMix() throws Exception {
-        dozivotnoNE.click();
+    public void clickRizikoMix() throws Exception {
+        Click(dozivotnoNE, "Click on for life no - riziko mix");
         narednoPitanje();
-        favoritPremiumNE.click();
+        Click(favoritPremiumNE, "Click on favorit premium no");
         narednoPitanje();
-        rizikoKreditNE.click();
+        Click(rizikoKreditNE, "Click on riziko kredit no");
         narednoPitanje();
-        jokerPremiumNE.click();
+        Click(jokerPremiumNE, "Click on joker premium no");
         narednoPitanje();
-        spektarPremiumDA.click();
+        Click(spektarPremiumDA, "Click on spektar premuim yes");
         narednoPitanje();
-        rizikoMixDA.click();
+        Click(rizikoMixDA, "Click on riziko mix yes");;
     }
 
-    public void selectRiziko() throws Exception {
-        dozivotnoNE.click();
+    public void clickRiziko() throws Exception {
+        Click(dozivotnoNE, "Click on for life no - riziko mix - riziko");
         narednoPitanje();
-        favoritPremiumNE.click();
+        Click(favoritPremiumNE, "Click on favorit premium no");
         narednoPitanje();
-        rizikoKreditNE.click();
+        Click(rizikoKreditNE, "Click on riziko kredit no");
         narednoPitanje();
-        jokerPremiumNE.click();
+        Click(jokerPremiumNE, "Click on joker premium no");
         narednoPitanje();
-        spektarPremiumDA.click();
+        Click(spektarPremiumDA, "Click on spektar premium yes");
         narednoPitanje();
-        rizikoMixNE.click();
+        Click(rizikoMixNE, "Click on riziko mix no");
         narednoPitanje();
+        Click(unitLinkedNeRiziko, "Click on unit Linked no Riziko");
         unitLinkedNeRiziko.click();
     }
 
     public void clickProductIcon(String Proizvod) throws Exception {
         switch (Proizvod) {
             case "Doživotni riziko": {
-                dozivotniRiziko.click();
+                Click(dozivotniRiziko, "Click on for life riziko");
             }
             break;
             case "Favorit": {
-                favoritPremium.click();
+                Click(favoritPremium, "Click on favorit premium");
             }
             break;
             case "Riziko kredit": {
-                rizikoKredit.click();
+                Click(rizikoKredit, "Click on riziko kredit");
             }
             break;
             case "Joker": {
-                jokerPremium.click();
+                Click(jokerPremium, "Click on joker premium");
             }
             break;
             case "Spektar": {
-                spektarPremium.click();
+                Click(spektarPremium, "Click on spektar premium");
             }
             break;
             case "Riziko Mix": {
-                rizikoMix.click();
+                Click(rizikoMix, "Click on riziko mix");
             }
             break;
             case "Riziko": {
-                riziko.click();
+                Click(riziko, "Click on riziko");
             }
             break;
-            default:
-                break;
         }
     }
 
     public void selectProizvod(String proizvod) throws Exception {
-
         switch (proizvod) {
             case "Doživotni riziko": {
-                selectDozivotniRiziko();
+                clickDozivotniRiziko();
             }
             break;
             case "Favorit": {
-                selectFavorit();
+                clickFavorit();
             }
             break;
             case "Riziko kredit": {
-                selectRizikoKredit();
+                clickRizikoKredit();
             }
             break;
             case "Joker": {
-                selectJoker();
+                clickJoker();
             }
             break;
             case "Spektar": {
-                selectSpectar();
+                clickSpectar();
             }
             break;
             case "Riziko Mix": {
-                selectRizikoMix();
+                clickRizikoMix();
             }
             break;
             case "Riziko": {
-                selectRiziko();
+                clickRiziko();
             }
             break;
-            default:
-                break;
         }
     }
 }

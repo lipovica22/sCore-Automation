@@ -104,7 +104,7 @@ public class LifeSteps extends BaseTest {
         new LifeProductSelectionPage(driver).selectProizvod(data.get("Proizvod"));
     }
     @And("Choose Product type")
-    public void chooseProductType() throws InterruptedException {
+    public void chooseProductType() throws Exception {
         new LifeProductSelectionPage(driver).selectProductType(data.get("Vrsta dokumenta"));
     }
 

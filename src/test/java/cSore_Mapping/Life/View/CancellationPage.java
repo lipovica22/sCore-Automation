@@ -12,178 +12,147 @@ public class CancellationPage extends BasePage {
         PageFactory.initElements(driver,this);
     }
 
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/legend")
-    WebElement DocumentsLabel;
-
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[1]/div[1]/div/label")
-    WebElement TypeOfCancellationLabel;
-    @FindBy(id= "Kol1")
-    WebElement TypeOfCancellation;
-
-    @FindBy(id= "Kol2")
-    WebElement CancellationReason;
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[1]/div[2]/div/label")
-    WebElement CancellationReasonLabel;
-
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[2]/div[1]/div/label")
-    WebElement DateOfCancellationLabel;
-    @FindBy(id= "Kol3")
-    WebElement DateOfCancellation;
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[2]/div[2]/div/label")
-    WebElement DateCancellationFromLabel;
-    @FindBy(id= "Kol4")
-    WebElement DateCancellationFrom;
-
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[3]/div[2]/div/label")
-    WebElement OverpaidAmountLabel;
-    @FindBy(id= "Kol6")
-    WebElement OverpaidAmount;
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[3]/div[1]/div/label")
-    WebElement AmountOfPaidPremiumLabel;
-    @FindBy(id= "Kol5")
-    WebElement AmountOfPaidPremium;
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[3]/div[3]/div/label")
-    WebElement DebtAmountLabel;
-    @FindBy(id= "Kol7")
-    WebElement DebtAmount;
-    @FindBy(id= "Kol9")
-    WebElement TechnicalPremiumAmount;
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[3]/div[5]/div/label")
-    WebElement TechnicalPremiumAmountLabel;
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[4]/div[1]/div/label")
-    WebElement CancellationOptionLabel;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/legend")
+    WebElement documentsLabel;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[1]/div[1]/div/label")
+    WebElement typeOfCancellationLabel;
+    @FindBy(css = "select[id='Kol1']")
+    WebElement typeOfCancellation;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[1]/div[2]/div/label")
+    WebElement cancellationReasonLabel;
+    @FindBy(id = "Kol2")
+    WebElement cancellationReason;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[2]/div[1]/div/label")
+    WebElement dateOfCancellationLabel;
+    @FindBy(id = "Kol3")
+    WebElement dateOfCancellation;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[2]/div[2]/div/label")
+    WebElement dateCancellationFromLabel;
+    @FindBy(id = "Kol4")
+    WebElement dateCancellationFrom;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[3]/div[1]/div/label")
+    WebElement amountOfPaidPremiumLabel;
+    @FindBy(id = "Kol5")
+    WebElement amountOfPaidPremium;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[3]/div[2]/div/label")
+    WebElement overpaidAmountLabel;
+    @FindBy(id = "Kol6")
+    WebElement overpaidAmount;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[3]/div[3]/div/label")
+    WebElement debtAmountLabel;
+    @FindBy(id = "Kol7")
+    WebElement debtAmount;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[3]/div[5]/div/label")
+    WebElement technicalPremiumAmountLabel;
+    @FindBy(id = "Kol9")
+    WebElement technicalPremiumAmount;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[4]/div[1]/div/label")
+    WebElement cancellationOptionLabel;
     @FindBy(id= "Kol10")
-    WebElement CancellationOption;
-
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[4]/div[4]/div/label")
-    WebElement SurrenderLabel;
-    @FindBy(id= "Kol34")
-    WebElement Surrender;
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[4]/div[2]/div/label")
-    WebElement AmountLabel;
-    @FindBy(id= "Kol11")
-    WebElement Amount;
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[5]/div[1]/div/label")
-    WebElement CancellationNoteLabel;
-    @FindBy(id= "Kol12")
-    WebElement CancellationNote;
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[5]/div[2]/div/label")
-    WebElement CancellationRequestStatusLabel;
-    @FindBy(id= "Kol29")
-    WebElement CancellationRequestStatus;
-
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[3]/fieldset/div[1]/div[1]/div/label")
-    WebElement DateOfReactivationLabel;
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[3]/fieldset/legend")
-    WebElement ReactivationLabel;
-    @FindBy(id= "Kol15")
-    WebElement DateOfReactivation;
-
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[3]/fieldset/div[1]/div[2]/div/label")
-    WebElement TotalDebtLabel;
-    @FindBy(id= "Kol16")
-    WebElement TotalDebt;
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[3]/fieldset/div[1]/div[3]/div/label")
-    WebElement PayedBeforeSRLabel;
-    @FindBy(id= "Kol17")
-    WebElement PayedBeforeSR;
-    @FindBy(id= "Kol18")
-    WebElement PayedAfterSR;
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[3]/fieldset/div[1]/div[4]/div/label")
-    WebElement PayedAfterSRLabel;
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[3]/fieldset/div[1]/div[5]/div/label")
-    WebElement ToPayLabel;
-    @FindBy(id= "Kol19")
-    WebElement ToPay;
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[3]/fieldset/div[2]/div[1]/div/label")
-    WebElement ReactivationNoteLabel;
-    @FindBy(id= "Kol20")
-    WebElement ReactivationNote;
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[3]/fieldset/div[2]/div[2]/div/label")
-    WebElement ReactivationReasonLabel;
-    @FindBy(id= "Kol15")
-    WebElement ReactivationReason;
-    @FindBy(id= "Kol22")
-    WebElement HealthChanged;
-    @FindBy(css="label[for='Kol22']")
-    WebElement HealthChangedLabel;
-
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[3]/fieldset/div[4]/div/label")
-    WebElement ReactivationRequestStatusLabel;
-    @FindBy(id= "Kol24")
-    WebElement ReactivationRequestStatus;
-
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[4]/fieldset/legend")
-    WebElement ReactivationHistoryLabel;
-
-    @FindBy(id= "basic-grid_25")
-    WebElement ReactivationHistoryGrid;
-
-
-
+    WebElement cancellationOption;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[4]/div[2]/div/label")
+    WebElement amountLabel;
+    @FindBy(id = "Kol11")
+    WebElement amount;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[4]/div[4]/div/label")
+    WebElement surrenderLabel;
+    @FindBy(id = "Kol34")
+    WebElement surrender;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[5]/div[1]/div/label")
+    WebElement cancellationNoteLabel;
+    @FindBy(id = "Kol12")
+    WebElement cancellationNote;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[1]/div[5]/div[2]/div/label")
+    WebElement cancellationRequestStatusLabel;
+    @FindBy(id = "Kol29")
+    WebElement cancellationRequestStatus;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[3]/fieldset/div[1]/div[1]/div/label")
+    WebElement dateOfReactivationLabel;
+    @FindBy(id = "input[id='Kol15']")
+    WebElement dateOfReactivation;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[3]/fieldset/div[1]/div[2]/div/label")
+    WebElement totalDebtLabel;
+    @FindBy(id = "Kol16")
+    WebElement totalDebt;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[3]/fieldset/div[1]/div[3]/div/label")
+    WebElement payedBeforeSRLabel;
+    @FindBy(id = "Kol17")
+    WebElement payedBeforeSR;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[3]/fieldset/div[1]/div[4]/div/label")
+    WebElement payedAfterSRLabel;
+    @FindBy(id = "Kol18")
+    WebElement payedAfterSR;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[3]/fieldset/div[1]/div[5]/div/label")
+    WebElement toPayLabel;
+    @FindBy(id = "Kol19")
+    WebElement toPay;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[3]/fieldset/div[2]/div[1]/div/label")
+    WebElement reactivationNoteLabel;
+    @FindBy(css = "textarea[id='Kol20']")
+    WebElement reactivationNote;
+    @FindBy(id = "textarea[id='Kol33']")
+    WebElement cancellationNote2;
+    @FindBy(id = "a[id='Kol32']")
+    WebElement addNote;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[3]/fieldset/div[2]/div[2]/div/label")
+    WebElement reactivationReasonLabel;
+    @FindBy(css = "input[id='Kol21']")
+    WebElement reactivationReason;
+    @FindBy(css = "label[for='Kol22']")
+    WebElement chkHealthChangedLabel;
+    @FindBy(id = "Kol22")
+    WebElement healthChanged;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[3]/fieldset/div[4]/div/label")
+    WebElement reactivationRequestStatusLabel;
+    @FindBy(id = "Kol24")
+    WebElement reactivationRequestStatus;
+    @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/fieldset/div[4]/fieldset/legend")
+    WebElement reactivationHistoryLabel;
+    @FindBy(id = "basic-grid_25")
+    WebElement reactivationHistoryGrid;
+    @FindBy(css = "label[for='Kol13_27']")
+    WebElement chkAdvancePaymentInProgress;
+    @FindBy(css = "label[for='Kol13_28']")
+    WebElement chkNegotiatedDebtRecoveryInProgress;
+    @FindBy(css = "label[for='Kol13_29']")
+    WebElement chkReportedUnliquidatedClaim;
+    @FindBy(css = "label[for='Kol13_48']")
+    WebElement chkReportedUnliquidatedClaimUnderSupplementaryPolicy;
 
     //-------------------- Methods --------------------
-    public void DocumentsLabel() throws Exception {}
-
-    public void TypeOfCancellationLabel() throws Exception {}
-    public void TypeOfCancellation() throws Exception {}
-
-    public void CancellationReason() throws Exception {}
-    public void CancellationReasonLabel() throws Exception {}
-
-    public void DateOfCancellationLabel() throws Exception {}
-    public void DateOfCancellation() throws Exception {}
-    public void DateCancellationFromLabel() throws Exception {}
-    public void DateCancellationFrom() throws Exception {}
-
-    public void OverpaidAmountLabel() throws Exception {}
-    public void OverpaidAmount() throws Exception {}
-    public void AmountOfPaidPremiumLabel() throws Exception {}
-    public void AmountOfPaidPremium() throws Exception {}
-    public void DebtAmountLabel() throws Exception {}
-    public void DebtAmount() throws Exception {}
-    public void TechnicalPremiumAmount() throws Exception {}
-    public void TechnicalPremiumAmountLabel() throws Exception {}
-    public void CancellationOptionLabel() throws Exception {}
-    public void CancellationOption() throws Exception {}
-
-    public void SurrenderLabel() throws Exception {}
-    public void Surrender() throws Exception {}
-    public void AmountLabel() throws Exception {}
-    public void Amount() throws Exception {}
-    public void CancellationNoteLabel() throws Exception {}
-    public void CancellationNote() throws Exception {}
-    public void CancellationRequestStatusLabel() throws Exception {}
-    public void CancellationRequestStatus() throws Exception {}
-
-    public void DateOfReactivationLabel() throws Exception {}
-    public void ReactivationLabel() throws Exception {}
-    public void DateOfReactivation() throws Exception {}
-
-    public void TotalDebtLabel() throws Exception {}
-    public void TotalDebt() throws Exception {}
-    public void PayedBeforeSRLabel() throws Exception {}
-    public void PayedBeforeSR() throws Exception {}
-    public void PayedAfterSR() throws Exception {}
-    public void PayedAfterSRLabel() throws Exception {}
-    public void ToPayLabel() throws Exception {}
-    public void ToPay() throws Exception {}
-    public void ReactivationNoteLabel() throws Exception {}
-    public void ReactivationNote() throws Exception {}
-    public void ReactivationReasonLabel() throws Exception {}
-    public void ReactivationReason() throws Exception {}
-    public void HealthChanged() throws Exception {}
-    public void HealthChangedLabel() throws Exception {}
-
-    public void ReactivationRequestStatusLabel() throws Exception {}
-    public void ReactivationRequestStatus() throws Exception {}
-
-    public void ReactivationHistoryLabel() throws Exception {}
-
-    public void ReactivationHistoryGrid() throws Exception {}
-
-
+    public void selectTypeOfCancellation(String valueTypeOfCancelation) throws Exception {
+        SelectOption(typeOfCancellation, "Select type of cancellation", valueTypeOfCancelation);
+    }
+    public void selectCancellationReason(String valueCancellationReason) throws Exception {
+        SelectOption(cancellationReason, "Select cancellation reason", valueCancellationReason);
+    }
+    public void setDateOfCancellation(String valueDateOfCancellation) throws Exception {
+        SetValueDate(dateOfCancellation, "Set date of cancellation", valueDateOfCancellation);
+    }
+    public void setDateCancellationFrom(String valueDateCancellationFrom) throws Exception {
+        SetValueDate(dateCancellationFrom, "Set date cancellation from", valueDateCancellationFrom);
+    }
+    public void selectCancellationOption(String valueCancellationOption) throws Exception {
+        SelectOption(cancellationOption, "Select cancellation option", valueCancellationOption);
+    }
+    public void setAmount(String valueAmount) throws Exception {
+        SetValue(amount, "Set amount", valueAmount);
+    }
+    public void setCancellationNote(String valueNote) throws Exception {
+        SetValue(cancellationNote, "Set note", valueNote);
+    }
+    public void clickChkReportedUnliquidatedClaimUnderSupplementaryPolicy() throws Exception {
+        ClickCheckbox(chkReportedUnliquidatedClaimUnderSupplementaryPolicy, "Click on checkbox 'Prijavljena, nelikvidirana steta po dopunskoj polisi'");
+    }
+    public void setDateOfReactivation(String valueDateOfReactivation) throws Exception {
+        SetValueDate(dateOfReactivation, "Set date cancellation from", valueDateOfReactivation);
+    }
+    public void setReactivationReason(String valueReactivationReason) throws Exception {
+        SetValue(reactivationReason, "Set reactivation reason", valueReactivationReason);
+    }
+    public void clickChkHealthChanged() throws Exception {
+        ClickCheckbox(chkHealthChangedLabel, "Click on checkbox 'Promenjeno zdravstveno stanje'");
+    }
 
     //-------------------- End Methods --------------------
-
 }

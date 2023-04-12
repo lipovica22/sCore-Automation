@@ -64,7 +64,6 @@ public class BasePage {
                 System.out.println(retryCount + ". attempt >>>>> Click failed: " + log);
                 if (retryCount == maxRetries) {
                     failOnControl(e);
-                    //throw new Exception("Failed to Click on element: " + log);
                 }
             }
         }
