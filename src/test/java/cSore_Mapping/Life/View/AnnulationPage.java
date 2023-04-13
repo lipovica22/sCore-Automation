@@ -98,5 +98,4 @@ public class AnnulationPage extends BasePage {
     }
 
     //-------------------- End Methods --------------------
-
 }

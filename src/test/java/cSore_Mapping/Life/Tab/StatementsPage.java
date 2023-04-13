@@ -7,21 +7,20 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class StatementsPage extends BasePage {
-
-
     public StatementsPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
     @FindBy(xpath= "//*[@id='Kol1']/div/div[1]/h4")
-    WebElement StatementsLabel;
+    WebElement statementsLabel;
     @FindBy(id= "basic-grid_1")
-    WebElement Statements;
+    WebElement statements;
 
+    //--------------------- Methods -----------------------
     public void StatementsLabel() throws Exception {}
     public void Statements() throws Exception {}
 
-
+    //--------------------- End Methods -----------------------
 }
 

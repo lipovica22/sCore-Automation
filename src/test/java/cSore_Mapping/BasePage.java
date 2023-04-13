@@ -148,7 +148,6 @@ public class BasePage {
                 System.out.println(retryCount + ". attempt >>>>> ClickWithScroll failed: " + log);
                 if (retryCount == maxRetries) {
                     failOnControl(e);
-                    throw new Exception("Failed to ClickWithScroll on element: " + log);
                 }
             }
         }
@@ -181,13 +180,12 @@ public class BasePage {
                 break;
             } catch (NotFoundException ex) {
                 failOnControl(ex);
-                throw new NotFoundException("Menu Control Click Issue.", ex);}
+            }
             catch (Exception e) {
                 retryCount++;
                 System.out.println(retryCount + ". attempt >>>>> ClickWithScroll failed: " + log);
                 if (retryCount == maxRetries) {
                     failOnControl(e);
-                    throw new Exception("Failed to ClickWithScroll on element: " + log);
                 }
             }
         }
@@ -210,7 +208,6 @@ public class BasePage {
                 System.out.println(retryCount + ". attempt >>>>> ClickCheckbox failed: " + log);
                 if (retryCount == maxRetries) {
                     failOnControl(e);
-                    throw new Exception("Failed to ClickCheckbox on element: " + log);
                 }
             }
         }
@@ -265,7 +262,6 @@ public class BasePage {
 
             return element.getText();
         }catch(Exception e){
-
             System.out.println("GetText failed: " + log);
 
             failOnControl(e);
@@ -372,7 +368,7 @@ public class BasePage {
         js.executeScript("window.scrollTo(0, -document.body.scrollHeight)");
     }
 
-    public void SetValuePackage(WebElement element, String log, String value) throws Exception {
+    public void UploadFile(WebElement element, String log, String value) throws Exception {
         int retryCount = 0;
 
         while (retryCount < maxRetries){
@@ -380,7 +376,6 @@ public class BasePage {
                 element.sendKeys(value);
 
                 System.out.println("SetValuePackage: " + log);
-
                 break;
             }catch(Exception e){
                 retryCount++;
@@ -389,7 +384,6 @@ public class BasePage {
 
                 if (retryCount == maxRetries) {
                     failOnControl(e);
-                    throw new Exception("Failed to SetValuePackage on element: " + log);
                 }
             }
         }
@@ -414,7 +408,6 @@ public class BasePage {
                 element.sendKeys(value);
 
                 System.out.println("SetValue: " + log);
-
                 break;
             }catch(Exception e){
                 retryCount++;
@@ -423,7 +416,6 @@ public class BasePage {
 
                 if (retryCount == maxRetries) {
                     failOnControl(e);
-                    throw new Exception("Failed to SetValue on element: " + log);
                 }
             }
         }
@@ -442,7 +434,6 @@ public class BasePage {
                 Click(element);
                 element.sendKeys(value);
                 element.sendKeys(Keys.ENTER);
-                //TODO: dodati WaitTime.NextElementWaitTime();
 
                 System.out.println("SetValueDate: " + log);
                 break;
@@ -453,7 +444,6 @@ public class BasePage {
 
                 if (retryCount == maxRetries) {
                     failOnControl(e);
-                    throw new Exception("Failed to SetValueDate on element: " + log);
                 }
             }
         }
@@ -609,7 +599,7 @@ public class BasePage {
         }
     }
 
-    public void SelectValueAC(WebElement element, WebElement elementList, String log, String value, String sel_value) throws Exception {
+    public void SelectValueAC(WebElement element, WebElement elementList, String log, String valueEnter, String valueSelect) throws Exception {
         FluentWait<WebDriver> fluentWait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(waitTime))
                 .pollingEvery(Duration.ofMillis(500))
@@ -623,7 +613,7 @@ public class BasePage {
                 fluentWait.until(ExpectedConditions.visibilityOf(element));
                 fluentWait.until(ExpectedConditions.elementToBeClickable(element));
 
-                SetValue(element, log, value);
+                SetValue(element, log, valueEnter);
                 boolean isClicked = false;
 
                 fluentWait.until(ExpectedConditions.visibilityOf(elementList));
@@ -632,7 +622,7 @@ public class BasePage {
                 List<WebElement> optionsToSelect = elementList.findElements(By.tagName("li"));
 
                 for (WebElement option : optionsToSelect) {
-                    if (option.getText().equals(sel_value)){
+                    if (option.getText().equals(valueSelect)){
                         Click(option);
                         isClicked = true;
                         retryCount = 3;
@@ -647,8 +637,7 @@ public class BasePage {
                     System.out.println(retryCount + ".attempt >>>>> SelectValueAC failed: " + log);
 
                     if (retryCount == maxRetries){
-                        new BaseTest().reporterScreenshot("Failed_SelectValueAC", "Failed SelectValueAC - " + log, driver);
-                        throw new Exception("No such element to select");
+                        failOnControl(new Exception("No such element to select"));
                     }
                 }
 
@@ -659,7 +648,6 @@ public class BasePage {
 
                 if (retryCount == maxRetries) {
                     failOnControl(e);
-                    throw new Exception("Failed to SelectValueAC on element: " + log);
                 }
             }
         }
@@ -804,7 +792,6 @@ public class BasePage {
 
                     if (retryCount == maxRetries){
                         failOnControl(new Exception("No such element to select"));
-                        throw new Exception("No such element to select");
                     }
                 }
 
@@ -815,7 +802,6 @@ public class BasePage {
 
                 if (retryCount == maxRetries) {
                     failOnControl(e);
-                    throw new Exception("Failed to SelectOption on element: " + log);
                 }
             }
         }
@@ -975,7 +961,6 @@ public class BasePage {
                             failAssert(ex);
                         }
                     }
-
                     counter++;
                 }
             }
@@ -995,7 +980,7 @@ public class BasePage {
         }catch (AssertionError ex){
             failAssert(ex);
         }catch (Exception ex){
-            new BaseTest().reporterScreenshot("NotEqualMessage", "Not equal url assert - " + log, driver);
+            failOnControl(ex);
         }
     }
 
@@ -1007,7 +992,7 @@ public class BasePage {
         }catch (AssertionError ex){
             failAssert(ex);
         }catch (Exception ex){
-            new BaseTest().reporterScreenshot("NotEqualMessage", "Not equal checkbox assert - " + log, driver);
+            failOnControl(ex);
         }
     }
 
@@ -1069,34 +1054,39 @@ public class BasePage {
                 .ignoring(StaleElementReferenceException.class)
                 .ignoring(ElementNotInteractableException.class);
 
-        List<WebElement> rows = element.findElements(By.tagName("tr"));
+        try {
+            List<WebElement> rows = element.findElements(By.tagName("tr"));
 
-        String[] partsPrint = print.split("\n");
-        int counter = 0;
+            String[] partsPrint = print.split("\n");
+            int counter = 0;
 
-        for (WebElement row : rows) {
-            fluentWait.until(ExpectedConditions.visibilityOf(element));
-            fluentWait.until(ExpectedConditions.elementToBeClickable(element));
+            for (WebElement row : rows) {
+                fluentWait.until(ExpectedConditions.visibilityOf(element));
+                fluentWait.until(ExpectedConditions.elementToBeClickable(element));
 
-            List<WebElement> columns = row.findElements(By.tagName("td"));
+                List<WebElement> columns = row.findElements(By.tagName("td"));
 
-            String data = "";
+                String data = "";
 
-            for (WebElement column : columns) {
-                data += column.getText() + "\t";
+                for (WebElement column : columns) {
+                    data += column.getText() + "\t";
+                }
+
+                if (data.contains(partsPrint[counter])) {
+
+                    WebElement openPrintButton = row.findElement(By.tagName("a"));
+                    openPrintButton.click();
+
+                    WebElement printButton = row.findElement(By.xpath(".//a[contains(text(), 'Štampaj')]"));
+                    Click(printButton, log + partsPrint[counter]);
+
+                    WaitTime.WaitForElementNotToBeVisible(driver, "id", "modal_mask");
+                    counter++;
+                }
             }
 
-            if (data.contains(partsPrint[counter])) {
-
-                WebElement openPrintButton = row.findElement(By.tagName("a"));
-                openPrintButton.click();
-
-                WebElement printButton = row.findElement(By.xpath(".//a[contains(text(), 'Štampaj')]"));
-                Click(printButton, log + partsPrint[counter]);
-
-                WaitTime.WaitForElementNotToBeVisible(driver, "id", "modal_mask");
-                counter++;
-            }
+        }catch (Exception ex){
+            failOnControl(ex);
         }
     }
 
@@ -1166,7 +1156,6 @@ public class BasePage {
 
         throw new AssertionError("Error Info: " + ex.getMessage());
     }
-
 
     //------------------------- End Private Methods -------------------------
     @FindBy(id = "error_text")

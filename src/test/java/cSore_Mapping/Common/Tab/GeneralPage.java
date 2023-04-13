@@ -7,8 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class GeneralPage extends BasePage {
-
-
     public GeneralPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -54,7 +52,7 @@ public class GeneralPage extends BasePage {
     }
 
     public void place(String valuePlace) throws Exception {
-        SelectValueAC(mesto, mestoList, "Select place", valuePlace, "11000 Beograd");
+        SelectValueAC(mesto, mestoList, "Select place", valuePlace, valuePlace);
     }
 
     public void selectDinamika(String dinamik) throws Exception {

@@ -13,32 +13,29 @@ public class SearchPage extends BasePage {
     }
 
     @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/div[9]/div[1]/div/label")
-    WebElement DateFromLabel;
-
+    WebElement dateFromLabel;
     @FindBy(xpath = "//*[@id='form1']/div[4]/div[2]/div/div/div[9]/div[2]/div/label")
-    WebElement DateToLabel;
-
+    WebElement dateToLabel;
     @FindBy(className = "ob_gH")
-    WebElement SearchGridHeader;
+    WebElement searchGridHeader;
     @FindBy(className = "ob_gFl")
-    WebElement SearchGrid;
+    WebElement searchGrid;
     @FindBy(className = "ob_gBody")
-    WebElement SearchGridResult;
+    WebElement searchGridResult;
     @FindBy(id = "grid_menu_2_2")
-    WebElement SearchGridAction;
+    WebElement searchGridAction;
     @FindBy(className = "ob_gMCont")
-    WebElement FilterGrid;
-
+    WebElement filterGrid;
     @FindBy(id = "selDocumentType")
-    WebElement TipDokumenta;
+    WebElement tipDokumenta;
     @FindBy(id = "ctl00$ContentPlaceHolder1$Kol2_uc$grid_2$ob_grid_2FilterContainer$ctl02$ob_grid_2FilterControl3")
-    WebElement BrojDokumenta;
+    WebElement brojDokumenta;
     @FindBy(id = "selStatus")
-    WebElement Status;
+    WebElement status;
     @FindBy(xpath = "//*[@id='ContentPlaceHolder1_Kol2_uc_grid_2_ob_grid_2BodyContainer']/div/table/tbody/tr[1]/td[33]/div/div/span/a/img")
-    WebElement Tockic;
+    WebElement tockic;
     @FindBy(xpath = "//*[@id='grid_row_button_14']/a")
-    WebElement Akcije;
+    WebElement akcije;
 
 
     //-------------------- Methods --------------------

@@ -105,59 +105,44 @@ public class sCoreSteps extends BaseTest {
         new LifeProductSelectionPage(driver).clickProductIcon(data.get("Proizvod"));
     }
 
-    @Then("tab is General")
-    public void tabIsGeneral() {
-        try {
-            Assert.assertEquals(driver.getCurrentUrl(), new GeneralPage(driver).url(data.get("Proizvod"), data.get("Vrsta dokumenta")));
-            /*if (!new General(driver).url(data.get("Proizvod"), data.get("Vrsta dokumenta")).equals(driver.getCurrentUrl())) {
-                byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-                scenario.attach(screenshot, "image/png", "Screenshot");
-            }*/
-        } catch (AssertionError e) {
-            System.out.println("Assertion failed: " + e.getMessage());
-            reportAssertionError(e);
-        }
-
-    }
-
     @Then("input duration of insurance")
     public void inputDurationOfInsurance() throws Exception {
         new GeneralPage(driver).setTrajanje(data.get("Trajanje"));
         if (!data.get("Vrsta dokumenta").equals("Novi ugovor")) {
-            new GeneralPage(driver).inputClientInfo();
+            new GeneralPage(driver).setClientInfo();
         }
         if (data.get("Proizvod").equals("Riziko kredit")){
-            selectOption("Godine",new GeneralPage(driver).IzborDuzineTrajanja());
+            new GeneralPage(driver).selectChoiceOfDuration(data.get("Izbor dužine trajanja"));
         }
     }
 
     @And("set place")
     public void setPlace() throws Exception {
-        selectOptionAC(data.get("Mesto"), "11000 Beograd", new GeneralPage(driver).getMesto());
+        new GeneralPage(driver).selectPlace(data.get("Mesto"), data.get("Tačno mesto"));
     }
 
     @And("set payment dynamic")
     public void setPaymentDynamic() throws Exception {
-        selectOption(data.get("Dinamika placanja"), new GeneralPage(driver).getDinamika());
+        new GeneralPage(driver).selectDynamics(data.get("Dinamika plaćanja"));
     }
 
     @And("set currency")
     public void setCurrency() throws Exception {
-        selectOption(data.get("Valuta"), new GeneralPage(driver).getValuta());
+        new GeneralPage(driver).selectCurrency(data.get("Vlauta"));
     }
 
     @And("set FXClause")
     public void setFXClause() throws Exception {
-        selectOption(data.get("Valutna klauzula"), new GeneralPage(driver).getValutnaKlauzula());
+        new GeneralPage(driver).selectCurrencyClause(data.get("Valutna klauzula"));
     }
 
     @And("set Payment Method")
     public void setPaymentMethod() throws Exception {
         if (!data.get("Metod plaćanja").equals("Trajni nalog")) {
-            selectOption(data.get("Metod plaćanja"), new GeneralPage(driver).getMetodPlacanja());
+            new GeneralPage(driver).selectPaymentMethod(data.get("Metod plaćanja"));
         } else {
-            selectOption(data.get("Metod placanja"), new GeneralPage(driver).getMetodPlacanja());
-            selectOption(data.get("Banka"), new GeneralPage(driver).getBanka());
+            new GeneralPage(driver).selectPaymentMethod(data.get("Metod plaćanja"));
+            new GeneralPage(driver).selectBank(data.get("Banka"));
         }
     }
 

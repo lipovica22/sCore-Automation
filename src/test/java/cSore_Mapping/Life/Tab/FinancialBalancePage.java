@@ -7,34 +7,29 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class FinancialBalancePage extends BasePage {
-
-
     public FinancialBalancePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
     @FindBy(xpath= "//*[@id='Kol1']/div/div[1]/h4")
-    WebElement PolicyHolderLabel;
+    WebElement policyHolderLabel;
     @FindBy(id= "basic-grid_1")
-    WebElement PolicyHolderGrid;
-
+    WebElement policyHolderGrid;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/div/label")
-    WebElement DateToLabel;
+    WebElement dateToLabel;
     @FindBy(id= "Kol3")
-    WebElement DateTo;
-
+    WebElement dateTo;
     @FindBy(css= "label[for='Kol4']")
-    WebElement PrikaziSumarnoLabel;
+    WebElement prikaziSumarnoLabel;
     @FindBy(id= "Kol4")
-    WebElement PrikaziSumarno;
-
+    WebElement prikaziSumarno;
     @FindBy(xpath= "//*[@id='Kol2']/div/div[1]/h4")
-    WebElement BalanceGridLabel;
+    WebElement balanceGridLabel;
     @FindBy(id= "basic-grid_2")
-    WebElement BalanceGrid;
+    WebElement balanceGrid;
 
-
+    //-------------------- Methods --------------------
     public void PolicyHolderLabel() throws Exception {}
     public void PolicyHolderGrid() throws Exception {}
 
@@ -47,5 +42,6 @@ public class FinancialBalancePage extends BasePage {
     public void BalanceGridLabel() throws Exception {}
     public void BalanceGrid() throws Exception {}
 
+    //-------------------- End Methods --------------------
 }
 

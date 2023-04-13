@@ -16,8 +16,12 @@ public class GeneralPage extends BasePage {
     WebElement trajanje;
     @FindBy(id = "ContentPlaceHolder1_Kol29_uc_idWucPlaces_tbStates")
     WebElement drzava;
+    @FindBy(css = "ul[id='ui-id-1']")
+    WebElement drzavaList;
     @FindBy(id = "ContentPlaceHolder1_Kol29_uc_idWucPlaces_tbPlaces")
     WebElement mesto;
+    @FindBy(css = "ul[id='ui-id-2']")
+    WebElement mestoList;
     @FindBy(id = "Kol24")
     WebElement dinamika;
     @FindBy(id = "Kol22")
@@ -37,61 +41,54 @@ public class GeneralPage extends BasePage {
     @FindBy(id = "Kol51")
     WebElement izborDuzineTrajanja;
 
+    //-------------------- Methods --------------------
     public void setTrajanje(String valueTrajanje) throws Exception {
         if (!trajanje.equals("Doživotno")) {
-            trajanje.clear();
-            trajanje.sendKeys(valueTrajanje);
+            SetValue(trajanje, "Set duration", valueTrajanje);
         }
-
     }
-    public WebElement getDrzava() {
-
-        return drzava;
+    public void selectCountry(String valueCountry) throws Exception {
+        SelectValueAC(drzava, drzavaList, "Select country", valueCountry, valueCountry);
     }
-    public WebElement getMesto() {
-
-        return mesto;
+    public void selectPlace(String valuePlace, String valueExactlyPlace) throws Exception {
+        SelectValueAC(mesto, mestoList, "Select place", valuePlace, valuePlace);
     }
 
-    public WebElement getDinamika() {
-
-        return dinamika;
+    public void selectDynamics(String valueDynamics) throws Exception {
+        SelectOption(dinamika, "Select dynamics", valueDynamics);
     }
 
-    public WebElement getValuta() {
-
-        return valuta;
+    public void selectCurrency(String valueCurrency) throws Exception {
+        SelectOption(valuta, "Select currency", valueCurrency);
     }
 
-    public WebElement getValutnaKlauzula() {
-
-        return valutnaKlauzula;
+    public void selectCurrencyClause(String valueCurrencyClause) throws Exception {
+        SelectOption(valutnaKlauzula, "Select currency clause", valueCurrencyClause);
     }
 
-    public WebElement getMetodPlacanja() {
-
-        return metodPlacanja;
+    public void selectPaymentMethod(String valuePaymentMethod) throws Exception {
+        SelectOption(metodPlacanja, "Select payment method", valuePaymentMethod);
     }
 
-    public WebElement getBanka() {
-        return banka;
+    public void selectBank(String valueBank) throws Exception {
+        SelectOption(banka, "Select bank", valueBank);
     }
 
-    public WebElement IzborDuzineTrajanja() {
-
-        return izborDuzineTrajanja;
+    public void selectChoiceOfDuration(String valueChoiceOfDuration) throws Exception {
+        SelectOption(izborDuzineTrajanja, "Select choice of duration", valueChoiceOfDuration);
     }
 
-    public void checkIndeksacija() throws Exception {
-        indeksacija.click();
+    public void clickIndexing() throws Exception {
+        Click(indeksacija, "Click on indexing");
     }
 
-    public void selectVrednostIndeksa(String valueVrednostIndeksa) throws Exception {
-        vrednostIndeksa.sendKeys(valueVrednostIndeksa);
+    public void setIndexValue(String valueIndex) throws Exception {
+        SetValue(vrednostIndeksa, "Set index value", valueIndex);
     }
 
     public String url(String proizvod, String vrstaDokumenta) {
         String url = null;
+
         if (vrstaDokumenta.equals("Novi ugovor")) {
             switch (proizvod) {
                 case "Doživotni riziko": {
@@ -122,8 +119,6 @@ public class GeneralPage extends BasePage {
                     url = "https://t-score.uniqa.rs/POS/Serbia/Life/Riziko/NewContract/New/General";
                 }
                 break;
-                default:
-                    break;
             }
         } else {
             switch (proizvod) {
@@ -155,15 +150,16 @@ public class GeneralPage extends BasePage {
                     url = "https://t-score.uniqa.rs/POS/Serbia/Life/Riziko/InfoOffer/New/General";
                 }
                 break;
-                default:
-                    break;
             }
         }
+
         return url;
     }
 
-    public void inputClientInfo() {
-        clientInfo.sendKeys("Test");
+    public void setClientInfo() throws Exception {
+        SetValue(clientInfo, "Set client info", "Test");
     }
+
+    //-------------------- End Methods --------------------
 }
 

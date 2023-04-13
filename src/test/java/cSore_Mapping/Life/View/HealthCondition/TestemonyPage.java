@@ -12,15 +12,18 @@ public class TestemonyPage extends BasePage {
         PageFactory.initElements(driver,this);
     }
 
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div/div[3]/fieldset/legend")   WebElement Upitnik;
-    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div/div[3]/fieldset/div[1]/div/div/label")   WebElement QuestionnaireTypeLabel;
-    @FindBy(id= "Kol10")   WebElement QuestionnaireType;
- 
-    @FindBy(xpath= "//*[@id='Kol6']/fieldset/legend")   WebElement PodUpitnik;
-    @FindBy(css= "label[for='qnn_6_0']")   WebElement Izjava;
-    @FindBy(id= "qnn_6_0")   WebElement IzjavaDa;
-
-
+    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div/div[3]/fieldset/legend")
+    WebElement upitnik;
+    @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div/div[3]/fieldset/div[1]/div/div/label")
+    WebElement questionnaireTypeLabel;
+    @FindBy(id= "Kol10")
+    WebElement questionnaireType;
+    @FindBy(xpath= "//*[@id='Kol6']/fieldset/legend")
+    WebElement podUpitnik;
+    @FindBy(css= "label[for='qnn_6_0']")
+    WebElement izjava;
+    @FindBy(id= "qnn_6_0")
+    WebElement izjavaDa;
 
     //-------------------- Methods --------------------
     public void Upitnik() throws Exception {}
@@ -31,8 +34,5 @@ public class TestemonyPage extends BasePage {
     public void Izjava() throws Exception {}
     public void IzjavaDa() throws Exception {}
 
-
-
     //-------------------- End Methods --------------------
-
 }

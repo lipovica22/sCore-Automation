@@ -94,9 +94,7 @@ public class ConcernsPage extends BasePage {
         SelectOption(franchise, "Select franchise", valueFranchise);
     }
     public void fileUpload(String valueFileName) throws Exception {
-        //String valueSet= "C:/Users/rss0105/IdeaProjects/DemoProject/sCore-Automation/src/test/FilesForUpload/" + valueFileName + ".xlsm";
-        //fileUpload.sendKeys(valueSet);
-        SetValuePackage(fileUpload, "Upload excel file for package", ApplicationBase.pathXlsm(valueFileName));
+        UploadFile(fileUpload, "Upload excel file for package", ApplicationBase.pathXlsm(valueFileName));
     }
     public void clickFind() throws Exception {
         Click(find, "Click on find");

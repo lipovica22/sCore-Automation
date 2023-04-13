@@ -113,35 +113,20 @@ public class LifeSteps extends BaseTest {
         new LifeProductSelectionPage(driver).clickProductIcon(data.get("Proizvod"));
     }
 
-    @Then("tab is General")
-    public void tabIsGeneral() {
-        try {
-            Assert.assertEquals(driver.getCurrentUrl(), new GeneralPage(driver).url(data.get("Proizvod"), data.get("Vrsta dokumenta")));
-            /*if (!new General(driver).url(data.get("Proizvod"), data.get("Vrsta dokumenta")).equals(driver.getCurrentUrl())) {
-                byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-                scenario.attach(screenshot, "image/png", "Screenshot");
-            }*/
-        } catch (AssertionError e) {
-            System.out.println("Assertion failed: " + e.getMessage());
-            reportAssertionError(e);
-        }
-
-    }
-
     @Then("input duration of insurance")
     public void inputDurationOfInsurance() throws Exception {
         new GeneralPage(driver).setTrajanje(data.get("Trajanje"));
         if (!data.get("Vrsta dokumenta").equals("Novi ugovor")) {
-            new GeneralPage(driver).inputClientInfo();
+            new GeneralPage(driver).setClientInfo();
         }
         if (data.get("Proizvod").equals("Riziko kredit")){
-            selectOption("Godine",new GeneralPage(driver).IzborDuzineTrajanja());
+            new GeneralPage(driver).selectChoiceOfDuration(data.get("Izbor dužine trajanja"));
         }
     }
 
     @And("set place")
     public void setPlace() throws Exception {
-        selectOptionAC(data.get("Mesto"), "11000 Beograd", new GeneralPage(driver).getMesto());
+        new GeneralPage(driver).selectPlace(data.get("Mesto"), data.get("Tačno mesto"));
     }
 
     @And("set payment dynamic")
@@ -294,22 +279,22 @@ public class LifeSteps extends BaseTest {
 
     @And("input insured sum or premium")
     public void inputInsuredSumOrPremium() throws Exception {
-        new ConcernsPage(driver).inputInsuredSumOrPremium(data.get("Iznos"));
+        new ConcernsPage(driver).setInsuredSumOrPremium(data.get("Iznos"));
 
     }
     @Then("input height")
     public void inputHeight() throws Exception {
-        new ConcernsPage(driver).inputHeight(data.get("Visina"));
+        new ConcernsPage(driver).setHeight(data.get("Visina"));
     }
 
     @And("input weight")
     public void inputWeight()throws Exception  {
-        new ConcernsPage(driver).inputWeight(data.get("Težina"));
+        new ConcernsPage(driver).setWeight(data.get("Težina"));
     }
 
     @And("input interest")
     public void inputInterest() throws Exception {
-        new ConcernsPage(driver).inputInterest(data.get("Kamatna stopa"));
+        new ConcernsPage(driver).setInterest(data.get("Kamatna stopa"));
     }
     @And("fill health questionnaire")
     public void fillHealthQuestionnaire() throws Exception {

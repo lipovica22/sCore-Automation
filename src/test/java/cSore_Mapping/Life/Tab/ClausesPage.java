@@ -7,60 +7,54 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class ClausesPage extends BasePage {
-
-
     public ClausesPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[2]/div/div/label")
-    WebElement AdditionalClausesAndExclusionsLabel;
+    WebElement additionalClausesAndExclusionsLabel;
     @FindBy(id= "Kol1")
-    WebElement AdditionalClausesAndExclusions;
-
+    WebElement additionalClausesAndExclusions;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[3]/div[1]/div/label")
-    WebElement DocumentNoteLabel;
+    WebElement documentNoteLabel;
     @FindBy(id= "Kol3")
-    WebElement DocumentNote;
-
+    WebElement documentNote;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[3]/div[3]/div/label")
-    WebElement DocumentNote2Label;
+    WebElement documentNote2Label;
     @FindBy(id= "Kol11")
-    WebElement DocumentNote2;
+    WebElement documentNote2;
     @FindBy(id= "Kol10")
-    WebElement AddNote;
-
+    WebElement addNote;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[8]/div/div/label")
-    WebElement InvoiceNoteLabel;
+    WebElement invoiceNoteLabel;
     @FindBy(id= "Kol8")
-    WebElement InvoiceNote;
-
+    WebElement invoiceNote;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[6]/div/div/label")
-    WebElement InternalNoteLabel;
+    WebElement internalNoteLabel;
     @FindBy(id= "Kol5")
-    WebElement InternalNote;
-
-    @FindBy(id= "li_Kol2_45")
-    WebElement _30DanaStorno;
+    WebElement internalNote;
     @FindBy(css= "label[for='li_Kol2_45']")
-    WebElement _30DanaStornoLabel;
+    WebElement tridesetDanaStornoLabel;
+    @FindBy(id= "li_Kol2_45")
+    WebElement tridesetDanaStorno;
     @FindBy(id= "li_Kol2_51")
-    WebElement ValutnaKlauzula;
+    WebElement valutnaKlauzula;
     @FindBy(css= "label[for='li_Kol2_51']")
-    WebElement ValutnaKlauzulaLabel;
+    WebElement valutnaKlauzulaLabel;
     @FindBy(id= "li_Kol2_2018")
-    WebElement ZastitaPodataka;
+    WebElement zastitaPodataka;
     @FindBy(css= "label[for='li_Kol2_2018']")
-    WebElement ZastitaPodatakaLabel;
+    WebElement zastitaPodatakaLabel;
     @FindBy(id= "li_Kol2_71")
-    WebElement ZastitaPotrosaca;
+    WebElement zastitaPotrosaca;
     @FindBy(css= "label[for='li_Kol2_71']")
-    WebElement ZastitaPotrosacaLabel;
+    WebElement zastitaPotrosacaLabel;
     @FindBy(id= "li_Kol2_1786")
-    WebElement InformacijeZaUgovaraca;
+    WebElement informacijeZaUgovaraca;
     @FindBy(css= "label[for='li_Kol2_1786']")
-    WebElement InformacijeZaUgovaracaLabel;
+    WebElement informacijeZaUgovaracaLabel;
 
+    //-------------------- Methods --------------------
     public void AdditionalClausesAndExclusionsLabel() throws Exception {}
     public void AdditionalClausesAndExclusions() throws Exception {}
 
@@ -87,8 +81,6 @@ public class ClausesPage extends BasePage {
     public void ZastitaPotrosacaLabel() throws Exception {}
     public void InformacijeZaUgovaraca() throws Exception {}
     public void InformacijeZaUgovaracaLabel() throws Exception {}
-
-
-
+    //-------------------- End Methods --------------------
 }
 

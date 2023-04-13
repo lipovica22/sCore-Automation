@@ -6,75 +6,69 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 public class ConcernsPage extends BasePage {
-
-
     public ConcernsPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
     @FindBy(xpath= "//*[@id= 'form1']/div[4]/div[2]/div/div/div/div[2]/div/fieldset/legend")
-    WebElement RiziciLabel;
-
+    WebElement riziciLabel;
     @FindBy(xpath= "//*[@id= 'form1']/div[4]/div[2]/div/div/div/div[1]/fieldset/legend")
-    WebElement CalculationDirectionHeaderLabel;
+    WebElement calculationDirectionHeaderLabel;
     @FindBy(xpath= "//*[@id= 'form1']/div[4]/div[2]/div/div/div/div[1]/fieldset/div[1]/div[1]/div/label")
-    WebElement CalculationDirectionLabel;
+    WebElement calculationDirectionLabel;
     @FindBy(id= "Kol1")
-    WebElement CalculationDirection;
+    WebElement calculationDirection;
     @FindBy(xpath= "//*[@id= 'form1']/div[4]/div[2]/div/div/div/div[1]/fieldset/div[1]/div[2]/div/label")
-    WebElement InsuredSumOrPremiumLabel;
+    WebElement insuredSumOrPremiumLabel;
     @FindBy(id= "Kol2")
-    WebElement InsuredSumOrPremium;
-
+    WebElement insuredSumOrPremium;
     @FindBy(id= "ContentPlaceHolder1_Kol5_uc_wucBusinessEntityBaseSearch_selectFP")
-    WebElement BaseSearchFP;
+    WebElement baseSearchFP;
     @FindBy(id= "ContentPlaceHolder1_Kol5_uc_wucBusinessEntityBaseSearch_tbExternalReferenceId")
-    WebElement BaseSearchReferenceId;
+    WebElement baseSearchReferenceId;
     @FindBy(id= "ContentPlaceHolder1_Kol5_uc_wucBusinessEntityBaseSearch_tbName")
-    WebElement BaseSearchName;
-
+    WebElement baseSearchName;
     @FindBy(xpath= "//*[@id= 'form1']/div[4]/div[2]/div/div/div/div[1]/fieldset/div[3]/div[1]/div/label")
-    WebElement DateOfBirthLabel;
+    WebElement dateOfBirthLabel;
     @FindBy(id= "Kol7")
-    WebElement DateOfBirth;
+    WebElement dateOfBirth;
     @FindBy(xpath= "//*[@id= 'form1']/div[4]/div[2]/div/div/div/div[1]/fieldset/div[3]/div[2]/div/label")
-    WebElement EntryAgeLabel;
+    WebElement entryAgeLabel;
     @FindBy(id= "Kol12")
-    WebElement EntryAge;
+    WebElement entryAge;
     @FindBy(xpath= "//*[@id= 'form1']/div[4]/div[2]/div/div/div/div[1]/fieldset/div[3]/div[3]/div/label")
-    WebElement GenderLabel;
+    WebElement genderLabel;
     @FindBy(id= "Kol8")
-    WebElement Gender;
+    WebElement gender;
     @FindBy(xpath= "//*[@id= 'form1']/div[4]/div[2]/div/div/div/div[1]/fieldset/div[3]/div[4]/div/label")
-    WebElement HeightLabel;
+    WebElement heightLabel;
     @FindBy(id= "Kol3")
-    WebElement Height;
+    WebElement height;
     @FindBy(xpath= "//*[@id= 'form1']/div[4]/div[2]/div/div/div/div[1]/fieldset/div[3]/div[5]/div/label")
-    WebElement WeightLabel;
+    WebElement weightLabel;
     @FindBy(id= "Kol4")
-    WebElement Weight;
+    WebElement weight;
     @FindBy(xpath= "//*[@id= 'form1']/div[4]/div[2]/div/div/div/div[1]/fieldset/div[3]/div[6]/div/label")
-    WebElement BMILabel;
+    WebElement bmiLabel;
     @FindBy(id= "Kol16")
-    WebElement BMI;
+    WebElement bmi;
     @FindBy(xpath= "//*[@id= 'form1']/div[4]/div[2]/div/div/div/div[1]/fieldset/div[3]/div[7]/div/label")
-    WebElement InterestLabel;
+    WebElement interestLabel;
     @FindBy(id= "Kol13")
-    WebElement Interest;
-
+    WebElement interest;
     @FindBy(id= "basic-grid_3")
-    WebElement ConcernListGrid;
+    WebElement concernListGrid;
 
+    //-------------------- Methods --------------------
     public void RiziciLabel() throws Exception {}
-
     public void CalculationDirectionHeaderLabel() throws Exception {}
     public void CalculationDirectionLabel() throws Exception {}
-    public void selectCalculationDirection(String calculationDirection) throws Exception {
-        SelectOption(CalculationDirection, "Select Calculation direction", calculationDirection);
+    public void selectCalculationDirection(String valueCalculationDirection) throws Exception {
+        SelectOption(calculationDirection, "Select Calculation direction", valueCalculationDirection);
     }
     public void InsuredSumOrPremiumLabel() throws Exception {}
-    public void inputInsuredSumOrPremium(String sumOrPremium) throws Exception {
-        SetValue(InsuredSumOrPremium, "Input insured sum or premium", sumOrPremium);
+    public void setInsuredSumOrPremium(String sumOrPremium) throws Exception {
+        SetValue(insuredSumOrPremium, "Input insured sum or premium", sumOrPremium);
     }
 
     public void BaseSearchFP() throws Exception {}
@@ -88,23 +82,23 @@ public class ConcernsPage extends BasePage {
     public void GenderLabel() throws Exception {}
     public void Gender() throws Exception {}
     public void HeightLabel() throws Exception {}
-    public void inputHeight(String height) throws Exception {
-        SetValue(Height, "Input height", height);
+    public void setHeight(String valueHeight) throws Exception {
+        SetValue(height, "Input height", valueHeight);
     }
     public void WeightLabel() throws Exception {}
-    public void inputWeight(String weight) throws Exception {
-        SetValue(Weight, "Input height", weight);
+    public void setWeight(String valueWeight) throws Exception {
+        SetValue(weight, "Input height", valueWeight);
     }
     public void BMILabel() throws Exception {}
     public void BMI() throws Exception {
 
     }
     public void InterestLabel() throws Exception {}
-    public void inputInterest(String interest) throws Exception {
-        SetValue(Interest, "Input height",interest );
+    public void setInterest(String valueInterest) throws Exception {
+        SetValue(interest, "Input height", valueInterest );
     }
 
     public void ConcernListGrid() throws Exception {}
-
+    //-------------------- End Methods --------------------
 }
 

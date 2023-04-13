@@ -13,25 +13,23 @@ public class InfoOfferQuestionnairePage extends BasePage {
     }
 
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div/div[3]/fieldset/legend")  
-    WebElement Upitnik;
+    WebElement upitnik;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div/div[3]/fieldset/div[1]/div/div/label")  
-    WebElement QuestionnaireTypeLabel;
+    WebElement questionnaireTypeLabel;
     @FindBy(id= "Kol10")   
-    WebElement QuestionnaireType;
+    WebElement questionnaireType;
     @FindBy(xpath= "//*[@id='Kol6']/fieldset/legend")
-    WebElement PodUpitnik;
+    WebElement podUpitnik;
     @FindBy(xpath= "//*[@id='Kol6']/fieldset/div/div/div/div/label[1]")
-    WebElement PrijavljenRizik;
+    WebElement prijavljenRizik;
     @FindBy(id= "qnn_6_0_0")  
-    WebElement PrijavljenRizikNe;
+    WebElement prijavljenRizikNe;
     @FindBy(css= "label[for='qnn_6_0_0']")
-    WebElement PrijavljenRizikNeLabel;
+    WebElement prijavljenRizikNeLabel;
     @FindBy(id= "qnn_6_0_1")  
-    WebElement PrijavljenRizikDa;
+    WebElement prijavljenRizikDa;
     @FindBy(css= "label[for='qnn_6_0_1']")
-    WebElement PrijavljenRizikDaLabel;
-
-
+    WebElement prijavljenRizikDaLabel;
 
     //-------------------- Methods --------------------
     public void Upitnik() throws Exception {}
@@ -44,8 +42,5 @@ public class InfoOfferQuestionnairePage extends BasePage {
     public void PrijavljenRizikDa() throws Exception {}
     public void PrijavljenRizikDaLabel() throws Exception {}
 
-
-
     //-------------------- End Methods --------------------
-
 }

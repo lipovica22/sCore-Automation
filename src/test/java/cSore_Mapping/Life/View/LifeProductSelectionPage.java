@@ -63,9 +63,10 @@ public class LifeProductSelectionPage extends BasePage {
     @FindBy(css = "div[id='productTypeChoice']>label:nth-child(2)")
     WebElement noviUgovor;
 
+    //-------------------- Methods --------------------
     public void narednoPitanje() throws Exception {
         Click(narednoPitanje, "Clock on next question");
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
     }
 
     public void selectProductType(String productType) throws Exception {
@@ -156,7 +157,6 @@ public class LifeProductSelectionPage extends BasePage {
         Click(rizikoMixNE, "Click on riziko mix no");
         narednoPitanje();
         Click(unitLinkedNeRiziko, "Click on unit Linked no Riziko");
-        unitLinkedNeRiziko.click();
     }
 
     public void clickProductIcon(String Proizvod) throws Exception {
@@ -224,5 +224,7 @@ public class LifeProductSelectionPage extends BasePage {
             break;
         }
     }
+
+    //-------------------- End Methods --------------------
 }
 

@@ -14,7 +14,6 @@ Feature: Fill tab General by all products as different users for Life Insurance 
     And Choose product
     And Choose Product type
     And click on product icon
-    Then tab is General
 
     Then input duration of insurance
     And set place
@@ -27,7 +26,6 @@ Feature: Fill tab General by all products as different users for Life Insurance 
     When tab is PersonConcerns
     And set Same person
     Then click on add button
-
 
     And on Iframe input Identification number
     And click on button Search

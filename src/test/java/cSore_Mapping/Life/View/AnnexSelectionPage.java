@@ -95,7 +95,6 @@ public class AnnexSelectionPage extends BasePage {
     @FindBy(id= "Kol3_68")
     WebElement povecanjeOsiguraneSume;
 
-
     //-------------------- Methods --------------------
     public void AnnexIssuingDateLabel() throws Exception {}
     public void AnnexIssuingDate() throws Exception {}
@@ -140,5 +139,4 @@ public class AnnexSelectionPage extends BasePage {
     public void PovecanjeOsiguraneSume() throws Exception {}
 
     //-------------------- End Methods --------------------
-
 }

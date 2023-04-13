@@ -7,65 +7,57 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class PersonPage extends BasePage {
-
-
     public PersonPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
+
     @FindBy(id= "Kol17")
-    WebElement PayerInsureeSamePerson;
+    WebElement payerInsureeSamePerson;
     @FindBy(xpath= "//body/form[@id='form1']//div[2]/div[1]/div[1]/div[5]/div[1]/div[1]/div[1]")
-    WebElement PayerInsureeSamePersonLabel;
+    WebElement payerInsureeSamePersonLabel;
     @FindBy(xpath= "//*[@id='Kol16']/div/div[2]/div/div/a")
-    WebElement AddPayer;
+    WebElement addPayer;
     @FindBy(xpath= "//*[@id='Kol16']/div/div[1]/h4")
-    WebElement PayerLabel;
+    WebElement payerLabel;
     @FindBy(id= "basic-grid_16")
-    WebElement PayerGrid;
-
+    WebElement payerGrid;
     @FindBy(xpath= "//*[@id='form1']/div[4]/div[2]/div/div/div[7]/div/div/div/label")
-    WebElement HasLegalRepresentativeLabel;
+    WebElement hasLegalRepresentativeLabel;
     @FindBy(id= "Kol15")
-    WebElement HasLegalRepresentative;
-
+    WebElement hasLegalRepresentative;
     @FindBy(xpath= "//*[@id='Kol10']/div/div[2]/div/div/a")
-    WebElement AddLegalRepresentative;
+    WebElement addLegalRepresentative;
     @FindBy(xpath= "//*[@id='Kol10']/div/div[1]/h4")
-    WebElement LegalRepresentativeLabel;
+    WebElement legalRepresentativeLabel;
     @FindBy(id= "basic-grid_10")
-    WebElement LegalRepresentativeGrid;
-
+    WebElement legalRepresentativeGrid;
     @FindBy(xpath= "//*[@id='Kol2']/div/div[2]/div/div")
-    WebElement BeneficiaryForDeath;
+    WebElement beneficiaryForDeath;
     @FindBy(xpath= "//*[@id='Kol2']/div/div[1]/h4")
-    WebElement BeneficiaryForDeathLabel;
+    WebElement beneficiaryForDeathLabel;
     @FindBy(id= "basic-grid_2")
-    WebElement BeneficiaryForDeathGrid;
-
+    WebElement beneficiaryForDeathGrid;
     @FindBy(xpath= "//*[@id='Kol3']/div/div[2]/div/div")
-    WebElement BeneficiaryForSurvivor;
+    WebElement beneficiaryForSurvivor;
     @FindBy(id= "basic-grid_3")
-    WebElement BeneficiaryForSurvivorGrid;
+    WebElement beneficiaryForSurvivorGrid;
     @FindBy(xpath= "//*[@id='Kol3']/div/div[1]/h4")
-    WebElement BeneficiaryForSurvivorLabel;
-
+    WebElement beneficiaryForSurvivorLabel;
     @FindBy(xpath= "//*[@id='Kol4']/div/div[2]/div/div")
-    WebElement BeneficiaryForIllness;
+    WebElement beneficiaryForIllness;
     @FindBy(xpath= "//*[@id='Kol4']/div/div[1]/h4")
-    WebElement BeneficiaryForIllnessLabel;
+    WebElement beneficiaryForIllnessLabel;
     @FindBy(id= "basic-grid_4")
-    WebElement BeneficiaryForIllnessGrid;
+    WebElement beneficiaryForIllnessGrid;
 
-
-
-
+//--------------------- Methods -----------------------
     public void clickPayerInsureeSamePerson() throws Exception {
-        Click(PayerInsureeSamePerson, "Click on Payer Insuree Same Person");
+        Click(payerInsureeSamePerson, "Click on Payer Insuree Same Person");
     }
     public void PayerInsureeSamePersonLabel() throws Exception {}
     public void clickAddPayer() throws Exception {
-        Click(AddPayer, "Click on add Payer");
+        Click(addPayer, "Click on add Payer");
     }
 
     public void PayerLabel() throws Exception {}
@@ -73,11 +65,11 @@ public class PersonPage extends BasePage {
 
     public void HasLegalRepresentativeLabel() throws Exception {}
     public void clickHasLegalRepresentative() throws Exception {
-        Click(HasLegalRepresentative, "Click on Has Legal Representative");
+        Click(hasLegalRepresentative, "Click on Has Legal Representative");
     }
 
     public void clickAddLegalRepresentative() throws Exception {
-        Click(AddLegalRepresentative, "Click on add Legal Representative");
+        Click(addLegalRepresentative, "Click on add Legal Representative");
     }
     public void LegalRepresentativeLabel() throws Exception {}
     public void LegalRepresentativeGrid() throws Exception {}
@@ -94,5 +86,6 @@ public class PersonPage extends BasePage {
     public void BeneficiaryForIllnessLabel() throws Exception {}
     public void BeneficiaryForIllnessGrid() throws Exception {}
 
+    //--------------------- End Methods -----------------------
 }
 
