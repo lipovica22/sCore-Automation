@@ -378,6 +378,4 @@ public class LifeSteps extends BaseTest {
 
         //Assert.assertEquals(new BasePage(driver).InfoMessage(),data.get("Poruka nakon potvrde potpisa"));
     }
-
-
 }
