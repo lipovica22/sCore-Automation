@@ -52,9 +52,9 @@ Feature: Create policy for all products of TravelAssistance in Serbia
     Examples:
       | row | TC ID         |
       | 1   | RS_NE_PA_101  |
-      #| 2   | RS_NE_PA_102  |
-      #| 3   | RS_NE_PA_103  |
-      #| 4   | RS_NE_PA_104  |
+      | 2   | RS_NE_PA_102  |
+      | 3   | RS_NE_PA_103  |
+      | 4   | RS_NE_PA_104  |
 
 
 

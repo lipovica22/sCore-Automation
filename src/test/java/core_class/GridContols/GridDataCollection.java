@@ -1,21 +1,22 @@
-package core_class;
+package core_class.GridContols;
 
 import cSore_Mapping.Common.Pages.BasePage;
+import core_class.ControlBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.sql.Driver;
 
-public class GridDataCollection extends BasePage {
+public class GridDataCollection extends ControlBase {
+    public WebDriver driver;
+    public int rowNumber;
+    public int colNumber;
+    public String colName;
+    public String fieldValue;
+    public int fieldIndex;
 
-    private int rowNumber;
-    private int colNumber;
-    private String colName;
-    private String fieldValue;
-    private int fieldIndex;
-
-    public GridDataCollection(WebDriver driver) {
-        super(driver);
+    public GridDataCollection(WebElement element) {
+        super(element);
     }
 
     public int getRowNumber() {

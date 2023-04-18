@@ -44,11 +44,13 @@ public class TabView extends BasePage {
     WebElement statementsTab;
     @FindBy(id= "tab_FinancialBalance")
     WebElement financialBalanceTab;
+    @FindBy(id= "tab_Vinculations")
+    WebElement vinculationsTab;
 
     @FindBy(id= "tab_MoneyLaundry")
-    WebElement moneyLaundry;
+    WebElement moneyLaundryTab;
     @FindBy(id= "tab_AssociateMoneyLaundry")
-    WebElement associateMoneyLaundry;
+    WebElement associateMoneyLaundryTab;
 
     @FindBy(css = "div[class='sixteen columns padding_left_10 document_info'] div:nth-child(1) div:nth-child(5)")
     WebElement status;
@@ -72,14 +74,64 @@ public class TabView extends BasePage {
     }
 
     public void clickMoneyLaundryTab() throws Exception {
-        ClickWithScroll(moneyLaundry, "Click MoneyLaundry tab");
+        ClickWithScroll(moneyLaundryTab, "Click MoneyLaundry tab");
     }
     public void clickAssociateMoneyLaundryTab() throws Exception {
-        ClickWithScroll(associateMoneyLaundry, "Click AssociateMoneyLaundry tab");
+        ClickWithScroll(associateMoneyLaundryTab, "Click AssociateMoneyLaundry tab");
     }
 
     public void assertStatus(SoftAssert softAssert, String valueExpected) throws Exception {
         AreEqual(status, "Message status", valueExpected, softAssert);
     }
+    public void clickGeneral() throws Exception {
+        ClickWithScroll(generalTab, "Click General tab");
+    }
+    public void clickPerson() throws Exception {
+        ClickWithScroll(personTab, "Click Person tab");
+    }
+    public void clickConcerns() throws Exception {
+        ClickWithScroll(concernsTab, "Click Concerns tab");
+    }
+    public void clickConditions() throws Exception {
+        ClickWithScroll(conditionsTab, "Click Conditions tab");
+    }
+    public void clickCalculation() throws Exception {
+        ClickWithScroll(calculationTab, "Click Calculation tab");
+    }
+    public void clickClauses() throws Exception {
+        ClickWithScroll(clausesTab, "Click Clauses tab");
+    }
+    public void clickPrintouts() throws Exception {
+        ClickWithScroll(printoutsTab, "Click Printouts tab");
+    }
+    public void clickDocumentation() throws Exception {
+        ClickWithScroll(documentationTab, "Click Documentation tab");
+    }
+    public void clickAnnulation() throws Exception {
+        ClickWithScroll(annulationTab, "Click Annulation tab");
+    }
+    public void clickUnderwriting() throws Exception {
+        ClickWithScroll(underwritingTab, "Click Underwriting tab");
+    }
+    public void clickReclamation() throws Exception {
+        ClickWithScroll(reclamationTab, "Click Reclamation tab");
+    }
+    public void clickCancellation() throws Exception {
+        ClickWithScroll(cancellationTab, "Click Cancellation tab");
+    }
+    public void clickStatements() throws Exception {
+        ClickWithScroll(statementsTab, "Click Statements tab");
+    }
+    public void clickVinculations() throws Exception {
+        ClickWithScroll(vinculationsTab, "Click Vinculations tab");
+    }
+    public void clickFinancialBalance() throws Exception {
+        ClickWithScroll(financialBalanceTab, "Click FinancialBalance tab");
+    }
+
+
+
+
+
     //-------------------- End Methods --------------------
 }

@@ -1,7 +1,6 @@
 package cSore_Mapping.Common.Pages;
 
-import core_class.GridDataCollection;
-import core_class.ICellCoordinateMatch;
+import core_class.GridContols.GridDataCollection;
 import core_class.WaitTime;
 import io.qameta.allure.Allure;
 import org.openqa.selenium.*;
@@ -9,7 +8,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -20,7 +18,6 @@ import tests.BaseTest;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -28,12 +25,23 @@ import java.util.List;
 
 public class BasePage {
 
+    public BasePage(WebElement webElement) {
+        this.webElement = webElement ;
+    }
+
+    public WebElement getWebElement() {
+        return webElement;
+    }
+
+    public void setWebElement(WebElement webElement) {
+        this.webElement = webElement;
+    }
     public WebDriver driver;
     public WebDriverWait webDriverWait;
     int waitTime = 30;
     int maxRetries = 3;
     public List<GridDataCollection> listGridDataCollection = new ArrayList<>();
-    public WebElement webElement;
+    public static WebElement webElement;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -881,6 +889,7 @@ public class BasePage {
         }
     }
 
+
     public void SelectOptionLi(WebElement element, String log, String sel_option) throws Exception {
         webDriverWait = new WebDriverWait(driver, waitTime);
         Actions actions = new Actions(driver);
@@ -1034,16 +1043,7 @@ public class BasePage {
         }
     }
 
-    public boolean IsCellChecked(WebElement element, String log, ICellCoordinateMatch cellCoordinateMatch)
-    {
-        try {
-            return findCell(element, cellCoordinateMatch).isSelected();
-        } catch (NotFoundException e) {
-            throw new NotFoundException("Grid Control Is Cell Checked Issue. " + log);
-        } catch (org.openqa.selenium.ElementClickInterceptedException ex) {
-            throw new ElementClickInterceptedException("Grid Control Is Cell Checked Issue. " + log);
-        }
-    }
+
 
     public void gridPrinting(WebElement gridElement, String log, String expectedPrintValues) throws Exception {
         try {
@@ -1084,19 +1084,7 @@ public class BasePage {
 
     //------------------------- Start Private Methods -------------------------
 
-    private WebElement findCell(WebElement element, ICellCoordinateMatch cellCoordinateMatch) {
-        webElement = element;
-        try {
-            int index = listGridDataCollection.stream()
-                    .filter(cellCoordinateMatch::isTarget)
-                    .mapToInt(GridDataCollection::getFieldIndex)
-                    .findFirst().orElse(-1);
 
-            return listGridDataCollection.get(index).webElement;
-        } catch (NotFoundException ex) {
-            throw new NotFoundException("Grid Control Find Cell Issue.", ex);
-        }
-    }
 
     private void Click(WebElement element) throws Exception {
         webDriverWait = new WebDriverWait(driver, waitTime);

@@ -1,13 +1,9 @@
-package steps.Life;
-import cSore_Mapping.Common.Pages.BasePage;
+package steps.Life.NC;
 import cSore_Mapping.Common.Dialog.Iframe.ViewPersonL;
-import cSore_Mapping.Common.Dialog.Iframe.ViewPersonNL;
-import cSore_Mapping.Common.View.DocumentInfo;
 import cSore_Mapping.Common.View.TopButtonView;
-import cSore_Mapping.Life.Tab.AssociateMoneyLaundry;
-import cSore_Mapping.Life.Tab.General;
+import cSore_Mapping.Life.Tab.*;
 import cSore_Mapping.Common.View.TabView;
-import cSore_Mapping.Life.Tab.MoneyLaundry;
+import cSore_Mapping.Life.View.HealthCondition.Questionnaire;
 import excel.ExcelReader;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -27,7 +23,7 @@ import tests.BaseTest;
 import java.io.IOException;
 import java.util.Map;
 
-public class Life extends BaseTest {
+public class NewContractSteps extends BaseTest {
     // naredne dve linije služe da iz xml file uzmemo parametre za cucumber
     String browser = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browser");
     String quit = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("quit");
@@ -667,9 +663,17 @@ public class Life extends BaseTest {
 
     @And("fill health questionnaire")
     public void fillHealthQuestionnaire() throws Exception {
-
-
-
+        try{
+            new Questionnaire(driver).selectQuestionnaireType(data.get("Vrsta upitnika"));
+            if(data.get("Tip upitnika").equals("ZU-sveNE")) {
+                new Questionnaire(driver).allNO();
+            }
+            if(data.get("Tip upitnika").equals("ZU-DA")) {
+                new Questionnaire(driver).allYes();
+            }
+        }catch (Exception e){
+            throw new Exception("Error: " + e.getMessage());
+        }
     }
     @And("click on button Save Questionnaire")
     public void clickOnButtonSaveQuestionnaire() throws Exception {
@@ -697,33 +701,26 @@ public class Life extends BaseTest {
         switch (data.get("AML")) {
             case "AML1": {
                 AML = new ExcelReader().getRowData("TestData", "AML", 1);
-                new MoneyLaundry(driver).QNN_1_0Label(AML.get("1. Namena/svrha ugovaranja osiguranja?"));
-                new MoneyLaundry(driver).QNN_1_1Label(AML.get("2. Zanimanje / registrovana delatnost"));
-                new MoneyLaundry(driver).QNN_1_2Label(AML.get("3. Izvor sredstava plaćanja"));
-                //new MoneyLaundry(driver).QNN_1_3Label(AML.get("4. Državljanstvo / zemlja registracije Ugovarača osiguranja?"));
-                //new MoneyLaundry(driver).QNN_1_3_1Label(AML.get("4.1."));
-                //new MoneyLaundry(driver).QNN_1_4Label(AML.get("5. Ugovarač je poreski obveznik koje države?"));
-                //new MoneyLaundry(driver).QNN_1_4_1Label(AML.get("5.1."));
-                new MoneyLaundry(driver).QNN_1_8Label(AML.get("9. Ima li član vaše porodice polisu kod UNIQA životnog osiguranja?"));
             }
             break;
-            case "2": {
+            case "AML2": {
                 AML = new ExcelReader().getRowData("TestData", "AML", 2);
-                new MoneyLaundry(driver).QNN_1_0Label(AML.get("1. Namena/svrha ugovaranja osiguranja?"));
-                new MoneyLaundry(driver).QNN_1_1Label(AML.get("2. Zanimanje / registrovana delatnost"));
-                new MoneyLaundry(driver).QNN_1_2Label(AML.get("3. Izvor sredstava plaćanja"));
-                new MoneyLaundry(driver).QNN_1_8Label(AML.get("9. Ima li član vaše porodice polisu kod UNIQA životnog osiguranja?"));
             }
             break;
             case "3": {
                 AML = new ExcelReader().getRowData("TestData", "AML", 3);
-                new MoneyLaundry(driver).QNN_1_0Label(AML.get("1. Namena/svrha ugovaranja osiguranja?"));
-                new MoneyLaundry(driver).QNN_1_1Label(AML.get("2. Zanimanje / registrovana delatnost"));
-                new MoneyLaundry(driver).QNN_1_2Label(AML.get("3. Izvor sredstava plaćanja"));
-                new MoneyLaundry(driver).QNN_1_8Label(AML.get("9. Ima li član vaše porodice polisu kod UNIQA životnog osiguranja?"));
             }
             break;
-        }new TopButtonView(driver).acceptMoneyLaundry();
+        }
+        new MoneyLaundry(driver).QNN_1_0Label(AML.get("1. Namena/svrha ugovaranja osiguranja?"));
+        new MoneyLaundry(driver).QNN_1_1Label(AML.get("2. Zanimanje / registrovana delatnost"));
+        new MoneyLaundry(driver).QNN_1_2Label(AML.get("3. Izvor sredstava plaćanja"));
+        //new MoneyLaundry(driver).QNN_1_3Label(AML.get("4. Državljanstvo / zemlja registracije Ugovarača osiguranja?"));
+        //new MoneyLaundry(driver).QNN_1_3_1Label(AML.get("4.1."));
+        //new MoneyLaundry(driver).QNN_1_4Label(AML.get("5. Ugovarač je poreski obveznik koje države?"));
+        //new MoneyLaundry(driver).QNN_1_4_1Label(AML.get("5.1."));
+        new MoneyLaundry(driver).QNN_1_8Label(AML.get("9. Ima li član vaše porodice polisu kod UNIQA životnog osiguranja?"));
+        new TopButtonView(driver).acceptMoneyLaundry();
     }
 
     @And("fill Associate money laundry questionnaire")
@@ -733,49 +730,68 @@ public class Life extends BaseTest {
             case "AML-S1": {
                 AMLS = new ExcelReader().getRowData("TestData", "AML - saradnik", 1);
                 new AssociateMoneyLaundry(driver).QNN_1_0Label(AMLS.get("1. Izvori prihoda klijenta (zaokružiti) su:"));
-                new AssociateMoneyLaundry(driver).QNN_1_1Label(AMLS.get("2. Da li je klijent lice koje ima lošu reputaciju ili su poznate nezakonite aktivnosti klijenta iz prošlosti ili je klijent lice koje se sa takvim licem može dovesti u vezu?"));
-                new AssociateMoneyLaundry(driver).QNN_1_2Label(AMLS.get("3. Da li klijent insistira na tajnosti transakcije ili je nemoguće utvrditi prirodu i poreklo sredstava za transakciju?"));
-                new AssociateMoneyLaundry(driver).QNN_1_3Label(AMLS.get("4. Da li klijent odbija ili pravi problem prilikom identifikacije?"));
-                new AssociateMoneyLaundry(driver).QNN_1_4Label(AMLS.get("5. Da li sumnjate da u vezi sa ovim klijentom ili njegovom transakcijom postoji rizik od pranja novca i finansiranja terorizma?"));
-                new AssociateMoneyLaundry(driver).QNN_1_5Label(AMLS.get("6. Nije bilo moguće dobiti navedene informacije od klijenta"));
             }break;
-        }new TopButtonView(driver).acceptMoneyLaundry();
+            case "AML-S2": {
+                AMLS = new ExcelReader().getRowData("TestData", "AML - saradnik", 2);
+                new AssociateMoneyLaundry(driver).QNN_1_0Label(AMLS.get("1. Izvori prihoda klijenta (zaokružiti) su:"));
+            }break;
+            case "AML-S3": {
+                AMLS = new ExcelReader().getRowData("TestData", "AML - saradnik", 3);
+                new AssociateMoneyLaundry(driver).QNN_1_0Label(AMLS.get("1. Izvori prihoda klijenta (zaokružiti) su:"));
+            }break;
+        }
+        new AssociateMoneyLaundry(driver).QNN_1_1Label(AMLS.get("2. Da li je klijent lice koje ima lošu reputaciju ili su poznate nezakonite aktivnosti klijenta iz prošlosti ili je klijent lice koje se sa takvim licem može dovesti u vezu?"));
+        new AssociateMoneyLaundry(driver).QNN_1_2Label(AMLS.get("3. Da li klijent insistira na tajnosti transakcije ili je nemoguće utvrditi prirodu i poreklo sredstava za transakciju?"));
+        new AssociateMoneyLaundry(driver).QNN_1_3Label(AMLS.get("4. Da li klijent odbija ili pravi problem prilikom identifikacije?"));
+        new AssociateMoneyLaundry(driver).QNN_1_4Label(AMLS.get("5. Da li sumnjate da u vezi sa ovim klijentom ili njegovom transakcijom postoji rizik od pranja novca i finansiranja terorizma?"));
+        new AssociateMoneyLaundry(driver).QNN_1_5Label(AMLS.get("6. Nije bilo moguće dobiti navedene informacije od klijenta"));
+        new TopButtonView(driver).acceptMoneyLaundry();
     }
 
     @Then("Print documents")
-    public void printDocuments() {
+    public void printDocuments() throws Exception {
+        new TabView(driver).clickPrintouts();
+        new Printouts(driver).PrintoutsGrid(3,2,"Ponuda");
+        Thread.sleep(1000);
+        new Printouts(driver).PrintoutsGrid(3,2,"Upitnik za sprečavanje pranja novca - klijenti");
+        Thread.sleep(1000);
+        new Printouts(driver).PrintoutsGrid(3,2,"Upitnik za sprečavanje pranja novca - saradnici");
+        Thread.sleep(1000);
     }
 
     @And("upload documents on Documentation tab")
-    public void uploadDocumentsOnDocumentationTab() {
+    public void uploadDocumentsOnDocumentationTab() throws Exception{
+        new TabView(driver).clickDocumentation();
+        new TopButtonView(driver).clickFileUpload();
+
     }
 
     @When("click on Tile upload button")
-    public void clickOnTileUploadButton() {
+    public void clickOnTileUploadButton() throws Exception{
     }
 
     @And("choose documents for upload")
-    public void chooseDocumentsForUpload() {
+    public void chooseDocumentsForUpload() throws Exception{
     }
 
     @And("click on button load all")
-    public void clickOnButtonLoadAll() {
+    public void clickOnButtonLoadAll()throws Exception {
     }
 
     @Then("select document type")
-    public void selectDocumentType() {
+    public void selectDocumentType()throws Exception {
     }
 
     @And("select Confidentiality")
-    public void selectConfidentiality() {
+    public void selectConfidentiality()throws Exception {
     }
 
     @Then("click on button Save")
-    public void clickOnButtonSave() {
+    public void clickOnButtonSave() throws Exception{
     }
 
     @And("leave a iframe click on X button in right corner")
-    public void leaveAIframeClickOnXButtonInRightCorner() {
+    public void leaveAIframeClickOnXButtonInRightCorner() throws Exception{
     }
 
     @And("click on button Certification of signature")
@@ -784,7 +800,7 @@ public class Life extends BaseTest {
         Thread.sleep(5000);
     }
     @Then("check Warring message After Certification Of Signature")
-    public void checkWarringMessageAfterCertificationOfSignature() {
+    public void checkWarringMessageAfterCertificationOfSignature()throws Exception {
     }
     @And("check Info message After Certification Of Signature")
     public void checkInfoMessageAfterCertificationOfSignature() throws Exception{
@@ -794,7 +810,7 @@ public class Life extends BaseTest {
 
 
     @Then("check Warring message on top of page")
-    public void checkWarringMessageOnTopOfPage() {
+    public void checkWarringMessageOnTopOfPage()throws Exception {
     }
 
 

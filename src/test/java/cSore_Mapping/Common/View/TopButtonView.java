@@ -143,7 +143,7 @@ public class TopButtonView extends BasePage {
 
 
     @FindBy(css = "tbody[class='basic_grid_body']")
-    WebElement table;
+    WebElement  buttonle;
 
 
     //-------------------- Methods --------------------
@@ -168,60 +168,122 @@ public class TopButtonView extends BasePage {
     }
 
     public void print(String valuePrints) throws Exception {
-        gridPrinting(table, "Print: ", valuePrints);
+        gridPrinting( buttonle, "Print: ", valuePrints);
     }
-
-    public void SwitchDocumentType() throws Exception {}
-    public void CreateLifeAnnex() throws Exception {}
-    public void Calculate() throws Exception {}
-    public void CalculateUW() throws Exception {}
-    public void CalculateAnnex() throws Exception {}
-    public void Close() throws Exception {}
-    public void Activate() throws Exception {}
-    public void ActivateLifeAnnex() throws Exception {}
-    public void ActivateAnnex() throws Exception {}
-
-    public void ConfirmPayment() throws Exception {}
-    public void CertificationOfSignature() throws Exception {}
-    public void CertificationOfSignatureAnnex() throws Exception {}
-    public void Annule() throws Exception {}
-    public void Edit() throws Exception {}
-
-    public void AcceptCorrection() throws Exception {}
-    public void Accept() throws Exception {}
-    public void Correction() throws Exception {}
-    public void Submit() throws Exception {}
-    public void Cancel() throws Exception {}
-
-    public void Save() throws Exception {}
 
     public void clickSaveQuestionary() throws Exception {
         Click(saveQuestionary, "Click on Save Questionary");}
-    public void SaveCancellation() throws Exception {}
-    public void Print() throws Exception {}
-    public void TestPrint() throws Exception {}
-    public void CreateNewContract() throws Exception {}
-
+ 
     public void acceptMoneyLaundry() throws Exception {
         Click(acceptMoneyLaundry, "Click on Accept Money Laundry");
     }
+    public void clickSwitchDocumentType() throws Exception {
+        ClickWithScroll(SwitchDocumentType, "Click SwitchDocumentType button");
+    }
+    public void clickCreateLifeAnnex() throws Exception {
+        ClickWithScroll(CreateLifeAnnex, "Click CreateLifeAnnex button");
+    }
 
-    public void CreateIndividualInvoices() throws Exception {}
-    public void FileUpload() throws Exception {}
-    public void CreateGroupInvoice() throws Exception {}
+    public void clickCalculateUW() throws Exception {
+        ClickWithScroll(CalculateUW, "Click CalculateUW button");
+    }
+    public void CalculateAnnex() throws Exception {
+        ClickWithScroll(CalculateAnnex, "Click CalculateAnnex button");
+    }
+    public void clickClose() throws Exception {
+        ClickWithScroll(Close, "Click Close  button");
+    }
+    public void clickActivateLifeAnnex() throws Exception {
+        ClickWithScroll(ActivateLifeAnnex, "Click ActivateLifeAnnex button");
+    }
+    public void clickActivateAnnex() throws Exception {
+        ClickWithScroll(ActivateAnnex, "Click ActivateAnnex button");
+    }
+     public void clickCertificationOfSignatureAnnex() throws Exception {
+        ClickWithScroll(CertificationOfSignatureAnnex, "Click CertificationOfSignatureAnnex button");
+    }
+    public void clickAnnule() throws Exception {
+        ClickWithScroll(Annule, "Click Annule button");
+    }
+    public void clickEdit() throws Exception {
+        ClickWithScroll(Edit, "Click Edit button");
+    }
 
-    public void Search() throws Exception {}
+    public void clickAcceptCorrection() throws Exception {
+        ClickWithScroll(AcceptCorrection, "Click AcceptCorrection button");
+    }
+    public void clickAccept() throws Exception {
+        ClickWithScroll(Accept, "Click Accept button");
+    }
+    public void clickCorrection() throws Exception {
+        ClickWithScroll(Correction, "Click Correction button");
+    }
 
-    public void Export() throws Exception {}
+    public void clickCancel() throws Exception {
+        ClickWithScroll(Cancel, "Click Cancel button");
+    }
 
-    public void SendUnderwriting() throws Exception {}
-    public void Decline() throws Exception {}
-    public void ConfirmAnnex() throws Exception {}
+    public void clickSave() throws Exception {
+        ClickWithScroll(Save, "Click Save button");
+    }
 
-    public void CreatePolicy() throws Exception {}
-    public void Confirm() throws Exception {}
-    public void AcceptOfferWithoutCorrection() throws Exception {}
-    public void SendForApproval() throws Exception {}
+    public void clickSaveCancellation() throws Exception {
+        ClickWithScroll(SaveCancellation, "Click SaveCancellation button");
+    }
+    public void clickPrint() throws Exception {
+        ClickWithScroll(Print, "Click Print button");
+    }
+    public void clickTestPrint() throws Exception {
+        ClickWithScroll(TestPrint, "Click TestPrint button");
+    }
+    public void clickCreateNewContract() throws Exception {
+        ClickWithScroll(CreateNewContract, "Click CreateNewContract button");
+    }
+
+    public void clickAcceptMoneyLaundry() throws Exception {
+        ClickWithScroll(AcceptMoneyLaundry, "Click AcceptMoneyLaundry button");
+    }
+
+    public void clickCreateIndividualInvoices() throws Exception {
+        ClickWithScroll(CreateIndividualInvoices, "Click CreateIndividualInvoices button");
+    }
+    public void clickFileUpload() throws Exception {
+        ClickWithScroll(FileUpload, "Click FileUpload button");
+    }
+    public void clickCreateGroupInvoice() throws Exception {
+        ClickWithScroll(CreateGroupInvoice, "Click CreateGroupInvoice button");
+    }
+
+    public void clickSearch() throws Exception {
+        ClickWithScroll(Search, "Click Search button");
+    }
+
+    public void clickExport() throws Exception {
+        ClickWithScroll(Export, "Click Export button");
+    }
+
+    public void clickSendUnderwriting() throws Exception {
+        ClickWithScroll(SendUnderwriting, "Click SendUnderwriting button");
+    }
+    public void clickDecline() throws Exception {
+        ClickWithScroll(Decline, "Click Decline button");
+    }
+    public void clickConfirmAnnex() throws Exception {
+        ClickWithScroll(ConfirmAnnex, "Click ConfirmAnnex button");
+    }
+
+    public void clickCreatePolicy() throws Exception {
+        ClickWithScroll(CreatePolicy, "Click CreatePolicy button");
+    }
+    public void clickConfirm() throws Exception {
+        ClickWithScroll(Confirm, "Click Confirm button");
+    }
+    public void clickAcceptOfferWithoutCorrection() throws Exception {
+        ClickWithScroll(AcceptOfferWithoutCorrection, "Click AcceptOfferWithoutCorrection button");
+    }
+    public void clickSendForApproval() throws Exception {
+        ClickWithScroll(SendForApproval, "Click SendForApproval button");
+    }
 
     //-------------------- End Methods --------------------
 }

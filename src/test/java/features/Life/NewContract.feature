@@ -3,7 +3,7 @@ Feature: Fill tab General by all products as different users for Life Insurance 
 
   Scenario Outline:
 
-    Given login on app RS Test "TestData" "RSLife" "<row>"
+    Given login on app RS Test "TestData" "RSLifeNC" "<row>"
     When enter username
     And enter password
     And click on Submit button

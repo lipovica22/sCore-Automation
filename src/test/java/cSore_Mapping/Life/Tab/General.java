@@ -1,5 +1,6 @@
 package cSore_Mapping.Life.Tab;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -168,12 +169,12 @@ public class General extends BasePage {
         clientInfo.sendKeys("Test");
     }
     public void ClickVinculation() throws Exception {
-
+        //TODO provera da li je čekirano
             Vinkulation.click();
 
     }
     public void uNClickVinculation () throws Exception {
-
+        //TODO provera da li je čekirano
             Vinkulation.click();
 
     }

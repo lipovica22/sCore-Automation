@@ -83,15 +83,21 @@ public class Person extends BasePage {
     public void LegalRepresentativeLabel() throws Exception {}
     public void LegalRepresentativeGrid() throws Exception {}
 
-    public void BeneficiaryForDeath() throws Exception {}
+    public void addBeneficiaryForDeath() throws Exception {
+        Click(BeneficiaryForDeath,"BeneficiaryForDeath");
+    }
     public void BeneficiaryForDeathLabel() throws Exception {}
     public void BeneficiaryForDeathGrid() throws Exception {}
 
-    public void BeneficiaryForSurvivor() throws Exception {}
+    public void addBeneficiaryForSurvivor() throws Exception {
+        Click(BeneficiaryForSurvivor,"BeneficiaryForSurvivor");
+    }
     public void BeneficiaryForSurvivorGrid() throws Exception {}
     public void BeneficiaryForSurvivorLabel() throws Exception {}
 
-    public void BeneficiaryForIllness() throws Exception {}
+    public void addBeneficiaryForIllness() throws Exception {
+        Click(BeneficiaryForIllness,"BeneficiaryForIllness");
+    }
     public void BeneficiaryForIllnessLabel() throws Exception {}
     public void BeneficiaryForIllnessGrid() throws Exception {}
 

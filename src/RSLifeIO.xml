@@ -3,7 +3,7 @@
 
 
 
-<suite name="sCoreRS" >
+<suite name="sCoreRS" thread-count="1" data-provider-thread-count="1">
 
     <parameter name="browser" value="CHROME"/>
     <parameter name="quit" value="no"/>
@@ -29,7 +29,7 @@
         <parameter name="password" value="OvoJ3Test"></parameter>-->
 
         <classes>
-            <class name="runners.Life"/>
+            <class name="runners.Life.RSLifeIOrunner"/>
         </classes>
 
     </test>

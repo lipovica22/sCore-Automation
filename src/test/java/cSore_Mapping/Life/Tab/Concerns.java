@@ -306,11 +306,15 @@ public class Concerns extends BasePage {
     public void BaseSearchName() throws Exception {}
 
     public void DateOfBirthLabel() throws Exception {}
-    public void DateOfBirth() throws Exception {}
+    public void inputDateOfBirth(String birthdate) throws Exception {
+        SetValue(DateOfBirth, "Input date of birth", birthdate);
+    }
     public void EntryAgeLabel() throws Exception {}
     public void EntryAge() throws Exception {}
     public void GenderLabel() throws Exception {}
-    public void Gender() throws Exception {}
+    public void selectGender(String gender) throws Exception {
+        SelectOption(Gender, "Select gender", gender);
+    }
     public void HeightLabel() throws Exception {}
     public void inputHeight(String height) throws Exception {
         SetValue(Height, "Input height", height);
@@ -325,7 +329,7 @@ public class Concerns extends BasePage {
     }
     public void InterestLabel() throws Exception {}
     public void inputInterest(String interest) throws Exception {
-        SetValue(Interest, "Input height",interest );
+        SetValue(Interest, "Input interest",interest );
     }
 
     public void ConcernListGrid() throws Exception {}

@@ -1,4 +1,4 @@
-package runners;
+package runners.Life;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
@@ -7,12 +7,12 @@ import org.testng.annotations.Test;
 
 @Test
 @CucumberOptions(
-        features = "src/test/java/features/Life/test.feature",
-        glue = "steps/Life",
+        features = "src/test/java/features/Life/NewContract.feature",
+        glue = "steps/Life/NewContractSteps",
         plugin ={"io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm"}
 
 )
-public class Life extends AbstractTestNGCucumberTests {
+public class RSLifeNCrunner extends AbstractTestNGCucumberTests {
     @DataProvider(parallel = true)
     @Override
     public Object[][] scenarios() {

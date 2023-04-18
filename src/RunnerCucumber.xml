@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 
-<suite name="Fast test" thread-count="1" data-provider-thread-count="1">
+<suite name="Fast test" thread-count="3" data-provider-thread-count="3">
     <parameter name="browser" value="CHROME"/>
     <parameter name="quit" value="yes"/>
     <parameter name="environment" value="TEST_RS"/>

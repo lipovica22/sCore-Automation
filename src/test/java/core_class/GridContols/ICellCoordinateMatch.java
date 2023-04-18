@@ -1,4 +1,6 @@
-package core_class;
+package core_class.GridContols;
+
+import core_class.GridContols.GridDataCollection;
 
 public interface ICellCoordinateMatch {
 
