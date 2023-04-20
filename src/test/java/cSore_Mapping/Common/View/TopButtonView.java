@@ -1,6 +1,6 @@
 package cSore_Mapping.Common.View;
 
-import cSore_Mapping.Common.Pages.BasePage;
+import cSore_Mapping.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -140,10 +140,9 @@ public class TopButtonView extends BasePage {
     @FindBy(id= "btn_Confirm")   WebElement Confirm;
     @FindBy(id= "btn_AcceptOfferWithoutCorrection")   WebElement AcceptOfferWithoutCorrection;
     @FindBy(id= "btn_SendForApproval")   WebElement SendForApproval;
+    @FindBy(id= "btn_PrintConditions")   WebElement printConditions;
 
 
-    @FindBy(css = "tbody[class='basic_grid_body']")
-    WebElement  buttonle;
 
 
     //-------------------- Methods --------------------
@@ -167,9 +166,7 @@ public class TopButtonView extends BasePage {
         Click(printPUI, "Click on print PUI");
     }
 
-    public void print(String valuePrints) throws Exception {
-        gridPrinting( buttonle, "Print: ", valuePrints);
-    }
+
 
     public void clickSaveQuestionary() throws Exception {
         Click(saveQuestionary, "Click on Save Questionary");}
@@ -283,6 +280,9 @@ public class TopButtonView extends BasePage {
     }
     public void clickSendForApproval() throws Exception {
         ClickWithScroll(SendForApproval, "Click SendForApproval button");
+    }
+    public void clickPrintConditions() throws Exception {
+        ClickWithScroll(printConditions, "Click PrintConditions button");
     }
 
     //-------------------- End Methods --------------------

@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 @Test
 @CucumberOptions(
         features = "src/test/java/features/Life/NewContract.feature",
-        glue = "steps/Life/NewContractSteps",
+        glue = "steps/Life/NC",
         plugin ={"io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm"}
 
 )

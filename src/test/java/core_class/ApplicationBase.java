@@ -22,5 +22,12 @@ public class ApplicationBase {
         String path = absolutePath + "src/test/FilesForUpload/" + fileName + ".xlsm";
         return  path;
     }
+    public static String pathPDF(String fileName){
+        File directory = new File(".");
+        String absolutePath = directory.getAbsolutePath().replace("\\", "/").trim();
+        absolutePath = absolutePath.substring(0, absolutePath.length() - 1);
+        String path = absolutePath + "src/test/FilesForUpload/" + fileName + ".pdf";
+        return  path;
+    }
 
 }

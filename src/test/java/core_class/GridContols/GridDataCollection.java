@@ -1,11 +1,9 @@
 package core_class.GridContols;
 
-import cSore_Mapping.Common.Pages.BasePage;
 import core_class.ControlBase;
+import cSore_Mapping.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import java.sql.Driver;
 
 public class GridDataCollection extends ControlBase {
     public WebDriver driver;
@@ -15,8 +13,8 @@ public class GridDataCollection extends ControlBase {
     public String fieldValue;
     public int fieldIndex;
 
-    public GridDataCollection(WebElement element) {
-        super(element);
+    public GridDataCollection(WebElement webElement) {
+        super(webElement);
     }
 
     public int getRowNumber() {

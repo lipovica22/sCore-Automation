@@ -1,6 +1,10 @@
 package cSore_Mapping.Common.Dialog.Iframe;
 
-import cSore_Mapping.Common.Pages.BasePage;
+import cSore_Mapping.BasePage;
+import core_class.ApplicationBase;
+
+import core_class.CellCoordinateMatches.CellCoordinateMatchFactory;
+import core_class.GridContols.GridControl;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -68,8 +72,9 @@ public class FileUpload extends BasePage {
  
     public void Grid() throws Exception {}
  
-    public void clickFileInput() throws Exception {
-        ClickWithScroll(fileInput, "Click FileInput button");
+    public void clickFileInput(String valueFileName) throws Exception {
+
+        UploadFile(fileInput, "Upload pdf file for documentation", ApplicationBase.pathPDF(valueFileName));
     }
     public void clickStart() throws Exception {
         ClickWithScroll(start, "Click Start button");
@@ -95,7 +100,8 @@ public class FileUpload extends BasePage {
     public void StripedTable() throws Exception {}
  
     public void UploadedDocuments() throws Exception {
-
+        //SelectCellOption(uploadedDocuments, CellCoordinateMatchFactory.createNumber(3, 1),"Identifikacioni dokument - Ugovarača");
+        //gridUpload(uploadedDocuments,"","AML_Klijient.pdf","Identifikacioni dokument - Ugovarača","");
     }
     public void PolicyUploadedDocuments() throws Exception {}
  

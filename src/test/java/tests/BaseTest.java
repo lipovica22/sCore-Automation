@@ -1,6 +1,5 @@
 package tests;
 
-import cSore_Mapping.Common.Pages.BasePage;
 import io.qameta.allure.Allure;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
@@ -29,7 +28,6 @@ public class BaseTest {
     }
 
     public void quit(){
-
         driverManager.quitDriver();
     }
 
@@ -116,10 +114,8 @@ public class BaseTest {
         }
     }
 
-    public void JumpToFrame()
-    {
+    public void JumpToFrame() {
         driver.switchTo().frame(driver.findElement(By.xpath("//iframe")));
-        //driver.findElement(By.id("MainContent_wucIndividualBusinessEntitySearch_tbIdentificationNumber")).sendKeys("123456789");
     }
 }
 

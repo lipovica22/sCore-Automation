@@ -1,6 +1,6 @@
 package cSore_Mapping.Common.View;
 
-import cSore_Mapping.Common.Pages.BasePage;
+import cSore_Mapping.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -72,60 +72,43 @@ public class TabView extends BasePage {
     public void clickAnnulationTab() throws Exception {
         ClickWithScroll(annulationTab, "Click annulation tab");
     }
-
     public void clickMoneyLaundryTab() throws Exception {
         ClickWithScroll(moneyLaundryTab, "Click MoneyLaundry tab");
     }
     public void clickAssociateMoneyLaundryTab() throws Exception {
         ClickWithScroll(associateMoneyLaundryTab, "Click AssociateMoneyLaundry tab");
     }
-
     public void assertStatus(SoftAssert softAssert, String valueExpected) throws Exception {
         AreEqual(status, "Message status", valueExpected, softAssert);
     }
-    public void clickGeneral() throws Exception {
-        ClickWithScroll(generalTab, "Click General tab");
-    }
-    public void clickPerson() throws Exception {
-        ClickWithScroll(personTab, "Click Person tab");
-    }
-    public void clickConcerns() throws Exception {
-        ClickWithScroll(concernsTab, "Click Concerns tab");
-    }
-    public void clickConditions() throws Exception {
-        ClickWithScroll(conditionsTab, "Click Conditions tab");
-    }
-    public void clickCalculation() throws Exception {
+    public void clickCalculationTab() throws Exception {
         ClickWithScroll(calculationTab, "Click Calculation tab");
     }
-    public void clickClauses() throws Exception {
+    public void clickClausesTab() throws Exception {
         ClickWithScroll(clausesTab, "Click Clauses tab");
     }
-    public void clickPrintouts() throws Exception {
+    public void clickPrintoutsTab() throws Exception {
         ClickWithScroll(printoutsTab, "Click Printouts tab");
     }
-    public void clickDocumentation() throws Exception {
+    public void clickDocumentationTab() throws Exception {
         ClickWithScroll(documentationTab, "Click Documentation tab");
     }
-    public void clickAnnulation() throws Exception {
-        ClickWithScroll(annulationTab, "Click Annulation tab");
-    }
-    public void clickUnderwriting() throws Exception {
+    public void clickUnderwritingTab() throws Exception {
         ClickWithScroll(underwritingTab, "Click Underwriting tab");
     }
-    public void clickReclamation() throws Exception {
+    public void clickReclamationTab() throws Exception {
         ClickWithScroll(reclamationTab, "Click Reclamation tab");
     }
-    public void clickCancellation() throws Exception {
+    public void clickCancellationTab() throws Exception {
         ClickWithScroll(cancellationTab, "Click Cancellation tab");
     }
-    public void clickStatements() throws Exception {
+    public void clickStatementsTab() throws Exception {
         ClickWithScroll(statementsTab, "Click Statements tab");
     }
-    public void clickVinculations() throws Exception {
+    public void clickVinculationsTab() throws Exception {
         ClickWithScroll(vinculationsTab, "Click Vinculations tab");
     }
-    public void clickFinancialBalance() throws Exception {
+    public void clickFinancialBalanceTab() throws Exception {
         ClickWithScroll(financialBalanceTab, "Click FinancialBalance tab");
     }
 

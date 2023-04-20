@@ -14,7 +14,6 @@ Feature: Fill tab General by all products as different users for Life Insurance 
     And Choose product
     And Choose Product type
     And click on product icon
-    Then tab is General
 
     Then input duration of insurance and if product is Riziko kredit fill Izbor dužine trajanja
     And set place
@@ -23,12 +22,12 @@ Feature: Fill tab General by all products as different users for Life Insurance 
     And set FXClause
     And set Payment Method and bank if method is Trajni nalog
     And choose vinculation option
+    And choose indexation option
     And click on next tab
 
     When tab is PersonConcerns
     And set Same person
     Then click on add button
-
 
     And on Iframe input Identification number
     And click on button Search
@@ -42,8 +41,8 @@ Feature: Fill tab General by all products as different users for Life Insurance 
     When click on tab Concerns
     Then choose Calculation direction
     And input insured sum or premium
-    And input height if product is not Favorit
-    And input weight if product is not Favorit
+    And input height if product is not Favorit or Dozivotni riziko
+    And input weight if product is not Favorit or Dozivotni riziko
     And input interest if product is Riziko kredit
     And check insured risks and sum or premium
     Then click on button Accept on top view
@@ -51,6 +50,7 @@ Feature: Fill tab General by all products as different users for Life Insurance 
     And click on button Save Questionnaire
     And click on button Calculate
     Then check calculation
+    And input Vinculation if product is not Favorit or Joker
     And click on button Activate
     Then check Info message on top of page
     Then check Warring message on top of page
@@ -75,8 +75,16 @@ Feature: Fill tab General by all products as different users for Life Insurance 
     And check Info message After Certification Of Signature
 
     Examples:
-      | row | TC ID          |
-      | 1   | RS_LI_RK_100  |
+      | row | TC ID         |
+      #| 1   | RS_LI_RK_100  |
+      #| 2   | RS_LI_RK_101  |
+      | 3   | RS_LI_JO_101  |
+      #| 4   | RS_LI_RI_100  |
+      #| 5   | RS_LI_SP_109  |
+      #| 6   | RS_LI_JO_101  |
+      #| 7   | RS_LI_DR_110  |
+
+
 
 
 

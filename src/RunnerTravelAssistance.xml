@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+
+<suite name="Health" thread-count="1" data-provider-thread-count="1">
+
+    <parameter name="browser" value="CHROME"/>
+    <parameter name="quit" value="no"/>
+    <parameter name="environment" value="TEST_RS"/>
+
+    <test name="Travel Assistance">
+        <classes>
+            <class name="runners.Health.TravelAssistance.TravelAssistanceRunner"/>
+        </classes>
+    </test>
+</suite>

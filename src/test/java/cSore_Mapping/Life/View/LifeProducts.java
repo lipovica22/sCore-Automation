@@ -1,6 +1,6 @@
 package cSore_Mapping.Life.View;
 
-import cSore_Mapping.Common.Pages.BasePage;
+import cSore_Mapping.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

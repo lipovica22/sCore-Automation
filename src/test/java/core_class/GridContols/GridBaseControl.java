@@ -1,7 +1,6 @@
 package core_class.GridContols;
 
-import cSore_Mapping.Common.Pages.BasePage;
-import core_class.ControlBase;
+import cSore_Mapping.BasePage;
 import org.openqa.selenium.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +12,7 @@ public class GridBaseControl extends BasePage {
     public static int totalColumns;
     public WebDriver driver;
 
-    public GridBaseControl(WebElement webElement) {
+    public GridBaseControl(WebDriver webElement) {
         super(webElement);
     }
 
@@ -41,7 +40,7 @@ public class GridBaseControl extends BasePage {
         this.totalColumns = totalColumns;
     }
 
-    public void readGrid(WebElement element) {
+    /*public void readGrid(WebElement element) {
         try {
             List<WebElement> cells;
             List<WebElement> header;
@@ -89,40 +88,6 @@ public class GridBaseControl extends BasePage {
             }
         } catch (NotFoundException ex) {
             throw new NotFoundException("Grid Control Read Grid Issue.", ex);
-        }
-    }
-
-    /*public void SelectCellOption(ICellCoordinateMatch cellCoordinateMatch, String sel_option)
-    {
-        try
-        {
-            boolean isClicked = false;
-            findCell(cellCoordinateMatch).Click();
-            List<WebElement> optionsToSelect = findCell(cellCoordinateMatch).FindElements(By.cssSelector("option"));
-            for (WebElement option : optionsToSelect)
-            {
-                if (option.getText().equals(sel_option))
-                {
-                    option.click();
-
-                    isClicked = true;
-                    break;
-                }
-            }
-            if (!isClicked)
-            {
-                throw new NotFoundException("No such element to select.");
-            }
-        }
-
-        catch (NotFoundException ex)
-        {
-            throw new NotFoundException("Grid Control  Select from List Cell Value Issue.", ex);
-        }
-
-        catch (ElementClickInterceptedException ex)
-        {
-            throw new ElementClickInterceptedException("Grid Control  Select from List Cell Value Issue.", ex);
         }
     }*/
 
